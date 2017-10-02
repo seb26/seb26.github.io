@@ -1,0 +1,52 @@
+{% include _header.html %}
+    
+    {% assign categories = site.data.photography.categories %}
+    {% assign category = site.data.photography.categories[page.category] %}
+    
+  <div class="subcat-wrapper">  
+    <div class="subcat">
+      <a id="subcat-jump-top" href="#top" class="subcat-toggle">
+        <span class="subcat-jump-top-icon"></span>
+      </a>
+      <button id="subcat-toggle-button" type="button" class="subcat-toggle">
+        {{ page.category-label }}
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="subcat-menu">
+        {% for cat in categories %}
+          <a class="item{% if cat.name == page.category %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}.html">{{ cat.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="images">
+      
+    {% for image in page.images %}
+    <div class="image">
+      <img class="image-file load-dyn" data-src="{{ image.filename }}" alt="{{ image.alt-text }}" />
+      <noscript><img class="image-file" src="{{ image.filename }}" alt="{{ image.alt-text }}" /></noscript>
+      <div class="ii">
+        <div class="ii-body">
+          <div class="arrow"></div>
+          <div class="ii-desc">
+            {{ image.description }}
+          </div>
+          <h3 class="ii-details">
+            <div class="ii-location">{{ image.location }}</div>
+            <div class="ii-date">{{ image.date }}</div>
+            <div class="ii-share-links">
+              <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
+              <a href="{{ image.url-fb }}">Facebook</a> &sdot;
+              <a href="{{ image.url-tumblr }}">Tumblr</a>
+            </div>
+          </h3>
+        </div>
+      </div>
+      <div class="ii-icon"></div>
+    </div>
+    {% endfor %}
+      
+  </div>
+
+{% include _footer.html %}
