@@ -1,19 +1,13 @@
-body {
-    /* background-color:#111c28;
-    color:white; */
-}
-nav {
-    background-color:#0b121a;
-}
-
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
-  padding-top: 50px;
+  padding-top: 56px;
 }
-
+nav {
+    background-color:#0b121a;
+}
 /* SITEWIDE NAVIGATOR */
 .i-caret {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none' stroke='#DDDDDD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M30 10 L16 26 2 10 Z' /%3E%3C/svg%3E") !important;
@@ -166,10 +160,9 @@ background-size: 100% 100%;
 
 /* PAGE SPECIFIC */
 /* 
- * index.html 
+ * photography.html layout pages 
  */
 .images {
-  padding-top:48px;
 }
 .images h2 {
   text-align:right;

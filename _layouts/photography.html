@@ -14,7 +14,7 @@
       </button>
       <div class="subcat-menu">
         {% for cat in categories %}
-          <a class="item{% if cat.name == page.category %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}.html">{{ cat.label }}</a>
+          <a class="item{% if cat.name == page.category %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}">{{ cat.label }}</a>
         {% endfor %}
       </div>
     </div>
