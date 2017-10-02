@@ -24,7 +24,7 @@
       
     {% for image in page.images %}
     <div class="image">
-      <img class="image-file load-dyn" data-src="{{ image.filename }}" alt="{{ image.alt-text }}" />
+      <img class="image-file load-dyn" data-src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" />
       <noscript><img class="image-file" src="{{ image.filename }}" alt="{{ image.alt-text }}" /></noscript>
       <div class="ii">
         <div class="ii-body">
