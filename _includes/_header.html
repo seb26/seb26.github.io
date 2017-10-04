@@ -7,8 +7,8 @@
         
         <title>{{ page.title }} &mdash; Sebastian Reategui</title>
 
-        <link rel="stylesheet" href="{{ "/assets/bootstrap.min.css" | relative_url }}" />
-        <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}" />
+        <link rel="stylesheet" href="assets/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/style.css" />
         
     </head>
 <body class="page-index no-js" id="top">
@@ -20,12 +20,13 @@
     <a class="nav-item nav-link navbar-brand" href="about">Sebastian Reategui</a>
     <div class="collapse navbar-collapse justify-content-center" id="nav-01">
       <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Photography
-              <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="video">Video</a>
-            <a class="nav-item nav-link" href="design">Design</a>
-            <a class="nav-item nav-link" href="//sebasencolombia.wordpress.com" target="_blank">Blog</a>
-            <a class="nav-item nav-link" href="about">About&nbsp;&sdot;&nbsp;Contact</a>
+        {% for item in site.data.nav.items %}
+          <a class="nav-item nav-link {% if page.url == item.url %}active{% elsif page.url == item.file %}active{% endif %}" href="{{ item.url }}">{{ item.label }}{% if page.url == item.url %}<span class="sr-only">(current)</span>{% elsif page.url == item.file %}<span class="sr-only">(current)</span>{% endif %}</a>
+        {% endfor %}
       </div>
     </div>
 </nav>
+  
+  
+  
+  

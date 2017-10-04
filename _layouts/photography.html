@@ -25,7 +25,7 @@
     {% for image in page.images %}
     <div class="image">
       <img class="image-file load-dyn" data-src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" />
-      <noscript><img class="image-file" src="{{ image.filename }}" alt="{{ image.alt-text }}" /></noscript>
+      <noscript><img class="image-file" src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" /></noscript>
       <div class="ii">
         <div class="ii-body">
           <div class="arrow"></div>
@@ -48,5 +48,7 @@
     {% endfor %}
       
   </div>
+
+{{ content }}
 
 {% include _footer.html %}

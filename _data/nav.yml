@@ -1,0 +1,16 @@
+items:
+  - label: Photography
+    file: /index.html
+    url: "/"
+  - label: Video
+    file: /video.html
+    url: /video
+  - label: Design
+    file: /design.html
+    url: /design
+  - label: Blog
+    file: 
+    url: //sebasencolombia.wordpress.com
+  - label: About&nbsp;&sdot;&nbsp;Contact
+    file: /about.html
+    url: /about
