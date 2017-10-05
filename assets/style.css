@@ -490,6 +490,18 @@ body.page-design .container {
 .video-thumb-play {
   display:inline-block;
 }
+.video-thumb-play-icon {
+  display: block;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.15) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='64' height='64' fill='none' stroke='#FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M10 2 L10 30 24 16 Z'%3E%3C/path%3E%3C/svg%3E");
+  bottom: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  /* opacity: .2; */
+  width: 100%;
+  height: 64px;
+}
 .video-thumb {
   width:75%;
   border-radius:.2rem;
