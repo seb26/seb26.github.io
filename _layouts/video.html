@@ -1,5 +1,7 @@
 {% include _header.html %}
 
+{{ content }}
+
 <div class="container videos">
   {% for video in page.videos %}
   <div class="row video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
@@ -9,7 +11,7 @@
     <meta itemprop="embedUrl" content="{{ video.url }}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
-    <div class="col-md-4 video-about">
+    <div class="col-lg-4 video-about">
       <h4 class="video-title">
         <span class="video-date">{{ video.date | date:"%B %Y" }}</span>
         <a href="{{ video.url }}" itemprop="name">{{ video.title }}</a>
@@ -18,6 +20,9 @@
       <ul class="video-about-details">
         <li class="video-credit">{{ video.credit }}</li>
         <li class="video-credit-display">{{ video.credit-display }}</li>
+        {% if video.credit-director %}
+        <li class="video-credit-director" itemprop="director">Director: {{ video.credit-director }}</li>
+        {% endif %}
         <li>
           <span class="video-duration">{{ video.duration-formatted }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
         </li>
@@ -30,7 +35,7 @@
         <a class="btn btn-secondary video-watch" href="{{ video.url }}">Watch</a>
       {% endif %}
     </div>
-    <div class="col-md-8 video-thumbs">
+    <div class="col-lg-8 video-thumbs">
       <div class="video-thumb video-thumb-play">
         <a href="{{ video.url }}">
         <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
@@ -44,10 +49,8 @@
   </div>
   {% endfor %}
   
-  {{ content }}
-  
 </div>
 
-
+{{ content_footer }}
 
 {% include _footer.html %}
