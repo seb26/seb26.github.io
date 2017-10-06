@@ -36,12 +36,16 @@
       {% endif %}
     </div>
     <div class="col-lg-8 video-thumbs">
+      {% if video.available == false %}
+      <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+      {% else %}
       <div class="video-thumb video-thumb-play">
         <a href="{{ video.url }}">
         <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
         <span class="video-thumb-play-icon"></span>
         </a>
       </div>
+      {% endif %}
       {% for thumb in video.thumbs %}
       <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
       {% endfor %}
