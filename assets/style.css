@@ -503,6 +503,8 @@ body.page-design .container {
   background-repeat: no-repeat;
   background-size:64px 64px;
   opacity:0.1;
+  
+  transition:all .15s ease;
 }
 .video-thumb-play-icon:hover {
   opacity:1;

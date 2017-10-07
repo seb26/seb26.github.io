@@ -1,7 +1,7 @@
 {% include _header.html %}
     
-    {% assign categories = site.data.photography.categories %}
-    {% assign category = site.data.photography.categories[page.category] %}
+    {% assign subcategories = site.data.photography.subcategories %}
+    {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
     
   <div class="subcat-wrapper">  
     <div class="subcat">
@@ -9,12 +9,12 @@
         <span class="subcat-jump-top-icon"></span>
       </a>
       <button id="subcat-toggle-button" type="button" class="subcat-toggle">
-        {{ page.category-label }}
+        {{ page.subcategory-label }}
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="subcat-menu">
-        {% for cat in categories %}
-          <a class="item{% if cat.name == page.category %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}">{{ cat.label }}</a>
+        {% for cat in subcategories %}
+          <a class="item{% if cat.name == page.subcategory %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}">{{ cat.label }}</a>
         {% endfor %}
       </div>
     </div>
