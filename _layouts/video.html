@@ -1,60 +1,66 @@
-{% include _header.html %}
-
+{%- include _header.html -%}
 {{ content }}
-
 <div class="container videos">
-  {% for video in page.videos %}
-  <div class="row video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+  {%- for video in page.videos -%}
+  <div class="row equal video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
-    <meta itemprop="thumbnailUrl" content="{{ video.thumb-first }}">
+    <meta itemprop="thumbnailUrl" content="{{ video.thumb-first | prepend: 'img/' | absolute_url }}">
+    {%- if video.credit-director -%}
+      <meta itemprop="contributor" content="{{ video.credit }}">
+      <meta itemprop="creator" content="{{ video.credit-director }}">
+    {%- else -%}
+      <meta itemprop="creator" content="Sebastian Reategui">
+    {%- endif -%}
     <meta itemprop="contentUrl" content="{{ video.url }}">
     <meta itemprop="embedUrl" content="{{ video.url }}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
-    <div class="col-lg-4 video-about">
+    <div class="col-12 video-about">
       <h4 class="video-title">
         <span class="video-date">{{ video.date | date:"%B %Y" }}</span>
-        <a href="{{ video.url }}" itemprop="name">{{ video.title }}</a>
+        <a href="{{ video.url }}">{{ video.title }}</a>
       </h4>
-      <p class="video-description" itemprop="description">{{ video.description }}</p>
-      <ul class="video-about-details">
-        <li class="video-credit">{{ video.credit }}</li>
-        <li class="video-credit-display">{{ video.credit-display }}</li>
-        {% if video.credit-director %}
-        <li class="video-credit-director" itemprop="director">Director: {{ video.credit-director }}</li>
-        {% endif %}
-        <li>
-          <span class="video-duration">{{ video.duration-formatted }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
-        </li>
-        <li class="video-location" itemprop="locationCreated">{{ video.location }}</li>
-        {% if video.license %}
-        <li class="video-license">{{ video.license }}</li>
-        {% endif %}
-      </ul>
-      {% if video.available != false %}
-        <a class="btn btn-secondary video-watch" href="{{ video.url }}">Watch</a>
-      {% endif %}
-    </div>
-    <div class="col-lg-8 video-thumbs">
-      {% if video.available == false %}
-      <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
-      {% else %}
-      <div class="video-thumb video-thumb-play">
-        <a href="{{ video.url }}">
-        <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
-        <span class="video-thumb-play-icon"></span>
-        </a>
+      <div class="video-about-group">
+        <p class="video-description" itemprop="description">{{ video.description }}</p>
+        <ul class="video-about-details">
+          <li class="video-credit">{{ video.credit }}</li>
+          <li class="video-credit-display">{{ video.credit-display }}</li>
+          {%- if video.credit-director -%}
+          <li class="video-credit-director" itemprop="director">Director: {{ video.credit-director }}</li>
+          {%- endif -%}
+          <li>
+            <span class="video-duration">{{ video.duration-formatted }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
+          </li>
+          <li class="video-location" itemprop="locationCreated">{{ video.location }}</li>
+          {%- if video.license -%}
+          <li class="video-license">{{ video.license }}</li>
+          {%- endif -%}
+        </ul>
+        {%- if video.available != false -%}
+          <a class="btn btn-secondary video-watch" href="{{ video.url }}">Watch</a>
+        {%- endif -%}
       </div>
-      {% endif %}
-      {% for thumb in video.thumbs %}
-      <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
-      {% endfor %}
+    </div>
+    <div class="col-12 video-thumbs align-self-center">
+      <div class="video-thumbs-wrapper">
+        {%- if video.available == false -%}
+        <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+        {%- else -%}
+        <div class="video-thumb video-thumb-play">
+          <a href="{{ video.url }}">
+          <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+          <span class="video-thumb-play-icon"></span>
+          </a>
+        </div>
+        {%- endif -%}
+        {%- for thumb in video.thumbs -%}
+        <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
+        {%- endfor -%}
+      </div>
     </div>
   </div>
-  {% endfor %}
-  
+  {%- endfor -%}
 </div>
-
 {{ content_footer }}
-
-{% include _footer.html %}
+{%- include _footer.html -%}

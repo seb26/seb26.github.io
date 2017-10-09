@@ -54,11 +54,13 @@ $(document).ready(function() {
   });
   $(window).click( function(e) {
     if ( subcat_list ) {
-      // User has clicked on an Info bubble
+      // User has clicked on the subcat dropdown
       clicked = $(e.target);
       parents = clicked.parents();
-      if ( clicked.hasClass('subcat-toggle') ) {
+      if ( clicked.hasClass('subcat-toggle') || 
+           clicked.hasClass('subcat-toggle-button-label' ) ) {
         // If you click the icon, or the infobox
+        // Do nothing
         return;
       }
       else {

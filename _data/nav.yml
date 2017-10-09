@@ -8,9 +8,9 @@ items:
   - label: Design
     file: /design.html
     url: /design
-  - label: Blog
-    file: 
-    url: //sebasencolombia.wordpress.com
+  - label: Recent Work
+    file: /recent.html
+    url: /recent
   - label: About&nbsp;&sdot;&nbsp;Contact
     file: /about.html
     url: /about

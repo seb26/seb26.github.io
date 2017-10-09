@@ -1,3 +1,6 @@
+---
+subcategory_parent: photography
+---
 {% include _header.html %}
     
     {% assign subcategories = site.data.photography.subcategories %}
@@ -9,7 +12,7 @@
         <span class="subcat-jump-top-icon"></span>
       </a>
       <button id="subcat-toggle-button" type="button" class="subcat-toggle">
-        {{ page.subcategory-label }}
+        <span class="subcat-toggle-button-label">{{ page.subcategory-label }}</span>
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="subcat-menu">
@@ -23,7 +26,13 @@
   <div class="images">
       
     {% for image in page.images %}
-    <div class="image">
+    <div class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
+      <meta itemprop="name" content="{{ img.alt }}">
+      <meta itemprop="description" content="{{ img.description }}">
+      <meta itemprop="thumbnailUrl" content="{{ video.thumb-first | prepend: 'img/' | absolute_url }}">
+      <meta itemprop="creator" content="Sebastian Reategui">
+      <meta itemprop="dateCreated" content="{{ img.date }}">
+      <meta itemprop="datePublished" content="{{ img.date }}">
       <img class="image-file load-dyn" data-src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" />
       <noscript><img class="image-file" src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" /></noscript>
       <div class="ii">
@@ -33,7 +42,7 @@
             {{ image.description }}
           </div>
           <h3 class="ii-details">
-            <div class="ii-location">{{ image.location }}</div>
+            <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
             <div class="ii-date">{{ image.date }}</div>
             <div class="ii-share-links">
               <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
