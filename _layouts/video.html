@@ -16,12 +16,30 @@
     <meta itemprop="embedUrl" content="{{ video.url }}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
+    <div class="col-12 video-thumbs align-self-center">
+      <div class="video-thumbs-wrapper">
+        {%- if video.available == false -%}
+        <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+        {%- else -%}
+        <div class="video-thumb video-thumb-play">
+          <a href="{{ video.url }}">
+          <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+          <span class="video-thumb-play-icon"></span>
+          </a>
+        </div>
+        {%- endif -%}
+        {%- for thumb in video.thumbs -%}
+        <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
+        {%- endfor -%}
+      </div>
+    </div>
     <div class="col-12 video-about">
-      <h4 class="video-title">
-        <span class="video-date">{{ video.date | date:"%B %Y" }}</span>
-        <a href="{{ video.url }}">{{ video.title }}</a>
-      </h4>
-      <div class="video-about-group">
+      <div class="video-about-wrapper col-12 col-md-8 col-lg-6">
+        <h4 class="video-title">
+          <span class="video-date">{{ video.date | date:"%B %Y" }}</span>
+          <a href="{{ video.url }}">{{ video.title }}</a>
+        </h4>
+        <hr class="video-hr" />
         <p class="video-description" itemprop="description">{{ video.description }}</p>
         <ul class="video-about-details">
           <li class="video-credit">{{ video.credit }}</li>
@@ -38,25 +56,8 @@
           {%- endif -%}
         </ul>
         {%- if video.available != false -%}
-          <a class="btn btn-secondary video-watch" href="{{ video.url }}">Watch</a>
+          <a class="btn btn-dark video-watch" href="{{ video.url }}">Watch</a>
         {%- endif -%}
-      </div>
-    </div>
-    <div class="col-12 video-thumbs align-self-center">
-      <div class="video-thumbs-wrapper">
-        {%- if video.available == false -%}
-        <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
-        {%- else -%}
-        <div class="video-thumb video-thumb-play">
-          <a href="{{ video.url }}">
-          <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
-          <span class="video-thumb-play-icon"></span>
-          </a>
-        </div>
-        {%- endif -%}
-        {%- for thumb in video.thumbs -%}
-        <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
-        {%- endfor -%}
       </div>
     </div>
   </div>

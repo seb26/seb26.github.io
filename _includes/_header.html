@@ -37,7 +37,8 @@
             <a class="nav-item nav-link active" href="{{ item.url }}">{{ item.label }}<span class="sr-only">(current)</span></a>
           {%- endif -%}
         {%- endfor -%}
-        <a class="item item-faux-brand invisible" href="#" aria-hidden="true">Sebastian Reategui</a>
+        <!-- This element aims to balance the other items in the exact center, but itself is otherwise kept invisible. d-none d-sm-block avoids showing it in mobile viewports. -->
+        <a class="item item-faux-brand invisible d-none d-sm-block" href="#" aria-hidden="true">Sebastian Reategui</a>
       </div>
     </div>
 </nav>

@@ -5,11 +5,16 @@ body {
 body {
   padding-top: 56px;
   color: #5d5d5d;
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
+  background:#111;
 }
-/* SITEWIDE NAVIGATOR */
+
+
+/*
+ * Nav that is shown sitewide
+ */
 nav {
-  background:rgba(17,17,17,.99);
+  background:rgba(17,17,17,.85);
 }
 .nav-item {
   transition: all .15s ease-in-out;
@@ -23,28 +28,24 @@ nav {
 .i-caret {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none' stroke='#DDDDDD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M30 10 L16 26 2 10 Z' /%3E%3C/svg%3E") !important;
 }
-
-
+/* xs (below sm) */
+@media (max-width:575px) {
 /* All anchor links are offsetted by 70px */
 /* which is the height of the navbar. */
-:target:before {
-  content:"";
-  display:block;
-  height:60px;
-  margin:-60px 0 0;
+  :target:before {
+    content:"";
+    display:block;
+    height:60px;
+    margin:-60px 0 0;
+  }
+  .nav-item:hover,
+  .nav-item.active {
+    border:0;
+  }
 }
+  
 
-
-/* index.html */
-.page-parent-photography {
-  background:#111;
-}
-.page-parent-photography nav {
-  background:rgba(17,17,17,.85);
-}
-
-
-/* SUBCATEGORY NAVIGATOR */
+/* Nav for SUBCATEGORIES */
 /* for: desktop */
 .subcat-wrapper {
   /* Bootstrap .fixed-top MODIFIED */
@@ -389,23 +390,30 @@ body.page-about {
   .about-contact {
   }
 }
-.about-btn-list {
-  list-style-type:none;
+.about-buttons {
+  list-style:none;
   margin:0;
   padding:0;
 }
-.about-btn-list li {
+.about-buttons li {
   display:block;
   float:left;
-  background:#ddd;
-  border-radius:.5rem;
-  padding:.5rem;
   margin:.25rem;
   margin-left:0rem;
+}
+.about-button {
+  display:block;
   text-align:center;
+  padding:.5rem .75rem;
+  background:#ddd;
+  border-radius:.5rem;
+}
+.about-button:hover {
+  background:#d0d0d0;
 }
 @media (max-width:575px) {
-  .about-btn-list li {
+  .about-buttons li,
+  .about-button {
     width:100%;
   }
 }
@@ -435,7 +443,7 @@ body.page-design .container {
 }
 .video {
   margin:2rem auto;
-  margin-bottom:4rem;
+  margin-bottom:4.5rem;
   font-size:80%;
 }
 .video:first-child {
@@ -443,8 +451,7 @@ body.page-design .container {
 }
 
 .video-title a {
-  color:inherit;
-  text-shadow: 1px 1px 0 rgba(140,140,140,0.5);
+  color:#868e96;
 }
 .video-date {
   /* Bootstrap: .badge [MODIFIED] */
@@ -452,36 +459,41 @@ body.page-design .container {
   margin-top:5px;
   padding: .25em .4em;
   line-height: 1;
-  color: #fff;
+  vertical-align: baseline;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25rem;
-
+  float:right;
   
+  color: rgb(164, 171, 178);
+  border-radius: .25rem;
   background-color: rgba(134, 142, 150,.25);
   text-transform:uppercase;
-  float:left;
   font-size:.75rem;
-  text-shadow: 1px 1px 0 rgba(140,140,140,1);
-}
-.video-about-group {
-  padding:1rem;
-  background:#ccc;
-  border-radius:.5rem;
 }
 .video-about {
-  padding-right:1.5rem;
-  text-shadow: 1px 1px 0 rgba(140,140,140,0.1);
+  margin-top:1rem;
+}
+.video-about-wrapper {
+  padding:1.25rem;
+  
+  background:rgba(140,140,140,0.1);
+  border-radius:.2rem;
+}
+.video-hr {
+  margin:0;
+  margin-top:1rem;
+  border:0;
+  border-bottom:1px solid rgba(204,204,204,.05);
 }
 .video-description {
   line-height:1rem;
   padding-top:1rem;
+  color:#70777d;
 }
 .video-about-details {
   list-style:none;
   padding:0;
-  color: #868e96; /* Bootstrap .text-muted */
+  color: #5d5d5d;
 }
 .video-credit {
   display:none;
@@ -497,7 +509,7 @@ body.page-design .container {
   color:inherit;
 }
 .video-watch {
-  margin:1rem 0;
+  color:#ddd;
 }
 .video-thumbs {
   overflow:scroll;
@@ -536,27 +548,6 @@ body.page-design .container {
   width:75%;
   border-radius:.2rem;
 }
-/* Default order: About, then thumbs */
-.video-about {
-  -ms-flex-order: 2;
-  order: 2;
-}
-.video-thumbs {
-  -ms-flex-order: 1;
-  order: 1;
-}
-/* md and above */
-@media (min-width:992px) {
-  /* Thumbs, then about underneath */
-  .video-about {
-    -ms-flex-order: 1;
-    order: 1;
-  }
-  .video-thumbs {
-    -ms-flex-order: 2;
-    order: 2;
-  }
-}
 /* below lg */
 @media (max-width:994px) {
   .videos {
@@ -581,9 +572,15 @@ body.page-design .container {
 /* below sm */
 @media (max-width:575px) {
   .video-thumb {
-    width:90%;
+    width:80%;
   }
   .video-watch {
     width:100%;
+  }
+  .video-about {
+    margin:0;
+    margin-top:0;
+    margin-bottom:3rem;
+    padding:0;
   }
 }
