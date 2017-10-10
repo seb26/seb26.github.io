@@ -1,12 +1,12 @@
 {%- include _header.html -%}
 {{ content }}
-<div class="container videos">
+<div class="container-fluid projects videos">
   {%- for video in page.videos -%}
-  <div class="row equal video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+  <div class="row project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
     <meta itemprop="thumbnailUrl" content="{{ video.thumb-first | prepend: 'img/' | absolute_url }}">
-    {%- if video.credit-director -%}
+    {%- if video.creditDirector -%}
       <meta itemprop="contributor" content="{{ video.credit }}">
       <meta itemprop="creator" content="{{ video.credit-director }}">
     {%- else -%}
@@ -16,47 +16,52 @@
     <meta itemprop="embedUrl" content="{{ video.url }}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
-    <div class="col-12 video-thumbs align-self-center">
-      <div class="video-thumbs-wrapper">
+    <div class="col-12 project-thumbs align-self-center">
+      <div class="project-thumbs-wrapper">
+        <div class="project-thumbs-spacer d-none d-sm-inline-block">&nbsp;</div>
         {%- if video.available == false -%}
-        <img class="img-fluid video-thumb" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
+        <img class="img-fluid project-thumb" src="img/{{ video.thumbs[0].file }}" alt="{{ video.thumbAlt }}" />
         {%- else -%}
-        <div class="video-thumb video-thumb-play">
+        <div class="project-thumb project-thumb-play">
           <a href="{{ video.url }}">
-          <img class="img-fluid" src="img/{{ video.thumb-first }}" alt="{{ video.thumb-alt }}" />
-          <span class="video-thumb-play-icon"></span>
+          <img class="img-fluid" src="img/{{ video.thumbs[0].file }}" alt="{{ video.thumbAlt }}" />
+          <span class="project-thumb-play-icon"></span>
           </a>
         </div>
         {%- endif -%}
         {%- for thumb in video.thumbs -%}
-        <img class="img-fluid video-thumb" src="img/{{ thumb.file }}" alt="{{ thumb-alt }}" />
+          {%- if forloop.first -%}
+            {%- continue -%}
+          {%- else -%}
+            <img class="img-fluid project-thumb" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
+          {%- endif -%}
         {%- endfor -%}
       </div>
     </div>
-    <div class="col-12 video-about">
-      <div class="video-about-wrapper col-12 col-md-8 col-lg-6">
-        <h4 class="video-title">
-          <span class="video-date">{{ video.date | date:"%B %Y" }}</span>
+    <div class="col-12 project-about">
+      <div class="project-about-wrapper col-12 col-md-8 col-lg-6">
+        <h4 class="project-title">
+          <span class="project-date">{{ video.date | date:"%B %Y" }}</span>
           <a href="{{ video.url }}">{{ video.title }}</a>
         </h4>
-        <hr class="video-hr" />
-        <p class="video-description" itemprop="description">{{ video.description }}</p>
-        <ul class="video-about-details">
+        <hr class="project-hr" />
+        <p class="project-description" itemprop="description">{{ video.description }}</p>
+        <ul class="project-about-details">
           <li class="video-credit">{{ video.credit }}</li>
-          <li class="video-credit-display">{{ video.credit-display }}</li>
-          {%- if video.credit-director -%}
-          <li class="video-credit-director" itemprop="director">Director: {{ video.credit-director }}</li>
+          <li class="video-credit-display">{{ video.creditDisplay }}</li>
+          {%- if video.creditDirector -%}
+          <li class="video-credit-director" itemprop="director">Director: {{ video.creditDirector }}</li>
           {%- endif -%}
           <li>
-            <span class="video-duration">{{ video.duration-formatted }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
+            <span class="video-duration">{{ video.durationFormatted }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
           </li>
-          <li class="video-location" itemprop="locationCreated">{{ video.location }}</li>
           {%- if video.license -%}
           <li class="video-license">{{ video.license }}</li>
           {%- endif -%}
+          <li class="video-location" itemprop="locationCreated">{{ video.location }}</li>
         </ul>
         {%- if video.available != false -%}
-          <a class="btn btn-dark video-watch" href="{{ video.url }}">Watch</a>
+          <a class="btn btn-dark project-button" href="{{ video.url }}">Watch</a>
         {%- endif -%}
       </div>
     </div>

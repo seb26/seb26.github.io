@@ -4,11 +4,16 @@ body {
 }
 body {
   padding-top: 56px;
-  color: #5d5d5d;
+  color: #70777d;
   /* background-color: #e6e6e6; */
   background:#111;
 }
-
+a {
+  color:#84b0d8;
+}
+a:hover {
+  color:#b9c6d1;
+}
 
 /*
  * Nav that is shown sitewide
@@ -436,24 +441,28 @@ body.page-design .container {
 
 
 /*
- * video.html
+ * Project structure
+ * Shows thumbnails in a super wide horizontal scroll box
+ * And accompanying information/details below it.
  */
-.videos {
+.projects { /* Container or Container-fluid */
   padding-top:50px;
+  margin:auto 0;
+  padding:auto 0;
 }
-.video {
+.project {
   margin:2rem auto;
   margin-bottom:4.5rem;
   font-size:80%;
 }
-.video:first-child {
+.project:first-child {
   margin-top:0;
 }
 
-.video-title a {
+.project-title a {
   color:#868e96;
 }
-.video-date {
+.project-date {
   /* Bootstrap: .badge [MODIFIED] */
   display: inline-block;
   margin-top:5px;
@@ -470,58 +479,64 @@ body.page-design .container {
   text-transform:uppercase;
   font-size:.75rem;
 }
-.video-about {
+.project-about {
   margin-top:1rem;
+  margin-left:16.333334%;
 }
-.video-about-wrapper {
+.project-about-wrapper {
   padding:1.25rem;
-  
-  background:rgba(140,140,140,0.1);
+  background:rgba(22,22,22,1);
   border-radius:.2rem;
 }
-.video-hr {
+.project-hr {
   margin:0;
   margin-top:1rem;
   border:0;
   border-bottom:1px solid rgba(204,204,204,.05);
 }
-.video-description {
+.project-description {
   line-height:1rem;
   padding-top:1rem;
   color:#70777d;
 }
-.video-about-details {
+.project-about-details {
   list-style:none;
   padding:0;
   color: #5d5d5d;
 }
-.video-credit {
-  display:none;
-}
-.video-credit-director {
-  font-style:italic;
-}
-.video-license {
-  font-size:.75rem;
-  padding:.5rem 0;
-}
-.video-license a {
-  color:inherit;
-}
-.video-watch {
+.project-button {
   color:#ddd;
 }
-.video-thumbs {
-  overflow:scroll;
+.project-thumbs {
+  overflow-x:scroll;
   white-space:nowrap;
 }
-.video-thumbs-wrapper {
+.project-thumbs-slidebox {
+  transition:all .5s ease-out;
 }
-.video-thumb-play {
+.project-thumbs-spacer {
+  width:16.66667%;
+  height:100%;
+  display:inline-block;
+  padding:2rem;
+  opacity:.25;
+}
+.project-thumbs-slidebox .project-thumbs-spacer {
+  background:rgba(20,20,20,1) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='64' height='64' fill='none' stroke='#CCC' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M10 6 L2 16 10 26 M2 16 L30 16'%3E%3C/path%3E%3C/svg%3E");
+  background-position: center right 30px;
+  background-repeat: no-repeat;
+  background-size:32px 32px;
+}
+.project-thumbs-slidebox:hover {
+  transform: translate(-15px, 0);
+  transition:.5s;
+  opacity:1;
+}
+.project-thumb-play {
   display:inline-block;
   position:relative;
 }
-.video-thumb-play-icon {
+.project-thumb-play-icon {
   display: block;
   position: absolute;
   top:50%;
@@ -541,46 +556,94 @@ body.page-design .container {
   
   transition:all .15s ease;
 }
-.video-thumb-play-icon:hover {
+.project-thumb-play-icon:hover {
   opacity:1;
 }
-.video-thumb {
+.project-thumb {
+  /* Bootstrap: .img-fluid */
+  max-width: 100%;
+  height:auto;
+  
   width:75%;
   border-radius:.2rem;
 }
 /* below lg */
 @media (max-width:994px) {
-  .videos {
+  .projects {
     margin:0 auto;
     padding:0;
     padding-top:50px;
   }
-  .video {
+  .project {
     margin:0;
   }
-  .video-thumbs {
+  .project-thumbs {
     padding:0;
   }
-  .video-about {
+  .project-about {
     padding:2rem 1rem;
     text-align:left;
   }
-  .video-date {
+  .project-date {
     float:right;
   }
 }
 /* below sm */
 @media (max-width:575px) {
-  .video-thumb {
+  .project-thumb {
     width:80%;
   }
-  .video-watch {
+  .project-watch {
     width:100%;
   }
-  .video-about {
+  .project-about {
     margin:0;
     margin-top:0;
     margin-bottom:3rem;
     padding:0;
   }
+}
+.noanim,
+.noanim .project-thumbs-spacer {
+  transition:none !important;
+  transform:none !important;
+  opacity:1;
+}
+.noanim > *:hover {
+  transition:none !important;
+  transform:none !important;
+  opacity:1;
+}
+
+/*
+ * Customisations
+ * video.html
+ */
+.video-credit {
+  display:none;
+}
+.video-credit-director {
+  font-style:italic;
+}
+.video-license {
+  font-size:.75rem;
+  padding:.5rem 0;
+}
+.video-license a {
+  color:inherit;
+}
+/* 
+ * design.html 
+ */
+.design .project-thumbs {
+  width:auto;
+  max-width:100%;
+}
+.design .project-thumb {
+  width:540px;
+  height:auto;
+}
+.design .project-thumb.large {
+  width:900px;
+  height:auto;
 }

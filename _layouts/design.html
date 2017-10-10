@@ -1,0 +1,59 @@
+{%- include _header.html -%}
+{{ content }}
+<div class="container-fluid projects designs">
+  {%- for design in page.designs -%}
+    {%- assign schemaType = "creativeWork"-%}
+    {%- if design.schemaType -%}
+      {%- assign schemaType = design.schemaType -%}
+    {%- endif -%}
+  <div class="row project design" itemprop="{{ schemaType }}" itemscope itemtype="http://schema.org/{{ schemaType }}">
+    <meta itemprop="name" content="{{ design.title }}">
+    <meta itemprop="thumbnailUrl" content="{{ design.thumbs[0].file | prepend: 'img/' | absolute_url }}">
+    <meta itemprop="creator" content="Sebastian Reategui">
+    {%- if design.creditOther -%}
+      <meta itemprop="contributor" content="{{ design.creditOther }}">
+    {%- endif -%}
+    <meta itemprop="dateCreated" content="{{ design.date }}">
+    <meta itemprop="datePublished" content="{{ design.date }}">
+    <div class="col-12 project-thumbs align-self-center">
+      {%- if design.thumbs.size > 1 -%}
+        <div class="project-thumbs-slidebox">
+        <div class="d-none d-sm-inline-block project-thumbs-spacer">&nbsp;</div>
+          {%- for thumb in design.thumbs -%}
+          <img class="project-thumb" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+      <div class="d-none d-sm-inline-block project-thumbs-spacer">&nbsp;</div>
+      <img class="project-thumb large" src="img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" />
+      {%- endif -%}
+    </div>
+    <div class="col-12 project-about">
+      <div class="project-about-wrapper col-12 col-md-8 col-lg-6">
+        <h4 class="project-title">
+          <span class="project-date">{{ design.date | date:"%B %Y" }}</span>
+          <a href="{{ design.url }}">{{ design.title }}</a>
+        </h4>
+        <hr class="project-hr" />
+        <p class="project-description" itemprop="description">{{ design.description }}</p>
+        <ul class="project-about-details">
+          {%- if design.material -%}
+          <li><p>Material: {{ design.material }}</p></li>
+          {%- endif -%}
+          {%- if design.technique -%}
+          <li><p>Technique: {{ design.technique }}</p></li>
+          {%- endif -%}
+          {%- for other in design.other -%}
+          <li>{{ other }}</li>
+          {%- endfor -%}
+        </ul>
+        {%- if design.url -%}
+        <a class="btn btn-dark project-button" href="{{ design.url }}">View</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- endfor -%}
+</div>
+{{ content_footer }}
+{%- include _footer.html -%}

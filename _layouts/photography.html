@@ -26,6 +26,9 @@ subcategory_parent: photography
   <div class="images">
       
     {% for image in page.images %}
+      {% if forloop.index0 == 1 %}
+        {{ page.welcome }}
+      {% endif %}
     <div class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
       <meta itemprop="name" content="{{ img.alt }}">
       <meta itemprop="description" content="{{ img.description }}">
