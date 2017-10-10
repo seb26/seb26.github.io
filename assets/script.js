@@ -7,7 +7,7 @@ $(document).ready(function() {
   $("body").addClass("js");
   
   // Use Unveil to dynamically load images with this class
-  $(".load-dyn").unveil(200);
+  // $(".load-dyn").unveil(200);
   
   
   /* For: index.html
