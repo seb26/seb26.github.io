@@ -15,28 +15,28 @@
     {%- endif -%}
     <meta itemprop="dateCreated" content="{{ design.date }}">
     <meta itemprop="datePublished" content="{{ design.date }}">
-    <div class="col-12 project-thumbs align-self-center">
+    <div class="col-12 pr-thumbs align-self-center">
       {%- if design.thumbs.size > 1 -%}
-        <div class="project-thumbs-slidebox">
-        <div class="d-none d-sm-inline-block project-thumbs-spacer">&nbsp;</div>
+        <div class="pr-thumbs-slidebox">
+        <div class="d-none d-sm-inline-block pr-thumbs-spacer">&nbsp;</div>
           {%- for thumb in design.thumbs -%}
-          <img class="project-thumb" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
+          <img class="pr-thumb {{ thumb.orientation }}" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
           {%- endfor -%}
         </div>
       {%- else -%}
-      <div class="d-none d-sm-inline-block project-thumbs-spacer">&nbsp;</div>
-      <img class="project-thumb large" src="img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" />
+      <div class="d-none d-sm-inline-block pr-thumbs-spacer">&nbsp;</div>
+      <img class="pr-thumb large" src="img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" />
       {%- endif -%}
     </div>
-    <div class="col-12 project-about">
-      <div class="project-about-wrapper col-12 col-md-8 col-lg-6">
-        <h4 class="project-title">
-          <span class="project-date">{{ design.date | date:"%B %Y" }}</span>
+    <div class="col-12 pr-about">
+      <div class="pr-about-wrapper col-12 col-md-8 col-lg-6">
+        <h4 class="pr-title">
+          <span class="pr-date">{{ design.date | date:"%B %Y" }}</span>
           <a href="{{ design.url }}">{{ design.title }}</a>
         </h4>
-        <hr class="project-hr" />
-        <p class="project-description" itemprop="description">{{ design.description }}</p>
-        <ul class="project-about-details">
+        <hr class="pr-hr" />
+        <p class="pr-description" itemprop="description">{{ design.description }}</p>
+        <ul class="pr-about-details">
           {%- if design.material -%}
           <li><p>Material: {{ design.material }}</p></li>
           {%- endif -%}
@@ -48,7 +48,7 @@
           {%- endfor -%}
         </ul>
         {%- if design.url -%}
-        <a class="btn btn-dark project-button" href="{{ design.url }}">View</a>
+        <a class="btn btn-dark pr-button" href="{{ design.url }}">View</a>
         {%- endif -%}
       </div>
     </div>
