@@ -5,7 +5,7 @@
   <div class="row project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
-    <meta itemprop="thumbnailUrl" content="{{ video.thumb-first | prepend: 'img/' | absolute_url }}">
+    <meta itemprop="thumbnailUrl" content="{{ video.thumbs[0].file | prepend: 'img/' | absolute_url }}">
     {% if video.creditDirector %}
       <meta itemprop="contributor" content="{{ video.credit }}">
       <meta itemprop="creator" content="{{ video.credit-director }}">
@@ -17,7 +17,7 @@
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
     <div class="col-12 pr-thumbs align-self-center">
-      <div class="pr-thumbs-wrapper">
+      <div class="pr-thumbs-slidebox">
         <div class="pr-thumbs-spacer d-none d-sm-inline-block">&nbsp;</div>
         {%- if video.available == false -%}
         <img class="img-fluid pr-thumb" src="img/{{ video.thumbs[0].file }}" alt="{{ video.thumbAlt }}" />

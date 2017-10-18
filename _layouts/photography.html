@@ -2,11 +2,22 @@
 subcategory_parent: photography
 ---
 {% include _header.html %}
-    
+
     {% assign subcategories = site.data.photography.subcategories %}
     {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
-    
-  <div class="subcat-wrapper">  
+
+    <ul class="nav justify-content-center fixed-bottom sc">
+      <li class="nav-item">
+        <span class="subcat-jump-top-icon"></span>
+      </li>
+      {% for cat in subcategories %}
+        <li class="nav-item">
+          <a class="nav-link{% if cat.name == page.subcategory %}active{% endif %}" href="{{ cat.name }}">{{ cat.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  <!-- <div class="subcat-wrapper">
     <div class="subcat">
       <a id="subcat-jump-top" href="#top" class="subcat-toggle">
         <span class="subcat-jump-top-icon"></span>
@@ -21,10 +32,10 @@ subcategory_parent: photography
         {% endfor %}
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="images">
-      
+
     {% for image in page.images %}
       {% if forloop.index0 == 1 %}
         {{ page.welcome }}
@@ -57,7 +68,7 @@ subcategory_parent: photography
       <div class="ii-icon"></div>
     </div>
     {% endfor %}
-      
+
   </div>
 
 {{ content }}
