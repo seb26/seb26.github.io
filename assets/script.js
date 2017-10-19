@@ -37,7 +37,6 @@ $(document).ready(function() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         $(navTarget).removeClass('sc-down').addClass('sc-up');
-        console.log('remove down add up');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {

@@ -12,7 +12,6 @@ subcategory_parent: photography
     <a class="nav-item nav-link {% if cat.name == page.subcategory %}active{% endif %}" href="{{ cat.name }}">{{ cat.label }}</a>
     {% endfor %}
   </nav>
-
   <div class="images">
 
     {% for image in page.images %}

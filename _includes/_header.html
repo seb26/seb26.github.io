@@ -6,6 +6,13 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title>{{ page.title }} &mdash; Sebastian Reategui</title>
         <link rel="stylesheet" href="assets/style.css" />
+        <meta property="og:title" content="Sebastian Reategui: {{ page.title }}"/>
+        <meta property="og:image" content="{{ page.ogImage | absolute_url }}"/>
+        <meta property="og:site_name" content="Sebastian Reategui, photographer"/>
+        <meta property="og:description" content="{{ site.description }}"/>
+        <meta property="og:locale" content="{{ site.locale }}"/>
+        <meta name="last-modified" content="{{ site.time | date: "%Y-%m-%d" }}">
+        <meta property="og:updated_time" content="{{ site.time }}"/>
     </head>
 <body class="page-{{ page.name | remove: '.html' }} page-parent-{{ layout.subcategory_parent }} no-js" id="top">
 <nav class="navbar navbar-expand-sm fixed-top navbar-dark" id="nav-sitewide">

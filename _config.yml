@@ -17,6 +17,7 @@ title: Sebastian Reategui
 email: seb.reategui@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
+locale: "en_AU"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://seb26.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sebreategui
