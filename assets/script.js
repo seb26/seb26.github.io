@@ -28,24 +28,25 @@ $(document).ready(function() {
       }
   }, 250);
   function hasScrolled() {
-      var st = $(this).scrollTop();
-      // Make sure they scroll more than delta
-      if(Math.abs(lastScrollTop - st) <= delta)
-          return;
-      // If they scrolled down and are past the navbar, add class .nav-up.
-      // This is necessary so you never see what is "behind" the navbar.
-      if (st > lastScrollTop && st > navbarHeight){
-          // Scroll Down
-          $(navTarget).removeClass('sc-down').addClass('sc-up');
-      } else {
-          // Scroll Up
-          if(st + $(window).height() < $(document).height()) {
-              $(navTarget).removeClass('sc-up').addClass('sc-down');
-          }
-      }
-      lastScrollTop = st;
-      // Remove the start class
-      $(navTarget).removeClass('sc-start');
+    var st = $(this).scrollTop();
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $(navTarget).removeClass('sc-down').addClass('sc-up');
+        console.log('remove down add up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $(navTarget).removeClass('sc-up').addClass('sc-down');
+            // Remove the start class
+            $(navTarget).removeClass('sc-start');
+        }
+    }
+    lastScrollTop = st;
   };
   $(navTargetHover).hover(function() {
     $(navTarget).removeClass('sc-up').addClass('sc-down');

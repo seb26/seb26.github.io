@@ -87,7 +87,7 @@ $i-play: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/s
 * the subcat nav. */
 
 $sc-height: 60px;
-$sc-height-mobile: 210px;
+$sc-height-mobile: 240px;
 .sc-hover {
   position:fixed;
   width:100%;
@@ -108,7 +108,7 @@ $sc-height-mobile: 210px;
   /* Bootstrap: .justify-content-center */
   justify-content: center !important;
 
-  transition: bottom 0.1s ease-in-out;
+  transition: bottom 0.2s ease-in-out;
   height:$sc-height;
   background:rgba(255,255,255,.05);
   padding:.5rem;
@@ -119,10 +119,13 @@ $sc-height-mobile: 210px;
 
   .nav-link {
     display:inline-block;
+    margin:.15rem 0;
+
     color:#fff;
-    @include drop-shadow(.5);
-    margin:0;
+    @include drop-shadow(.75);
+    font-weight:500;
     cursor:pointer;
+    background:rgba(255,255,255,.075);
   }
   .nav-link.active,
   .nav-link:hover {
