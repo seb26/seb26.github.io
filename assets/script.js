@@ -44,9 +44,13 @@ $(document).ready(function() {
           }
       }
       lastScrollTop = st;
+      // Remove the start class
+      $(navTarget).removeClass('sc-start');
   };
   $(navTargetHover).hover(function() {
     $(navTarget).removeClass('sc-up').addClass('sc-down');
+    // Remove the start class
+    $(navTarget).removeClass('sc-start');
   });
 
 

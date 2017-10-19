@@ -98,7 +98,6 @@ $sc-height-mobile: 210px;
   background:none;
 }
 .sc {
-  display:block;
   /* Bootstrap: .fixed-bottom [MODIFIED] */
   position: fixed;
   top:auto;
@@ -142,6 +141,14 @@ $sc-height-mobile: 210px;
       display:block;
       padding:.5rem .2rem;
       text-align:center;
+    }
+  }
+}
+.sc-start {
+  height:auto;
+  @include media-breakpoint-down(xs) {
+    .nav-link:not(.active) {
+      display:none;
     }
   }
 }
