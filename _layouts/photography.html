@@ -3,36 +3,15 @@ subcategory_parent: photography
 ---
 {% include _header.html %}
 
-    {% assign subcategories = site.data.photography.subcategories %}
-    {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
+  {% assign subcategories = site.data.photography.subcategories %}
+  {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
 
-    <ul class="nav justify-content-center fixed-bottom sc">
-      <li class="nav-item">
-        <span class="subcat-jump-top-icon"></span>
-      </li>
-      {% for cat in subcategories %}
-        <li class="nav-item">
-          <a class="nav-link{% if cat.name == page.subcategory %}active{% endif %}" href="{{ cat.name }}">{{ cat.label }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-
-  <!-- <div class="subcat-wrapper">
-    <div class="subcat">
-      <a id="subcat-jump-top" href="#top" class="subcat-toggle">
-        <span class="subcat-jump-top-icon"></span>
-      </a>
-      <button id="subcat-toggle-button" type="button" class="subcat-toggle">
-        <span class="subcat-toggle-button-label">{{ page.subcategory-label }}</span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="subcat-menu">
-        {% for cat in subcategories %}
-          <a class="item{% if cat.name == page.subcategory %} item-active{% endif %}" id="subcat-item-{{ cat.name }}" data-subcat="{{ cat.name }}" href="{{ cat.name }}">{{ cat.label }}</a>
-        {% endfor %}
-      </div>
-    </div>
-  </div> -->
+  <div class="sc-hover"></div>
+  <nav class="nav sc sc-start">
+    {% for cat in subcategories %}
+    <a class="nav-item nav-link {% if cat.name == page.subcategory %}active{% endif %}" href="{{ cat.name }}">{{ cat.label }}</a>
+    {% endfor %}
+  </nav>
 
   <div class="images">
 
