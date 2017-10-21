@@ -7,9 +7,13 @@ subcategory_parent: photography
   {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
 
   <div class="sc-hover"></div>
-  <nav class="nav sc sc-start">
+  <nav class="nav sc">
     {% for cat in subcategories %}
-    <a class="nav-item nav-link {% if cat.name == page.subcategory %}active{% endif %}" href="{{ cat.name }}">{{ cat.label }}</a>
+    {%- if cat.name == page.subcategory -%}
+    <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
+    {%- else -%}
+    <a class="nav-item nav-link notactive" href="{{ cat.name }}">{{ cat.label }}</a>
+    {%- endif -%}
     {% endfor %}
   </nav>
   <div class="images">

@@ -20,8 +20,8 @@ url: "http://seb26.github.io"
 title: Sebastian Reategui
 titleLong: Sebastian Reategui, photographer
 locale: "en_AU"
-description: >-
-A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
+description: |
+  A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
 thumbnail:
   url: "img/sebastian-reategui-site-thumb.jpg"
   width: 500px

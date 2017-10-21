@@ -37,20 +37,23 @@ $(document).ready(function() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         $(navTarget).removeClass('sc-down').addClass('sc-up');
+        // Also hide the expanded mobile panel when user scrolls back down
+        $(navTarget).removeClass('sc-mobile-show');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
             $(navTarget).removeClass('sc-up').addClass('sc-down');
-            // Remove the start class
-            $(navTarget).removeClass('sc-start');
         }
     }
     lastScrollTop = st;
   };
   $(navTargetHover).hover(function() {
     $(navTarget).removeClass('sc-up').addClass('sc-down');
-    // Remove the start class
-    $(navTarget).removeClass('sc-start');
+  });
+  $(navTarget + ' .nav-link.active').click(function(e) {
+    // Stop the active link from disrupting mobile's click toggle behaviour
+    e.preventDefault();
+    $(navTarget).toggleClass('sc-mobile-show');
   });
 
 

@@ -108,13 +108,13 @@ $sc-height-mobile: 240px;
   /* Bootstrap: .justify-content-center */
   justify-content: center !important;
 
-  transition: bottom 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
   height:$sc-height;
-  background:rgba(255,255,255,.05);
+  // background:rgba(255,255,255,.05);
   padding:.5rem;
 
   &.sc-up {
-    bottom:-$sc-height;
+    transform:translate(0px, $sc-height);
   }
 
   .nav-link {
@@ -133,11 +133,17 @@ $sc-height-mobile: 240px;
     border-radius:.25rem;
     color:#fff;
   }
+  // Display links that are not active
+  .nav-link.notactive {
+    display:inline-block;
+  }
   @include media-breakpoint-down(xs) {
     background:none;
-    height:$sc-height-mobile;
+    height:auto; //$sc-height-mobile;
+    transform:translate(0px, 0px);
+
     &.sc-up {
-      bottom:-$sc-height-mobile;
+      transform:translate(0px, $sc-height-mobile);
     }
     .nav-link {
       width:100%;
@@ -145,13 +151,14 @@ $sc-height-mobile: 240px;
       padding:.5rem .2rem;
       text-align:center;
     }
-  }
-}
-.sc-start {
-  height:auto;
-  @include media-breakpoint-down(xs) {
-    .nav-link:not(.active) {
+    // Hide links that are not active
+    .nav-link.notactive {
       display:none;
+    }
+    // Show links that are not active, if
+    // sc has this toggleable class
+    &.sc-mobile-show .nav-link.notactive {
+      display:inline-block;
     }
   }
 }
