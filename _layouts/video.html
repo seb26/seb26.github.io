@@ -3,9 +3,10 @@
 <div class="container-fluid projects videos">
   {%- for video in page.videos -%}
   <div class="row project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    {%- assign thumbFirst = video.thumbs[0].file -%}
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
-    <meta itemprop="thumbnailUrl" content="{{ video.thumbs[0].file | prepend: 'img/' | absolute_url }}">
+    <meta itemprop="thumbnailUrl" content="{{ thumbFirst | prepend: 'img/' | absolute_url }}">
     {% if video.creditDirector %}
       <meta itemprop="contributor" content="{{ video.credit }}">
       <meta itemprop="creator" content="{{ video.credit-director }}">
@@ -20,11 +21,11 @@
       <div class="pr-thumbs-slidebox">
         <div class="pr-thumbs-spacer d-none d-sm-inline-block">&nbsp;</div>
         {%- if video.available == false -%}
-        <img class="img-fluid pr-thumb" src="img/{{ video.thumbs[0].file }}" alt="{{ video.thumbAlt }}" />
+        <img class="img-fluid pr-thumb" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" />
         {%- else -%}
         <div class="pr-thumb pr-thumb-play">
           <a href="{{ video.url }}">
-          <img class="img-fluid" src="img/{{ video.thumbs[0].file }}" alt="{{ video.thumbAlt }}" />
+          <img class="img-fluid" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" />
           <span class="pr-thumb-play-icon"></span>
           </a>
         </div>
