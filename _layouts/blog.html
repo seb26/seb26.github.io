@@ -13,9 +13,15 @@ layout: default
   </div>
   {% if page.gallery %}
   <div class="blog-gallery">
-    {% for image in page.gallery_images %}
-    {%- assign image.url = image.file | prepend: "/blog/img" | relative_url -%}
-    <img src="{{ image.url }}" alt="{{ image.alt }}" />
+    {% for i in page.gallery_images %}
+    {%- assign image_url = i.file | prepend: "blog/img/" | relative_url -%}
+    {%- if i.alt -%}
+      {%- assign image_alt = i.alt -%}
+    {%- else -%}
+      {%- assign image_alt = i.file -%}
+    {%- endif -%}
+    <img src="{{ image_url }}" alt="{{ image_alt }}" />
     {% endfor %}
   </div>
+  {% endif %}
 </section>
