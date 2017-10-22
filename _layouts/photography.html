@@ -1,58 +1,55 @@
 ---
+layout: default
 subcategory_parent: photography
 ---
-{% include _header.html %}
+{% assign subcategories = site.data.photography.subcategories %}
+{% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
 
-  {% assign subcategories = site.data.photography.subcategories %}
-  {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
+<div class="sc-hover"></div>
+<nav class="nav sc">
+  {% for cat in subcategories %}
+  {%- if cat.name == page.subcategory -%}
+  <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
+  {%- else -%}
+  <a class="nav-item nav-link notactive" href="{{ cat.name }}">{{ cat.label }}</a>
+  {%- endif -%}
+  {% endfor %}
+</nav>
+<div class="images">
 
-  <div class="sc-hover"></div>
-  <nav class="nav sc">
-    {% for cat in subcategories %}
-    {%- if cat.name == page.subcategory -%}
-    <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
-    {%- else -%}
-    <a class="nav-item nav-link notactive" href="{{ cat.name }}">{{ cat.label }}</a>
-    {%- endif -%}
-    {% endfor %}
-  </nav>
-  <div class="images">
-
-    {% for image in page.images %}
-      {% if forloop.index0 == 1 %}
-        {{ page.welcome }}
-      {% endif %}
-    <div class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
-      <meta itemprop="name" content="{{ img.alt }}">
-      <meta itemprop="description" content="{{ img.description }}">
-      <meta itemprop="thumbnailUrl" content="{{ video.thumb-first | prepend: 'img/' | absolute_url }}">
-      <meta itemprop="creator" content="Sebastian Reategui">
-      <meta itemprop="dateCreated" content="{{ img.date }}">
-      <meta itemprop="datePublished" content="{{ img.date }}">
-      <img class="image-file" src="{{ image.filename | prepend: 'img/' }}" alt="{{ image.alt-text }}" />
-      <div class="ii">
-        <div class="ii-body">
-          <div class="arrow"></div>
-          <div class="ii-desc">
-            {{ image.description }}
-          </div>
-          <h3 class="ii-details">
-            <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
-            <div class="ii-date">{{ image.date }}</div>
-            <div class="ii-share-links">
-              <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
-              <a href="{{ image.url-fb }}">Facebook</a> &sdot;
-              <a href="{{ image.url-tumblr }}">Tumblr</a>
-            </div>
-          </h3>
+  {% for image in page.images %}
+    {% if forloop.index0 == 1 %}
+      {{ page.welcome }}
+    {% endif %}
+  <div class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
+    {%- assign imageFilepath = image.filename | prepend: 'img/' -%}
+    <meta itemprop="name" content="{{ img.alt }}">
+    <meta itemprop="description" content="{{ img.description }}">
+    <meta itemprop="thumbnailUrl" content="{{ imageFilepath | absolute_url }}">
+    <meta itemprop="creator" content="Sebastian Reategui">
+    <meta itemprop="dateCreated" content="{{ img.date }}">
+    <meta itemprop="datePublished" content="{{ img.date }}">
+    <img class="image-file" src="{{ imageFilepath }}" alt="{{ image.alt-text }}" />
+    <div class="ii">
+      <div class="ii-body">
+        <div class="arrow"></div>
+        <div class="ii-desc">
+          {{ image.description }}
         </div>
+        <h3 class="ii-details">
+          <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
+          <div class="ii-date">{{ image.date }}</div>
+          <div class="ii-share-links">
+            <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
+            <a href="{{ image.url-fb }}">Facebook</a> &sdot;
+            <a href="{{ image.url-tumblr }}">Tumblr</a>
+          </div>
+        </h3>
       </div>
-      <div class="ii-icon"></div>
     </div>
-    {% endfor %}
-
+    <div class="ii-icon"></div>
   </div>
+  {% endfor %}
 
+</div>
 {{ content }}
-
-{% include _footer.html %}

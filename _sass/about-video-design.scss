@@ -1,0 +1,102 @@
+/*
+ * about.html
+ */
+
+body.page-about {
+  background-color: #fcfcfc;
+  color: #212529;
+}
+
+.about-para {
+  padding-top: 2rem;
+}
+
+.about-image {
+  padding: 2rem;
+  padding-bottom: 0;
+}
+
+.about-buttons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: block;
+    float: left;
+    margin: .25rem;
+    margin-left: 0rem;
+  }
+}
+
+.about-button {
+  display: block;
+  text-align: center;
+  padding: .5rem .75rem;
+  background: #ddd;
+  border-radius: .5rem;
+
+  &:hover {
+    background: #d0d0d0;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .about-buttons li, .about-button {
+    width: 100%;
+  }
+}
+
+
+/*
+ * video.html
+ */
+
+.video-credit {
+  display: none;
+}
+
+.video-credit-director {
+  font-style: italic;
+}
+
+.video-license {
+  font-size: .75rem;
+  padding: .5rem 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+
+
+
+/*
+ * design.html
+ */
+
+ body.page-design .container {
+   padding-top: 2rem;
+ }
+
+.design {
+  .pr-thumbs {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .pr-thumb {
+    width: 540px;
+    height: auto;
+
+    &.large {
+      width: 900px;
+      height: auto;
+    }
+    &.vertical {
+      width:50%;
+      height:auto;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+body.page-blog {
+  background:#bbb;
+  color:#222;
+
+  a {
+    color:#0d5597;
+  }
+  a:hover {
+    color:#007bff;
+  }
+}
+section.blog {
+  background:#ccc;
+
+  // Narrower container for blogs
+  @include media-breakpoint-up(sm) {
+    &.container {
+      max-width:800px;
+    }
+  }
+
+  .blog-thumb-primary,
+  .blog-text,
+  .blog-gallery {
+    img {
+      @include fluid;
+    }
+  }
+  
+
+
+}

@@ -1,5 +1,6 @@
-{%- include _header.html -%}
-{{ content }}
+---
+layout: default
+---
 <div class="container-fluid projects videos">
   {%- for video in page.videos -%}
   <div class="row project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
@@ -69,5 +70,4 @@
   </div>
   {%- endfor -%}
 </div>
-{{ content_footer }}
-{%- include _footer.html -%}
+{{ content }}

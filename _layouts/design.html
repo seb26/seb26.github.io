@@ -1,5 +1,6 @@
-{%- include _header.html -%}
-{{ content }}
+---
+layout: default
+---
 <div class="container-fluid projects designs">
   {%- for design in page.designs -%}
     {%- assign schemaType = "creativeWork"-%}
@@ -55,5 +56,4 @@
   </div>
   {%- endfor -%}
 </div>
-{{ content_footer }}
-{%- include _footer.html -%}
+{{ content }}

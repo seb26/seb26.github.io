@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<section class="container blog">
+  <div class="blog-head">
+    <div class="blog-thumb-primary">
+      <img src="{{ page.thumbnail | prepend: "/blog/img/" | relative_url }}" alt="{{ page.thumbnailAlt }}" />
+    </div>
+    <h2>{{ page.title }}</h2>
+  </div>
+  <div class="blog-text">
+  {{ content }}
+  </div>
+  {% if page.gallery %}
+  <div class="blog-gallery">
+    {% for image in page.gallery_images %}
+    {%- assign image.url = image.file | prepend: "/blog/img" | relative_url -%}
+    <img src="{{ image.url }}" alt="{{ image.alt }}" />
+    {% endfor %}
+  </div>
+</section>
