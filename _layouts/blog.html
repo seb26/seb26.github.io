@@ -1,14 +1,22 @@
 ---
 layout: default
 ---
-<section class="container blog">
+<section class="container blog" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="blog-head">
     <div class="blog-thumb-primary">
+      <meta itemprop="image" content="{{ page.thumbnail | prepend: "/blog/img/" | absolute_url }}" />
       <img src="{{ page.thumbnail | prepend: "/blog/img/" | relative_url }}" alt="{{ page.thumbnailAlt }}" />
     </div>
-    <h2>{{ page.title }}</h2>
+    <div class="blog-info">
+      <h2 itemprop="name headline">{{ page.title }}</h2>
+      <meta itemscope itemtype="http"
+      <meta itemprop="author" content="Sebastian Reategui" />
+      <meta itemprop="publisher" content="sebreategui.com" />
+      <meta itemprop="datePublished" content="{{ page.date }}" />
+      <meta itemprop="dateModified" content="{{ page.date }}" />
+      <time class="blog-date" datetime="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
   </div>
-  <div class="blog-text">
+  <div class="blog-text" itemprop="articleBody">
   {{ content }}
   </div>
   {% if page.gallery %}

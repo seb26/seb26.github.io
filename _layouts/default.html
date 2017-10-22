@@ -1,70 +1,26 @@
 <!doctype html>
 <html lang="{{ site.locale }}" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:website="http://ogp.me/ns/website" itemscope itemtype="http://schema.org/WebPage">
-    <head>
-      {%- assign metaPageUrl = page.url | absolute_url -%}
-      {%- if page.description -%}
-      {%- assign metaDesc = page.description -%}
-      {%- else -%}
-      {%- assign metaDesc = site.description -%}
-      {%- endif -%}
-      {%- if page.thumbnail -%}
-      {%- assign metaThumb = page.thumbnail | absolute_url -%}
-      {%- else -%}
-      {%- assign metaThumb = site.thumbnail | absolute_url -%}
-      {%- endif -%}
-      {%- if page.layout == 'blog' -%}
-      {%- assign metaTitle = page.title | append: ":" | append: site.title -%}
-      {%- else -%}
-      {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
-      {%- endif -%}
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
-        <base href="">
-        <title>{{ page.title }} &mdash; {{ site.title }}</title>
-        <link rel="canonical" content="{{ metaPageUrl }}" />
-        <meta name="last-modified" content="{{ site.time | date: "%Y-%m-%d" }}">
-        <meta property="og:title" content="{{ site.title }}: {{ page.title }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="{{ metaThumb.url }}"/>
-        <meta property="og:image:width" content="{{ metaThumb.width }}"/>
-        <meta property="og:image:height" content="{{ metaThumb.height }}"/>
-        <meta property="og:site_name" content="{{ site.titleLong }}"/>
-        <meta property="og:description" content="{{ metaDesc }}"/>
-        <meta property="og:locale" content="{{ site.locale }}"/>
-        <meta property="og:updated_time" content="{{ site.time }}"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+    <base href="">
+    <title>{{ page.title }} &mdash; {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
+    {% include _meta.html %}
+  </head>
 
-        <meta itemprop="name" content="{{ site.title }}: {{ page.title }}" />
-        <meta itemprop="url" content="{{ metaPageUrl }}" />
-        <meta itemprop="thumbnailUrl" content="{{ metaThumb.url }}" />
-        <meta itemprop="image" content="{{ metaThumb.url }}" />
-
-        <meta name="twitter:title" content="{{ site.title }}: {{ page.title }}" />
-        <meta name="twitter:image" content="{{ site.title }}: {{ metaThumb.url }}" />
-        <meta name="twitter:url" content="{{ metaPageUrl }}" />
-        <meta name="twitter:description" content="{{ metaDesc }}" />
-        <link rel="image_src" content="{{ metaThumb.url }}" />
-        <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
-        <script type="application/ld+json">{
-          "@context":"http://schema.org",
-          "@type":"WebSite",
-          "url":"{{ site.url }}",
-          "name":"{{ site.title }}",
-          "description":"{{ metaDesc }}",
-          "image":"{{ metaThumb.url }}"
-        }</script>
-    </head>
-<body class="page-{{ page.name | remove: '.html' | remove: '.md' | append: " " }}
-  {%- if layout.subcategory_parent -%}
-    page-parent-{{ layout.subcategory_parent }}
-  {%- elsif page.layout == 'blog' -%}
-    page-blog
-  {%- endif -%}" id="top">
-{% include _nav.html %}
-{{ content }}
-<script src="{{ "assets/jquery-3.2.1.slim.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "assets/popper.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "assets/bootstrap.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "assets/script.js" | relative_url }}" type="text/javascript"></script>
-</body>
+  <body class="page-{{ page.name | remove: '.html' | remove: '.md' | append: " " }}
+    {%- if layout.subcategory_parent -%}
+      page-parent-{{ layout.subcategory_parent }}
+    {%- elsif page.layout == 'blog' -%}
+      page-blog
+    {%- endif -%}" id="top">
+  {% include _nav.html %}
+  {{ content }}
+  <script src="{{ "assets/jquery-3.2.1.slim.min.js" | relative_url }}" type="text/javascript"></script>
+  <script src="{{ "assets/popper.min.js" | relative_url }}" type="text/javascript"></script>
+  <script src="{{ "assets/bootstrap.min.js" | relative_url }}" type="text/javascript"></script>
+  <script src="{{ "assets/script.js" | relative_url }}" type="text/javascript"></script>
+  </body>
 </html>

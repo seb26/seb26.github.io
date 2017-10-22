@@ -23,14 +23,47 @@ locale: "en_AU"
 description: |
   A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
 thumbnail:
-  url: "img/sebastian-reategui-site-thumb.jpg"
+  url: "/img/sebastian-reategui-site-thumb.jpg"
   width: 500px
   height: 500px
 
-# Contact methods
-email: seb.reategui@gmail.com
-twitter_username: sebreategui
-github_username:  seb26
+# Author info
+author:
+  name: Sebastian Reategui
+  email: seb.reategui@gmail.com
+  social_media:
+    twitter:
+      network: Twitter
+      handle: "@sebreategui"
+      url: https://twitter.com/sebreategui
+    instagram:
+      network: Instagram
+      handle: "@seb_rg"
+      url: https://instagram.com/seb_rg
+    facebook:
+      network: Facebook
+      handle: "@seb.reategui"
+      url: https://facebook.com/seb.reategui
+    youtube:
+      network: YouTube
+      handle: "@sebreategui"
+      url: https://youtube.com/sebreategui
+    vimeo:
+      network: Vimeo
+      handle: "@sebreategui"
+      url: https://vimeo.com/sebreategui
+    tumblr:
+      network: Tumblr
+      handle: "spebz"
+      url: https://spebz.tumblr.com
+    linkedin:
+      network: LinkedIn
+      handle: Sebastian Reategui
+      url: https://linkedin.com/in/sebastianreategui
+    github:
+      network: GitHub
+      handle: seb26
+      url: https://github.com/seb26/
 
 # Build settings
 markdown: kramdown
