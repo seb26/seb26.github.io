@@ -8,13 +8,13 @@
     {% include _meta.html %}
     <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
   </head>
-
-  <body class="page-{{ page.name | remove: '.html' | remove: '.md' | append: " " }}
+  {%- assign bodyClassPageName = page.path | remove: '.html' | remove: '.md' | replace: '/', '-' -%}
+  <body class="page-{{ bodyClassPageName | append: " " }}
     {%- if layout.subcategory_parent -%}
       page-parent-{{ layout.subcategory_parent }}
     {%- elsif page.layout == 'blog' -%}
       page-blog
-    {%- endif -%}" id="top">
+    {%- endif -%} {{ page.classes }}" id="top">
   {% include _nav.html %}
   {{ content }}
   <script src="{{ "assets/jquery-3.2.1.slim.min.js" | relative_url }}" type="text/javascript"></script>

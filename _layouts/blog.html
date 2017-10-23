@@ -18,7 +18,7 @@ layout: default
     {% for i in page.gallery_images %}
     {%- assign image_url = i.url | prepend: "/blog/img/" | relative_url -%}
     {%- if i.orientation == 'vertical' -%}
-      {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
+      {%- comment -%} For vertical images, reverse the dimensions {%- endcomment j-%}
       {%- assign image_width = page.gallery.height -%}
       {%- assign image_height = page.gallery.width -%}
     {%- else -%}
