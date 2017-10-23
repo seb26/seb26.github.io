@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://seb26.github.io"
+url: "https://seb26.github.io"
 
 # Metadata for <head>
 title: Sebastian Reategui
@@ -66,7 +66,7 @@ author:
       url: https://github.com/seb26/
 
 # Permalink for blog posts
-permalink: /blog/:year/:month/:day/:slug/
+permalink: /blog/:year/:slug/
 
 # Defaults
 defaults:

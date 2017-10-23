@@ -26,7 +26,7 @@ layout: default
     {%- assign pageDateModified = site.time -%}
   {%- endif -%}
 {%- endif -%}
-<main class="container blog" xmlns:website="https://ogp.me/ns/{{ schemaValue[0] }}" itemscope itemtype="https://schema.org/{{ schemaValue[1] }}">
+<main class="container blog" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:website="https://ogp.me/ns/{{ schemaValue[0] }}" itemscope itemtype="https://schema.org/{{ schemaValue[1] }}">
   {%- comment -%} Begin blog-specific metadata. Applies to whole page. {%- endcomment -%}
   {%- comment -%} METADATA: OG Graph {%- endcomment -%}
   <meta property="og:type" content="article" />
