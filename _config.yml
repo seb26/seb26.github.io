@@ -78,6 +78,10 @@ defaults:
       thumbnail:
         width: "1280"
         height: "853"
+      gallery_dimensions:
+        width: "1280"
+        height: "853"
+      gallery_footer: true
 
 # Build settings
 markdown: kramdown

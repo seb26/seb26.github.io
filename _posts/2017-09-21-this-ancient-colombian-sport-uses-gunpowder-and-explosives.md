@@ -11,24 +11,22 @@ thumbnail:
   width:  1280
   height: 853
 gallery:
-  width:  1280
-  height: 853
-gallery_images:
-  - url: 20170921-tejo-chia-4464.jpg
-  - url: 20170921-tejo-chia-4470.jpg
-    credit: David Puentes
-  - url: 20170921-tejo-chia-4507.jpg
-    orientation: vertical
-  - url: 20170921-tejo-chia-4531.jpg
-  - url: 20170921-tejo-chia-4498.jpg
-  - url: 20170921-tejo-chia-4560.jpg
-  - url: 20170921-tejo-chia-4447.jpg
-  - url: 20170921-tejo-chia-4608.jpg
-  - url: 20170921-tejo-chia-4614.jpg
-  - url: 20170921-tejo-chia-4605.jpg
-  - url: 20170921-tejo-chia-4526.jpg
-  - url: 20170921-tejo-chia-4530.jpg
-  - url: 20170921-tejo-chia-4627.jpg
+  images:
+    - url: 20170921-tejo-chia-4464.jpg
+    - url: 20170921-tejo-chia-4470.jpg
+      credit: David Puentes
+    - url: 20170921-tejo-chia-4507.jpg
+      orientation: vertical
+    - url: 20170921-tejo-chia-4531.jpg
+    - url: 20170921-tejo-chia-4498.jpg
+    - url: 20170921-tejo-chia-4560.jpg
+    - url: 20170921-tejo-chia-4447.jpg
+    - url: 20170921-tejo-chia-4608.jpg
+    - url: 20170921-tejo-chia-4614.jpg
+    - url: 20170921-tejo-chia-4605.jpg
+    - url: 20170921-tejo-chia-4526.jpg
+    - url: 20170921-tejo-chia-4530.jpg
+    - url: 20170921-tejo-chia-4627.jpg
 ---
 **Scroll for photos.**
 

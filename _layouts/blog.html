@@ -60,23 +60,26 @@ layout: default
       <img src="{{ page.thumbnail.url | relative_url }}" alt="Cover image for: {{ page.title }}" />
     </div>
     <div class="blog-info">
-      <time class="blog-date" datetime="{{ page.date }}" title="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
+      <a href="{{ page.url }}">
+        <time class="blog-date" datetime="{{ page.date }}" title="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
+      </a>
       <h2 itemprop="name headline">{{ page.title }}</h2>
+    </div>
   </div>
   <div class="blog-text" itemprop="articleBody">
   {{ content }}
   </div>
   {% if page.gallery %}
   <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    {% for i in page.gallery_images %}
+    {% for i in page.gallery.images %}
     {%- assign image_url = i.url | prepend: "/blog/img/" | relative_url -%}
     {%- if i.orientation == 'vertical' -%}
       {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
-      {%- assign image_width = page.gallery.height -%}
-      {%- assign image_height = page.gallery.width -%}
+      {%- assign image_width = page.gallery_dimensions.height -%}
+      {%- assign image_height = page.gallery_dimensions.width -%}
     {%- else -%}
-      {%- assign image_width = page.gallery.width -%}
-      {%- assign image_height = page.gallery.height -%}
+      {%- assign image_width = page.gallery_dimensions.width -%}
+      {%- assign image_height = page.gallery_dimensions.height -%}
     {%- endif -%}
     {%- if i.alt -%}
       {%- assign image_alt = i.alt -%}
@@ -84,19 +87,30 @@ layout: default
       {%- assign image_alt = i.url -%}
     {%- endif -%}
     <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-      <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" />
+      <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
         <meta itemprop="width" content="{{ image_width }}" />
         <meta itemprop="height" content="{{ image_height }}" />
-      <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
-        {{ i.credit }}
-        {%- else -%}
-        {{ site.author.name }}
-        {%- endif -%}" />
       {%- if i.caption -%}
-        <caption>{{ i.caption }}</caption>
+      <figcaption>
+        {{ i.caption }}
+        {%- if i.credit %}&nbsp;(Credit: {{ i.credit }}){% endif %}
+      </figcaption>
       {%- endif -%}
+      <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
+      {{ i.credit }}
+      {%- else -%}
+      {{ site.author.name }}
+      {%- endif -%}" />
     </figure>
     {% endfor %}
   </div>
   {% endif %}
+  {% unless page.gallery_footer == false %}
+    <div class="blog-gallery-footer">
+      <strong>Photos</strong>: {{ site.author.name }}
+    </div>
+  {% endunless %}
+  <div class="blog-social">
+    Social media links.
+  </div>
 </main>
