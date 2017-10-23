@@ -26,35 +26,7 @@ layout: default
     {%- assign pageDateModified = site.time -%}
   {%- endif -%}
 {%- endif -%}
-<main class="container blog" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:website="https://ogp.me/ns/{{ schemaValue[0] }}" itemscope itemtype="https://schema.org/{{ schemaValue[1] }}">
-  {%- comment -%} Begin blog-specific metadata. Applies to whole page. {%- endcomment -%}
-  {%- comment -%} METADATA: OG Graph {%- endcomment -%}
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="{{ page.thumbnail.url | absolute_url }}"/>
-  <meta property="og:image:width" content="{{ page.thumbnail.width }}"/>
-  <meta property="og:image:height" content="{{ page.thumbnail.height }}"/>
-  <meta property="og:title" content="{{ metaTitle }}" />
-  <meta property="og:description" content="{{ metaDesc }}"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:updated_time" content="{{ dateModified }}"/>
-  <meta property="article:author" content="{{ site.author.name }}" />
-  <meta property="article:publisher" content="{{ site.author.name }}" />
-  <meta property="article:published_time" content="{{ page.date }}" />
-  <meta property="article:modified_time" content="{{ pageDateModified }}" />
-
-  {%- comment -%} METADATA: Schema.org {%- endcomment -%}
-  <meta itemprop="name headline" content="{{ metaTitle }}" />
-  <meta itemprop="author publisher" content="{{ site.author.name }}" />
-  <meta itemprop="datePublished" content="{{ page.date }}" />
-  <meta itemprop="dateModified" content="{{ pageDateModified }}" />
-  <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}" />
-  <meta itemprop="image thumbnailUrl" content="{{ page.thumbnail.url | absolute_url }}" />
-
-  {%- comment -%} METADATA: Twitter {%- endcomment -%}
-  <meta name="twitter:creator" content="{{ site.author.social_media.twitter.handle }}" />
-  <meta name="twitter:title" content="{{ metaTitle }}" />
-  <meta name="twitter:image" content="{{ page.thumbnail.url | absolute_url }}" />
-  {%- comment -%} END METADATA {%- endcomment -%}
+<article class="container blog">
   <div class="blog-head">
     <div class="blog-thumb-primary">
       <img src="{{ page.thumbnail.url | relative_url }}" alt="Cover image for: {{ page.title }}" />
@@ -121,4 +93,4 @@ layout: default
   <div class="blog-social">
     Social media links.
   </div>
-</main>
+</article>

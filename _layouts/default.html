@@ -1,14 +1,10 @@
 <!doctype html>
-<html lang="{{ site.locale }}"
-  {%- unless page.layout == 'blog' -%}
-  {%- comment -%} Don't place the schema tags here for blogs. It is defined in _layouts/blog.html{%- endcomment -%}
-  xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:website="https://ogp.me/ns/website" itemscope itemtype="https://schema.org/WebPage"
-  {%- endunless -%}>
+<html lang="{{ site.locale }}" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:website="https://ogp.me/ns/{{ page.schemaTypeOG }}" itemscope itemtype="https://schema.org/{{ page.schemaType }}">
   <head>
     {% include _meta.html %}
     <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
   </head>
-  {%- assign bodyClassPageName = page.path | remove: '.html' | remove: '.md' | replace: '/', '-' -%}
+  {%- assign bodyClassPageName = page.path | remove: '.html' | remove: '.md' | replace: '/', '-' | replace: '_posts', 'blog' -%}
   <body class="page-{{ bodyClassPageName | append: " " }}
     {%- if layout.subcategory_parent -%}
       page-parent-{{ layout.subcategory_parent }}

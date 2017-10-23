@@ -1,72 +1,59 @@
-    {%- comment -%} Variables for reuse throughout this section {%- endcomment -%}
-    {%- assign isBlog = false -%}
-    {%- if page.layout == 'blog' -%}
-      {%- assign isBlog = true -%}
-      {%- comment -%} For blogs, don't include the site title. The article headline is more important. {%- endcomment -%}
-      {%- assign metaTitle = page.title -%}
-    {%- else -%}
-      {%- comment -%} For all other pages, put the site title first, so as to contextualise the page title (i.e. 'Home'). {%- endcomment -%}
-      {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
-    {%- endif -%}
-    {%- assign metaPageUrl = page.url | absolute_url | remove: '.html' | remove: '.md' -%}
-    {%- if page.description -%}
-      {%- assign metaDesc = page.description -%}
-    {%- else -%}
-      {%- assign metaDesc = site.description -%}
-    {%- endif -%}
-    {%- if page.thumbnail -%}
-      {%- assign metaThumb = page.thumbnail -%}
-    {%- else -%}
-      {%- assign metaThumb = site.thumbnail -%}
-    {%- endif -%}
-    {%- assign metaThumbUrl = metaThumb.url | absolute_url -%}
-    {%- if page.date -%}
-      {%- assign pageDate = page.date -%}
-    {%- else -%}
-      {%- assign pageDate = site.time -%}
-    {%- endif -%}
-    {%- if page.dateModified -%}
-      {%- assign pageDateModified = page.dateModified -%}
-    {%- else -%}
-      {%- if page.date -%}
-        {%- assign pageDateModified = page.date -%}
-      {%- else -%}
-        {%- assign pageDateModified = site.time -%}
-      {%- endif -%}
-    {%- endif -%}
+{%- if page.schemaType == 'Blog' or page.schemaType == 'BlogPosting' -%}
+  {%- assign metaTitle = page.title -%}
+{%- else -%}
+  {%- assign metaTitle = site.title | append: ': ' | append: page.title -%}
+{%- endif -%}
+{%- if page.description -%}
+  {%- assign metaDescription = page.description -%}
+{%- else -%}
+  {%- assign metaDescription = site.description -%}
+{%- endif -%}
+{%- if page.date -%}
+  {%- assign metaDate = page.date -%}
+{%- else -%}
+  {%- assign metaDate = site.time -%}
+{%- endif -%}
+{%- if page.dateModified -%}
+  {%- assign metaDateModified = page.dateModified -%}
+{%- else -%}
+  {%- assign metaDateModified = metaDate -%}
+{%- endif -%}
+{%- assign metaUrl = page.url | absolute_url -%}
+{%- if page.thumbnail -%}
+  {%- assign metaThumbUrl = page.thumbnail.url | absolute_url -%}
+  {%- assign metaThumbWidth = page.thumbnail.width -%}
+  {%- assign metaThumbHeight = page.thumbnail.height -%}
+{%- else -%}
+  {%- assign metaThumbUrl = site.thumbnail.url | absolute_url -%}
+  {%- assign metaThumbWidth = site.thumbnail.width -%}
+  {%- assign metaThumbHeight = site.thumbnail.height -%}
+{%- endif -%}
+<meta itemprop="name headline" content="{{ metaTitle }}" />
+<meta itemprop="author publisher" content="{{ site.author.name }}" />
+<meta itemprop="description" content="{{ metaDescription }}" />
+<meta itemprop="datePublished" content="{{ metaDate }}" />
+<meta itemprop="dateModified" content="{{ metaDateModified }}" />
+<meta itemprop="url mainEntityOfPage" content="{{ metaUrl }}" />
+<meta itemprop="image thumbnailUrl" content="{{ metaThumbUrl }}" />
 
-    {%- comment -%} OG Graph Facebook {%- endcomment -%}
-    <meta property="og:url" content="{{ metaPageUrl }}" />
-    <meta property="og:site_name" content="{{ site.titleLong }}"/>
-    <meta property="og:locale" content="{{ site.locale }}"/>
-    {%- unless isBlog -%}
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="{{ metaThumbUrl }}"/>
-      <meta property="og:image:width" content="{{ metaThumb.width }}"/>
-      <meta property="og:image:height" content="{{ metaThumb.height }}"/>
-      <meta property="og:title" content="{{ metaTitle }}" />
-      <meta property="og:description" content="{{ metaDesc }}"/>
-      <meta property="og:updated_time" content="{{ dateModified }}"/>
-    {%- endunless -%}
+<meta property="og:type" content="{{ page.schemaTypeOG }}" />
+<meta property="og:locale" content="{{ site.locale }}" />
+<meta property="og:site_name" content="{{ site.titleLong }}" />
+<meta property="og:url" content="{{ metaUrl }}" />
+<meta property="og:title" content="{{ metaTitle }}" />
+<meta property="og:description" content="{{ metaDescription }}" />
+<meta property="article:author" content="{{ site.author.name }}" />
+<meta property="article:publisher" content="{{ site.author.name }}" />
+<meta property="article:published_time" content="{{ metaDate }}" />
+<meta property="article:modified_time" content="{{ metaDateModified }}" />
+<meta property="og:updated_time" content="{{ page.dateModified }}" />
+<meta property="og:image" content="{{ metaThumbUrl }}" />
+<meta property="og:image:width" content="{{ metaThumbWidth }}" />
+<meta property="og:image:height" content="{{ metaThumbHeight }}" />
 
-    {%- comment -%} MICRODATA for schema.org {%- endcomment -%}
-    <meta itemprop="url" content="{{ metaPageUrl }}" />
-    {%- unless isBlog -%}
-      <meta itemprop="thumbnailUrl" content="{{ metaThumbUrl }}" />
-      <meta itemprop="image" content="{{ metaThumbUrl }}" />
-      <meta itemprop="name" content="{{ metaTitle }}" />
-    {%- endunless -%}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="{{ site.author.social_media.twitter.handle }}" />
+<meta name="twitter:creator" content="{{ site.author.social_media.twitter.handle }}" />
 
-    {%- comment -%} TWITTER {%- endcomment -%}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="{{ site.author.social_media.twitter.handle }}" />
-    <meta name="twitter:url" content="{{ metaPageUrl }}" />
-    {%- unless isBlog -%}
-      <meta name="twitter:creator" content="{{ site.author.social_media.twitter.handle }}" />
-      <meta name="twitter:title" content="{{ metaTitle }}" />
-      <meta name="twitter:image" content="{{ metaThumbUrl }}" />
-    {%- endunless -%}
-
-    {%- comment -%} OTHER {%- endcomment -%}
-    <link rel="canonical" content="{{ metaPageUrl }}" />
-    <link rel="image_src" content="{{ metaThumbUrl }}" />
+<link rel="canonical" content="{{ metaUrl }}" />
+<link rel="image_src" content="{{ metaThumbUrl }}" />

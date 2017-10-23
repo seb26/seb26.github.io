@@ -70,12 +70,19 @@ permalink: /blog/:year/:slug/
 
 # Defaults
 defaults:
-  -
-    _posts:
-      path: "" # Apply to all files in this directory
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      schemaType: 'WebSite'
+      schemaTypeOG: 'website'
+  - scope:
+      path: ""
       type: "posts"
     values:
       layout: blog
+      schemaType: 'BlogPosting'
+      schemaTypeOG: 'article'
       thumbnail:
         width: "1280"
         height: "853"
