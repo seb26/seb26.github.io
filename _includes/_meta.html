@@ -12,8 +12,10 @@
     {%- endif -%}
     {%- assign metaThumbUrl = metaThumb.url | absolute_url -%}
     {%- if page.layout == 'blog' -%}
-      {%- assign metaTitle = page.title | append: ": " | append: site.title -%}
+      {%- comment -%} For blogs, don't include the site title. The article headline is more important. {%- endcomment -%}
+      {%- assign metaTitle = page.title -%}
     {%- else -%}
+      {%- comment -%} For all other pages, put the site title first, so as to contextualise the page title (i.e. 'Home'). {%- endcomment -%}
       {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
     {%- endif -%}
     {%- if page.date -%}
@@ -65,10 +67,12 @@
     {%- endif -%}
 
     {%- comment -%} TWITTER {%- endcomment -%}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="{{ site.author.social_media.twitter.handle }}" />
+    <meta name="twitter:creator" content="{{ site.author.social_media.twitter.handle }}" />
     <meta name="twitter:title" content="{{ metaTitle }}" />
     <meta name="twitter:image" content="{{ metaThumbUrl }}" />
     <meta name="twitter:url" content="{{ metaPageUrl }}" />
-    <meta name="twitter:description" content="{{ metaDesc }}" />
 
     {%- comment -%} OTHER {%- endcomment -%}
     <link rel="canonical" content="{{ metaPageUrl }}" />

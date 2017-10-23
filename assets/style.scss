@@ -3,6 +3,8 @@
 @import "custom_variables";
 @import "bootstrap/bootstrap";
 
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
 @mixin drop-shadow($transparency: 0.5) {
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, $transparency));
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, $transparency));
@@ -15,13 +17,10 @@
 
 html {
   overflow-x: hidden;
-  /* Prevent scroll on narrow devices */
 }
 
 body {
   overflow-x: hidden;
-  /* Prevent scroll on narrow devices */
-
   padding-top: 56px;
   color: #70777d;
 

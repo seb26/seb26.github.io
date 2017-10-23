@@ -7,8 +7,8 @@ layout: default
       <img src="{{ page.thumbnail.url | relative_url }}" alt="Cover image for: {{ page.title }}" />
     </div>
     <div class="blog-info">
-      <h2 itemprop="name headline">{{ page.title }}</h2>
       <time class="blog-date" datetime="{{ page.date }}" title="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
+      <h2 itemprop="name headline">{{ page.title }}</h2>
   </div>
   <div class="blog-text" itemprop="articleBody">
   {{ content }}
@@ -16,17 +16,29 @@ layout: default
   {% if page.gallery %}
   <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
     {% for i in page.gallery_images %}
-    {%- assign image_url = i.url | prepend: "blog/img/" | relative_url -%}
+    {%- assign image_url = i.url | prepend: "/blog/img/" | relative_url -%}
+    {%- if i.orientation == 'vertical' -%}
+      {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
+      {%- assign image_width = page.gallery.height -%}
+      {%- assign image_height = page.gallery.width -%}
+    {%- else -%}
+      {%- assign image_width = page.gallery.width -%}
+      {%- assign image_height = page.gallery.height -%}
+    {%- endif -%}
     {%- if i.alt -%}
       {%- assign image_alt = i.alt -%}
     {%- else -%}
       {%- assign image_alt = i.url -%}
     {%- endif -%}
-    <div class="blog-gallery-image" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
       <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" />
-      <meta itemprop="width" content="{{ page.gallery.width }}" />
-      <meta itemprop="height" content="{{ page.gallery.height }}" />
-      <meta itemprop="copyrightHolder" content="Photo by: {{ site.author.name }}" />
+        <meta itemprop="width" content="{{ image_width }}" />
+        <meta itemprop="height" content="{{ image_height }}" />
+      <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
+        {{ i.credit }}
+        {%- else -%}
+        {{ site.author.name }}
+        {%- endif -%}" />
     </div>
     {% endfor %}
   </div>

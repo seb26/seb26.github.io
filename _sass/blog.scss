@@ -11,6 +11,8 @@ body.page-blog {
 }
 section.blog {
   background:#ccc;
+  // Use Rubik, defined in style.scss
+  font-family: 'Rubik', $font-family-base;
 
   // Narrower container for blogs
   @include media-breakpoint-up(sm) {
