@@ -1,10 +1,9 @@
 ---
 ---
+// Setting up.
 @import "custom_variables";
 @import "bootstrap/bootstrap";
-
 @import url('https://fonts.googleapis.com/css?family=Rubik');
-
 @mixin drop-shadow($transparency: 0.5) {
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, $transparency));
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, $transparency));
@@ -14,7 +13,13 @@
   max-width:100%;
   height:auto;
 }
+.fluid {
+  @include fluid;
+}
 
+//
+// Start.
+//
 html {
   overflow-x: hidden;
 }

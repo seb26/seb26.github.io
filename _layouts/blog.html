@@ -1,35 +1,10 @@
 ---
 layout: default
 ---
-{%- for category in page.categories -%}
-  {%- case category -%}
-    {%- when 'photography' -%}
-      {%- comment -%}           OG Graph, Schema.org      {%- endcomment -%}
-      {%- comment -%} Using split here because Liquid does not support creating a new array through assign{%- endcomment -%}
-      {%- assign schemaValue = 'website,CreativeWork' | split: ',' -%}
-    {%- when 'photojournalism' -%}
-      {%- assign schemaValue = 'article,NewsArticle' | split: ',' -%}
-    {%- when 'video' -%}
-      {%- assign schemaValue = 'website,Video' | split: ','-%}
-    {%- else -%}
-      {%- assign schemaValue = 'article,BlogPosting' | split: ','-%}
-  {%- endcase -%}
-{%- endfor -%}
-{%- assign metaTitle = page.title -%}
-{%- assign metaDesc = page.description -%}
-{%- if page.dateModified -%}
-  {%- assign pageDateModified = page.dateModified -%}
-{%- else -%}
-  {%- if page.date -%}
-    {%- assign pageDateModified = page.date -%}
-  {%- else -%}
-    {%- assign pageDateModified = site.time -%}
-  {%- endif -%}
-{%- endif -%}
 <article class="container blog">
   <div class="blog-head">
     <div class="blog-thumb-primary">
-      <img src="{{ page.thumbnail.url | relative_url }}" alt="Cover image for: {{ page.title }}" />
+      <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
     </div>
     <div class="blog-info">
       <a href="{{ page.url }}">

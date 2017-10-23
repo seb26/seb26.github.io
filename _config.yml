@@ -76,6 +76,7 @@ defaults:
     values:
       schemaType: 'WebSite'
       schemaTypeOG: 'website'
+      gallery_footer: false
   - scope:
       path: ""
       type: "posts"
