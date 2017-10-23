@@ -1,8 +1,24 @@
 ---
 layout: default
-
 classes: 'page-blog'
 ---
+<section class="container blog recent">
+  <h3>Recent work</h3>
+  {% for item in site.recent %}
+    {% if forloop.index > 3 %}
+      {% break %}
+    {% endif %}
+    {{ item }}
+  {% endfor %}
+</section>
 <section class="container blog">
-{{ site.posts }}
+  <h3>Posts</h3>
+  {% for post in site.posts %}
+  <section class="blog-index-post">
+    <div class="date">{{ post.date | date: "%e %B %Y" }}
+    <div class="image">{{ post.thumbnail.url }}</div>
+    <div class="title">{{ post.title }}</div>
+    <p class="preview">{{ post.description }}</div>
+  </section>
+  {% endfor %}
 </section>

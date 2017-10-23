@@ -20,7 +20,8 @@ section.blog {
       max-width:800px;
     }
   }
-
+}
+section.blog {
   .blog-thumb-primary,
   .blog-text,
   .blog-gallery {
@@ -38,4 +39,11 @@ section.blog {
   }
 
 
+}
+
+
+
+section.recent-item {
+  .title {
+  }
 }

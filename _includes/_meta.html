@@ -1,5 +1,14 @@
     {%- comment -%} Variables for reuse throughout this section {%- endcomment -%}
-    {%- assign metaPageUrl = page.url | absolute_url -%}
+    {%- assign blogOrRecent = false -%}
+    {%- if page.layout == 'blog' or page.layout == 'recent' -%}
+      {%- assign blogOrRecent = true -%}
+      {%- comment -%} For blogs and recent, don't include the site title. The article headline is more important. {%- endcomment -%}
+      {%- assign metaTitle = page.title -%}
+    {%- else -%}
+      {%- comment -%} For all other pages, put the site title first, so as to contextualise the page title (i.e. 'Home'). {%- endcomment -%}
+      {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
+    {%- endif -%}
+    {%- assign metaPageUrl = page.url | absolute_url | remove: '.html' | remove: '.md' -%}
     {%- if page.description -%}
       {%- assign metaDesc = page.description -%}
     {%- else -%}
@@ -11,13 +20,6 @@
       {%- assign metaThumb = site.thumbnail -%}
     {%- endif -%}
     {%- assign metaThumbUrl = metaThumb.url | absolute_url -%}
-    {%- if page.layout == 'blog' -%}
-      {%- comment -%} For blogs, don't include the site title. The article headline is more important. {%- endcomment -%}
-      {%- assign metaTitle = page.title -%}
-    {%- else -%}
-      {%- comment -%} For all other pages, put the site title first, so as to contextualise the page title (i.e. 'Home'). {%- endcomment -%}
-      {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
-    {%- endif -%}
     {%- if page.date -%}
       {%- assign pageDate = page.date -%}
     {%- else -%}
@@ -37,7 +39,7 @@
     <meta property="og:url" content="{{ metaPageUrl }}" />
     <meta property="og:title" content="{{ metaTitle }}" />
     <meta property="og:description" content="{{ metaDesc }}"/>
-    {%- if page.layout == 'blog' -%}
+    {%- if blogOrRecent -%}
       <meta property="og:type" content="article" />
       <meta property="article:author" content="{{ site.author.name }}" />
       <meta property="article:publisher" content="{{ site.author.name }}" />
@@ -58,7 +60,7 @@
     <meta itemprop="url" content="{{ metaPageUrl }}" />
     <meta itemprop="thumbnailUrl" content="{{ metaThumbUrl }}" />
     <meta itemprop="image" content="{{ metaThumbUrl }}" />
-    {%- if page.layout == 'blog' -%}
+    {%- if blogOrRecent -%}
       <meta itemprop="author" content="{{ site.author.name }}" />
       <meta itemprop="publisher" content="{{ site.author.name }}" />
       <meta itemprop="datePublished" content="{{ pageDate }}" />

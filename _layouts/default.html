@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.locale }}" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" {% if page.layout == 'blog' -%}
+<html lang="{{ site.locale }}" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" {% if page.layout == 'blog' or page.layout == 'recent' -%}
   xmlns:website="https://ogp.me/ns/article" itemscope itemtype="https://schema.org/BlogPosting"
   {%- else -%}
   xmlns:website="https://ogp.me/ns/website" itemscope itemtype="https://schema.org/WebPage"

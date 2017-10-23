@@ -65,6 +65,13 @@ author:
       handle: seb26
       url: https://github.com/seb26/
 
+# Collections, for recent work
+collections:
+  recent:
+    output: true
+    layout: recent
+
+
 # Build settings
 markdown: kramdown
 theme: minima
