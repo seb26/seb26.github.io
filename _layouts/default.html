@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="{{ site.locale }}" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:website="http://ogp.me/ns/website" itemscope itemtype="http://schema.org/WebPage">
+<html lang="{{ site.locale }}" xmlns:og="https://opengraphprotocol.org/schema/" xmlns:fb="https://www.facebook.com/2008/fbml" {% if page.layout == 'blog' -%}
+  xmlns:website="https://ogp.me/ns/article" itemscope itemtype="https://schema.org/BlogPosting"
+  {%- else -%}
+  xmlns:website="https://ogp.me/ns/website" itemscope itemtype="https://schema.org/WebPage"
+  {%- endif -%}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
-    <base href="">
-    <title>{{ page.title }} &mdash; {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
     {% include _meta.html %}
+    <link rel="stylesheet" href="{{ "assets/style.css" | relative_url }}" />
   </head>
 
   <body class="page-{{ page.name | remove: '.html' | remove: '.md' | append: " " }}

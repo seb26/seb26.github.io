@@ -1,34 +1,33 @@
 ---
 layout: default
 ---
-<section class="container blog" itemscope itemtype="https://schema.org/BlogPosting">
+<section class="container blog">
   <div class="blog-head">
     <div class="blog-thumb-primary">
-      <meta itemprop="image" content="{{ page.thumbnail | prepend: "/blog/img/" | absolute_url }}" />
-      <img src="{{ page.thumbnail | prepend: "/blog/img/" | relative_url }}" alt="{{ page.thumbnailAlt }}" />
+      <img src="{{ page.thumbnail.url | relative_url }}" alt="Cover image for: {{ page.title }}" />
     </div>
     <div class="blog-info">
       <h2 itemprop="name headline">{{ page.title }}</h2>
-      <meta itemscope itemtype="http"
-      <meta itemprop="author" content="Sebastian Reategui" />
-      <meta itemprop="publisher" content="sebreategui.com" />
-      <meta itemprop="datePublished" content="{{ page.date }}" />
-      <meta itemprop="dateModified" content="{{ page.date }}" />
-      <time class="blog-date" datetime="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
+      <time class="blog-date" datetime="{{ page.date }}" title="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
   </div>
   <div class="blog-text" itemprop="articleBody">
   {{ content }}
   </div>
   {% if page.gallery %}
-  <div class="blog-gallery">
+  <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
     {% for i in page.gallery_images %}
-    {%- assign image_url = i.file | prepend: "blog/img/" | relative_url -%}
+    {%- assign image_url = i.url | prepend: "blog/img/" | relative_url -%}
     {%- if i.alt -%}
       {%- assign image_alt = i.alt -%}
     {%- else -%}
-      {%- assign image_alt = i.file -%}
+      {%- assign image_alt = i.url -%}
     {%- endif -%}
-    <img src="{{ image_url }}" alt="{{ image_alt }}" />
+    <div class="blog-gallery-image" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+      <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" />
+      <meta itemprop="width" content="{{ page.gallery.width }}" />
+      <meta itemprop="height" content="{{ page.gallery.height }}" />
+      <meta itemprop="copyrightHolder" content="Photo by: {{ site.author.name }}" />
+    </div>
     {% endfor %}
   </div>
   {% endif %}

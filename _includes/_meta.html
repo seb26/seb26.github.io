@@ -1,3 +1,4 @@
+    {%- comment -%} Variables for reuse throughout this section {%- endcomment -%}
     {%- assign metaPageUrl = page.url | absolute_url -%}
     {%- if page.description -%}
       {%- assign metaDesc = page.description -%}
@@ -11,26 +12,38 @@
     {%- endif -%}
     {%- assign metaThumbUrl = metaThumb.url | absolute_url -%}
     {%- if page.layout == 'blog' -%}
-      {%- assign metaTitle = page.title | append: ":" | append: site.title -%}
+      {%- assign metaTitle = page.title | append: ": " | append: site.title -%}
     {%- else -%}
       {%- assign metaTitle = site.title | append: ": " | append: page.title -%}
     {%- endif -%}
-    <link rel="canonical" content="{{ metaPageUrl }}" />
+    {%- if page.date -%}
+      {%- assign pageDate = page.date -%}
+    {%- else -%}
+      {%- assign pageDate = site.time -%}
+    {%- endif -%}
+    {%- if page.dateModified -%}
+      {%- assign pageDateModified = page.dateModified -%}
+    {%- else -%}
+      {%- if page.date -%}
+        {%- assign pageDateModified = page.date -%}
+      {%- else -%}
+        {%- assign pageDateModified = site.time -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} OG Graph Facebook {%- endcomment -%}
+    <meta property="og:url" content="{{ metaPageUrl }}" />
     <meta property="og:title" content="{{ metaTitle }}" />
     <meta property="og:description" content="{{ metaDesc }}"/>
     {%- if page.layout == 'blog' -%}
-    <meta property="og:type" content="article" />
-    <meta property="article:author" content="Sebastian Reategui" />
-    <meta property="article:publisher" content="Sebastian Reategui" />
-    <meta property="article:published_time" content="{{ page.date }}" />
-      {%- if page.dateModified -%}
-      <meta property="article:modified_time" content="{{ page.dateModified }}" />
-      {%- else -%}
-      <meta property="article:modified_time" content="{{ page.date }}" />
-      {%- endif -%}
+      <meta property="og:type" content="article" />
+      <meta property="article:author" content="{{ site.author.name }}" />
+      <meta property="article:publisher" content="{{ site.author.name }}" />
+      <meta property="article:published_time" content="{{ pageDate }}" />
+      <meta property="article:modified_time" content="{{ pageDateModified }}" />
     {%- else -%}
-    <meta property="og:type" content="website" />
-    <meta property="og:updated_time" content="{{ site.time }}"/>
+      <meta property="og:type" content="website" />
+      <meta property="og:updated_time" content="{{ dateModified }}"/>
     {%- endif -%}
     <meta property="og:image" content="{{ metaThumbUrl }}"/>
     <meta property="og:image:width" content="{{ metaThumb.width }}"/>
@@ -38,32 +51,25 @@
     <meta property="og:site_name" content="{{ site.titleLong }}"/>
     <meta property="og:locale" content="{{ site.locale }}"/>
 
+    {%- comment -%} MICRODATA for schema.org {%- endcomment -%}
     <meta itemprop="name" content="{{ metaTitle }}" />
     <meta itemprop="url" content="{{ metaPageUrl }}" />
     <meta itemprop="thumbnailUrl" content="{{ metaThumbUrl }}" />
     <meta itemprop="image" content="{{ metaThumbUrl }}" />
+    {%- if page.layout == 'blog' -%}
+      <meta itemprop="author" content="{{ site.author.name }}" />
+      <meta itemprop="publisher" content="{{ site.author.name }}" />
+      <meta itemprop="datePublished" content="{{ pageDate }}" />
+      <meta itemprop="dateModified" content="{{ pageDateModified }}" />
+      <meta itemprop="mainEntityOfPage" content="{{ metaPageUrl }}" />
+    {%- endif -%}
 
+    {%- comment -%} TWITTER {%- endcomment -%}
     <meta name="twitter:title" content="{{ metaTitle }}" />
     <meta name="twitter:image" content="{{ metaThumbUrl }}" />
     <meta name="twitter:url" content="{{ metaPageUrl }}" />
     <meta name="twitter:description" content="{{ metaDesc }}" />
+
+    {%- comment -%} OTHER {%- endcomment -%}
+    <link rel="canonical" content="{{ metaPageUrl }}" />
     <link rel="image_src" content="{{ metaThumbUrl }}" />
-    {%- if page.layout == 'blog' -%}
-    <script type="application/ld+json">{
-      "@context":"https://schema.org",
-      "@type":"BlogPosting",
-      "@id":"{{ site.url }}",
-      "headline":"{{ page.title }}",
-      "description":"{{ metaDesc }}",
-      "image":"{{ metaThumbUrl }}"
-    }</script>
-    {%- else -%}
-    <script type="application/ld+json">{
-      "@context":"https://schema.org",
-      "@type":"WebSite",
-      "@id":"{{ site.url }}",
-      "name":"{{ site.title }}",
-      "description":"{{ metaDesc }}",
-      "image":"{{ metaThumbUrl }}"
-    }</script>
-    {%- endif -%}
