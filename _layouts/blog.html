@@ -66,8 +66,16 @@ layout: default
       <h2 itemprop="name headline">{{ page.title }}</h2>
     </div>
   </div>
-  <div class="blog-text" itemprop="articleBody">
-  {{ content }}
+  <div class="blog-body">
+    {% if page.gallery %}
+    <p class="blog-gallery-note">
+      <span class="en">Scroll for photos.</span><br />
+      <span class="es" lang="es">Fotos a continuación.</span>
+    </p>
+    {% endif %}
+    <div class="blog-text-content" itemprop="articleBody">
+      {{ content }}
+    </div>
   </div>
   {% if page.gallery %}
   <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
@@ -107,7 +115,7 @@ layout: default
   {% endif %}
   {% unless page.gallery_footer == false %}
     <div class="blog-gallery-footer">
-      <strong>Photos</strong>: {{ site.author.name }}
+      <em>Photos: {{ site.author.name }}.</em>
     </div>
   {% endunless %}
   <div class="blog-social">

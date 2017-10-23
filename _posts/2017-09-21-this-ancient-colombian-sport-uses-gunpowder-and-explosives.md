@@ -1,15 +1,13 @@
 ---
-layout: blog
-title:  This ancient Colombian sport uses gunpowder explosives and is still played today
-description: "Although its origins are debated, the critical ingredient of the game 'Tejo' hasn't changed: packs of gunpowder, with everyone's aim to make them explode."
-date:         2017-09-21T23:45:49+00:00
-dateModified:
-categories: recent photography photojournalism   
-tags:         
+title:          This ancient Colombian sport uses gunpowder explosives and is still played today
+description:    "Although its origins are debated, the critical ingredient of the game 'Tejo' hasn't changed: packs of gunpowder, with everyone's aim to make them explode."
+date:           2017-09-21T23:45:49+00:00
+dateModified:   
+categories:     photography photojournalism
+location:       Chia
+country:        Colombia      
 thumbnail:
-  url:    "/blog/img/20170921-tejo-chia-4465.jpg"
-  width:  1280
-  height: 853
+  url:          "/blog/img/20170921-tejo-chia-4465.jpg"
 gallery:
   images:
     - url: 20170921-tejo-chia-4464.jpg
@@ -28,14 +26,10 @@ gallery:
     - url: 20170921-tejo-chia-4530.jpg
     - url: 20170921-tejo-chia-4627.jpg
 ---
-**Scroll for photos.**
-
-<p class="headline">Although its origins are debated, the critical ingredient of the game <i>Tejo</i> hasn't changed: packs of gunpowder, with everyone's aim to make them explode.</p>
+Although its origins are debated, the critical ingredient of the game *Tejo* hasn't changed: packs of gunpowder, with everyone's aim to make them explode.
 
 Players take turns to throw metal pucks from several metres away, down bowling-esque alleys. One forceful throw striking a package will cause it to explode, earning the player three points and startling any unenlightened spectators. Extra points for a bullseye throw.
 
 The sport allegedly dates back to Indigenous settlement. Its persistence in modern times, however, condemns none of the game's spirit to the history books. It is formally recognised by the Colombian Olympic Committee, and in 2000 the Congress passed a law to crown *tejo* as the nation's official sport. Today's *tejo* leagues and tournaments often replace the gunpowder with digital sound effects, presumedly for safety reasons, but they manage to maintain the startling spirit of the sport in any sense.
 
 We played today with participants in a Colombian government-sponsored initiative bringing students and tourism industry professionals from Southeast Asia to experience Colombian and Latin American culture. Jessica, Hafidz, Carmela, Gyeltshen and Ray Ray hail from Indonesia, Malaysia, Philippines, Bhutan and China respectively, and are among 70 other participants in the ELE FOCALAE program who are spread out across the country.
-
-*Photos: Sebastian Reategui.*

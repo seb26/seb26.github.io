@@ -75,6 +75,7 @@ defaults:
       path: "" # Apply to all files in this directory
       type: "posts"
     values:
+      layout: blog
       thumbnail:
         width: "1280"
         height: "853"

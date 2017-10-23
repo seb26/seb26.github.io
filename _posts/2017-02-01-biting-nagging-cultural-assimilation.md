@@ -1,10 +1,10 @@
 ---
-layout:       blog
-title:        |
-  Biting, nagging, cultural assimilation
-description:  |
-  But it remains my fear: Say you’re Australian, enough to the point that you actually forget what your origins are.
+title:        Biting, nagging, cultural assimilation
+description:  "But it remains my fear: Say you’re Australian, enough to the point that you actually forget what your origins are."
 date:         2017-02-01T00:19:42+00:00Z
+categories:   personal
+location:     Bogotá
+country:      Colombia
 dateModified:
 thumbnail:
   url:        "/blog/img/tumblr_nhaa3iqu8d1tecr5po1_1280.jpg"
