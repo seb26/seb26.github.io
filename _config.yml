@@ -24,8 +24,8 @@ description: |
   A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
 thumbnail:
   url: "/img/sebastian-reategui-site-thumb.jpg"
-  width: 500px
-  height: 500px
+  width: 1280
+  height: 853
 
 # Author info
 author:
@@ -65,12 +65,19 @@ author:
       handle: seb26
       url: https://github.com/seb26/
 
-# Collections, for recent work
-collections:
-  recent:
-    output: true
-    layout: recent
+# Permalink for blog posts
+permalink: /blog/:year/:month/:day/:slug/
 
+# Defaults
+defaults:
+  -
+    _posts:
+      path: "" # Apply to all files in this directory
+      type: "posts"
+    values:
+      thumbnail:
+        width: "1280"
+        height: "853"
 
 # Build settings
 markdown: kramdown

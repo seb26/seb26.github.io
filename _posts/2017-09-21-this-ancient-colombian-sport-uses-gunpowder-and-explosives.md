@@ -1,12 +1,10 @@
 ---
-layout:       blog
-title:        |
-  This ancient Colombian sport uses gunpowder explosives and is still played today
-description:  |
-  "Although its origins are debated, the critical ingredient of the game 'Tejo' hasn't changed: packs of gunpowder, with everyone's aim to make them explode."
+layout: blog
+title:  This ancient Colombian sport uses gunpowder explosives and is still played today
+description: "Although its origins are debated, the critical ingredient of the game 'Tejo' hasn't changed: packs of gunpowder, with everyone's aim to make them explode."
 date:         2017-09-21T23:45:49+00:00
 dateModified:
-categories:   
+categories: recent photography photojournalism   
 tags:         
 thumbnail:
   url:    "/blog/img/20170921-tejo-chia-4465.jpg"

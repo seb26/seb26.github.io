@@ -9,7 +9,7 @@ body.page-blog {
     color:#007bff;
   }
 }
-section.blog {
+.blog {
   background:#ccc;
   // Use Rubik, defined in style.scss
   font-family: 'Rubik', $font-family-base;
@@ -21,7 +21,7 @@ section.blog {
     }
   }
 }
-section.blog {
+.blog {
   .blog-thumb-primary,
   .blog-text,
   .blog-gallery {
