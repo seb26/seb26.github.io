@@ -8,20 +8,30 @@ redirect_from:
   - '/post/'
   - '/post/2017/'
 ---
-<section class="container blog recent">
+
+<section class="container blog blog-index recent">
   <h3>Recent work</h3>
 </section>
-<section class="container blog">
+
+<section class="container blog blog-index">
   <h3>Posts</h3>
-  {% for post in site.posts %}
-  <section class="blog-index-post">
-    <div class="date">{{ post.date | date: "%e %B %Y" }}
-    <div class="image">
-      <img class="fluid" src="{{ post.thumbnail.url }}" /></div>
-    <header class="title">
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </header>
-    <p class="preview">{{ post.description }}</div>
-  </section>
-  {% endfor %}
+  <div class="blog-index-items">
+    {% for post in site.posts %}
+    <section class="row blog-index-item">
+      <div class="col-12 col-sm-3 info">
+        <header class="title">
+          {{ post.title }}
+        </header>
+        <div class="line category">
+          <a href="/posts/{{ post.categories[0] }}">{{ post.categories[0] | capitalize }}</a>
+        </div>
+        <time class="line date" datetime="{{ post.date }}">{{ post.date | date: "%e %B %Y" | upcase }}</time>
+        <a href="{{ post.url }}" class="btn btn-primary">Read</a>
+      </div>
+      <div class="col-12 col-sm-9 image">
+        <img class="fluid" src="{{ post.thumbnail.url }}" />
+      </div>
+    </section>
+    {% endfor %}
+  </div>
 </section>

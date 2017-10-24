@@ -9,8 +9,8 @@ items:
     file: /design.html
     url: /design
   - label: Recent
-    file: /post/index.html
-    url: /post/
+    file: /posts/index.html
+    url: /posts/
   - label: About&nbsp;&sdot;&nbsp;Contact
     file: /about.html
     url: /about

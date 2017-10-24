@@ -5,7 +5,7 @@ date:           2017-09-25T01:33:12+00:00
 description:    |
   Hundreds turned out to march along one of Bogotá's largest avenues in appreciation of pride and sexual equality on Saturday. The march culminated in a concert headlined by Colombian acts Martina La Peligrosa and La 33.
 collaborators:  David Puentes
-categories:     recentwork photography photojournalism
+categories:     photojournalism photography recentwork
 location:       Bogotá
 country:        Colombia
 thumbnail:
@@ -16,16 +16,16 @@ gallery:
     - url: 20170923-marcha-de-colores-4836.jpg
     - url: 20170923-marcha-de-colores-4844.jpg
     - url: 20170923-marcha-de-colores-4882.jpg
-      caption: "Support for LGBT Mormons, families and friends."
+      caption: "\"Support for LGBT Mormons, families and friends.\""
     - url: 20170923-marcha-de-colores-4800.jpg
     - url: 20170923-marcha-de-colores-4819.jpg
     - url: 20170923-marcha-de-colores-4812.jpg
     - url: 20170923-marcha-de-colores-4896.jpg
     - url: 20170923-marcha-de-colores-4872.jpg
     - url: 20170923-marcha-de-colores-4868.jpg
-      caption: "Equality Week: Bogotá loves you no matter who you love"
+      caption: "\"Neither sick nor antisocial, proudly homosexual.\""
     - url: 20170923-marcha-de-colores-4781.jpg
-      caption: "Neither sick nor antisocial, proudly homosexual"
+      caption: "\"Equality Week: Bogotá loves you no matter who you love.\""
     - url: 20170923-marcha-de-colores-4924.jpg
       caption: "Colombian singer Martina La Peligrosa performs."
       credit: David Puentes

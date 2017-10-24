@@ -2,20 +2,30 @@
 layout: default
 ---
 <article class="container blog">
-  <div class="blog-head">
-    <div class="blog-thumb-primary">
-      <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
+  <header class="blog-head">
+    <div class="unit blog-info">
+      <time class="line blog-date" datetime="{{ page.date }}">
+        <a href="{{ page.url }}">{{ page.date | date: "%e %B %Y" | upcase }}</a>
+      </time>
+      <div class="line blog-category">
+        <a href="/posts/{{ page.categories[0] }}">{{ page.categories[0] | capitalize }}</a>
+      </div>
+      {%- if page.location -%}
+      <div class="line blog-location" itemprop="contentLocation">
+        {{ page.location }}, {{ page.country }}
+      </div>
+      {%- endif -%}
     </div>
-    <div class="blog-info">
-      <a href="{{ page.url }}">
-        <time class="blog-date" datetime="{{ page.date }}" title="{{ page.date }}">{{ page.date | date: "%e %B %Y" }}</time>
-      </a>
+    <div class="unit blog-title">
       <h2 itemprop="name headline">{{ page.title }}</h2>
     </div>
-  </div>
-  <div class="blog-body">
+    <div class="unit-free blog-thumb-primary">
+      <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
+    </div>
+  </header>
+  <main class="unit blog-body">
     {% if page.gallery %}
-    <p class="blog-gallery-note">
+    <p class="blog-scroll-for-photos">
       <span class="en">Scroll for photos.</span><br />
       <span class="es" lang="es">Fotos a continuación.</span>
     </p>
@@ -23,9 +33,10 @@ layout: default
     <div class="blog-text-content" itemprop="articleBody">
       {{ content }}
     </div>
-  </div>
+  </main>
   {% if page.gallery %}
-  <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  <div class="unit-free blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    <figcaption>{{ page.gallery.images.size }} images</figcaption>
     {% for i in page.gallery.images %}
     {%- assign image_url = i.url | prepend: "/post/img/" | relative_url -%}
     {%- if i.orientation == 'vertical' -%}
@@ -60,12 +71,39 @@ layout: default
     {% endfor %}
   </div>
   {% endif %}
-  {% unless page.gallery_footer == false %}
-    <div class="blog-gallery-footer">
-      <em>Photos: {{ site.author.name }}.</em>
-    </div>
-  {% endunless %}
-  <div class="blog-social">
+  {%- if page.gallery -%}
+  <div class="unit blog-footer">
+    <em>Photos: {{ site.author.name }}.</em>
+  </div>
+  {%- endif -%}
+  <div class="unit blog-social">
     Social media links.
   </div>
+  {%- if page.previous.url or page.next.url -%}
+    <div class="container-fluid blog-nextup">
+      {%- comment -%} // Apply the unit class when there is only Next or Previous by itself.
+                      // This means that when alone, it will have its width restricted nicely. {%- endcomment -%}
+      <div class="row {% unless page.previous.url and page.next.url %}unit{% endunless %}">
+        {%- if page.previous.url -%}
+        <div class="col previous">
+          <a href="{{ page.previous.url }}">
+            <div class="label top">← PREVIOUS</div>
+            <img src="{{ page.previous.thumbnail.url }}" alt="{{ page.previous.title }}">
+            <div class="label bottom">{{ page.previous.title }}</div>
+          </a>
+        </div>
+        {%- endif -%}
+        {%- if page.next.url -%}
+        <div class="col next">
+          <a href="{{ page.next.url }}">
+            <div class="label top">NEXT →</div>
+            <img src="{{ page.next.thumbnail.url }}" alt="{{ page.next.title }}">
+            <div class="label bottom">{{ page.next.title }}</div>
+          </a>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
 </article>
+{% include _footer.html %}

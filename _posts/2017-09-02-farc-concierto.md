@@ -6,7 +6,7 @@ dateModified:   2017-09-03T19:38:54+00:00
 description:    |
   Supporters gather in the Plaza de Bolívar Square in Bogotá, Colombia, for an official concert launching the new political party front of the FARC.
 collaborators:  David Puentes
-categories:     photography photojournalism
+categories:     photojournalism photography
 location:       Bogotá
 country:        Colombia
 thumbnail:

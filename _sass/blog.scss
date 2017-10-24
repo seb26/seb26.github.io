@@ -1,6 +1,27 @@
+$blog-width: 880px;
+@mixin tight-font {
+  padding:0;
+  font-size:12px;
+  letter-spacing:.075rem;
+}
+@mixin label($dark: false) {
+  margin:0;
+  padding:.5rem;
+  padding-left:1rem;
+  font-size:0.8rem;
+  letter-spacing:.036em;
+  @if $dark == true {
+    background:#222;
+    color:#fbfbfb;
+  } @else {
+    background:#fff;
+    color:#333;
+  }
+}
+
 body.page-blog {
-  background:#bbb;
-  color:#222;
+  background:#fbfbfb;
+  color:#333;
 
   a {
     color:#0d5597;
@@ -20,18 +41,13 @@ body.page-blog {
   }
 }
 .blog {
-  background:#ccc;
-  // Use Rubik, defined in style.scss
-  font-family: 'Rubik', $font-family-base;
-
-  // Narrower container for blogs
-  @include media-breakpoint-up(sm) {
-    &.container {
-      max-width:800px;
-    }
-  }
-}
-.blog {
+  // Typography.
+  font-size: 17px;
+  line-height: 1.52947;
+  font-weight: 400;
+  letter-spacing: -0.0125em;
+  
+  // Fluid images throughout.
   .blog-thumb-primary,
   .blog-body,
   .blog-gallery {
@@ -40,19 +56,122 @@ body.page-blog {
     }
   }
 
-  .blog-date {
-    display:inline-block;
-    background:#eee;
-    border-radius:.25rem;
-    padding:.5rem;
+  // A unit which tightens the whole blog, but is opt-in.
+  .unit {
+    margin:1rem auto;
+    max-width:$blog-width;
+  }
+  // This means some units can be free and stick out horizontally.
+  .unit-free {
+    margin:1rem auto;
+  }
+  @include media-breakpoint-up(md) {
+    .unit {
+      max-width:580px;
+    }
   }
 
+  .blog-head {
+    margin-top:4rem;
+    margin-bottom:2rem;
 
+    .line {
+      display:block;
+      margin:.2rem auto;
+      @include tight-font;
+    }
+  }
+  .blog-title {
+    margin:2rem auto;
+  }
+  .blog-thumb-primary {
+    text-align:center;
+    max-width:$blog-width;
+  }
+  .blog-scroll-for-photos {
+    font-weight:bold;
+    letter-spacing:.04rem;
+    margin-bottom:2rem;
+  }
+  .blog-body {
+    margin:3rem auto;
+  }
+  .blog-gallery {
+    max-width:$blog-width;
+
+    figcaption {
+      @include label;
+      margin-bottom:1rem;
+      @include border-radius-specific($position:bottom);
+    }
+  }
+  .blog-nextup {
+    margin:6rem auto;
+    .col {
+      padding-left:.25rem;
+      padding-right:.25rem;
+    }
+    a, a:hover {
+      color:inherit;
+    }
+    img {
+      @include fluid;
+    }
+    .label {
+      @include label($dark: true);
+      &.top {
+        @include border-radius-specific($position:top, $amount: .175rem);
+        font-weight:bold;
+      }
+      &.bottom {
+        @include border-radius-specific($position:bottom, $amount: .175rem);
+      }
+    }
+    .next {
+      text-align:right;
+    }
+  }
+  .blog-footer,
+  .blog-social {
+    background:#222;
+    color:#ddd;
+    padding:2rem;
+    border-radius:.1rem;
+  }
 }
 
 
+//
+// BLOG index
+// /post/index.html
+//
+.blog-index {
+  max-width:1000px;
+  .blog-index-items {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .blog-index-item {
+    color:#eee;
+    background:#222;
+    margin:1rem auto;
 
-section.recent-item {
-  .title {
+    .info {
+      padding:1rem;
+      a {
+        color:#eee;
+      }
+      a:hover {
+        color:#fff;
+      }
+      .title {
+        font-size:1.5rem;
+        margin-top:1rem;
+      }
+      .line {
+        @include tight-font;
+        line-height:.8rem;
+      }
+    }
   }
 }
