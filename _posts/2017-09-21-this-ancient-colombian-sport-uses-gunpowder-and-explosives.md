@@ -7,7 +7,7 @@ categories:     photography photojournalism
 location:       Chia
 country:        Colombia      
 thumbnail:
-  url:          "/blog/img/20170921-tejo-chia-4465.jpg"
+  url:          "/post/img/20170921-tejo-chia-4465.jpg"
 gallery:
   images:
     - url: 20170921-tejo-chia-4464.jpg

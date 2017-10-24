@@ -27,7 +27,7 @@ layout: default
   {% if page.gallery %}
   <div class="blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
     {% for i in page.gallery.images %}
-    {%- assign image_url = i.url | prepend: "/blog/img/" | relative_url -%}
+    {%- assign image_url = i.url | prepend: "/post/img/" | relative_url -%}
     {%- if i.orientation == 'vertical' -%}
       {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
       {%- assign image_width = page.gallery_dimensions.height -%}

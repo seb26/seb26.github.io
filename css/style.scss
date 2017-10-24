@@ -49,6 +49,12 @@ a {
 
 nav#nav-sitewide {
   background: rgba(17, 17, 17, 0.85);
+  /* Bootstrap: .fixed-top */
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 #nav-sitewide {
   .nav-item {

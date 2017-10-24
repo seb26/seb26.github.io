@@ -8,7 +8,7 @@ categories:   opinion personal
 location:     Bogotá
 country:      Colombia
 thumbnail:
-  url:        "/blog/img/20170403-international-students-header.jpg"
+  url:        "/post/img/20170403-international-students-header.jpg"
 ---
 **Opinion**
 

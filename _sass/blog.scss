@@ -8,6 +8,16 @@ body.page-blog {
   a:hover {
     color:#007bff;
   }
+  // Undo fixing the navbar to the top.
+  padding-top:0;
+  #nav-sitewide {
+    position:static;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    right:auto;
+    z-index:auto;
+  }
 }
 .blog {
   background:#ccc;

@@ -9,7 +9,7 @@ categories:     recentwork photography photojournalism
 location:       Bogotá
 country:        Colombia
 thumbnail:
-  url: "/blog/img/20170923-marcha-de-colores-4819.jpg"
+  url: "/post/img/20170923-marcha-de-colores-4819.jpg"
 gallery:
   images:
     - url: 20170923-marcha-de-colores-4807.jpg

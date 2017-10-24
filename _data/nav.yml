@@ -8,9 +8,9 @@ items:
   - label: Design
     file: /design.html
     url: /design
-  - label: Recent Work
-    file: /recent.html
-    url: /recent
+  - label: Recent
+    file: /post/index.html
+    url: /post/
   - label: About&nbsp;&sdot;&nbsp;Contact
     file: /about.html
     url: /about
