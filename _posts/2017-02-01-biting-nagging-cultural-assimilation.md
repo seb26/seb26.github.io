@@ -42,8 +42,10 @@ It is accepted that when a family migrates to Australia, that they adapt their c
 
 To place it into other words, to assimilate, at times, can mean to shed yourself of your other origins and guide yourself blissfully through a shop of identities selecting only the things which make you uniquely Australian. In other words, your Peruvian mother’s culture, language and family heritage are rejected just as quickly as it takes to fly here. It is not me who can best tell the story of my mum’s struggle with linguistic acceptance, or of the walls of communication, or of haunting phone calls in her job where clients would berate her accent. In some ways, these struggles continue today 26 years after she settled here. It was certainly easier for her children to say, “we’re just Australian”, to avoid the ten questions about their mum’s origins and then the following ten questions about their physical appearance.
 
-<img src="\/posts\/img/20160107-img_3915.jpg" alt="The somewhat dorky looking familia gathered together." width="1280" height="853" />
-<div class="caption">The somewhat dorky looking familia gathered together.</div>
+<figure>
+<img src="/post/img/20160107-img_3915.jpg" alt="The somewhat dorky looking familia gathered together." width="1280" height="853" />
+<figcaption class="caption">The somewhat dorky looking familia gathered together.</figcaption>
+</figure>
 
 But that's where it comes from, the power of cultural assimilation. The new host identity will give people security and comfort, it is safety in numbers and a grant of acceptance and smiles from the dominant western order.
 

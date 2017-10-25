@@ -109,12 +109,12 @@ body.page-blog {
   }
   .blog-gallery {
     max-width:$blog-width;
-
-    figcaption {
-      @include label;
-      margin-bottom:1rem;
-      @include border-radius-specific($position:bottom);
-    }
+  }
+  // A caption style. Can be used inside/outside of a gallery.
+  .caption {
+    @include label;
+    margin-bottom:1rem;
+    @include border-radius-specific($position:bottom);
   }
   // Comment design elements for the two following boxes.
   @mixin blog-box-footer {
@@ -161,6 +161,7 @@ body.page-blog {
 
   // Author credit box
   .blog-author-credit {
+    margin-top:6rem;
     @include blog-box-footer;
     .photo {
       background-size:cover;

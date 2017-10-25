@@ -57,7 +57,7 @@ layout: default
         <meta itemprop="width" content="{{ image_width }}" />
         <meta itemprop="height" content="{{ image_height }}" />
       {%- if i.caption -%}
-      <figcaption>
+      <figcaption class="caption">
         {{ i.caption }}
         {%- if i.credit %}&nbsp;(Credit: {{ i.credit }}){% endif %}
       </figcaption>
@@ -71,7 +71,6 @@ layout: default
     {% endfor %}
   </div>
   {% endif %}
-  {%- if page.gallery -%}
   <div class="unit tile blog-author-credit">
     <div class="tile-contents">
       <a class="tile-link" href="/about/">
@@ -83,7 +82,6 @@ layout: default
       <div class="tile-photo photo" style='background-image:url("{{ site.author.photo.url }}");'></div>
     </div>
   </div>
-  {%- endif -%}
   <div class="unit blog-social">
     <a href="#"><span class="i-facebook icon"></span></a>
     <a href="#"><span class="i-twitter icon"></span></a>

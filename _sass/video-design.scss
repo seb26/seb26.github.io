@@ -1,0 +1,251 @@
+/*
+ * Project structure
+ * Represents a creative project.
+ * For use on video.html and design.html
+ * Shows thumbnails in a super wide horizontal scroll box
+ * And accompanying information/details below it.
+ */
+
+.projects {
+  /* Container or Container-fluid */
+  padding-top: 50px;
+  margin: auto 0;
+  padding: auto 0;
+}
+
+.project {
+  margin: 2rem auto;
+  margin-bottom: 4.5rem;
+  font-size: 80%;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+/* 'pr' is a nickname for it */
+.pr-title a {
+  color: #868e96;
+}
+
+.pr-date {
+  /* Bootstrap: .badge [MODIFIED] */
+  display: inline-block;
+  margin-top: 5px;
+  padding: .25em .4em;
+  line-height: 1;
+  vertical-align: baseline;
+  text-align: center;
+  white-space: nowrap;
+  float: right;
+  color: rgb(164, 171, 178);
+  border-radius: .25rem;
+  background-color: rgba(134, 142, 150, 0.25);
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+
+.pr-about {
+  margin-top: 1rem;
+  margin-left: 16.333334%;
+}
+
+.pr-about-wrapper {
+  padding: 1.25rem;
+  background: rgba(28, 28, 28, 1);
+  border-radius: .2rem;
+}
+
+.pr-hr {
+  margin: 0;
+  margin-top: 1rem;
+  border: 0;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.05);
+}
+
+.pr-description {
+  line-height: 1rem;
+  padding-top: 1rem;
+  color: #70777d;
+}
+
+.pr-about-details {
+  list-style: none;
+  padding: 0;
+  color: #5d5d5d;
+}
+
+.pr-button {
+  color: #ddd;
+}
+
+.pr-thumbs {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.pr-thumbs-slidebox {
+  transition: all .5s ease-out;
+}
+
+.pr-thumbs-spacer {
+  width: 16.66667%;
+  height: 100%;
+  display: inline-block;
+  padding: 2rem;
+  opacity: .25;
+}
+
+.pr-thumbs-slidebox {
+  .pr-thumbs-spacer {
+    @include svg-icon('arrow-left');
+  }
+
+  &:hover {
+    transform: translate(-15px, 0);
+    transition: .5s;
+    opacity: 1;
+  }
+}
+.pr-thumb {
+  @include fluid;
+  width:100%;
+  border-radius: .2rem;
+}
+.pr-thumb-container {
+  height:540px;
+  overflow:hidden;
+  display:flex;
+}
+.pr-thumb-play {
+  display: inline-block;
+  position: relative;
+  width:auto;
+}
+.pr-thumb-play-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.1);
+  @include svg-icon(play, 64px);
+  opacity: 0.1;
+  transition: all .15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+/* below lg */
+@include media-breakpoint-down(md) {
+  .projects {
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 50px;
+  }
+
+  .project {
+    margin: 0;
+  }
+
+  .pr-thumbs {
+    padding: 0;
+  }
+
+  .pr-about {
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .pr-date {
+    float: right;
+  }
+}
+
+/* below sm */
+@include media-breakpoint-down(xs) {
+  .pr-thumb {
+    width: 80%;
+  }
+
+  .pr-watch {
+    width: 100%;
+  }
+
+  .pr-about {
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    padding: 0;
+  }
+}
+.noanim {
+  transition: none !important;
+  transform: none !important;
+  opacity: 1;
+
+  .pr-thumbs-spacer, > *:hover {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1;
+  }
+}
+
+/*
+ * video.html
+ * Video-specific changes to the project structure.
+ */
+
+.video-credit {
+  display: none;
+}
+
+.video-credit-director {
+  font-style: italic;
+}
+
+.video-license {
+  font-size: .75rem;
+  padding: .5rem 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+
+
+
+/*
+ * design.html
+ * Specific changes.
+ */
+
+ body.page-design .container {
+   padding-top: 2rem;
+ }
+
+.design {
+  .pr-thumbs {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .pr-thumb {
+    width: 540px;
+    height: auto;
+
+    &.large {
+      width: 900px;
+      height: auto;
+    }
+    &.vertical {
+      width:50%;
+      height:auto;
+    }
+  }
+}
