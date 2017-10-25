@@ -82,10 +82,8 @@
   left: auto;
   cursor: pointer;
   z-index: 1025;
-  background: rgba(0, 0, 0, 0.15) url($i-info);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 32px 32px;
+  background: rgba(0, 0, 0, 0.15);
+  @include svg-icon('info');
   opacity: 0.5;
   @include drop-shadow(0.5);
 

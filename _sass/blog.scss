@@ -39,6 +39,16 @@ body.page-blog {
     right:auto;
     z-index:auto;
   }
+  .es {
+    color:#666;
+  }
+  p.es::before {
+    content:'Español';
+    display:block;
+    font-size:0.75rem;
+    color:#aaa;
+    padding-top:1rem;
+  }
 }
 .blog {
   // Typography.
@@ -46,7 +56,7 @@ body.page-blog {
   line-height: 1.52947;
   font-weight: 400;
   letter-spacing: -0.0125em;
-  
+
   // Fluid images throughout.
   .blog-thumb-primary,
   .blog-body,
@@ -72,7 +82,8 @@ body.page-blog {
   }
 
   .blog-head {
-    margin-top:4rem;
+    // Spacing from the top of the page.
+    margin-top:2rem;
     margin-bottom:2rem;
 
     .line {
@@ -105,6 +116,87 @@ body.page-blog {
       @include border-radius-specific($position:bottom);
     }
   }
+  // Comment design elements for the two following boxes.
+  @mixin blog-box-footer {
+    background:#222;
+    color:#ddd;
+    border-radius:.1rem;
+    a {
+      color:white;
+    }
+    a:hover {
+      color:#eee;
+    }
+  }
+  // Tile template.
+  .tile {
+    position:relative;
+    @include make-container();
+    .tile-contents {
+      @include make-row();
+    }
+    .tile-photo {
+      @include make-col-ready();
+      @include make-col(4);
+    }
+    .tile-body {
+      @include make-col-ready();
+      @include make-col(8);
+    }
+    .tile-link {
+      display:block;
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      z-index:2;
+
+      &:hover ~ .tile-body .tile-link-faux {
+        background-color: #3c434a;
+        border-color: #65707c;
+      }
+    }
+  }
+
+  // Author credit box
+  .blog-author-credit {
+    @include blog-box-footer;
+    .photo {
+      background-size:cover;
+      background-position:center 25%;
+    }
+    .description {
+      padding:1.5rem 1rem;
+      font-size:.9rem;
+      line-height:1rem;
+      letter-spacing:.025rem;
+      font-weight:200;
+    }
+  }
+
+  // Social share link box
+  // Set the icon sizes.
+  $blog-social-icon-size: 24px;
+  .blog-social {
+    @include blog-box-footer;
+    padding:0;
+    padding-top:$blog-social-icon-size/1.3333333;
+    padding-left:$blog-social-icon-size/1.5;
+    min-height:$blog-social-icon-size * 2.5;
+    text-align:center;
+    .icon {
+      display:inline-block;
+      margin:0 $blog-social-icon-size/2;
+      float:left;
+      // Icon size changes
+      background-size:$blog-social-icon-size $blog-social-icon-size;
+      width:$blog-social-icon-size;
+      height:$blog-social-icon-size;
+    }
+  }
+
+  // Next and previous entries.
   .blog-nextup {
     margin:6rem auto;
     .col {
@@ -130,13 +222,6 @@ body.page-blog {
     .next {
       text-align:right;
     }
-  }
-  .blog-footer,
-  .blog-social {
-    background:#222;
-    color:#ddd;
-    padding:2rem;
-    border-radius:.1rem;
   }
 }
 

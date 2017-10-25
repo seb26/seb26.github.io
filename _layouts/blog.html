@@ -72,12 +72,22 @@ layout: default
   </div>
   {% endif %}
   {%- if page.gallery -%}
-  <div class="unit blog-footer">
-    <em>Photos: {{ site.author.name }}.</em>
+  <div class="unit tile blog-author-credit">
+    <div class="tile-contents">
+      <a class="tile-link" href="/about/">
+        <span class="sr-only">About the author</span></a>
+      <div class="tile-body description">
+        <p>I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world, big places or small.</p>
+        <a class="btn btn-dark tile-link-faux" href="/about/">Read more ▸</a>
+      </div>
+      <div class="tile-photo photo" style='background-image:url("{{ site.author.photo.url }}");'></div>
+    </div>
   </div>
   {%- endif -%}
   <div class="unit blog-social">
-    Social media links.
+    <a href="#"><span class="i-facebook icon"></span></a>
+    <a href="#"><span class="i-twitter icon"></span></a>
+    <a href="#"><span class="i-link icon"></span></a>
   </div>
   {%- if page.previous.url or page.next.url -%}
     <div class="container-fluid blog-nextup">

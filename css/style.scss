@@ -1,8 +1,11 @@
 ---
 ---
-// Setting up.
+// Exteral libraries & fonts.
 @import "bootstrap/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Rubik');
+// Bytesize icons. View the file for credits.
+$bytesize_icons_desired: link, caret-bottom, arrow-top, info, arrow-left, play, twitter, facebook, instagram;
+@import "bytesize-icons-inline";
 
 // Mixins.
 @mixin drop-shadow($transparency: 0.5) {
@@ -36,6 +39,11 @@
   }
 }
 
+// Subpages of the site.
+@import "about-video-design";
+@import "photography";
+@import "blog";
+
 //
 // Start.
 //
@@ -65,12 +73,6 @@ footer#footer-sitewide {
     color:inherit;
   }
 }
-//
-// Language-specific styling
-//
-.es {
-  font-style:italic;
-}
 .fluid {
   @include fluid;
 }
@@ -95,19 +97,11 @@ nav#nav-sitewide {
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
   }
-}
-
-/*!
- * Bytesize icons by http://danklammer.com/bytesize-icons/
- */
-$i-caret: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none' stroke='#DDDDDD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M30 10 L16 26 2 10 Z' /%3E%3C/svg%3E";
-$i-arrow-top: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='20' height='20' fill='none' stroke='#EFEFEF' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'%3E%3Cpath d='M6 10 L16 2 26 10 M16 2 L16 30' /%3E%3C/svg%3E";
-$i-info: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none' stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M16 14 L16 23 M16 8 L16 10'%3E%3C/path%3E%3Ccircle cx='16' cy='16' r='14'%3E%3C/circle%3E%3C/svg%3E";
-$i-arrow-left: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='64' height='64' fill='none' stroke='#CCC' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M10 6 L2 16 10 26 M2 16 L30 16'%3E%3C/path%3E%3C/svg%3E";
-/* Modified from original to add a circle */
-$i-play: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-16 -16 64 64' width='64' height='64' fill='none' stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'%3E%3Ccircle cx='14' cy='16' r='22'%3E%3C/circle%3E%3Cpath d='M10 2 L10 30 24 16 Z'%3E%3C/path%3E%3C/svg%3E";
-.i-caret {
-  background-image: url($i-caret) !important;
+  .navbar-toggler {
+    .toggler-icon {
+      display:inline-block;
+    }
+  }
 }
 
 /* xs (below sm) */
@@ -310,10 +304,7 @@ $sc-height-mobile: 240px;
 
 .pr-thumbs-slidebox {
   .pr-thumbs-spacer {
-    background: rgba(20, 20, 20, 1) url($i-arrow-left);
-    background-position: center right 30px;
-    background-repeat: no-repeat;
-    background-size: 32px 32px;
+    @include svg-icon('arrow-left');
   }
 
   &:hover {
@@ -348,10 +339,7 @@ $sc-height-mobile: 240px;
   height: 100%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.1);
-  background: rgba(0, 0, 0, 0.1) url($i-play);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 64px 64px;
+  @include svg-icon(play, 64px);
   opacity: 0.1;
   transition: all .15s ease;
 
@@ -402,7 +390,6 @@ $sc-height-mobile: 240px;
     padding: 0;
   }
 }
-
 .noanim {
   transition: none !important;
   transform: none !important;
@@ -414,7 +401,3 @@ $sc-height-mobile: 240px;
     opacity: 1;
   }
 }
-
-@import "about-video-design";
-@import "photography";
-@import "blog";

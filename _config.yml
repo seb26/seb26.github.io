@@ -14,56 +14,60 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://seb26.github.io"
+url:     "https://seb26.github.io"
+locale:  "en_AU"
 
 # Metadata for <head>
-title: Sebastian Reategui
-titleLong: Sebastian Reategui, photographer
-locale: "en_AU"
-description: |
+title:        Sebastian Reategui
+titleLong:    Sebastian Reategui, photographer
+description:  |
   A photographer and videographer from Sydney, Australia. View photojournalism, design concepts, and video work.
 thumbnail:
-  url: "/img/sebastian-reategui-site-thumb.jpg"
-  width: 1280
+  url:    "/img/sebastian-reategui-site-thumb.jpg"
+  width:  1280
   height: 853
 
 # Author info
 author:
-  name: Sebastian Reategui
+  name:  Sebastian Reategui
   email: seb.reategui@gmail.com
+  photo:
+    url:    "/img/profile-sebastian-reategui-by-steph-newman-2016-300x300.jpg"
+    width:  300
+    height: 300
   social_media:
     twitter:
-      network: Twitter
-      handle: "@sebreategui"
-      url: https://twitter.com/sebreategui
+      network:  Twitter
+      handle:   "@sebreategui"
+      url:      https://twitter.com/sebreategui
     instagram:
-      network: Instagram
-      handle: "@seb_rg"
-      url: https://instagram.com/seb_rg
+      network:  Instagram
+      handle:   "@seb_rg"
+      url:      https://instagram.com/seb_rg
     facebook:
-      network: Facebook
-      handle: "@seb.reategui"
-      url: https://facebook.com/seb.reategui
+      network:  Facebook
+      handle:   "@seb.reategui"
+      url:      https://facebook.com/seb.reategui
     youtube:
-      network: YouTube
-      handle: "@sebreategui"
-      url: https://youtube.com/sebreategui
+      network:  YouTube
+      handle:   "@sebreategui"
+      url:      https://youtube.com/sebreategui
     vimeo:
-      network: Vimeo
-      handle: "@sebreategui"
-      url: https://vimeo.com/sebreategui
+      network:  Vimeo
+      handle:   "@sebreategui"
+      url:      https://vimeo.com/sebreategui
     tumblr:
-      network: Tumblr
-      handle: "spebz"
-      url: https://spebz.tumblr.com
+      network:  Tumblr
+      handle:   "spebz"
+      url:      https://spebz.tumblr.com
     linkedin:
-      network: LinkedIn
-      handle: Sebastian Reategui
-      url: https://linkedin.com/in/sebastianreategui
+      network:  LinkedIn
+      handle:   Sebastian Reategui
+      url:      https://linkedin.com/in/sebastianreategui
     github:
-      network: GitHub
-      handle: seb26
-      url: https://github.com/seb26/
+      network:  GitHub
+      handle:   seb26
+      url:      https://github.com/seb26/
 
 # Permalink for blog posts
 permalink: /post/:year/:slug/
