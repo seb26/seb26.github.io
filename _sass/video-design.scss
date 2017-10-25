@@ -11,234 +11,207 @@
   padding-top: 50px;
   margin: auto 0;
   padding: auto 0;
-}
 
-.project {
-  margin: 2rem auto;
-  margin-bottom: 4.5rem;
-  font-size: 80%;
-
-  &:first-child {
-    margin-top: 0;
-  }
-}
-/* 'pr' is a nickname for it */
-.pr-title a {
-  color: #868e96;
-}
-
-.pr-date {
-  /* Bootstrap: .badge [MODIFIED] */
-  display: inline-block;
-  margin-top: 5px;
-  padding: .25em .4em;
-  line-height: 1;
-  vertical-align: baseline;
-  text-align: center;
-  white-space: nowrap;
-  float: right;
-  color: rgb(164, 171, 178);
-  border-radius: .25rem;
-  background-color: rgba(134, 142, 150, 0.25);
-  text-transform: uppercase;
-  font-size: .75rem;
-}
-
-.pr-about {
-  margin-top: 1rem;
-  margin-left: 16.333334%;
-}
-
-.pr-about-wrapper {
-  padding: 1.25rem;
-  background: rgba(28, 28, 28, 1);
-  border-radius: .2rem;
-}
-
-.pr-hr {
-  margin: 0;
-  margin-top: 1rem;
-  border: 0;
-  border-bottom: 1px solid rgba(204, 204, 204, 0.05);
-}
-
-.pr-description {
-  line-height: 1rem;
-  padding-top: 1rem;
-  color: #70777d;
-}
-
-.pr-about-details {
-  list-style: none;
-  padding: 0;
-  color: #5d5d5d;
-}
-
-.pr-button {
-  color: #ddd;
-}
-
-.pr-thumbs {
-  overflow-x: scroll;
-  white-space: nowrap;
-}
-
-.pr-thumbs-slidebox {
-  transition: all .5s ease-out;
-}
-
-.pr-thumbs-spacer {
-  width: 16.66667%;
-  height: 100%;
-  display: inline-block;
-  padding: 2rem;
-  opacity: .25;
-}
-
-.pr-thumbs-slidebox {
-  .pr-thumbs-spacer {
-    @include svg-icon('arrow-left');
-  }
-
-  &:hover {
-    transform: translate(-15px, 0);
-    transition: .5s;
-    opacity: 1;
-  }
-}
-.pr-thumb {
-  @include fluid;
-  width:100%;
-  border-radius: .2rem;
-}
-.pr-thumb-container {
-  height:540px;
-  overflow:hidden;
-  display:flex;
-}
-.pr-thumb-play {
-  display: inline-block;
-  position: relative;
-  width:auto;
-}
-.pr-thumb-play-icon {
-  display: block;
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  left: 50%;
-  right: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.1);
-  @include svg-icon(play, 64px);
-  opacity: 0.1;
-  transition: all .15s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-/* below lg */
-@include media-breakpoint-down(md) {
-  .projects {
+  @include media-breakpoint-down(md) {
+    // On mobile: less padding in general,
+    // except for the very top.
     margin: 0 auto;
     padding: 0;
     padding-top: 50px;
   }
-
-  .project {
-    margin: 0;
-  }
-
-  .pr-thumbs {
-    padding: 0;
-  }
-
-  .pr-about {
-    padding: 2rem 1rem;
-    text-align: left;
-  }
-
-  .pr-date {
-    float: right;
-  }
 }
 
-/* below sm */
-@include media-breakpoint-down(xs) {
-  .pr-thumb {
-    width: 80%;
+.project {
+  font-size: 80%;
+  margin: 2rem auto;
+  margin-bottom: 4.5rem;
+  // On mobile:
+  // no top/bottom margins spacing out each project,
+  // and no margins on the sides.
+  @include media-breakpoint-down(md) {
+    margin:0;
   }
 
-  .pr-watch {
-    width: 100%;
-  }
 
-  .pr-about {
-    margin: 0;
+  &:first-child {
     margin-top: 0;
-    margin-bottom: 3rem;
-    padding: 0;
   }
-}
-.noanim {
-  transition: none !important;
-  transform: none !important;
-  opacity: 1;
+  // Section 2: Gallery box.
+  section.gallery {
+    overflow-x: scroll;
+    white-space: nowrap;
 
-  .pr-thumbs-spacer, > *:hover {
-    transition: none !important;
-    transform: none !important;
-    opacity: 1;
+    // On mobile: less padding.
+    @include media-breakpoint-down(md) {
+      padding:0;
+    }
+
+    // A spacing element for desktops.
+    .spacer {
+      width: 16.66667%;
+      height: 100%;
+      padding: 2rem;
+      opacity: .25;
+      // On mobile: hide.
+      display:none;
+      // On desktop: show.
+      @include media-breakpoint-up(sm) {
+        display:inline-block;
+      }
+    }
+    .slidebox {
+      transition: all .5s ease-out;
+      // If the spacer is inside a slidebox,
+      .spacer {
+        // Add a slide icon to it,
+        @include svg-icon('arrow-left');
+        // And add a transition.
+        &:hover {
+          transform: translate(-15px, 0);
+          transition: .5s;
+          opacity: 1;
+        }
+      }
+    }
+  .thumb {
+    @include fluid;
+    border-radius: .2rem;
+
+    // On mobile:
+    // make each image width 80%, so that a little
+    // of the next image appears on screen, visually
+    // implying that there is a series.
+    @include media-breakpoint-down(xs) {
+      max-width:80%;
+    }
   }
-}
+  .thumb-play {
+    display: inline-block;
+    position: relative;
+    width:auto;
+
+    .thumb-play-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      bottom: 50%;
+      left: 50%;
+      right: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.1);
+      @include svg-icon(play, 64px);
+      opacity: 0.1;
+      transition: all .15s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  } // End section.gallery
+
+
+  // Section 3: About box.
+  section.about {
+    margin-top: 1rem;
+    margin-left: 16.333334%;
+    background: rgba(28, 28, 28, 1);
+    border-radius: .2rem;
+
+    .title {
+      a {
+        color: #868e96;
+      }
+    }
+    .date {
+      /* Bootstrap: .badge [MODIFIED] */
+      display: inline-block;
+      margin-top: 5px;
+      padding: .25em .4em;
+      line-height: 1;
+      vertical-align: baseline;
+      text-align: center;
+      white-space: nowrap;
+      float: right;
+      color: rgb(164, 171, 178);
+      border-radius: .25rem;
+      background-color: rgba(134, 142, 150, 0.25);
+      text-transform: uppercase;
+      font-size: .75rem;
+
+      // On mobile: show the date on the left.
+      @include media-breakpoint-down(md) {
+        float:left;
+      }
+    }
+    hr {
+      margin: 0;
+      margin-top: 1rem;
+      border: 0;
+      border-bottom: 1px solid rgba(204, 204, 204, 0.05);
+    }
+    .description {
+      line-height: 1rem;
+      padding-top: 1rem;
+      color: #70777d;
+    }
+    .details {
+      list-style: none;
+      padding: 0;
+      color: #5d5d5d;
+    }
+    // The call-for-action button.
+    .action {
+      color: #ddd;
+
+      @include media-breakpoint-down(md) {
+        // On mobile: make the button fill the phone's screen.
+        width:100%;
+      }
+    }
+  } // End section.about
+
+} // End .project
 
 /*
  * video.html
  * Video-specific changes to the project structure.
  */
 
-.video-credit {
-  display: none;
-}
-
-.video-credit-director {
-  font-style: italic;
-}
-
-.video-license {
-  font-size: .75rem;
-  padding: .5rem 0;
-
-  a {
-    color: inherit;
+.video {
+  .credit {
+    display: none;
+  }
+  .credit-director {
+    font-style: italic;
+  }
+  .license {
+    font-size: .75rem;
+    padding: .5rem 0;
+    a {
+      color: inherit;
+    }
   }
 }
-
-
-
 
 /*
  * design.html
  * Specific changes.
  */
 
- body.page-design .container {
+.designs {
    padding-top: 2rem;
  }
 
 .design {
-  .pr-thumbs {
+  .gallery {
     width: auto;
     max-width: 100%;
   }
-
-  .pr-thumb {
+  .thumb {
     width: 540px;
     height: auto;
-
     &.large {
       width: 900px;
       height: auto;

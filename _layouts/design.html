@@ -1,13 +1,16 @@
 ---
 layout: default
 ---
-<div class="container-fluid projects designs">
+<div class="projects designs">
   {%- for design in page.designs -%}
-    {%- assign schemaType = "creativeWork"-%}
+    {%- comment -%} Allow each design to define a schema type. {%- endcomment -%}
     {%- if design.schemaType -%}
       {%- assign schemaType = design.schemaType -%}
+    {%- else -%}
+      {%- assign schemaType = "creativeWork"-%}
     {%- endif -%}
-  <div class="row project design" itemprop="{{ schemaType }}" itemscope itemtype="http://schema.org/{{ schemaType }}">
+  <div class="project design" itemscope itemtype="http://schema.org/{{ schemaType }}">
+    {%- comment -%} Metadata. {%- endcomment -%}
     <meta itemprop="name" content="{{ design.title }}">
     <meta itemprop="thumbnailUrl" content="{{ design.thumbs[0].file | prepend: 'img/' | absolute_url }}">
     <meta itemprop="creator" content="Sebastian Reategui">
@@ -16,42 +19,61 @@ layout: default
     {%- endif -%}
     <meta itemprop="dateCreated" content="{{ design.date }}">
     <meta itemprop="datePublished" content="{{ design.date }}">
-    <div class="col-12 pr-thumbs align-self-center">
+
+    {%- comment -%} Gallery. {%- endcomment -%}
+    <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
       {%- if design.thumbs.size > 1 -%}
-        <div class="pr-thumbs-slidebox">
-        <div class="d-none d-sm-inline-block pr-thumbs-spacer">&nbsp;</div>
-          {%- for thumb in design.thumbs -%}
-          <img class="pr-thumb {{ thumb.orientation }}" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
+      {%- comment -%} A string to define width/height in the <img> element.
+                      The values have been designated in the set as being for all thumbs. {%- endcomment -%}
+      {%- capture thumbWidthAndHeight -%}width="{{ design.thumbDimensions.width }}" height="{{ design.thumbDimensions.height }}"{%- endcapture -%}
+      {%- assign thumbWidth = design.thumbDimensions.width -%}
+      {%- assign thumbHeight = design.thumbDimensions.height -%}
+        <div class="slidebox">
+          <div class="spacer">&nbsp;</div>
+          {%- for thisThumb in design.thumbs -%}
+          {%- if thisThumb.dimensions -%}
+            {%- comment -%} However, if a thumb has its own dimensions, make them override the default. {%- endcomment -%}
+            {%- capture thumbWidthAndHeight -%}width="{{ thisThumb.dimensions.width }}" height="{{ thisThumb.dimensions.height }}"{%- endcapture -%}
+            {%- assign thumbWidth = thisThumb.dimensions.width -%}
+            {%- assign thumbHeight = thisThumb.dimensions.height -%}
+          {%- endif -%}
+          <div class="thumb {{ thisThumb.orientation }}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <img class="thumb-file" src="img/{{ thisThumb.file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
+            <meta itemprop="width" content="{{ thumbWidth }}" />
+            <meta itemprop="height" content="{{ thumbHeight }}" />
           {%- endfor -%}
         </div>
       {%- else -%}
-      <div class="d-none d-sm-inline-block pr-thumbs-spacer">&nbsp;</div>
-      <img class="pr-thumb large" src="img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" />
+      {%- comment -%} Place a spacer (but it has no icon). {%- endcomment -%}
+      <div class="spacer"></div>
+      <div class="thumb">
+        <img class="thumb-file large" src="img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
+      </div>
       {%- endif -%}
     </div>
-    <div class="col-12 pr-about">
-      <div class="pr-about-wrapper col-12 col-md-8 col-lg-6">
-        <h4 class="pr-title">
-          <span class="pr-date">{{ design.date | date:"%B %Y" }}</span>
-          <a href="{{ design.url }}">{{ design.title }}</a>
-        </h4>
-        <hr class="pr-hr" />
-        <p class="pr-description" itemprop="description">{{ design.description }}</p>
-        <ul class="pr-about-details">
-          {%- if design.material -%}
-          <li><p>Material: {{ design.material }}</p></li>
-          {%- endif -%}
-          {%- if design.technique -%}
-          <li><p>Technique: {{ design.technique }}</p></li>
-          {%- endif -%}
-          {%- for other in design.other -%}
-          <li>{{ other }}</li>
-          {%- endfor -%}
-        </ul>
-        {%- if design.url -%}
-        <a class="btn btn-dark pr-button" href="{{ design.url }}">View</a>
+
+    {%- comment -%} About. {%- endcomment -%}
+    <div class="about">
+      <h4 class="title">
+        <span class="date">{{ design.date | date:"%B %Y" }}</span>
+        <a href="{{ design.url }}">{{ design.title }}</a>
+      </h4>
+      <hr />
+      <p class="description" itemprop="description">{{ design.description }}</p>
+      <ul class="details">
+        {%- if design.material -%}
+        <li class="detail material">Material: {{ design.material }}</li>
         {%- endif -%}
-      </div>
+        {%- if design.technique -%}
+        <li class="detail technique">Technique: {{ design.technique }}</li>
+        {%- endif -%}
+        {%- for other in design.other -%}
+        <li class="detail">{{ other }}</li>
+        {%- endfor -%}
+      </ul>
+      {%- if design.url -%}
+      <a class="action" href="{{ design.url }}">View</a>
+      {%- endif -%}
     </div>
   </div>
   {%- endfor -%}

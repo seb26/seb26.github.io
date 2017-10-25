@@ -1,9 +1,11 @@
 ---
 layout: default
 ---
-<div class="container-fluid projects videos">
+<main class="projects videos">
   {%- for video in page.videos -%}
-  <div class="row project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+  <section class="project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+
+    {%- comment -%} Section 1: Metadata. {%- endcomment -%}
     {%- assign thumbFirst = video.thumbs[0].file -%}
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
@@ -18,56 +20,71 @@ layout: default
     <meta itemprop="embedUrl" content="{{ video.url }}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
-    <div class="col-12 pr-thumbs align-self-center">
-      <div class="pr-thumbs-slidebox">
-        <div class="pr-thumbs-spacer d-none d-sm-inline-block">&nbsp;</div>
+
+    {%- comment -%} Section 2: Gallery box. {%- endcomment -%}
+    <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+      <div class="slidebox">
+        <div class="spacer">&nbsp;</div>
+        {%- comment -%} This string will be used on each <img> to restrict the width of all images in the gallery. {%-endcomment -%}
+        {%- capture thumbWidthAndHeight -%}width="{{ video.thumbDimensions.width }}" height="{{ video.thumbDimensions.height }}"{%- endcapture -%}
         {%- if video.available == false -%}
-        <img class="img-fluid pr-thumb" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" />
+        {%- comment -%} If no video is available, show just a normal image with no link. {%- endcomment -%}
+        <div class="thumb">
+          <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
+        </div>
         {%- else -%}
-        <div class="pr-thumb pr-thumb-play">
+        <div class="thumb thumb-play">
           <a href="{{ video.url }}">
-          <img class="img-fluid" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" />
-          <span class="pr-thumb-play-icon"></span>
+          <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
+          <span class="thumb-play-icon"></span>
           </a>
         </div>
         {%- endif -%}
+        {%- comment -%} After the first thumb image, start creating the others. {%- endcomment -%}
         {% for thumb in video.thumbs %}
           {%- if forloop.first -%}
             {%- continue -%}
           {%- else -%}
-            <img class="img-fluid pr-thumb" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" />
+            <div class="thumb" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+              <img class="thumb-file" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" {{ thumbWidthAndHeight }}  />
+              <meta itemprop="width" content="{{ video.thumbDimensions.width }}" />
+              <meta itemprop="height" content="{{ video.thumbDimensions.height }}" />
+            </div>
           {%- endif -%}
         {% endfor %}
       </div>
-    </div>
-    <div class="col-12 pr-about">
-      <div class="pr-about-wrapper col-12 col-md-8 col-lg-6">
-        <h4 class="pr-title">
-          <span class="pr-date">{{ video.date | date:"%B %Y" }}</span>
+    </section>
+
+    {%- comment -%} Section 3: About box. {%- endcomment -%}
+    <section class="about">
+        <h4 class="title">
+          <span class="date">{{ video.date | date:"%B %Y" }}</span>
           <a href="{{ video.url }}">{{ video.title }}</a>
         </h4>
-        <hr class="pr-hr" />
-        <p class="pr-description" itemprop="description">{{ video.description }}</p>
-        <ul class="pr-about-details">
-          <li class="video-credit">{{ video.credit }}</li>
-          <li class="video-credit-display">{{ video.creditDisplay }}</li>
+        <hr />
+        <p class="description" itemprop="description">{{ video.description }}</p>
+        <ul class="details">
+          <li class="credit">{{ video.credit }}</li>
+          <li class="credit-display">{{ video.creditDisplay }}</li>
           {%- if video.creditDirector -%}
-          <li class="video-credit-director" itemprop="director">Director: {{ video.creditDirector }}</li>
+          <li class="credit-director" itemprop="director">Director: {{ video.creditDirector }}</li>
           {%- endif -%}
           <li>
-            <span class="video-duration">{{ video.duration | date: "%-M min" }}</span>&nbsp;&sdot;&nbsp;<span class="video-genre">{{ video.genre }}</span>
+            <span class="duration">{{ video.duration | date: "%-M min" }}</span>
+            &nbsp;&sdot;&nbsp;
+            <span class="genre">{{ video.genre }}</span>
           </li>
           {%- if video.license -%}
-          <li class="video-license">{{ video.license }}</li>
+          <li class="license" itemprop="license">{{ video.license }}</li>
           {%- endif -%}
-          <li class="video-location" itemprop="locationCreated">{{ video.location }}</li>
+          <li class="location" itemprop="locationCreated">{{ video.location }}</li>
         </ul>
         {%- if video.available != false -%}
-          <a class="btn btn-dark pr-button" href="{{ video.url }}">Watch</a>
+          <a class="action" href="{{ video.url }}">Watch</a>
         {%- endif -%}
-      </div>
-    </div>
-  </div>
+    </section>
+
+  </section>
   {%- endfor -%}
-</div>
+</main>
 {{ content }}
