@@ -7,7 +7,7 @@
  */
 
 .projects {
-  /* Container or Container-fluid */
+  @include make-container();
   padding-top: 50px;
   margin: auto 0;
   padding: auto 0;
@@ -22,6 +22,7 @@
 }
 
 .project {
+  @include make-row();
   font-size: 80%;
   margin: 2rem auto;
   margin-bottom: 4.5rem;
@@ -38,6 +39,8 @@
   }
   // Section 2: Gallery box.
   section.gallery {
+    @include make-col-ready();
+    @include make-col(12);
     overflow-x: scroll;
     white-space: nowrap;
 
@@ -47,42 +50,53 @@
     }
 
     // A spacing element for desktops.
-    .spacer {
-      width: 16.66667%;
-      height: 100%;
-      padding: 2rem;
-      opacity: .25;
+    .thumb:first-child::before {
       // On mobile: hide.
       display:none;
-      // On desktop: show.
+      // On tablet and higher: show.
       @include media-breakpoint-up(sm) {
         display:inline-block;
       }
+      content:'';
+      @include svg-icon('arrow-left');
+      opacity:.25;
+    }
+    .thumb:first-child:hover::before .gallery {
+      transform: translate(-15px, 0);
+      transition: .5s;
+      opacity: 1;
     }
     .slidebox {
       transition: all .5s ease-out;
-      // If the spacer is inside a slidebox,
-      .spacer {
-        // Add a slide icon to it,
-        @include svg-icon('arrow-left');
-        // And add a transition.
-        &:hover {
-          transform: translate(-15px, 0);
-          transition: .5s;
-          opacity: 1;
-        }
-      }
+      // Make it horizontal scroll.
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      height:auto;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+
+      // Bootstrap: .align-items-center
+      -ms-flex-align: center !important;
+      align-items: center !important;
     }
     .thumb {
-      @include fluid;
+      flex: 0 0 auto;
       border-radius: .2rem;
+      height:auto;
 
+      // On desktop: it's 90%.
+      max-width:90%;
       // On mobile:
       // make each image width 80%, so that a little
       // of the next image appears on screen, visually
       // implying that there is a series.
       @include media-breakpoint-down(xs) {
         max-width:80%;
+      }
+
+      img {
+        @include fluid;
       }
     }
     .thumb-play {
@@ -113,8 +127,17 @@
 
   // Section 3: About box.
   section.about {
-    margin-top: 1rem;
-    margin-left: 16.333334%;
+    @include make-col-ready();
+    @include media-breakpoint-up(xs) {
+      @include make-col(12);
+    }
+    @include media-breakpoint-up(sm) {
+      @include make-col-offset(2);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+      @include make-col-offset(1);
+    }
     background: rgba(28, 28, 28, 1);
     border-radius: .2rem;
 
@@ -196,19 +219,21 @@
 
 .design {
   .gallery {
-    width: auto;
-    max-width: 100%;
   }
   .thumb {
-    width: 540px;
-    height: auto;
+    // For design, thumbs should be smaller.
+    // Because the design images are much larger.
+    max-width: 540px !important;
+    // Some spacing for each thumb.
+    padding-left:.5rem;
+    padding-right:.5rem;
+    // This class is applied to design projects with just 1 thumb.
     &.large {
       width: 900px;
       height: auto;
     }
     &.vertical {
-      width:50%;
-      height:auto;
+      height:25% !important;
     }
   }
 }

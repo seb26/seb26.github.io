@@ -2,21 +2,7 @@
 ---
 // Exteral libraries & fonts.
 // Bootstrap
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/print";
-@import "bootstrap/reboot";
-@import "bootstrap/type";
-@import "bootstrap/images";
-@import "bootstrap/code";
-@import "bootstrap/grid";
-@import "bootstrap/buttons";
-@import "bootstrap/transitions";
-@import "bootstrap/nav";
-@import "bootstrap/navbar";
-@import "bootstrap/badge";
-@import "bootstrap/utilities";
+@import "bootstrap-custom";
 // Bytesize icons. View the file for credits.
 $bytesize_icons_desired: link, caret-bottom, arrow-top, info, arrow-left, play, twitter, facebook, instagram;
 @import "bytesize-icons-inline";

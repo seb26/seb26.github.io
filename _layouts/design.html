@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-<div class="projects designs">
+<main class="projects designs">
   {%- for design in page.designs -%}
     {%- comment -%} Allow each design to define a schema type. {%- endcomment -%}
     {%- if design.schemaType -%}
       {%- assign schemaType = design.schemaType -%}
     {%- else -%}
-      {%- assign schemaType = "creativeWork"-%}
+      {%- assign schemaType = "CreativeWork"-%}
     {%- endif -%}
-  <div class="project design" itemscope itemtype="http://schema.org/{{ schemaType }}">
+  <section class="project design" itemscope itemtype="https://schema.org/{{ schemaType }}">
     {%- comment -%} Metadata. {%- endcomment -%}
     <meta itemprop="name" content="{{ design.title }}">
     <meta itemprop="thumbnailUrl" content="{{ design.thumbs[0].file | prepend: 'img/' | absolute_url }}">
@@ -21,28 +21,28 @@ layout: default
     <meta itemprop="datePublished" content="{{ design.date }}">
 
     {%- comment -%} Gallery. {%- endcomment -%}
-    <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    <section class="gallery" itemscope itemtype="https://schema.org/ImageGallery">
+      <div class="slidebox">
       {%- if design.thumbs.size > 1 -%}
-      {%- comment -%} A string to define width/height in the <img> element.
-                      The values have been designated in the set as being for all thumbs. {%- endcomment -%}
-      {%- capture thumbWidthAndHeight -%}width="{{ design.thumbDimensions.width }}" height="{{ design.thumbDimensions.height }}"{%- endcapture -%}
-      {%- assign thumbWidth = design.thumbDimensions.width -%}
-      {%- assign thumbHeight = design.thumbDimensions.height -%}
-        <div class="slidebox">
-          <div class="spacer">&nbsp;</div>
+          <div class="spacer spacer-icon">&nbsp;</div>
           {%- for thisThumb in design.thumbs -%}
           {%- if thisThumb.dimensions -%}
-            {%- comment -%} However, if a thumb has its own dimensions, make them override the default. {%- endcomment -%}
+            {%- comment -%} If a thumb has its own dimensions, use them. {%- endcomment -%}
             {%- capture thumbWidthAndHeight -%}width="{{ thisThumb.dimensions.width }}" height="{{ thisThumb.dimensions.height }}"{%- endcapture -%}
             {%- assign thumbWidth = thisThumb.dimensions.width -%}
             {%- assign thumbHeight = thisThumb.dimensions.height -%}
+          {%- else -%}
+          {%- comment -%} If not, use the values that have been designated in the set. {%- endcomment -%}
+            {%- capture thumbWidthAndHeight -%}width="{{ design.thumbDimensions.width }}" height="{{ design.thumbDimensions.height }}"{%- endcapture -%}
+            {%- assign thumbWidth = design.thumbDimensions.width -%}
+            {%- assign thumbHeight = design.thumbDimensions.height -%}
           {%- endif -%}
-          <div class="thumb {{ thisThumb.orientation }}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+          <div class="thumb {{ thisThumb.orientation }}" itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
             <img class="thumb-file" src="img/{{ thisThumb.file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
             <meta itemprop="width" content="{{ thumbWidth }}" />
             <meta itemprop="height" content="{{ thumbHeight }}" />
+          </div>
           {%- endfor -%}
-        </div>
       {%- else -%}
       {%- comment -%} Place a spacer (but it has no icon). {%- endcomment -%}
       <div class="spacer"></div>
@@ -51,9 +51,10 @@ layout: default
       </div>
       {%- endif -%}
     </div>
+  </section>
 
     {%- comment -%} About. {%- endcomment -%}
-    <div class="about">
+  <section class="about">
       <h4 class="title">
         <span class="date">{{ design.date | date:"%B %Y" }}</span>
         <a href="{{ design.url }}">{{ design.title }}</a>
@@ -74,8 +75,8 @@ layout: default
       {%- if design.url -%}
       <a class="action" href="{{ design.url }}">View</a>
       {%- endif -%}
-    </div>
-  </div>
+    </section>
+  </section>
   {%- endfor -%}
-</div>
+</main>
 {{ content }}
