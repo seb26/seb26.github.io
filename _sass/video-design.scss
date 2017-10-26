@@ -73,23 +73,23 @@
         }
       }
     }
-  .thumb {
-    @include fluid;
-    border-radius: .2rem;
+    .thumb {
+      @include fluid;
+      border-radius: .2rem;
 
-    // On mobile:
-    // make each image width 80%, so that a little
-    // of the next image appears on screen, visually
-    // implying that there is a series.
-    @include media-breakpoint-down(xs) {
-      max-width:80%;
+      // On mobile:
+      // make each image width 80%, so that a little
+      // of the next image appears on screen, visually
+      // implying that there is a series.
+      @include media-breakpoint-down(xs) {
+        max-width:80%;
+      }
     }
-  }
-  .thumb-play {
-    display: inline-block;
-    position: relative;
-    width:auto;
-
+    .thumb-play {
+      display: inline-block;
+      position: relative;
+      width:auto;
+    }
     .thumb-play-icon {
       display: block;
       position: absolute;
@@ -109,8 +109,7 @@
         opacity: 1;
       }
     }
-  } // End section.gallery
-
+  }
 
   // Section 3: About box.
   section.about {
@@ -160,15 +159,6 @@
       list-style: none;
       padding: 0;
       color: #5d5d5d;
-    }
-    // The call-for-action button.
-    .action {
-      color: #ddd;
-
-      @include media-breakpoint-down(md) {
-        // On mobile: make the button fill the phone's screen.
-        width:100%;
-      }
     }
   } // End section.about
 

@@ -157,6 +157,11 @@ body.page-blog {
         border-color: #65707c;
       }
     }
+    .tile-link-faux {
+      font-size: .75rem;
+      font-weight: 500;
+      padding: .25rem .5rem;
+    }
   }
 
   // Author credit box
@@ -173,6 +178,13 @@ body.page-blog {
       line-height:1rem;
       letter-spacing:.025rem;
       font-weight:200;
+    }
+    .faux-link {
+      @extend .btn;
+      @extend .btn-dark;
+      font-size: .75rem;
+      font-weight: 500;
+      padding: .25rem .5rem;
     }
   }
 

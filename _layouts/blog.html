@@ -36,7 +36,7 @@ layout: default
   </main>
   {% if page.gallery %}
   <div class="unit-free blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    <figcaption>{{ page.gallery.images.size }} images</figcaption>
+    <figcaption class="caption">{{ page.gallery.images.size }} images</figcaption>
     {% for i in page.gallery.images %}
     {%- assign image_url = i.url | prepend: "/post/img/" | relative_url -%}
     {%- if i.orientation == 'vertical' -%}
@@ -77,7 +77,7 @@ layout: default
         <span class="sr-only">About the author</span></a>
       <div class="tile-body description">
         <p>I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world, big places or small.</p>
-        <a class="btn btn-dark tile-link-faux" href="/about/">Read more ▸</a>
+        <a class="faux-link" href="/about/">Read more ▸</a>
       </div>
       <div class="tile-photo photo" style='background-image:url("{{ site.author.photo.url }}");'></div>
     </div>

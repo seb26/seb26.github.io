@@ -5,7 +5,7 @@ layout: default
   {%- for video in page.videos -%}
   <section class="project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
 
-    {%- comment -%} Section 1: Metadata. {%- endcomment -%}
+    {%- comment -%} Section 0: Metadata. {%- endcomment -%}
     {%- assign thumbFirst = video.thumbs[0].file -%}
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
@@ -21,7 +21,7 @@ layout: default
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
 
-    {%- comment -%} Section 2: Gallery box. {%- endcomment -%}
+    {%- comment -%} Section 1: Gallery box. {%- endcomment -%}
     <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
       <div class="slidebox">
         <div class="spacer">&nbsp;</div>
@@ -55,7 +55,7 @@ layout: default
       </div>
     </section>
 
-    {%- comment -%} Section 3: About box. {%- endcomment -%}
+    {%- comment -%} Section 2: About box. {%- endcomment -%}
     <section class="about">
         <h4 class="title">
           <span class="date">{{ video.date | date:"%B %Y" }}</span>
