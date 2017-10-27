@@ -12,9 +12,7 @@ gallery:
   images:
     - url: 20170921-tejo-chia-4464.jpg
     - url: 20170921-tejo-chia-4470.jpg
-      credit: David Puentes
     - url: 20170921-tejo-chia-4507.jpg
-      orientation: vertical
     - url: 20170921-tejo-chia-4531.jpg
     - url: 20170921-tejo-chia-4498.jpg
     - url: 20170921-tejo-chia-4560.jpg

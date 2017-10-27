@@ -56,10 +56,15 @@ layout: default
       <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
         <meta itemprop="width" content="{{ image_width }}" />
         <meta itemprop="height" content="{{ image_height }}" />
-      {%- if i.caption -%}
+      {%- if i.caption or i.credit -%}
       <figcaption class="caption">
-        {{ i.caption }}
-        {%- if i.credit %}&nbsp;(Credit: {{ i.credit }}){% endif %}
+        {%- if i.caption and i.caption -%}
+          {{ i.caption }} (Credit: {{ i.credit }})
+        {%- elsif i.caption -%}
+          {{ i.caption }}
+        {%- elsif i.credit -%}
+          Credit: {{ i.credit }}
+        {%- endif -%}
       </figcaption>
       {%- endif -%}
       <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
