@@ -31,6 +31,7 @@ thumbnail:
 author:
   name:  Sebastian Reategui
   email: seb.reategui@gmail.com
+  url: https://sebreategui.com
   photo:
     url:    "/img/profile-sebastian-reategui-by-steph-newman-2016-300x300.jpg"
     width:  300
@@ -67,7 +68,7 @@ author:
     github:
       network:  GitHub
       handle:   seb26
-      url:      https://github.com/seb26/
+      url:      https://github.com/seb26/  
 
 # Permalink for blog posts
 permalink: /post/:year/:slug/

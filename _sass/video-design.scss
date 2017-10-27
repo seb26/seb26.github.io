@@ -26,17 +26,18 @@
   font-size: 80%;
   margin: 2rem auto;
   margin-bottom: 4.5rem;
-  // On mobile:
-  // no top/bottom margins spacing out each project,
-  // and no margins on the sides.
   @include media-breakpoint-down(md) {
-    margin:0;
+    // On mobile:
+    // no margins on the sides.
+    margin-left:0;
+    margin-right:0;
+    // bottom margins spacing out each project from each other.
+    margin-bottom:2rem;
+    // And just no top margin for safety reasons.
+    margin-top:0;
   }
 
 
-  &:first-child {
-    margin-top: 0;
-  }
   // Section 2: Gallery box.
   section.gallery {
     @include make-col-ready();
@@ -49,25 +50,11 @@
       padding:0;
     }
 
-    // A spacing element for desktops.
-    .thumb:first-child::before {
-      // On mobile: hide.
-      display:none;
-      // On tablet and higher: show.
-      @include media-breakpoint-up(sm) {
-        display:inline-block;
-      }
-      content:'';
-      @include svg-icon('arrow-left');
-      opacity:.25;
-    }
-    .thumb:first-child:hover::before .gallery {
-      transform: translate(-15px, 0);
-      transition: .5s;
-      opacity: 1;
-    }
     .slidebox {
-      transition: all .5s ease-out;
+      // Bootstrap: .align-items-center
+      // Vertical align for images inside.
+      -ms-flex-align: center !important;
+      align-items: center !important;
       // Make it horizontal scroll.
       display: flex;
       flex-wrap: nowrap;
@@ -76,27 +63,80 @@
       width: 100%;
       -webkit-overflow-scrolling: touch;
 
-      // Bootstrap: .align-items-center
-      -ms-flex-align: center !important;
-      align-items: center !important;
+      // Goal: visually indicate to viewers that they
+      // can horizontally scroll to view more images.
+      // (1) On hover, animate the whole scrollbox to the left.
+      transition: all .2s ease-out;
+      &:hover {
+        transform: translate(-15px, 0);
+        opacity: 1;
+      }
+      // (2) Show an arrow pointing left.
+      &::before {
+        @include media-breakpoint-up(xs) {
+          // On mobile: hide it.
+          display:none;
+        }
+        @include media-breakpoint-up(sm) {
+          // On tablet and higher: show.
+          display:inline-block;
+        }
+        // Make the arrow element visible with spaces. Hacky but I couldn't find another way.
+        content:'\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
+        @include svg-icon('arrow-left');
+        margin-right:15px;
+        opacity:.25;
+      }
+      &:hover::before {
+        // On hover, light up the arrow.
+        opacity:1;
+      }
+      // But, not for just 1x thumb on its own:
+      &.single {
+        // * remove the slide animation,
+        transform:none;
+        transition:none;
+        // * hide the arrow icon.
+        &::before {
+          display:none;
+          background:none;
+        }
+        .thumb {
+          // * make the image full width.
+          max-width:100%;
+          height:auto;
+          // * adjust the margin by 2 columns,
+          // (but avoid it for mobile)
+          @include media-breakpoint-up(md) {
+            @include make-col-offset(2);
+          }
+        }
+      }
     }
     .thumb {
+      // Each thumb is a flex object.
       flex: 0 0 auto;
-      border-radius: .2rem;
       height:auto;
+      // Some spacing for each thumb.
+      padding-left:.25rem;
+      padding-right:.25rem;
+      // Fluid for the <img> elements themselves.
+      img {
+        @include fluid;
+        // And curved borders.
+        border-radius:.25rem;
+      }
 
-      // On desktop: it's 90%.
-      max-width:90%;
       // On mobile:
       // make each image width 80%, so that a little
       // of the next image appears on screen, visually
       // implying that there is a series.
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-only(xs) {
         max-width:80%;
       }
-
-      img {
-        @include fluid;
+      // On bigger: do the same, but with larger width.
+      @include media-breakpoint-up(sm) {
+        max-width:90%;
       }
     }
     .thumb-play {
@@ -115,9 +155,10 @@
       height: 100%;
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.1);
-      @include svg-icon(play, 64px);
+      @include svg-icon(play, 64px, $defineWidth: false);
       opacity: 0.1;
       transition: all .15s ease;
+      z-index:10;
 
       &:hover {
         opacity: 1;
@@ -135,15 +176,28 @@
       @include make-col-offset(2);
     }
     @include media-breakpoint-up(lg) {
-      @include make-col(6);
-      @include make-col-offset(1);
+      @include make-col(4);
+      @include make-col-offset(2);
     }
     background: rgba(28, 28, 28, 1);
     border-radius: .2rem;
+    padding: 1rem;
+    margin-top:.75rem;
+    padding-top: 0;
 
     .title {
+      display: block;
+      margin: -1rem;
+      background: rgba(0, 0, 0, .2);
+      padding:.5rem 1rem;
+      margin-top: 0;
+      border-top-left-radius: .35rem;
+      border-top-right-radius: .35rem;
+      margin-bottom: 0;
       a {
-        color: #868e96;
+        // The actual title is here.
+        color: inherit;
+        font-size:1.2rem;
       }
     }
     .date {
@@ -162,9 +216,21 @@
       text-transform: uppercase;
       font-size: .75rem;
 
-      // On mobile: show the date on the left.
-      @include media-breakpoint-down(md) {
-        float:left;
+      // On mobile: show short month name ('Oct').
+      &.month-full {
+        display:none;
+      }
+      &.month-short {
+        display:inline-block;
+      }
+      @include media-breakpoint-up(sm) {
+        // On sm and above: show full month name ('October').
+        &.month-full {
+          display:inline-block;
+        }
+        &.month-short {
+          display:none;
+        }
       }
     }
     hr {
@@ -183,6 +249,15 @@
       padding: 0;
       color: #5d5d5d;
     }
+    .action {
+      // This class is in addition to .btn which is already fixed on the element
+      display: inline-block;
+      background: rgb(53, 71, 88);
+      @include media-breakpoint-down(sm) {
+        // On mobile: make the button occupy 100% from left-to-right screenwise
+        width:100%;
+      }
+    }
   } // End section.about
 
 } // End .project
@@ -200,8 +275,6 @@
     font-style: italic;
   }
   .license {
-    font-size: .75rem;
-    padding: .5rem 0;
     a {
       color: inherit;
     }
@@ -221,12 +294,12 @@
   .gallery {
   }
   .thumb {
-    // For design, thumbs should be smaller.
-    // Because the design images are much larger.
-    max-width: 540px !important;
-    // Some spacing for each thumb.
-    padding-left:.5rem;
-    padding-right:.5rem;
+    @include media-breakpoint-up(md) {
+      // For design, thumbs should be smaller.
+      // Because the design images are much larger.
+      // Do not apply this to mobile, mobile needs images at 100% max-width.
+      max-width: 540px !important;
+    }
     // This class is applied to design projects with just 1 thumb.
     &.large {
       width: 900px;
@@ -234,6 +307,10 @@
     }
     &.vertical {
       height:25% !important;
+    }
+    img {
+      // A small detail for thumbnails.
+      border-radius: .2rem;
     }
   }
 }

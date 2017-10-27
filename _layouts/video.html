@@ -33,9 +33,9 @@ layout: default
         </div>
         {%- else -%}
         <div class="thumb thumb-play">
-          <a href="{{ video.url }}">
-          <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
-          <span class="thumb-play-icon"></span>
+          <a href="{{ video.url }}" target="_blank">
+            <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
+            <div class="thumb-play-icon"></div>
           </a>
         </div>
         {%- endif -%}
@@ -57,7 +57,8 @@ layout: default
     {%- comment -%} Section 2: About box. {%- endcomment -%}
     <section class="about">
         <h4 class="title">
-          <span class="date">{{ video.date | date:"%B %Y" }}</span>
+          <span class="date month-full">{{ video.date | date:"%B %Y" }}</span>
+          <span class="date month-short">{{ video.date | date:"%b %Y" }}</span>
           <a href="{{ video.url }}">{{ video.title }}</a>
         </h4>
         <p class="description" itemprop="description">{{ video.description }}</p>
@@ -69,7 +70,7 @@ layout: default
           {%- endif -%}
           <li>
             <span class="duration">{{ video.duration | date: "%-M min" }}</span>
-            &nbsp;&sdot;&nbsp;
+            &sdot;
             <span class="genre">{{ video.genre }}</span>
           </li>
           {%- if video.license -%}
@@ -78,7 +79,7 @@ layout: default
           <li class="location" itemprop="locationCreated">{{ video.location }}</li>
         </ul>
         {%- if video.available != false -%}
-          <a class="action" href="{{ video.url }}">Watch</a>
+          <a class="btn action" href="{{ video.url }}" target="_blank">Watch</a>
         {%- endif -%}
     </section>
 

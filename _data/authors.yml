@@ -1,0 +1,46 @@
+default:
+  name:  Sebastian Reategui
+  email: seb.reategui@gmail.com
+  url: https://sebreategui.com
+  photo:
+    url:    "/img/profile-sebastian-reategui-by-steph-newman-2016-300x300.jpg"
+    width:  300
+    height: 300
+  social_media:
+    twitter:
+      network:  Twitter
+      handle:   "@sebreategui"
+      url:      https://twitter.com/sebreategui
+    instagram:
+      network:  Instagram
+      handle:   "@seb_rg"
+      url:      https://instagram.com/seb_rg
+    facebook:
+      network:  Facebook
+      handle:   "@seb.reategui"
+      url:      https://facebook.com/seb.reategui
+    youtube:
+      network:  YouTube
+      handle:   "@sebreategui"
+      url:      https://youtube.com/sebreategui
+    vimeo:
+      network:  Vimeo
+      handle:   "@sebreategui"
+      url:      https://vimeo.com/sebreategui
+    tumblr:
+      network:  Tumblr
+      handle:   "spebz"
+      url:      https://spebz.tumblr.com
+    linkedin:
+      network:  LinkedIn
+      handle:   Sebastian Reategui
+      url:      https://linkedin.com/in/sebastianreategui
+    github:
+      network:  GitHub
+      handle:   seb26
+      url:      https://github.com/seb26/
+  schema:
+    person: |
+      <meta itemprop="name" content="Sebastian Reategui" />
+      <meta itemprop="url" content="https://sebreategui.com" />
+      <meta itemprop="sameAs" content="https://sebreategui.com" />
