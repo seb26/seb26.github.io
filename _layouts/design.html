@@ -76,6 +76,9 @@ layout: default
         {%- if design.technique -%}
         <li class="detail technique"><strong>Technique</strong>: {{ design.technique }}</li>
         {%- endif -%}
+        {%- if design.dimensions -%}
+        <li class="detail dimensions"><strong>Dimensions</strong>: {{ design.dimensions }}</li>
+        {%- endif -%}
         {%- for other in design.other -%}
         <li class="detail">{{ other }}</li>
         {%- endfor -%}

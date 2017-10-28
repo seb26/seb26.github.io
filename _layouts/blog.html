@@ -58,7 +58,7 @@ layout: default
         <meta itemprop="height" content="{{ image_height }}" />
       {%- if i.caption or i.credit -%}
       <figcaption class="caption">
-        {%- if i.caption and i.caption -%}
+        {%- if i.caption and i.credit -%}
           {{ i.caption }} (Credit: {{ i.credit }})
         {%- elsif i.caption -%}
           {{ i.caption }}

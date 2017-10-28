@@ -11,6 +11,9 @@ redirect_from:
 
 <section class="container blog blog-index recent">
   <h3>Recent work</h3>
+  {% for post in site.categories.recentwork %}
+  {{ post.title }}
+  {% endfor %}
 </section>
 
 <section class="container blog blog-index">
