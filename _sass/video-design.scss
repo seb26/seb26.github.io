@@ -167,6 +167,8 @@
   }
 
   // Section 3: About box.
+  $about-border-radius: .2rem;
+
   section.about {
     @include make-col-ready();
     @include media-breakpoint-up(xs) {
@@ -180,7 +182,7 @@
       @include make-col-offset(2);
     }
     background: rgba(28, 28, 28, 1);
-    border-radius: .2rem;
+    border-radius:$about-border-radius;
     padding: 1rem;
     margin-top:.75rem;
     padding-top: 0;
@@ -191,9 +193,9 @@
       background: rgba(0, 0, 0, .2);
       padding:.5rem 1rem;
       margin-top: 0;
-      border-top-left-radius: .35rem;
-      border-top-right-radius: .35rem;
-      margin-bottom: 0;
+      border-top-left-radius:$about-border-radius;
+      border-top-right-radius:$about-border-radius;
+      margin-bottom:1rem;
       a {
         // The actual title is here.
         color: inherit;
@@ -239,13 +241,15 @@
       border: 0;
       border-bottom: 1px solid rgba(204, 204, 204, 0.05);
     }
-    .description {
-      padding-top: 1rem;
+    .genre {
+      color: #717171;
+      margin:.5rem auto;
     }
     .details {
       list-style: none;
       padding: 0;
       color: #717171;
+      margin:auto;
     }
     .action {
       // This class is in addition to .btn which is already fixed on the element

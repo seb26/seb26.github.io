@@ -77,6 +77,10 @@ layout: default
           <li class="license" itemprop="license">{{ video.license }}</li>
           {%- endif -%}
           <li class="location" itemprop="locationCreated">{{ video.location }}</li>
+          <br />
+          {%- if video.software -%}
+          <li class="software"><strong>Software</strong>: {{ video.software }}</li>
+          {%- endif -%}
         </ul>
         {%- if video.available != false -%}
           <a class="btn action" href="{{ video.url }}" target="_blank">Watch</a>
