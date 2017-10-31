@@ -1,27 +1,27 @@
 ---
-layout: default
-classes: 'page-blog'
-schemaType: 'Blog'
-permalink: '/posts/'
+layout:       default
+title:        Recent
+classes:      'page-blog'
+schemaType:   'Blog'
+permalink:    '/posts/'
 redirect_from:
   - '/blog/'
   - '/post/'
   - '/post/2017/'
+  - '/recent/'
 ---
 
-<section class="container blog blog-index recent">
-  <h3>Recent work</h3>
-  {% for post in site.categories.recentwork %}
-  {{ post.title }}
-  {% endfor %}
-</section>
-
 <section class="container blog blog-index">
-  <h3>Posts</h3>
-  <div class="blog-index-items">
+  <h3>Recent</h3>
+  <div class="items">
     {% for post in site.posts %}
-    <section class="row blog-index-item">
-      <div class="col-12 col-sm-3 info">
+    {% assign mod = forloop.index | modulo: 2 %}
+    {% if mod == 0 %}
+    <section class="item item-narrow">
+    {% else %}
+    <section class="item item-wide">
+    {% endif %}
+      <div class="info">
         <header class="title">
           {{ post.title }}
         </header>
@@ -31,7 +31,7 @@ redirect_from:
         <time class="line date" datetime="{{ post.date }}">{{ post.date | date: "%e %B %Y" | upcase }}</time>
         <a href="{{ post.url }}" class="btn btn-primary">Read</a>
       </div>
-      <div class="col-12 col-sm-9 image">
+      <div class="image">
         <img class="fluid" src="{{ post.thumbnail.url }}" />
       </div>
     </section>

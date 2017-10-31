@@ -142,6 +142,12 @@
   }
 }
 
+
+
+// Banner elements
+//
+
+// Welcome.
 .welcome {
   max-width: 1280px;
   margin: 0 auto;
@@ -162,4 +168,92 @@
     color: white;
     @include drop-shadow(0.5);
   }
+}
+
+// Footer
+$footer-transition: all 0.15s ease;
+$footer-mobile-spacing: 0.5rem;
+$footer-subcat-color-default: #CCCCCC;
+$footer-subcat-colors: (
+    people:           #269AA5
+  , environment:      #83A352
+  , photojournalism:  #D6B443
+  , urban:            #2B56F1
+  , architecture:     #F26911
+);
+.photography-footer {
+  min-height:680px;
+  margin:2rem auto;
+
+  .row {
+    @include media-breakpoint-down(md) {
+      padding:$footer-mobile-spacing;
+    }
+  }
+
+  .subcategory {
+    @include make-col-ready();
+    @include make-col(2);
+    @include media-breakpoint-down(md) {
+      // On mobile: make them stack.
+      @include make-col(12);
+    }
+    margin:1rem;
+    padding:0;
+    text-align:center;
+
+    min-height:480px;
+    max-height:480px;
+    @include media-breakpoint-down(md) {
+      // On mobile: display as blocks on top of each other.
+      // Margin and height fixes required.
+      min-height:auto;
+      height:6rem;
+      padding:0;
+      margin:0;
+      margin-top:$footer-mobile-spacing;
+      margin-bottom:$footer-mobile-spacing;
+    }
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position:relative;
+
+    border-radius:1rem;
+    border:3px solid $footer-subcat-color-default;
+    transition:$footer-transition;
+
+    .title {
+      width:100%;
+      text-align:center;
+      font-size:1.2rem;
+      font-weight:300;
+      transition:$footer-transition;
+      padding:.5rem;
+    }
+    // Colors.
+    @each $cat, $color in $footer-subcat-colors {
+      // Change to color of that subcat.
+      &.#{$cat} {
+        border-color:$color;
+        color:$color;
+      }
+      &.#{$cat}:hover {
+        border-color:$footer-subcat-color-default;
+        color:$footer-subcat-color-default;
+      }
+    }
+    // Block color for active
+    a {
+      // Make the whole box clickable.
+      display:block;
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    }
+  }
+
 }

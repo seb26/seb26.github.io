@@ -2,20 +2,19 @@ subcategories:
   - people: people
     name: people
     label: People
-  
+
   - environment: environment
     name: environment
     label: Environment
-    
+
   - photojournalism: photojournalism
     name: photojournalism
     label: Photojournalism
-    
+
   - urban: urban
     name: urban
     label: Urban
-    
+
   - architecture: architecture
     name: architecture
     label: Architecture
-    

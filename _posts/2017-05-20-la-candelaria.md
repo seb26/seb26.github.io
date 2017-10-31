@@ -1,5 +1,5 @@
 ---
-title:          "In photos: A historic centre from the ages"
+title:          "In photos: a historic centre "
 slug:           in-photos-la-candelaria-bogota
 date:           2017-09-02T16:07:44+00:00
 dateModified:   2017-09-03T19:38:54+00:00
@@ -15,18 +15,27 @@ gallery:
     - url: 20170520-la-candelaria-sebastian-reategui-2552.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2555.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2619.jpg
+      caption: Casa de Nariño, the presidential residence
     - url: 20170520-la-candelaria-sebastian-reategui-2637.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2647.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2663.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2668.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2677.jpg
+      caption: Museo del Banco de la República (Museum of the Bank of the Republic)
     - url: 20170520-la-candelaria-sebastian-reategui-2682.jpg
+      caption: |
+        A soldier guards a street corner. The shop sells
+        biscuits (<em>cucas, polvorosas, herpos, achiras</em>),
+        sweets (<em>crespas, tumes, veleños, turrones, cabanos</em>),
+        baked goods (<em>panochas, cotudos, garullas, almojabanas, marquezas, merengues, mogollas</em>),
+        rice drink (<em>masato</em>) and
+        dates (<em>brevas</em>).
     - url: 20170520-la-candelaria-sebastian-reategui-2723.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2690.jpg
     - url: 20170926-la-candelaria-book-sebastian-reategui-1.jpg
     - url: 20170926-la-candelaria-book-sebastian-reategui-2.jpg
 ---
-La Candelaria is Bogotá's historic district, constructed as early as 1530s. Perusing its squares and sidestreets for a few hours will reveal the richness in its Spanish colonial and Baroque construction.
+La Candelaria is Bogotá's historic district, constructed as early as 1530s. Perusing its squares and sidestreets for a few hours will reveal the richness in its Spanish colonial and Baroque construction. A history is told together. A body of work of Fernando Botero, Colombia's perhaps most well-recognised visual artist, can be found embodied in Museo Botero, among many other delicate museums and cultural centres scattered through the zone.
 
 Some areas are accompanied by military presence. While an important economic centre and the hub of tourism in the whole city, the rates of violent crime experienced by La Candelaria and its edge suburbs have clearly encouraged an increase in security presence in sensitive areas, like the presidential residence Casa de Nariño. In the last two years [the situation is improving](http://www.eltiempo.com/bogota/cifras-de-inseguridad-en-bogota-del-informe-de-calidad-de-vida-bogota-como-vamos-111870) with attention from authorities, but with strides to be made in car theft, organised crime and violence against women.
 
