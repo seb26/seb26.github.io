@@ -1,0 +1,19 @@
+body.page-index {
+  color:#fff;
+}
+.site-categories {
+  max-width:50%;
+
+  .category {
+    display:flex;
+  }
+  .image {
+    flex:0 25% 25%;
+    img {
+      @include fluid();
+    }
+  }
+  .header {
+    flex: 0 75%;
+  }
+}

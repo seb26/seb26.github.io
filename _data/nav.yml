@@ -1,7 +1,7 @@
 items:
   - label: Photography
-    file: /index.html
-    url: "/"
+    file: /photography/photojournalism.html
+    url: "/photo/photojournalism"
   - label: Video
     file: /video.html
     url: /video

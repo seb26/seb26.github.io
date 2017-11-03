@@ -38,8 +38,15 @@ $bytesize_icons_desired: link, caret-bottom, arrow-top, info, arrow-left, play, 
     border-radius:$amount;
   }
 }
+// A basic image circle
+@mixin circle {
+  border-radius:50%;
+  background-position:center center;
+  background-size:cover;
+}
 
 // Stylesheets for each subpage area.
+@import "index";
 @import "about";
 @import "video-design";
 @import "photography";
@@ -100,109 +107,6 @@ nav#nav-sitewide {
   }
   .navbar-toggler {
     .toggler-icon {
-      display:inline-block;
-    }
-  }
-}
-
-/* xs (below sm) */
-@include media-breakpoint-down(xs) {
-  /* All anchor links are offsetted by 70px */
-  /* which is the height of the navbar. */
-
-  :target:before {
-    content: "";
-    display: block;
-    height: 60px;
-    margin: -60px 0 0;
-  }
-
-  .nav-item {
-    &:hover, &.active {
-      border: 0;
-    }
-  }
-}
-
-/* Nav subcategory */
-/* Transparent bar that occupies
-* same space as subcat nav.
-* JS hover means it will show/hide
-* the subcat nav. */
-
-$sc-height: 60px;
-$sc-height-mobile: 240px;
-.sc-hover {
-  position:fixed;
-  width:100%;
-  height:$sc-height;
-  bottom:0;
-  left:0;
-  z-index:1025;
-  background:none;
-}
-.sc {
-  /* Bootstrap: .fixed-bottom [MODIFIED] */
-  position: fixed;
-  top:auto;
-  bottom:0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  /* Bootstrap: .justify-content-center */
-  justify-content: center !important;
-
-  transition: all 0.4s ease-in-out;
-  height:$sc-height;
-  // background:rgba(255,255,255,.05);
-  padding:.5rem;
-
-  &.sc-up {
-    transform:translate(0px, $sc-height);
-  }
-
-  .nav-link {
-    display:inline-block;
-    margin:.15rem 0;
-
-    color:#fff;
-    @include drop-shadow(.9);
-    font-weight:500;
-    cursor:pointer;
-    background:rgba(255,255,255,.075);
-  }
-  .nav-link.active,
-  .nav-link:hover {
-    background:rgba(255,255,255,.25);
-    border-radius:.25rem;
-    color:#fff;
-  }
-  // Display links that are not active
-  .nav-link.notactive {
-    display:inline-block;
-  }
-  @include media-breakpoint-down(xs) {
-    background:none;
-    height:auto; //$sc-height-mobile;
-    transform:translate(0px, 0px);
-
-    &.sc-up {
-      // For mobile, don't even hide this
-      transform:translate(0px, 0px);
-    }
-    .nav-link {
-      width:100%;
-      display:block;
-      padding:.5rem .2rem;
-      text-align:center;
-    }
-    // Hide links that are not active
-    .nav-link.notactive {
-      display:none;
-    }
-    // Show links that are not active, if
-    // sc has this toggleable class
-    &.sc-mobile-show .nav-link.notactive {
       display:inline-block;
     }
   }

@@ -1,20 +1,25 @@
 subcategories:
+  - photojournalism: photojournalism
+    name: photojournalism
+    url: /photo/photojournalism
+    label: Photojournalism
+
   - people: people
     name: people
+    url: /photo/people
     label: People
 
   - environment: environment
     name: environment
+    url: /photo/environment
     label: Environment
-
-  - photojournalism: photojournalism
-    name: photojournalism
-    label: Photojournalism
 
   - urban: urban
     name: urban
+    url: /photo/urban
     label: Urban
 
   - architecture: architecture
     name: architecture
+    url: /photo/architecture
     label: Architecture

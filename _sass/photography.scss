@@ -3,6 +3,100 @@
  * photography.html layout pages
  */
 
+ /* Nav subcategory */
+ /* Transparent bar that occupies
+ * same space as subcat nav.
+ * JS hover means it will show/hide
+ * the subcat nav. */
+
+ $sc-height: 60px;
+ $sc-height-mobile: 240px;
+ .sc-hover {
+   position:fixed;
+   width:100%;
+   height:$sc-height;
+   bottom:0;
+   left:0;
+   z-index:1025;
+   background:none;
+ }
+ .sc {
+   /* Bootstrap: .fixed-bottom [MODIFIED] */
+   position: fixed;
+   top:auto;
+   bottom:0;
+   left: 0;
+   right: 0;
+   z-index: 1030;
+   /* Bootstrap: .justify-content-center */
+   justify-content: center !important;
+
+   transition: all 0.4s ease-in-out;
+   height:$sc-height;
+   background: rgba(0, 0, 0, .25);
+   padding:.5rem;
+
+   &.sc-up {
+     transform:translate(0px, $sc-height);
+   }
+
+   .nav-link {
+     display:inline-block;
+     margin:.15rem 0;
+
+     color:#fff;
+     @include drop-shadow(.9);
+     font-weight:500;
+     cursor:pointer;
+     background:rgba(255,255,255,.075);
+   }
+   .nav-link.active,
+   .nav-link:hover {
+     background:rgba(255,255,255,.25);
+     border-radius:.25rem;
+     color:#fff;
+   }
+   // Display links that are not active
+   .nav-link.notactive {
+     display:inline-block;
+   }
+   @include media-breakpoint-down(xs) {
+     background:none;
+     height:auto; //$sc-height-mobile;
+     transform:translate(0px, 0px);
+
+     &.sc-up {
+       // For mobile, don't even hide this
+       transform:translate(0px, 0px);
+     }
+     .nav-link {
+       width:100%;
+       display:block;
+       padding:.5rem .2rem;
+       text-align:center;
+     }
+     // Hide links that are not active
+     .nav-link.notactive {
+       display:none;
+     }
+     // Show links that are not active, if
+     // sc has this toggleable class
+     &.sc-mobile-show .nav-link.notactive {
+       display:inline-block;
+     }
+   }
+ }
+
+
+
+
+
+
+ //
+ //
+ // Primary page layout
+ //
+ //
 .images h2 {
   text-align: right;
   position: relative;
@@ -83,7 +177,7 @@
   cursor: pointer;
   z-index: 1025;
   background: rgba(0, 0, 0, 0.15);
-  @include svg-icon('info');
+  @include svg-icon('info', $defineWidth: false);
   opacity: 0.5;
   @include drop-shadow(0.5);
 
@@ -139,34 +233,6 @@
 
   .ii-details {
     background-color: rgba(0, 0, 0, 0);
-  }
-}
-
-
-
-// Banner elements
-//
-
-// Welcome.
-.welcome {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: right;
-
-  .jumbotron {
-    text-align: right;
-    background: rgba(147, 206, 222, 1);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(147, 206, 222, 1)), color-stop(41%, rgba(117, 189, 209, 1)), color-stop(100%, rgba(73, 165, 191, 1)));
-    background: linear-gradient(to right, rgba(147, 206, 222, 1) 0%, rgba(117, 189, 209, 1) 41%, rgba(73, 165, 191, 1) 100%);
-  }
-
-  .welcome-col {
-    padding-right: 2rem;
-  }
-
-  p {
-    color: white;
-    @include drop-shadow(0.5);
   }
 }
 

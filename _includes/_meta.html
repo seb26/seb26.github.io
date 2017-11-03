@@ -28,7 +28,13 @@
   {%- assign metaThumbWidth = site.thumbnail.width -%}
   {%- assign metaThumbHeight = site.thumbnail.height -%}
 {%- endif -%}
-<title>{{ page.title }} &mdash; {{ site.title }}</title>
+<title>
+  {% if page.titleFull %}
+    {{ page.titleFull }}
+  {% else %}
+    {{ page.title }} &mdash; {{ site.title }}
+  {% endif %}
+</title>
 
 <meta property="og:type" content="{{ page.schemaTypeOG }}" />
 <meta property="og:site_name" content="{{ site.titleLong }}" />

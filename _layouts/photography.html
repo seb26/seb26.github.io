@@ -11,7 +11,7 @@ subcategory_parent: photography
   {%- if cat.name == page.subcategory -%}
   <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
   {%- else -%}
-  <a class="nav-item nav-link notactive" href="{{ cat.name }}">{{ cat.label }}</a>
+  <a class="nav-item nav-link notactive" href="{{ cat.url }}">{{ cat.label }}</a>
   {%- endif -%}
   {% endfor %}
 </nav>
@@ -22,7 +22,7 @@ subcategory_parent: photography
       {{ page.welcome }}
     {% endif %}
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
-    {%- assign imageFilepath = image.file | prepend: 'img/' -%}
+    {%- assign imageFilepath = image.file | prepend: '/img/' -%}
     <meta itemprop="name" content="{{ img.alt }}">
     <meta itemprop="description" content="{{ img.description }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepath | absolute_url }}">
@@ -57,7 +57,7 @@ subcategory_parent: photography
   <div class="row">
     {% for cat in subcategories %}
     <div class="subcategory {{ cat.name }} {% if cat.name == page.subcategory %}active{% endif %}">
-      <a href="/{{ cat.name }}"></a>
+      <a href="{{ cat.url }}"></a>
       <div class="title">{{ cat.label }}</div>
     </div>
     {% endfor %}
