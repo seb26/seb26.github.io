@@ -116,18 +116,6 @@ body.page-blog {
     margin-bottom:1rem;
     @include border-radius-specific($position:bottom);
   }
-  // Comment design elements for the two following boxes.
-  @mixin blog-box-footer {
-    background:#222;
-    color:#ddd;
-    border-radius:.1rem;
-    a {
-      color:white;
-    }
-    a:hover {
-      color:#eee;
-    }
-  }
   // Tile template.
   .tile {
     position:relative;
@@ -166,18 +154,23 @@ body.page-blog {
 
   // Author credit box
   .blog-author-credit {
-    margin-top:6rem;
-    @include blog-box-footer;
-    .photo {
+    margin:6rem auto;
+    background:#ccc;
+    padding:1rem;
+
+    @at-root .image-circle {
+      border-radius:50%;
+      background-position:center center;
       background-size:cover;
-      background-position:center 25%;
     }
-    .description {
-      padding:1.5rem 1rem;
-      font-size:.9rem;
-      line-height:1rem;
-      letter-spacing:.025rem;
-      font-weight:200;
+    .image-circle {
+      width:125px;
+      height:125px;
+      margin:1rem auto;
+    }
+    .unit {
+      text-align:center;
+      width:80%;
     }
     .faux-link {
       @extend .btn;
@@ -192,16 +185,22 @@ body.page-blog {
   // Set the icon sizes.
   $blog-social-icon-size: 24px;
   .blog-social {
-    @include blog-box-footer;
+    background:#222;
+    margin:0 auto;
+    margin-top:3rem;
     padding:0;
     padding-top:$blog-social-icon-size/1.3333333;
-    padding-left:$blog-social-icon-size/1.5;
     min-height:$blog-social-icon-size * 2.5;
     text-align:center;
+    width:12rem;
+    border-radius:.25rem;
+    @include media-breakpoint-down(md) {
+      width:100%;
+      border-radius:none;
+    }
     .icon {
       display:inline-block;
       margin:0 $blog-social-icon-size/2;
-      float:left;
       // Icon size changes
       background-size:$blog-social-icon-size $blog-social-icon-size;
       width:$blog-social-icon-size;
@@ -255,39 +254,59 @@ body.page-blog {
   .item {
     @include make-col-ready();
     @include make-row();
-    color:#eee;
-    background:#222;
 
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.1);
+
+    margin:2rem auto;
+    &:first-of-type {
+      margin-top:0;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding:0;
+    }
+
+    // First, widths
     .info {
-      @include make-col(4);
+      @include make-col(12);
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+    }
+    .image {
+      @include make-col(12);
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
+    }
+    // Then styling.
+    .info {
       padding:1rem;
-      a {
-        color:#eee;
-      }
-      a:hover {
-        color:#fff;
-      }
       .title {
         font-size:1.5rem;
         margin-top:1rem;
+        margin-bottom:2rem;
+        margin-right:1.5rem;
       }
       .line {
         @include tight-font;
         line-height:.8rem;
       }
-    }
-    .image {
-      @include make-col(8);
-    }
-
-    &.item-wide {
-      @include make-col(8);
-    }
-    &.item-narrow {
-      @include make-col(4);
-      .info,
-      .image {
-        @include make-col(12);
+      // Read more button
+      .action {
+        color:#eee;
+        display:block;
+        width:75%;
+        margin-top:4rem;
+        @include media-breakpoint-down(md) {
+          width:100%;
+          margin:2rem auto;
+        }
+        &:hover {
+          color:#fff;
+        }
       }
     }
 

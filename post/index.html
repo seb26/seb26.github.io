@@ -11,28 +11,28 @@ redirect_from:
   - '/recent/'
 ---
 
-<section class="container blog blog-index">
+<section class="container blog blog-index" itemscope itemtype="http://schema.org/Blog">
   <h3>Recent</h3>
   <div class="items">
     {% for post in site.posts %}
-    {% assign mod = forloop.index | modulo: 2 %}
-    {% if mod == 0 %}
-    <section class="item item-narrow">
-    {% else %}
-    <section class="item item-wide">
-    {% endif %}
+    <section class="item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      <meta itemprop="url" content="{{ post.url }}" />
+      <meta itemprop="mainEntityOfPage" content="{{ page.url }}" />{% comment %} The blog index page. {% endcomment %}
+      <meta itemprop="author publisher" content="{{ site.author.name }}" />
       <div class="info">
-        <header class="title">
-          {{ post.title }}
+        <header class="title" itemprop="headline">
+          <a href="{{ post.url }}">{{ post.title }}</a>
         </header>
         <div class="line category">
           <a href="/posts/{{ post.categories[0] }}">{{ post.categories[0] | capitalize }}</a>
         </div>
-        <time class="line date" datetime="{{ post.date }}">{{ post.date | date: "%e %B %Y" | upcase }}</time>
-        <a href="{{ post.url }}" class="btn btn-primary">Read</a>
+        <time class="line date" datetime="{{ post.date }}" itemprop="datePublished dateModified">{{ post.date | date: "%e %B %Y" | upcase }}</time>
+        <a href="{{ post.url }}" class="btn btn-primary action">Read</a>
       </div>
       <div class="image">
-        <img class="fluid" src="{{ post.thumbnail.url }}" />
+        <a href="{{ post.url }}">
+          <img class="fluid" itemprop="image" src="{{ post.thumbnail.url }}" />
+        </a>
       </div>
     </section>
     {% endfor %}

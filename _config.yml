@@ -68,7 +68,7 @@ author:
     github:
       network:  GitHub
       handle:   seb26
-      url:      https://github.com/seb26/  
+      url:      https://github.com/seb26/
 
 # Permalink for blog posts
 permalink: /post/:year/:slug/
@@ -87,6 +87,7 @@ defaults:
       type: "posts"
     values:
       layout: blog
+      author: default
       schemaType: 'BlogPosting'
       schemaTypeOG: 'article'
       thumbnail:

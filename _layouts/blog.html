@@ -1,122 +1,122 @@
 ---
 layout: default
 ---
-<article class="container blog">
-  <header class="blog-head">
-    <div class="unit blog-info">
-      <time class="line blog-date" datetime="{{ page.date }}">
-        <a href="{{ page.url }}">{{ page.date | date: "%e %B %Y" | upcase }}</a>
-      </time>
-      <div class="line blog-category">
-        <a href="/posts/{{ page.categories[0] }}">{{ page.categories[0] | capitalize }}</a>
-      </div>
-      {%- if page.location -%}
-      <div class="line blog-location" itemprop="contentLocation">
-        {{ page.location }}, {{ page.country }}
-      </div>
-      {%- endif -%}
-    </div>
-    <div class="unit blog-title">
-      <h2 itemprop="name headline">{{ page.title }}</h2>
-    </div>
-    <div class="unit-free blog-thumb-primary">
-      <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
-    </div>
-  </header>
-  <main class="unit blog-body">
-    {% if page.gallery %}
-    <p class="blog-scroll-for-photos">
-      <span class="en">Scroll for photos.</span><br />
-      <span class="es" lang="es">Fotos a continuación.</span>
-    </p>
-    {% endif %}
-    <div class="blog-text-content" itemprop="articleBody">
-      {{ content }}
-    </div>
-  </main>
-  {% if page.gallery %}
-  <div class="unit-free blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    <figcaption class="caption">{{ page.gallery.images.size }} images</figcaption>
-    {% for i in page.gallery.images %}
-    {%- assign image_url = i.url | prepend: "/post/img/" | relative_url -%}
-    {%- if i.orientation == 'vertical' -%}
-      {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
-      {%- assign image_width = page.gallery_dimensions.height -%}
-      {%- assign image_height = page.gallery_dimensions.width -%}
-    {%- else -%}
-      {%- assign image_width = page.gallery_dimensions.width -%}
-      {%- assign image_height = page.gallery_dimensions.height -%}
-    {%- endif -%}
-    {%- if i.alt -%}
-      {%- assign image_alt = i.alt -%}
-    {%- else -%}
-      {%- assign image_alt = i.url -%}
-    {%- endif -%}
-    <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-      <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
-        <meta itemprop="width" content="{{ image_width }}" />
-        <meta itemprop="height" content="{{ image_height }}" />
-      {%- if i.caption or i.credit -%}
-      <figcaption class="caption">
-        {%- if i.caption and i.credit -%}
-          {{ i.caption }} (Credit: {{ i.credit }})
-        {%- elsif i.caption -%}
-          {{ i.caption }}
-        {%- elsif i.credit -%}
-          Credit: {{ i.credit }}
+<article class="blog">
+  <div class="container">
+    <header class="blog-head">
+      <div class="unit blog-info">
+        <time class="line blog-date" datetime="{{ page.date }}">
+          <a href="{{ page.url }}">{{ page.date | date: "%e %B %Y" | upcase }}</a>
+        </time>
+        <div class="line blog-category">
+          <a href="/posts/{{ page.categories[0] }}">{{ page.categories[0] | capitalize }}</a>
+        </div>
+        {%- if page.location -%}
+        <div class="line blog-location" itemprop="contentLocation">
+          {{ page.location }}, {{ page.country }}
+        </div>
         {%- endif -%}
-      </figcaption>
-      {%- endif -%}
-      <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
-      {{ i.credit }}
-      {%- else -%}
-      {{ site.author.name }}
-      {%- endif -%}" />
-    </figure>
-    {% endfor %}
-  </div>
-  {% endif %}
-  <div class="unit tile blog-author-credit">
-    <div class="tile-contents">
-      <a class="tile-link" href="/about/">
-        <span class="sr-only">About the author</span></a>
-      <div class="tile-body description">
-        <p>I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world, big places or small.</p>
-        <a class="faux-link" href="/about/">Read more ▸</a>
       </div>
-      <div class="tile-photo photo" style='background-image:url("{{ site.author.photo.url }}");'></div>
+      <div class="unit blog-title">
+        <h2 itemprop="name headline">{{ page.title }}</h2>
+      </div>
+      <div class="unit-free blog-thumb-primary">
+        <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
+      </div>
+    </header>
+    <main class="unit blog-body">
+      {% if page.gallery %}
+      <p class="blog-scroll-for-photos">
+        <span class="en">Scroll for photos.</span><br />
+        <span class="es" lang="es">Fotos a continuación.</span>
+      </p>
+      {% endif %}
+      <div class="blog-text-content" itemprop="articleBody">
+        {{ content }}
+      </div>
+    </main>
+    {% if page.gallery %}
+    <div class="unit-free blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+      <figcaption class="caption">{{ page.gallery.images.size }} images</figcaption>
+      {% for i in page.gallery.images %}
+      {%- assign image_url = i.url | prepend: "/post/img/" | relative_url -%}
+      {%- if i.orientation == 'vertical' -%}
+        {%- comment -%} For vertical images, reverse the dimensions {%- endcomment -%}
+        {%- assign image_width = page.gallery_dimensions.height -%}
+        {%- assign image_height = page.gallery_dimensions.width -%}
+      {%- else -%}
+        {%- assign image_width = page.gallery_dimensions.width -%}
+        {%- assign image_height = page.gallery_dimensions.height -%}
+      {%- endif -%}
+      {%- if i.alt -%}
+        {%- assign image_alt = i.alt -%}
+      {%- else -%}
+        {%- assign image_alt = i.url -%}
+      {%- endif -%}
+      <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
+          <meta itemprop="width" content="{{ image_width }}" />
+          <meta itemprop="height" content="{{ image_height }}" />
+        {%- if i.caption or i.credit -%}
+        <figcaption class="caption">
+          {%- if i.caption and i.credit -%}
+            {{ i.caption }} (Credit: {{ i.credit }})
+          {%- elsif i.caption -%}
+            {{ i.caption }}
+          {%- elsif i.credit -%}
+            Credit: {{ i.credit }}
+          {%- endif -%}
+        </figcaption>
+        {%- endif -%}
+        <meta itemprop="copyrightHolder" content="Photo: {% if i.credit %}
+        {{ i.credit }}
+        {%- else -%}
+        {{ site.author.name }}
+        {%- endif -%}" />
+      </figure>
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
   <div class="unit blog-social">
     <a href="#"><span class="i-facebook icon"></span></a>
     <a href="#"><span class="i-twitter icon"></span></a>
     <a href="#"><span class="i-link icon"></span></a>
   </div>
-  {%- if page.previous.url or page.next.url -%}
-    <div class="container-fluid blog-nextup">
-      {%- comment -%} // Apply the unit class when there is only Next or Previous by itself.
-                      // This means that when alone, it will have its width restricted nicely. {%- endcomment -%}
-      <div class="row {% unless page.previous.url and page.next.url %}unit{% endunless %}">
-        {%- if page.previous.url -%}
-        <div class="col previous">
-          <a href="{{ page.previous.url }}">
-            <div class="label top">← PREVIOUS</div>
-            <img src="{{ page.previous.thumbnail.url }}" alt="{{ page.previous.title }}">
-            <div class="label bottom">{{ page.previous.title }}</div>
-          </a>
-        </div>
-        {%- endif -%}
-        {%- if page.next.url -%}
-        <div class="col next">
-          <a href="{{ page.next.url }}">
-            <div class="label top">NEXT →</div>
-            <img src="{{ page.next.thumbnail.url }}" alt="{{ page.next.title }}">
-            <div class="label bottom">{{ page.next.title }}</div>
-          </a>
-        </div>
-        {%- endif -%}
+  <div class="unit-free blog-author-credit">
+    <div class="unit">
+      <div class="image-circle" style='background-image:url("{{ site.author.photo.url }}");'>
+        <span class="sr-only">About the author, Sebastian Reategui, with image</span>
       </div>
+      <p>I'm <strong>Sebastian</strong>. I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world, big places or small.</p>
+      <a class="faux-link" href="/about/">Read more ▸</a>
     </div>
+  </div>
+  {%- if page.previous.url or page.next.url -%}
+  <div class="container blog-nextup">
+    {%- comment -%} // Apply the unit class when there is only Next or Previous by itself.
+                    // This means that when alone, it will have its width restricted nicely. {%- endcomment -%}
+    <div class="row {% unless page.previous.url and page.next.url %}unit{% endunless %}">
+      {%- if page.previous.url -%}
+      <div class="col previous">
+        <a href="{{ page.previous.url }}">
+          <div class="label top">← PREVIOUS</div>
+          <img src="{{ page.previous.thumbnail.url }}" alt="{{ page.previous.title }}">
+          <div class="label bottom">{{ page.previous.title }}</div>
+        </a>
+      </div>
+      {%- endif -%}
+      {%- if page.next.url -%}
+      <div class="col next">
+        <a href="{{ page.next.url }}">
+          <div class="label top">NEXT →</div>
+          <img src="{{ page.next.thumbnail.url }}" alt="{{ page.next.title }}">
+          <div class="label bottom">{{ page.next.title }}</div>
+        </a>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
   {%- endif -%}
 </article>
 {% include _footer.html %}
