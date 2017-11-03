@@ -1,33 +1,47 @@
+$lg-max-width: 1280px;
 body.page-index {
   color:#fff;
 
-  // Make the sitewide nav NON-sticky.
-  padding-top:0;
-  nav#nav-sitewide {
-    position:static;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    right:auto;
-    z-index:auto;
-    // Font smoothing fix
-    transform:translate3d(0, 0, 0);
-    // Make nav stand out more
-    background:rgba(35,35,35,0.95);
+  // On tablets and higher:
+  // Hide the nav items and make the brand stand out.
+  @include media-breakpoint-up(md) {
+    nav#nav-sitewide {
+      background:none;
+      .navbar-nav {
+        display:none;
+      }
+      .navbar-brand {
+        background:rgba(0,0,0,0.5);
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        margin-top: -.5rem;
+      }
+    }
+  }
+
+  .container {
+    margin:0 auto;
+    @include media-breakpoint-up(xl) {
+      @include make-col-offset(2);
+      @include make-col(10);
+    }
   }
 }
-$category-border: 1px solid purple;
 .site-categories {
-  max-width:960px;
   margin:0 auto;
+  max-width:$lg-max-width;
+  $accent: #372650;
+  $category-border: 4px solid $accent;
 
   .category {
-    border:$category-border;
-    border-bottom:none;
-    &#video,
-    &#design {
+    @include make-col-ready();
+    @include media-breakpoint-down(lg) {
+      @include make-col(12);
+    }
+    @include media-breakpoint-up(lg) {
       @include make-col(6);
     }
+    padding:1rem;
   }
   .image {
     @include make-col-ready();
@@ -37,18 +51,41 @@ $category-border: 1px solid purple;
       order:2;
     }
     padding:0;
+    border:$category-border;
+    border-radius: .25rem;
   }
   .header {
-    @include make-col-ready();
     order:2;
     @include media-breakpoint-up(md) {
       order:1;
     }
-    border-top:$category-border;
+    align-items: center;
+    &:hover {
+      cursor:pointer;
+    }
+    &:hover .header-label {
+      background:#fff;
+      color:$accent;
+      text-decoration:none;
+      cursor:pointer;
+    }
   }
   .header-label {
-    font-size:1.5rem;
-
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    right: 25%;
+    bottom: auto;
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid #fff;
+    border-radius: .25rem;
+    color: #fff;
+    text-align: center;
   }
   img {
     @include fluid();
@@ -57,6 +94,8 @@ $category-border: 1px solid purple;
 
 body.page-index {
   .about {
+    margin:0 auto;
+    max-width:$lg-max-width;
     .image {
       @include circle;
       width:125px;
