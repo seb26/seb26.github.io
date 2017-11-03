@@ -11,23 +11,40 @@ categories:
     label: Video
     url: /video
     thumb:
-      url: "/img/architecture-sebastian-reategui-20170410-medellin-1323.jpg"
+      url: "/img/video-sebastian-reategui-2017-10-fetish-cover-by-lady-arias-thumb-6.jpg"
+  - name: design
+    label: Design
+    url: /design
+    thumb:
+      url: "/img/design-sebastian-reategui-environment-waveform-bedroom-3.jpg"
+  - name: recent
+    label: Recent
+    url: /recent
+    thumb:
+      url: "/post/img/20170901-concierto-de-farc-sebastian-reategui-4087.jpg"
 ---
-<main class="container site-categories">
+<main class="container">
 
-  {% for sitecat in page.categories %}
-  <section class="row">
-    <div class="category">
-      <div class="content">
-        <div class="image">
-          <img src="{{ sitecat.thumb.url }}" />
-        </div>
-        <div class="header">
-          {{ sitecat.label }}
-        </div>
+  <section class="site-categories">
+    <div class="row">
+    {% for sitecat in page.categories %}
+    <section class="category" id="{{ sitecat.name }}">
+      <div class="image">
+        <img src="{{ sitecat.thumb.url }}" />
       </div>
+      <div class="header">
+        <div class="header-label">{{ sitecat.label }}</div>
+      </div>
+    </section>
+    {% endfor %}
     </div>
   </section>
-  {% endfor %}
+
+  <section class="about">
+    <div class="image" style='background-image:url("{{ site.author.photo.url }}")'></div>
+    <div class="text">
+      hi
+    </div>
+  </section>
 
 </main>

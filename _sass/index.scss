@@ -1,19 +1,67 @@
 body.page-index {
   color:#fff;
+
+  // Make the sitewide nav NON-sticky.
+  padding-top:0;
+  nav#nav-sitewide {
+    position:static;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    right:auto;
+    z-index:auto;
+    // Font smoothing fix
+    transform:translate3d(0, 0, 0);
+    // Make nav stand out more
+    background:rgba(35,35,35,0.95);
+  }
 }
+$category-border: 1px solid purple;
 .site-categories {
-  max-width:50%;
+  max-width:960px;
+  margin:0 auto;
 
   .category {
-    display:flex;
-  }
-  .image {
-    flex:0 25% 25%;
-    img {
-      @include fluid();
+    border:$category-border;
+    border-bottom:none;
+    &#video,
+    &#design {
+      @include make-col(6);
     }
   }
+  .image {
+    @include make-col-ready();
+    @include make-col(12);
+    order:1;
+    @include media-breakpoint-up(md) {
+      order:2;
+    }
+    padding:0;
+  }
   .header {
-    flex: 0 75%;
+    @include make-col-ready();
+    order:2;
+    @include media-breakpoint-up(md) {
+      order:1;
+    }
+    border-top:$category-border;
+  }
+  .header-label {
+    font-size:1.5rem;
+
+  }
+  img {
+    @include fluid();
+  }
+}
+
+body.page-index {
+  .about {
+    .image {
+      @include circle;
+      width:125px;
+      height:125px;
+      margin:0 auto;
+    }
   }
 }
