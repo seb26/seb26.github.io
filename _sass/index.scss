@@ -83,10 +83,8 @@ $tile-dimension-container: 1140px;
     &.tile-xl-wide {
       // For tiles with this class
       // * Remove the height restriction
-      // * Stay width 100% until xl
-      @media (min-width: 576px) and (max-width: 991px) {
-        // The mixin "media-breakpoint-between" doesn't work?
-        // Using this instead.
+      // * Stay width 100% until md
+      @include media-breakpoint-down(md) {
         max-height:none;
         max-width:$tile-dimension-xs;
       }
