@@ -1,9 +1,6 @@
-# 2017-11-03
-* Blog
-  * On mobile, blog entries do not have any padding.
-  * Category now only shows the word "Post" instead of actual categories
+## 2017-11-03
 
-# Ongoing
+## Ongoing
 * Photo selection
   * Refine all selected images for all categories of Photography.
 * Design

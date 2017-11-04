@@ -9,7 +9,9 @@ layout: default
           <a href="{{ page.url }}">{{ page.date | date: "%e %B %Y" | upcase }}</a>
         </time>
         <div class="line blog-category">
-          <a href="/posts/{{ page.categories[0] }}">{{ page.categories[0] | capitalize }}</a>
+          <a href="/posts/{{ page.categories[1] }}">
+            {{ page.categories[1] | capitalize }}
+          </a>
         </div>
         {%- if page.location -%}
         <div class="line blog-location" itemprop="contentLocation">

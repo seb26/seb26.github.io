@@ -40,7 +40,7 @@ $tile-dimension-xs: 100vw;
 $tile-dimension-sm: 50vw;
 $tile-dimension-xl: 512px;
 $tile-dimension-container: 1140px;
-.container {
+body.page-index main.container {
   padding:0;
   margin:0;
   @include media-breakpoint-up(xl) {
