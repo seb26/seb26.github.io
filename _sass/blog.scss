@@ -207,9 +207,11 @@ body.page-blog {
   // Next and previous entries.
   .blog-nextup {
     margin:6rem auto;
-    .col {
+    .previous,
+    .next {
       padding-left:.25rem;
       padding-right:.25rem;
+      margin:.5rem auto;
     }
     a, a:hover {
       color:inherit;

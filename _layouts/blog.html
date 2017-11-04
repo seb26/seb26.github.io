@@ -100,7 +100,7 @@ layout: default
                     // This means that when alone, it will have its width restricted nicely. {%- endcomment -%}
     <div class="row {% unless page.previous.url and page.next.url %}unit{% endunless %}">
       {%- if page.previous.url -%}
-      <div class="col previous">
+      <div class="col-12 col-sm-6 previous">
         <a href="{{ page.previous.url }}">
           <div class="label top">← PREVIOUS</div>
           <img src="{{ page.previous.thumbnail.url }}" alt="{{ page.previous.title }}">
@@ -109,7 +109,7 @@ layout: default
       </div>
       {%- endif -%}
       {%- if page.next.url -%}
-      <div class="col next">
+      <div class="col-12 col-sm-6 next">
         <a href="{{ page.next.url }}">
           <div class="label top">NEXT →</div>
           <img src="{{ page.next.thumbnail.url }}" alt="{{ page.next.title }}">
