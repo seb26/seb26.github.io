@@ -75,13 +75,19 @@ layout: default
         </li>
         {%- endif -%}
         {%- if design.technique -%}
-        <li class="detail technique"><strong>Technique</strong>: {{ design.technique }}</li>
+        <li class="detail technique">
+          <strong>Technique</strong>: {{ design.technique }}
+        </li>
         {%- endif -%}
         {%- if design.software -%}
-        <li class="detail software"><strong>Software</strong>: {{ design.software }}</li>
+        <li class="detail software">
+          <strong>Software</strong>: {{ design.software }}
+        </li>
         {%- endif -%}
         {%- if design.dimensions -%}
-        <li class="detail dimensions"><strong>Dimensions</strong>: {{ design.dimensions }}</li>
+        <li class="detail dimensions">
+          <strong>Dimensions</strong>: {{ design.dimensions }}
+        </li>
         {%- endif -%}
         {%- for other in design.other -%}
         <li class="detail">{{ other }}</li>
