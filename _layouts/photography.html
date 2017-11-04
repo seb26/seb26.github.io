@@ -53,13 +53,3 @@ subcategory_parent: photography
 
 </main>
 {{ content }}
-<footer class="container photography-footer">
-  <div class="row">
-    {% for cat in subcategories %}
-    <div class="subcategory {{ cat.name }} {% if cat.name == page.subcategory %}active{% endif %}">
-      <a href="{{ cat.url }}"></a>
-      <div class="title">{{ cat.label }}</div>
-    </div>
-    {% endfor %}
-  </div>
-</footer>
