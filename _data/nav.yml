@@ -1,16 +1,21 @@
 items:
-  - label: Photography
+  - name: photography
+    label: Photography
     file: /photography/photojournalism.html
     url: "/photo/photojournalism"
-  - label: Video
+  - name: video
+    label: Video
     file: /video.html
     url: /video
-  - label: Design
+  - name: design
+    label: Design
     file: /design.html
     url: /design
-  - label: Recent
+  - name: posts
+    label: Recent
     file: /posts/index.html
     url: /posts/
-  - label: About&nbsp;&sdot;&nbsp;Contact
+  - name: about
+    label: About&nbsp;&sdot;&nbsp;Contact
     file: /about.html
     url: /about

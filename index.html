@@ -16,7 +16,7 @@ categories:
     label: Design
     url: /design
     thumb:
-      url: "/img/design-sebastian-reategui-environment-waveform-bedroom-3.jpg"
+      url: "/img/design-sebastian-reategui-environment-waveform-bedroom-8.jpg"
   - name: recent
     label: Recent
     url: /recent
@@ -25,27 +25,25 @@ categories:
 ---
 <main class="container">
 
-  <section class="row site-categories">
+  <section class="tiles">
     {% for sitecat in page.categories %}
-    <section class="category" id="{{ sitecat.name }}">
-      <div class="image">
-        <a href="{{ sitecat.url }}">
-          <img src="{{ sitecat.thumb.url }}" />
+    <section class="tile categories" id="{{ sitecat.name }}">
+      <div class="image" style="background-image:url('{{ sitecat.thumb.url }}');">
+        <a class="label-box" href="{{ sitecat.url }}">
+          <header class="label">{{ sitecat.label | downcase }}</header>
         </a>
-      </div>
-      <div class="header">
-        <a class="header-label" href="{{ sitecat.url }}">{{ sitecat.label }}</a>
       </div>
     </section>
     {% endfor %}
-    </div>
-  </section>
-
-  <section class="about">
-    <div class="image" style='background-image:url("{{ site.author.photo.url }}")'></div>
-    <div class="text">
-      <p>I'm <strong>Sebastian</strong>. I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world, big places or small.</p>
-      <a class="faux-link" href="/about/">Read more ▸</a>
+    <section class="tile about" id="about">
+      <div class="photo-profile" style='background-image:url("{{ site.author.photo.url }}")'></div>
+      <p class="text">
+        I'm <strong>Sebastian</strong>.
+        I'm an aspiring photojournalist, videographer and post-production editor.
+        I like showing people what's going on in the world, big places or small.
+      </p>
+      <a class="action" href="/about">Read more ▸</a>
+    </section>
     </div>
   </section>
 

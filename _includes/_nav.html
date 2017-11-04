@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-md navbar-dark" id="nav-sitewide" role="navigation">
+  <nav class="navbar navbar-expand-sm navbar-dark" id="nav-sitewide" role="navigation">
       <a class="nav-item nav-link navbar-brand" href="/">Sebastian Reategui</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-01" aria-controls="nav-01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-icon i-caret-bottom"></span>
@@ -7,15 +7,12 @@
         <div class="navbar-nav">
           {%- for item in site.data.nav.items -%}
             {%- assign item_needs_active = false -%}
-            {%- assign page_name_clean = page.name | remove: '.html' -%}
-            {%- assign item_file_clean = item.file | remove: '/' | remove: '.html' -%}
-            {%- if item_file_clean == 'index' -%}
-              {%- if layout.subcategory_parent == 'photography' -%}
-                {%- assign item_needs_active = true -%}
-              {%- else -%}
-                {%- assign item_needs_active = false -%}
-              {%- endif -%}
-            {%- elsif page_name_clean == item_file_clean -%}
+            {%- assign page_name_clean = page.permalink | remove: '/' -%}
+            {%- if item.name == page_name_clean  -%}
+              {%- comment -%} The link is the same as the current page, so mark it as active. {%- endcomment -%}
+              {%- assign item_needs_active = true -%}
+            {%- elsif item.name == layout.subcategory_parent -%}
+              {%- comment -%} The link is not the same as the current page, but it matches the subcategory parent. {%- endcomment -%}
               {%- assign item_needs_active = true -%}
             {%- else -%}
               {%- assign item_needs_active = false -%}
@@ -23,7 +20,9 @@
             {%- if item_needs_active != true -%}
           <a class="nav-item nav-link" href="{{ item.url }}">{{ item.label }}</a>
             {%- else -%}
-          <a class="nav-item nav-link active" href="{{ item.url }}">{{ item.label }}<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="{{ item.url }}">{{ item.label }}
+            <span class="sr-only">(current)</span>
+          </a>
             {%- endif -%}
           {%- endfor -%}
           <!-- This element aims to balance the other items in the exact center, but itself is otherwise kept invisible. d-none d-sm-block avoids showing it in mobile viewports. -->

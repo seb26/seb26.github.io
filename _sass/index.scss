@@ -1,106 +1,165 @@
-$lg-max-width: 1280px;
 body.page-index {
   color:#fff;
 
-  // On tablets and higher:
-  // Hide the nav items and make the brand stand out.
-  @include media-breakpoint-up(md) {
+  // On sm and higher:
+  // * Hide the nav items
+  // * Make the brand stand out by being centered.
+  // * Unsticky the nav.
+  @include media-breakpoint-up(sm) {
+    padding:0;
     nav#nav-sitewide {
       background:none;
+      position:static;
+      top:auto;
+      left:auto;
+      right:auto;
+      bottom:auto;
+      z-index:auto;
       .navbar-nav {
         display:none;
       }
       .navbar-brand {
-        background:rgba(0,0,0,0.5);
-        padding-top: .5rem;
-        padding-bottom: .5rem;
-        margin-top: -.5rem;
+        background:transparent;
+        width:100%;
+        text-align:center;
+        border:none;
+        // Hack for font rendering.
+        transform:translate3d(0,0,0);
+        &:hover {
+          border:none;
+        }
       }
     }
   }
+}
 
-  .container {
+// Widths.
+$tile-spacing:5px;
+$tile-border-radius:.2rem;
+$tile-dimension-xs: 100vw;
+$tile-dimension-sm: 50vw;
+$tile-dimension-xl: 512px;
+$tile-dimension-container: 1140px;
+.container {
+  padding:0;
+  margin:0;
+  @include media-breakpoint-up(xl) {
     margin:0 auto;
-    @include media-breakpoint-up(xl) {
-      @include make-col-offset(2);
-      @include make-col(10);
-    }
   }
 }
-.site-categories {
-  margin:0 auto;
-  max-width:$lg-max-width;
-  $accent: #372650;
-  $category-border: 4px solid $accent;
-
-  .category {
-    @include make-col-ready();
-    @include media-breakpoint-down(lg) {
-      @include make-col(12);
-    }
-    @include media-breakpoint-up(lg) {
-      @include make-col(6);
-    }
-    padding:1rem;
+.tiles {
+  margin:0;
+  @include media-breakpoint-up(xl) {
+    margin:0 2rem;
   }
-  .image {
-    @include make-col-ready();
-    @include make-col(12);
-    order:1;
-    @include media-breakpoint-up(md) {
-      order:2;
-    }
+  width:100vw;
+  @include media-breakpoint-up(xl) {
+    width: $tile-dimension-container;
+  }
+  padding:0;
+  display: flex;
+  flex-wrap: wrap;
+  .tile {
+    position:relative;
     padding:0;
-    border:$category-border;
-    border-radius: .25rem;
-  }
-  .header {
-    order:2;
-    @include media-breakpoint-up(md) {
-      order:1;
+    margin:0;
+    width:100%;
+    max-width:$tile-dimension-xs;
+    max-height:$tile-dimension-xs;
+    @include media-breakpoint-up(sm) {
+      border-radius:0;
+      max-width:$tile-dimension-sm;
+      max-height:$tile-dimension-sm;
     }
-    align-items: center;
-    &:hover {
-      cursor:pointer;
+    @include media-breakpoint-up(xl) {
+      border-radius:$tile-border-radius;
+      max-width:$tile-dimension-xl;
+      max-height:$tile-dimension-xl;
     }
-    &:hover .header-label {
-      background:#fff;
-      color:$accent;
+    @include media-breakpoint-up(xl) {
+      margin:$tile-spacing;
+    }
+
+    .image {
+      height:0;
+      padding-bottom:100%;
+      background-size:cover;
+      background-position: center center;
+      z-index:0;
+      width:100%;
+      @include media-breakpoint-up(sm) {
+        border-radius:0;
+      }
+      @include media-breakpoint-up(xl) {
+        border-radius:$tile-border-radius;
+      }
+    }
+    .label-box {
+      width:$tile-dimension-xs;
+      height:$tile-dimension-xs;
+      @include media-breakpoint-up(sm) {
+        width:$tile-dimension-sm;
+        height:$tile-dimension-sm;
+      }
+      @include media-breakpoint-up(xl) {
+        width:$tile-dimension-xl;
+        height:$tile-dimension-xl;
+      }
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+    }
+    .label {
+      z-index:3;
+      padding: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.1rem;
+      font-weight: 300;
+      border: 2px solid #fff;
+      border-radius: .25rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      display: inline;
+      width: auto;
+      flex: 0 0 auto;
+      text-align: center;
+      margin: 0 auto;
+    }
+    // Now, when hovering over .link,
+    // apply the following effects
+    .label-box:hover {
+      background: rgba(0, 0, 0, .1);
       text-decoration:none;
-      cursor:pointer;
+      .label {
+        background:rgba(255,255,255,0.95);
+        color:#222;
+      }
     }
-  }
-  .header-label {
-    position: absolute;
-    top: 40%;
-    left: 25%;
-    right: 25%;
-    bottom: auto;
-    padding: 1rem;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    font-weight: 300;
-    letter-spacing: .05rem;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid #fff;
-    border-radius: .25rem;
-    color: #fff;
-    text-align: center;
-  }
-  img {
-    @include fluid();
   }
 }
 
-body.page-index {
-  .about {
+body.page-index section.about {
+  background:#222;
+  padding:3rem 6rem;
+  .photo-profile {
+    @include circle;
+    width:150px;
+    height:150px;
     margin:0 auto;
-    max-width:$lg-max-width;
-    .image {
-      @include circle;
-      width:125px;
-      height:125px;
-      margin:0 auto;
-    }
+  }
+  .text {
+    margin:2rem auto;
+    transform:translate3d(0,0,0);
+    text-align:center;
+  }
+  .action {
+    margin: 2rem auto 1rem auto;
+    width: 10rem;
+    border: 2px solid royalblue;
+    border-radius:.25rem;
+    display: block;
+    padding: 1rem;
+    text-align: center;
   }
 }
