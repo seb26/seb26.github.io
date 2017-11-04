@@ -80,6 +80,18 @@ $tile-dimension-container: 1140px;
       margin:$tile-spacing;
     }
 
+    &.tile-xl-wide {
+      // For tiles with this class
+      // * Remove the height restriction
+      // * Stay width 100% until xl
+      @media (min-width: 576px) and (max-width: 991px) {
+        // The mixin "media-breakpoint-between" doesn't work?
+        // Using this instead.
+        max-height:none;
+        max-width:$tile-dimension-xs;
+      }
+    }
+
     .image {
       height:0;
       padding-bottom:100%;
@@ -139,9 +151,42 @@ $tile-dimension-container: 1140px;
   }
 }
 
-body.page-index section.about {
-  background:#222;
+
+//
+// Footer items
+// * These may have no image background.
+
+// Colors first.
+$footer-text: #FFF;
+$footer-bg: #222;
+$footer-border: #4e3671;
+$footer-border-bright: #734fa6;
+.tile.footer {
+  background-color:$footer-bg;
   padding:3rem 6rem;
+  @include media-breakpoint-down(md) {
+    padding:3rem 1rem;
+  }
+  .action {
+    background:none;
+    margin: 2rem auto 1rem auto;
+    width: 10rem;
+    border: 2px solid $footer-border;
+    border-radius:.25rem;
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    color:$footer-border-bright;
+    &:hover {
+      background:$footer-border;
+      color:$footer-text;
+      text-decoration:none;
+    }
+  }
+}
+
+// Colors
+body.page-index section.about {
   .photo-profile {
     @include circle;
     width:150px;
@@ -152,14 +197,51 @@ body.page-index section.about {
     margin:2rem auto;
     transform:translate3d(0,0,0);
     text-align:center;
+    font-weight:400;
+  }
+}
+
+body.page-index section.contact {
+  .social {
+    text-align:center;
+    margin:3rem auto;
+    .icon {
+      display: inline-block;
+      margin: 0 12px;
+      background-size: 24px 24px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  header {
+    text-align: center;
+    font-size: 1.25rem;
+    letter-spacing: 0.075rem;
+    font-weight: 300;
+  }
+  form {
+    max-width:512px;
+    margin:0 auto;
+  }
+  .form-control {
+    color:$footer-text;
+    background-color:$footer-bg;
+    border: 1px solid $footer-border;
+    margin:1rem auto;
+    &::placeholder {
+      color:$footer-border-bright;
+      letter-spacing:0.05rem;
+      font-weight:300;
+    }
   }
   .action {
-    margin: 2rem auto 1rem auto;
-    width: 10rem;
-    border: 2px solid royalblue;
-    border-radius:.25rem;
-    display: block;
-    padding: 1rem;
-    text-align: center;
+    // Custom styling for the 'Send' button
+    // Makes it look flusher with the text fields
+    margin:0;
+    padding:.5rem;
+    width:100%;
+  }
+  textarea {
+    height: 100px;
   }
 }

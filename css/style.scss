@@ -4,7 +4,17 @@
 // Bootstrap
 @import "bootstrap-custom";
 // Bytesize icons. View the file for credits.
-$bytesize_icons_desired: link, caret-bottom, arrow-top, info, arrow-left, play, twitter, facebook, instagram;
+$bytesize_icons_desired:
+    link
+  , caret-bottom
+  , arrow-top
+  , info
+  , arrow-left
+  , play
+  , twitter
+  , facebook
+  , instagram
+  , ellipsis-horizontal;
 @import "bytesize-icons-inline";
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');

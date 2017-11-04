@@ -35,7 +35,7 @@ categories:
       </div>
     </section>
     {% endfor %}
-    <section class="tile about" id="about">
+    <section class="tile tile-xl-wide footer about" id="about">
       <div class="photo-profile" style='background-image:url("{{ site.author.photo.url }}")'></div>
       <p class="text">
         I'm <strong>Sebastian</strong>.
@@ -44,7 +44,21 @@ categories:
       </p>
       <a class="action" href="/about">Read more ▸</a>
     </section>
+    <section class="tile tile-xl-wide footer contact" id="contact">
+      <header>Contact me</header>
+      <div class="social">
+        <a href="{{ site.author.social_media.instagram.url }}" title="Instagram"><span class="i-instagram icon"></span></a>
+        <a href="{{ site.author.social_media.twitter.url }}" title="Twitter"><span class="i-twitter icon"></span></a>
+        <a href="/about" title="More social media..."><span class="i-ellipsis-horizontal icon"></span></a>
+      </div>
+      <form method="POST" action="http://formspree.io/seb.reategui@gmail.com">
+        <input class="form-control" type="email" name="email"  placeholder="Your email">
+        <textarea class="form-control" name="message" placeholder="Your message"></textarea>
+        <button class="action" href="/about" type="submit">Send</button>
+      </form>
+    </section>
     </div>
   </section>
 
 </main>
+{% include _footer.html %}
