@@ -21,23 +21,33 @@
    background:none;
  }
  .sc {
-   /* Bootstrap: .fixed-bottom [MODIFIED] */
-   position: fixed;
-   top:auto;
-   bottom:0;
-   left: 0;
-   right: 0;
-   z-index: 1030;
-   /* Bootstrap: .justify-content-center */
-   justify-content: center !important;
+   &.sticky {
+     position: fixed;
+     top:auto;
+     bottom:0;
+     left: 0;
+     right: 0;
+     z-index: 1030;
+     justify-content: center;
 
-   transition: all 0.4s ease-in-out;
-   height:$sc-height;
-   background: rgba(0, 0, 0, .5);
-   padding:.5rem;
+     transition: all 0.4s ease-in-out;
+     height:$sc-height;
+     background: rgba(0, 0, 0, .5);
+     padding:.5rem;
 
-   &.sc-up {
-     transform:translate(0px, $sc-height);
+     &.sc-up {
+       transform:translate(0px, $sc-height);
+     }
+   }
+   &.static {
+     position:static;
+     top:auto;
+     bottom:auto;
+     left:auto;
+     right:auto;
+     z-index:auto;
+     width:100%;
+     display:block;
    }
 
    .nav-link {

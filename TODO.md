@@ -1,4 +1,5 @@
-## 2017-11-03
+## 2017-11-04
+* On photography pages, when the last photo is reached, show and maintain the subcategory nav visible.
 
 ## Ongoing
 * Photo selection

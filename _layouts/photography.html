@@ -5,16 +5,6 @@ subcategory_parent: photography
 {% assign subcategories = site.data.photography.subcategories %}
 {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
 
-<div class="sc-hover"></div>
-<nav class="nav sc">
-  {% for cat in subcategories %}
-  {%- if cat.name == page.subcategory -%}
-  <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
-  {%- else -%}
-  <a class="nav-item nav-link notactive" href="{{ cat.url }}">{{ cat.label }}</a>
-  {%- endif -%}
-  {% endfor %}
-</nav>
 <main class="images">
 
   {% for image in page.images %}
@@ -52,4 +42,14 @@ subcategory_parent: photography
   {% endfor %}
 
 </main>
+<div class="sc-hover"></div>
+<nav class="nav sc sticky">
+  {% for cat in subcategories %}
+  {%- if cat.name == page.subcategory -%}
+  <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
+  {%- else -%}
+  <a class="nav-item nav-link notactive" href="{{ cat.url }}">{{ cat.label }}</a>
+  {%- endif -%}
+  {% endfor %}
+</nav>
 {{ content }}

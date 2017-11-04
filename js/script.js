@@ -1,12 +1,24 @@
 $(document).ready(function() {
 
-  /* For: ALL */
+  // http://upshots.org/javascript/jquery-test-if-element-is-in-viewport-visible-on-screen
+  // Mike Dunn.
+  $.fn.visible = function(){
+    var viewport = {};
+    viewport.top = $(window).scrollTop();
+    viewport.bottom = viewport.top + $(window).height();
+    var bounds = {};
+    bounds.top = this.offset().top;
+    bounds.bottom = bounds.top + this.outerHeight();
+    return ((bounds.top <= viewport.bottom) && (bounds.bottom >= viewport.top));
+  };
+
 
   // Use Unveil to dynamically load images with this class
   // $(".load-dyn").unveil(200);
 
 
-
+  // SUBCATEGORY NAVIGATOR
+  //
   // Nominate the element to act as the dynamic header
   var navTarget = '.sc';
   // Nomiante the invisible element which
@@ -27,6 +39,20 @@ $(document).ready(function() {
           didScroll = false;
       }
   }, 250);
+  function stickyHeaderToggle() {
+    // Check if we are on the last image. Make the nav:
+    // * become static again
+    // * appear contiguously at the end of the page.
+    if ( $('.image:last-child').visible() ) {
+      $(navTarget).removeClass('sticky').addClass('static').addClass('sc-mobile-show');
+      $(navTargetHover).hide();
+    }
+    else {
+      $(navTarget).addClass('sticky').removeClass('static').removeClass('sc-mobile-show');
+      $(navTargetHover).show();
+    }
+    return;
+  }
   function hasScrolled() {
     var st = $(this).scrollTop();
     // Make sure they scroll more than delta
@@ -35,15 +61,15 @@ $(document).ready(function() {
     // If they scrolled down and are past the navbar, add class .nav-up.
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
+        // On Scroll Down
         $(navTarget).removeClass('sc-down').addClass('sc-up');
-        // Also hide the expanded mobile panel when user scrolls back down
-        $(navTarget).removeClass('sc-mobile-show');
+        stickyHeaderToggle();
     } else {
-        // Scroll Up
+        // On Scroll Up
         if(st + $(window).height() < $(document).height()) {
             $(navTarget).removeClass('sc-up').addClass('sc-down');
         }
+        stickyHeaderToggle();
     }
     lastScrollTop = st;
   };
@@ -55,6 +81,7 @@ $(document).ready(function() {
     e.preventDefault();
     $(navTarget).toggleClass('sc-mobile-show');
   });
+
 
 
   /* For: index.html
