@@ -37,7 +37,7 @@ subcategory_parent: photography
             <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
             <a href="{{ image.url-fb }}">Facebook</a> &sdot;
             <a class="tumblr-share-button"
-            data-content="{{ imageFilepath }}"
+            data-content="{{ imageFilepath | absolute_url }}"
             data-caption="{{ imageAltText }}"
             data-color="black"
             data-notes="none"
