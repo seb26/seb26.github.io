@@ -121,6 +121,8 @@ nav#nav-sitewide {
   .nav-item {
     transition: all .15s ease-in-out;
     &:hover, &.active {
+      // Apply a subtle border to the active/hovered item.
+      // So user's current page presence is clearer.
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
   }
@@ -132,6 +134,13 @@ nav#nav-sitewide {
   // On mobile/tablet:
   // Make items align to right
   @include media-breakpoint-down(md) {
+    .nav-item,
+    .nav-item.active,
+    .nav-item:hover {
+      // Remove the subtle border because it does not look
+      // very good inside the list.
+      border:none;
+    }
     .navbar-nav {
       text-align:right;
     }
