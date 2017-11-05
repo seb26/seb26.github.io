@@ -11,6 +11,11 @@
 
 $sc-height:         60px;
 $sc-height-mobile:  240px;
+@mixin sc-width-xl {
+  @include media-breakpoint-up(xl) {
+    max-width:992px;
+  }
+}
 .sc-hover {
   position:fixed;
   width:100%;
@@ -24,7 +29,8 @@ $sc-height-mobile:  240px;
   // Define the transitions here so they apply between class changes.
   transition: transform 0.4s ease-in-out;
   .nav-link {
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out
+              , opacity 0s;
   }
   &.sticky {
     position: fixed;
@@ -39,6 +45,8 @@ $sc-height-mobile:  240px;
     background: rgba(0, 0, 0, .5);
     padding:.5rem 2rem;
     display:flex;
+    margin:0 auto;
+    @include border-radius-specific(top);
 
     &.sc-up {
       transform:translate(0px, $sc-height);
@@ -47,19 +55,19 @@ $sc-height-mobile:  240px;
     .nav-link {
       background:none;
       padding: .5rem 1rem;
-      color: $accent-purple-bright;
-      border: 2px solid $accent-purple;
-      border-radius: .25rem;
+      color: #fff;
       margin:0 .5rem;
       text-align: center;
       flex-basis: 0;
       flex-grow: 1;
+      align-self: center;
       max-width: 100%;
+      border-radius:.25rem;
+      @include drop-shadow;
 
       &.active,
       &:hover {
         background:rgba(255,255,255,.25);
-        border-radius:.25rem;
         color:#fff;
       }
     }
@@ -114,6 +122,7 @@ $sc-height-mobile:  240px;
         }
       }
     }
+    @include sc-width-xl;
   }
   &.static {
     position:static;
@@ -125,6 +134,7 @@ $sc-height-mobile:  240px;
     width:100%;
     display:flex;
     padding:1rem 2rem;
+    margin:0 auto;
 
     .nav-link {
       background:none;
@@ -132,7 +142,7 @@ $sc-height-mobile:  240px;
       color: $accent-purple-bright;
       border: 2px solid $accent-purple;
       border-radius: .25rem;
-      margin: .5rem 0;
+      margin: .5rem;
       text-align: center;
       flex-basis: 0;
       flex-grow: 1;
@@ -148,8 +158,10 @@ $sc-height-mobile:  240px;
     @include media-breakpoint-down(sm) {
       .nav-link {
         flex: 0 0 100%;
+        margin:.5rem 0;
       }
     }
+    @include sc-width-xl;
   }
 }
 

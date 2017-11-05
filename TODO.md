@@ -1,4 +1,5 @@
 ## 2017-11-04
+* Fix metadata for index page. In OG title, it is showing as "Sebastian Reategui:" with just a stray colon.
 
 ## Ongoing
 * Photo selection

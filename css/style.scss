@@ -32,7 +32,7 @@ $bytesize_icons_desired:
   max-width:100%;
   height:auto;
 }
-@mixin border-radius-specific($position:all, $amount:.2rem) {
+@mixin border-radius-specific($position:all, $amount:.25rem) {
   @if $position == 'top' {
     border-radius:none;
     border-top-left-radius:$amount;

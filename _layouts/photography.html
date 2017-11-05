@@ -9,14 +9,21 @@ subcategory_parent: photography
 
   {% for image in page.images %}
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
-    {%- assign imageFilepath = image.file | prepend: '/img/' -%}
-    <meta itemprop="name" content="{{ img.alt }}">
-    <meta itemprop="description" content="{{ img.description }}">
+    {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
+    <meta itemprop="name" content="{{ image.alt }}">
+    <meta itemprop="description" content="{{ image.description }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepath | absolute_url }}">
     <meta itemprop="creator" content="Sebastian Reategui">
-    <meta itemprop="dateCreated" content="{{ img.date }}">
-    <meta itemprop="datePublished" content="{{ img.date }}">
-    <img class="image-file" src="{{ imageFilepath }}" alt="{{ image.alt-text }}" />
+    <meta itemprop="dateCreated" content="{{ image.date }}">
+    <meta itemprop="datePublished" content="{{ image.date }}">
+    {%- if image.alt -%}
+      {%- assign imageAltText = image.alt -%}
+    {%- elsif image.description -%}
+      {%- assign imageAltText = image.description -%}
+    {%- else -%}
+      {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
+    {% endif %}
+    <img class="image-file" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
     <div class="ii">
       <div class="ii-body">
         <div class="arrow"></div>
@@ -25,11 +32,16 @@ subcategory_parent: photography
         </div>
         <h3 class="ii-details">
           <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
-          <div class="ii-date">{{ image.date }}</div>
+          <time class="ii-date" datetime="{{ page.date }}">{{ image.date | date: "%e %B %Y" }}</time>
           <div class="ii-share-links">
             <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
             <a href="{{ image.url-fb }}">Facebook</a> &sdot;
-            <a href="{{ image.url-tumblr }}">Tumblr</a>
+            <a class="tumblr-share-button"
+            data-content="{{ imageFilepath }}"
+            data-caption="{{ imageAltText }}"
+            data-color="black"
+            data-notes="none"
+            href="https://embed.tumblr.com/share">Tumblr</a>
           </div>
         </h3>
       </div>
@@ -50,3 +62,7 @@ subcategory_parent: photography
   {% endfor %}
 </nav>
 {{ content }}
+<script>
+/* Tumblr */
+!function(d,s,id){var js,ajs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://assets.tumblr.com/share-button.js";ajs.parentNode.insertBefore(js,ajs);}}(document, "script", "tumblr-js");
+</script>
