@@ -157,8 +157,8 @@ body.page-index main.container {
 // Colors first.
 $footer-text: #FFF;
 $footer-bg: #222;
-$footer-border: #4e3671;
-$footer-border-bright: #734fa6;
+$footer-border: $accent-purple;
+$footer-border-bright: $accent-purple-bright;
 .tile.footer {
   background-color:$footer-bg;
   padding:3rem 6rem;

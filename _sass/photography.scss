@@ -9,98 +9,149 @@
  * JS hover means it will show/hide
  * the subcat nav. */
 
- $sc-height: 60px;
- $sc-height-mobile: 240px;
- .sc-hover {
-   position:fixed;
-   width:100%;
-   height:$sc-height;
-   bottom:0;
-   left:0;
-   z-index:1025;
-   background:none;
- }
- .sc {
-   &.sticky {
-     position: fixed;
-     top:auto;
-     bottom:0;
-     left: 0;
-     right: 0;
-     z-index: 1030;
-     justify-content: center;
+$sc-height:         60px;
+$sc-height-mobile:  240px;
+.sc-hover {
+  position:fixed;
+  width:100%;
+  height:$sc-height;
+  bottom:0;
+  left:0;
+  z-index:1025;
+  background:none;
+}
+.sc {
+  // Define the transitions here so they apply between class changes.
+  transition: transform 0.4s ease-in-out;
+  .nav-link {
+    transition: all 0.1s ease-in-out;
+  }
+  &.sticky {
+    position: fixed;
+    top:auto;
+    bottom:0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    justify-content: center;
 
-     transition: all 0.4s ease-in-out;
-     height:$sc-height;
-     background: rgba(0, 0, 0, .5);
-     padding:.5rem;
+    height:$sc-height;
+    background: rgba(0, 0, 0, .5);
+    padding:.5rem 2rem;
+    display:flex;
 
-     &.sc-up {
-       transform:translate(0px, $sc-height);
-     }
-   }
-   &.static {
-     position:static;
-     top:auto;
-     bottom:auto;
-     left:auto;
-     right:auto;
-     z-index:auto;
-     width:100%;
-     display:block;
-   }
+    &.sc-up {
+      transform:translate(0px, $sc-height);
+    }
 
-   .nav-link {
-     display:inline-block;
-     margin:.15rem 0;
+    .nav-link {
+      background:none;
+      padding: .5rem 1rem;
+      color: $accent-purple-bright;
+      border: 2px solid $accent-purple;
+      border-radius: .25rem;
+      margin:0 .5rem;
+      text-align: center;
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
 
-     color:#fff;
-     @include drop-shadow(.9);
-     font-weight:500;
-     cursor:pointer;
-     background:rgba(255,255,255,.075);
-   }
-   .nav-link.active,
-   .nav-link:hover {
-     background:rgba(255,255,255,.25);
-     border-radius:.25rem;
-     color:#fff;
-   }
-   // Display links that are not active
-   .nav-link.notactive {
-     display:inline-block;
-   }
-   @include media-breakpoint-down(xs) {
-     background:none;
-     height:auto; //$sc-height-mobile;
-     transform:translate(0px, 0px);
+      &.active,
+      &:hover {
+        background:rgba(255,255,255,.25);
+        border-radius:.25rem;
+        color:#fff;
+      }
+    }
+    // Display links that are not active
+    .nav-link.notactive {
+      display:inline-block;
+    }
+    @include media-breakpoint-down(sm) {
+      // On mobile:
+      // * Show the list vertically
+      // * With JS, hide all items except for .active
+      // * And then show them when .active is clicked.
+      background:none;
+      height:auto; //$sc-height-mobile;
+      transform:translate(0px, 0px);
 
-     &.sc-up {
-       // For mobile, don't even hide this
-       transform:translate(0px, 0px);
-     }
-     .nav-link {
-       width:100%;
-       display:block;
-       padding:.5rem .2rem;
-       text-align:center;
-     }
-     // Hide links that are not active
-     .nav-link.notactive {
-       display:none;
-     }
-     // Show links that are not active, if
-     // sc has this toggleable class
-     &.sc-mobile-show .nav-link.notactive {
-       display:inline-block;
-     }
-   }
- }
+      &.sc-up {
+      // For mobile, don't even hide this
+        transform:translate(0px, 0px);
+      }
+      .nav-link {
+        flex: 0 0 100%;
+        padding:.5rem .2rem;
+        text-align:center;
+        margin:.5rem 0;
+        border:2px solid $accent-purple;
+        color:$accent-purple-bright2;
 
+        &.active,
+        &:hover {
+          background-color:rgba($accent-purple, 0.5);
+          border-color:rgba($accent-purple, 0.05);
+          color:#fff;
+        }
+        &.notactive {
+          // Hide links that are not active
+          display:none;
+        }
+      }
+      &.mobile-show {
+        // * Show links again when toggled specifically with .mobile-show
+        // * Give them a dark background for text visibility.
+        background:rgba(0,0,0,.75);
+        .nav-link {
+          &.active,
+          &:hover {
+            background-color:$accent-purple;
+          }
+          &.notactive {
+            display:inline-block;
+          }
+        }
+      }
+    }
+  }
+  &.static {
+    position:static;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    right:auto;
+    z-index:auto;
+    width:100%;
+    display:flex;
+    padding:1rem 2rem;
 
+    .nav-link {
+      background:none;
+      padding: .5rem 1rem;
+      color: $accent-purple-bright;
+      border: 2px solid $accent-purple;
+      border-radius: .25rem;
+      margin: .5rem 0;
+      text-align: center;
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
 
-
-
+      &.active,
+      &:hover {
+        text-decoration: none;
+        color:#fff;
+        background-color:$accent-purple;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      .nav-link {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}
 
  //
  //
@@ -246,90 +297,16 @@
   }
 }
 
-// Footer
-$footer-transition: all 0.15s ease;
-$footer-mobile-spacing: 0.5rem;
-$footer-subcat-color-default: #CCCCCC;
-$footer-subcat-colors: (
-    people:           #269AA5
-  , environment:      #83A352
-  , photojournalism:  #D6B443
-  , urban:            #2B56F1
-  , architecture:     #F26911
-);
-.photography-footer {
-  min-height:680px;
-  margin:2rem auto;
-
-  .row {
-    @include media-breakpoint-down(md) {
-      padding:$footer-mobile-spacing;
-    }
-  }
-
-  .subcategory {
-    @include make-col-ready();
-    @include make-col(2);
-    @include media-breakpoint-down(md) {
-      // On mobile: make them stack.
-      @include make-col(12);
-    }
-    margin:1rem;
-    padding:0;
-    text-align:center;
-
-    min-height:480px;
-    max-height:480px;
-    @include media-breakpoint-down(md) {
-      // On mobile: display as blocks on top of each other.
-      // Margin and height fixes required.
-      min-height:auto;
-      height:6rem;
-      padding:0;
-      margin:0;
-      margin-top:$footer-mobile-spacing;
-      margin-bottom:$footer-mobile-spacing;
-    }
-
-    flex: 1;
-    display: flex;
-    align-items: center;
-    position:relative;
-
-    border-radius:1rem;
-    border:3px solid $footer-subcat-color-default;
-    transition:$footer-transition;
-
-    .title {
-      width:100%;
-      text-align:center;
-      font-size:1.2rem;
-      font-weight:300;
-      transition:$footer-transition;
-      padding:.5rem;
-    }
-    // Colors.
-    @each $cat, $color in $footer-subcat-colors {
-      // Change to color of that subcat.
-      &.#{$cat} {
-        border-color:$color;
-        color:$color;
-      }
-      &.#{$cat}:hover {
-        border-color:$footer-subcat-color-default;
-        color:$footer-subcat-color-default;
-      }
-    }
-    // Block color for active
-    a {
-      // Make the whole box clickable.
-      display:block;
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-    }
-  }
-
+// A hidden element which helps the script know
+// when the end of the image gallery has bene reached.
+.end-of-images {
+  display:block;
+  content:'';
+  width:100%;
+  height:50px;
+  position:relative;
+  top:-50px;
+  visibility:hidden;
+  margin:0;
+  padding:0;
 }

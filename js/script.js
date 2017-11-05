@@ -43,12 +43,12 @@ $(document).ready(function() {
     // Check if we are on the last image. Make the nav:
     // * become static again
     // * appear contiguously at the end of the page.
-    if ( $('.image:last-child').visible() ) {
-      $(navTarget).removeClass('sticky').addClass('static').addClass('sc-mobile-show');
+    if ( $('.end-of-images').visible() ) {
+      $(navTarget).removeClass('sticky').addClass('static').addClass('mobile-show');
       $(navTargetHover).hide();
     }
     else {
-      $(navTarget).addClass('sticky').removeClass('static').removeClass('sc-mobile-show');
+      $(navTarget).addClass('sticky').removeClass('static').removeClass('mobile-show');
       $(navTargetHover).show();
     }
     return;
@@ -79,7 +79,7 @@ $(document).ready(function() {
   $(navTarget + ' .nav-link.active').click(function(e) {
     // Stop the active link from disrupting mobile's click toggle behaviour
     e.preventDefault();
-    $(navTarget).toggleClass('sc-mobile-show');
+    $(navTarget).toggleClass('mobile-show');
   });
 
 
