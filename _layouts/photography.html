@@ -8,9 +8,6 @@ subcategory_parent: photography
 <main class="images">
 
   {% for image in page.images %}
-    {% if forloop.index0 == 1 %}
-      {{ page.welcome }}
-    {% endif %}
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
     {%- assign imageFilepath = image.file | prepend: '/img/' -%}
     <meta itemprop="name" content="{{ img.alt }}">
