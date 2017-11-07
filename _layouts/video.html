@@ -7,9 +7,10 @@ layout: default
 
     {%- comment -%} Section 0: Metadata. {%- endcomment -%}
     {%- assign thumbFirst = video.thumbs[0].file -%}
+    {%- assign thumbFilepath = "/img/video/" -%}
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
-    <meta itemprop="thumbnailUrl" content="{{ thumbFirst | prepend: 'img/' | absolute_url }}">
+    <meta itemprop="thumbnailUrl" content="{{ thumbFilepath | absolute_url }}{{ thumbFirst }}">
     {% if video.creditDirector %}
       <meta itemprop="contributor" content="{{ video.credit }}">
       <meta itemprop="creator" content="{{ video.credit-director }}">
@@ -29,12 +30,12 @@ layout: default
         {%- if video.available == false -%}
         {%- comment -%} If no video is available, show just a normal image with no link. {%- endcomment -%}
         <div class="thumb">
-          <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
+          <img class="thumb-file" src="{{ thumbFilepath }}{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
         </div>
         {%- else -%}
         <div class="thumb thumb-play">
           <a href="{{ video.url }}" target="_blank">
-            <img class="thumb-file" src="img/{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
+            <img class="thumb-file" src="{{ thumbFilepath }}{{ thumbFirst }}" alt="{{ video.thumbAlt }}" {{ thumbWidthAndHeight }} />
             <div class="thumb-play-icon"></div>
           </a>
         </div>
@@ -45,7 +46,7 @@ layout: default
             {%- continue -%}
           {%- else -%}
             <div class="thumb" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-              <img class="thumb-file" src="img/{{ thumb.file }}" alt="{{ thumbAlt }}" {{ thumbWidthAndHeight }}  />
+              <img class="thumb-file" src="{{ thumbFilepath }}{{ thumb.file }}" alt="{{ thumbAlt }}" {{ thumbWidthAndHeight }}  />
               <meta itemprop="width" content="{{ video.thumbDimensions.width }}" />
               <meta itemprop="height" content="{{ video.thumbDimensions.height }}" />
             </div>

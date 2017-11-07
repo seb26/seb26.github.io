@@ -9,10 +9,12 @@ layout: default
     {%- else -%}
       {%- assign schemaType = "CreativeWork"-%}
     {%- endif -%}
+    {%- assign thumbFirst = design.thumbs[0].file -%}
+    {%- assign thumbFilepath = "/img/design/" -%}
   <section class="project design" itemscope itemtype="https://schema.org/{{ schemaType }}">
     {%- comment -%} Metadata. {%- endcomment -%}
     <meta itemprop="name" content="{{ design.title }}" />
-    <meta itemprop="thumbnailUrl" content="{{ design.thumbs[0].file | prepend: 'img/' | absolute_url }}" />
+    <meta itemprop="thumbnailUrl" content="{{ thumbFilepath | absolute_url }}{{ thumbFirst }}" />
     <meta itemprop="creator" content="Sebastian Reategui" />
     {%- if design.creditOther -%}
       <meta itemprop="contributor" content="{{ design.creditOther }}" />
@@ -44,7 +46,7 @@ layout: default
           {%- assign thumbHeight = design.thumbDimensions.height -%}
         {%- endif -%}
         <div class="thumb {{ thisThumb.orientation }}" itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
-          <img class="thumb-file" src="/img/{{ thisThumb.file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
+          <img class="thumb-file" src="{{ thumbFilepath }}{{ thisThumb.file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
           <meta itemprop="width" content="{{ thumbWidth }}" />
           <meta itemprop="height" content="{{ thumbHeight }}" />
         </div>
@@ -53,7 +55,7 @@ layout: default
       {%- else -%}
       <div class="slidebox single">
         <div class="thumb">
-          <img class="thumb-file large" src="/img/{{ design.thumbs[0].file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
+          <img class="thumb-file large" src="{{ thumbFilepath }}{{ thumbFirst }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
         </div>
       </div>
       {%- endif -%}
