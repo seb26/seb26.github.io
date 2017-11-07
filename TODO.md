@@ -4,8 +4,6 @@
   * Add series functionality so that an image can link to a corresponding blog post.
 
 ## Ongoing
-* Photo selection
-  * Refine all selected images for all categories of Photography.
 * Design
   * Brainstorm recent design projects and collect images for them
 * Posts
