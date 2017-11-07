@@ -87,6 +87,7 @@ defaults:
       type: "posts"
     values:
       layout: blog
+      classes: 'nav-static'
       author: default
       schemaType: 'BlogPosting'
       schemaTypeOG: 'article'

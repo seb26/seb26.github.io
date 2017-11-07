@@ -146,3 +146,22 @@ nav#nav-sitewide {
     }
   }
 }
+
+// For pages that have this class
+// * Make the nav static and not float
+// * Remove the top body padding
+// * And add a trick to fix font rendering
+body.nav-static {
+  padding-top:0;
+
+  nav#nav-sitewide {
+    position:static;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    right:auto;
+    z-index:auto;
+
+    transform:translate3d(0,0,0);
+  }
+}

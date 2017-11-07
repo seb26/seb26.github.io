@@ -1,7 +1,7 @@
 ---
 layout:       default
 title:        Recent
-classes:      'page-blog'
+classes:      'page-blog nav-static'
 schemaType:   'Blog'
 permalink:    '/posts/'
 thumbnail:
@@ -16,7 +16,7 @@ redirect_from:
 ---
 
 <section class="container blog blog-index" itemscope itemtype="http://schema.org/Blog">
-  <h3>Recent</h3>
+  <header class="page-header">Recent</header>
   <div class="items">
     {% for post in site.posts %}
     <section class="item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -31,7 +31,7 @@ redirect_from:
           <a href="/posts/{{ post.categories[0] }}">{{ post.categories[0] | capitalize }}</a>
         </div>
         <time class="line date" datetime="{{ post.date }}" itemprop="datePublished dateModified">{{ post.date | date: "%e %B %Y" | upcase }}</time>
-        <a href="{{ post.url }}" class="btn btn-primary action">Read</a>
+        <a href="{{ post.url }}" class="action">Read</a>
       </div>
       <div class="image">
         <a href="{{ post.url }}">

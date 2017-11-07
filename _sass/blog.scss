@@ -29,16 +29,6 @@ body.page-blog {
   a:hover {
     color:#007bff;
   }
-  // Undo fixing the navbar to the top.
-  padding-top:0;
-  #nav-sitewide {
-    position:static;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    right:auto;
-    z-index:auto;
-  }
   .es {
     color:#666;
   }
@@ -244,10 +234,15 @@ body.page-blog {
   max-width:1000px;
   @include make-container();
 
+  .page-header {
+    display:none;
+  }
+
   .items {
     @include make-row();
     margin-left:auto;
     margin-right:auto;
+    margin-top:2rem;
   }
   .item {
     @include make-col-ready();
@@ -303,16 +298,13 @@ body.page-blog {
       }
       // Read more button
       .action {
-        color:#eee;
         display:block;
-        width:16rem;
         margin-top:4rem;
         @include media-breakpoint-down(md) {
           // Don't show the button on mobile.
           display:none;
         }
         &:hover {
-          color:#fff;
         }
       }
     }
