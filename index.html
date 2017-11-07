@@ -3,23 +3,23 @@ layout:     default
 titleFull:  Sebastian Reategui
 categories:
   - name: photography
-    label: Photography
+    label: photography
     url: /photo/photojournalism
     thumb:
       url: "/img/architecture-sebastian-reategui-20170410-medellin-1323.jpg"
   - name: video
-    label: Video
+    label: video
     url: /video
     thumb:
       url: "/img/video-sebastian-reategui-2017-10-fetish-cover-by-lady-arias-thumb-6.jpg"
   - name: design
-    label: Design
+    label: design
     url: /design
     thumb:
       url: "/img/design-sebastian-reategui-environment-waveform-bedroom-8.jpg"
-  - name: recent
-    label: Recent
-    url: /recent
+  - name: recent-posts
+    label: recent posts
+    url: /posts
     thumb:
       url: "/post/img/20170901-concierto-de-farc-sebastian-reategui-4087.jpg"
 ---
@@ -30,7 +30,7 @@ categories:
     <section class="tile categories" id="{{ sitecat.name }}">
       <div class="image" style="background-image:url('{{ sitecat.thumb.url }}');">
         <a class="label-box" href="{{ sitecat.url }}">
-          <header class="label">{{ sitecat.label | downcase }}</header>
+          <header class="label">{{ sitecat.label }}</header>
         </a>
       </div>
     </section>
