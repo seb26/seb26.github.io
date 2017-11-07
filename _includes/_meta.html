@@ -1,7 +1,11 @@
 {%- if page.schemaType == 'Blog' or page.schemaType == 'BlogPosting' -%}
   {%- assign metaTitle = page.title -%}
 {%- else -%}
-  {%- assign metaTitle = site.title | append: ': ' | append: page.title -%}
+  {%- if page.titleFull -%}
+    {%- assign metaTitle = page.titleFull -%}
+  {%- else -%}
+    {%- assign metaTitle = site.title | append: ': ' | append: page.title -%}
+  {%- endif -%}
 {%- endif -%}
 {%- if page.description -%}
   {%- assign metaDescription = page.description -%}
@@ -28,13 +32,7 @@
   {%- assign metaThumbWidth = site.thumbnail.width -%}
   {%- assign metaThumbHeight = site.thumbnail.height -%}
 {%- endif -%}
-<title>
-  {% if page.titleFull %}
-    {{ page.titleFull }}
-  {% else %}
-    {{ page.title }} &mdash; {{ site.title }}
-  {% endif %}
-</title>
+<title>{{ metaTitle }}</title>
 
 <meta property="og:type" content="{{ page.schemaTypeOG }}" />
 <meta property="og:site_name" content="{{ site.titleLong }}" />
