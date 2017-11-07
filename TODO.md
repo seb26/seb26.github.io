@@ -5,8 +5,6 @@
 * [Photography]
   * Add a rule to highlight links inside image descriptions so they stand out more.
   * Add series functionality so that an image can link to a corresponding blog post.
-* [Index, video, design]
-  * Fix image URLs.
 
 ## Ongoing
 * Photo selection
