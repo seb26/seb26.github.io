@@ -35,7 +35,7 @@ https://www.tumblr.com/widgets/share/tool
 <a class="i-twitter icon popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ shareLinkURL }}"></a>
 {%- endcapture -%}
 {%- capture shareLinkTumblr -%}
-<a class="i-tumblr icon popup" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype={{ include.tumblr-posttype }}&amp;content={{ shareLinkURL }}&amp;title={{ shareLinkTitle }}&amp;shareSoure=tumblr_share_button"></a>
+<a class="i-tumblr icon popup" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype={{ include.tumblr-posttype }}&amp;content={{ shareLinkURL }}&amp;title={{ shareLinkTitle }}&amp;canonicalUrl={{ shareLinkURLCanonical }}&amp;shareSource=tumblr_share_button"></a>
 {%- endcapture -%}
 {%- if include.sites == 'all' -%}
 {{ shareLinkFacebook }}{{ shareLinkTwitter }}{{ shareLinkTumblr }}
