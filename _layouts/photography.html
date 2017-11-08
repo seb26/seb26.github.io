@@ -14,9 +14,10 @@ thumbnail:
   {% for image in page.images %}
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
     {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
+    {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
     <meta itemprop="name" content="{{ image.alt }}">
     <meta itemprop="description" content="{{ image.description }}">
-    <meta itemprop="thumbnailUrl" content="{{ imageFilepath | absolute_url }}">
+    <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
     <meta itemprop="creator" content="Sebastian Reategui">
     <meta itemprop="dateCreated" content="{{ image.date }}">
     <meta itemprop="datePublished" content="{{ image.date }}">
@@ -35,18 +36,17 @@ thumbnail:
           {{ image.description }}
         </div>
         <h3 class="ii-details">
+          <div class="ii-share-links">
+            {%- if image.description -%}
+            {%- assign shareLinkDesc = image.description -%}
+            {%- else -%}
+            {%- assign shareLinkDesc = image.location -%}
+            {%- endif -%}
+            {%- assign shareLinkTitle = image.title -%}
+            {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
+          </div>
           <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
           <time class="ii-date" datetime="{{ page.date }}">{{ image.date | date: "%e %B %Y" }}</time>
-          <div class="ii-share-links">
-            <a href="{{ image.url-permalink }}">Permalink</a> &sdot;
-            <a href="{{ image.url-fb }}">Facebook</a> &sdot;
-            <a class="tumblr-share-button"
-            data-content="{{ imageFilepath | absolute_url }}"
-            data-caption="{{ imageAltText }}"
-            data-color="black"
-            data-notes="none"
-            href="https://embed.tumblr.com/share">Tumblr</a>
-          </div>
         </h3>
       </div>
     </div>

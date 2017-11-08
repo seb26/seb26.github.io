@@ -1,0 +1,44 @@
+{%- comment -%} Share links.
+
+// Notes
+* Currently does NOT support description or captions.
+
+// Structure
+https://facebook.com/sharer/sharer.php
+?u=http%3A%2F%2Fsharingbuttons.io
+
+https://twitter.com/intent/tweet/
+?text=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.
+&amp;url=http%3A%2F%2Fsharingbuttons.io
+
+https://www.tumblr.com/widgets/share/tool
+?posttype=link
+&amp;title=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.
+&amp;caption=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.
+&amp;content=http%3A%2F%2Fsharingbuttons.io
+&amp;canonicalUrl=http%3A%2F%2Fsharingbuttons.io
+&amp;shareSource=tumblr_share_button
+{%- endcomment -%}
+
+{%- assign shareLinkURL = include.url | url_encode -%}
+{%- assign shareLinkTitle = include.title | url_encode -%}
+{%- if include.description -%}
+  {%- assign shareLinkDesc = include.description | url_encode -%}
+{%- else -%}
+  {%- assign shareLinkDesc = shareLinkTitle -%}
+{%- endif -%}
+{%- assign shareLinkURLCanonical = site.url | absolute_url | url_encode -%}
+{%- capture shareLinkFacebook -%}
+<a class="i-facebook icon popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ shareLinkURL }}"></a>
+{%- endcapture -%}
+{%- capture shareLinkTwitter -%}
+<a class="i-twitter icon popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ shareLinkURL }}"></a>
+{%- endcapture -%}
+{%- capture shareLinkTumblr -%}
+<a class="i-tumblr icon popup" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype={{ include.tumblr-posttype }}&amp;content={{ shareLinkURL }}&amp;title={{ shareLinkTitle }}&amp;shareSoure=tumblr_share_button"></a>
+{%- endcapture -%}
+{%- if include.sites == 'all' -%}
+{{ shareLinkFacebook }}{{ shareLinkTwitter }}{{ shareLinkTumblr }}
+{%- elsif include.site -%}
+{{ shareLink{{ include.site }} }}
+{%- endif -%}
