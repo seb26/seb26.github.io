@@ -36,19 +36,29 @@ thumbnail:
       {%- assign imageAltText = image.description -%}
     {%- else -%}
       {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
-    {% endif %}
+    {%- endif -%}
     <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
-    <div class="ii hide">
-      <div class="toggle"></div>
+    {%- if image.description -%}
+      {%- assign iiClass = 'extended' -%}
+    {%- else -%}
+      {%- assign iiClass = 'short' -%}
+    {%- endif -%}
+    <div class="ii {{ iiClass }} m-hide">
+      <div class="m-toggle"></div>
       <div class="body">
+        {% if image.description %}
         <div class="description">
           {{ image.description }}
           {% if image.series %}
           <span class="series"><a href="{{ image.series }}">View more from this series.</a></span>
           {% endif %}
         </div>
-        <ul class="details">
-          <li class="share-links">
+        {% endif %}
+        <div class="details">
+          <div class="detail location" itemprop="locationCreated">{{ image.location }}</div>
+          <time class="detail date" datetime="{{ image.date }}">{{ image.date | date: "%e %B %Y" }}</time>
+          <div class="detail share share-hide">
+            <a class="detail icon share-toggle"></a>
             {%- if image.description -%}
             {%- assign shareLinkDesc = image.description -%}
             {%- else -%}
@@ -56,10 +66,8 @@ thumbnail:
             {%- endif -%}
             {%- assign shareLinkTitle = image.title -%}
             {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
-          </li>
-          <li class="location" itemprop="locationCreated">{{ image.location }}</li>
-          <li><time class="date" datetime="{{ page.date }}">{{ image.date | date: "%e %B %Y" }}</time></li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>

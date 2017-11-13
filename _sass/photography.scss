@@ -197,89 +197,107 @@ section.image {
 //
 //
 
-
-$ii-icon-width: 4em;
+$ii-share-icon-size: 20px;
 .ii {
-  background:rgba(255,255,255,.5);
+  position:absolute;
+  bottom:0;
+  right:0;
+  padding:1rem;
 
-  .toggle {
-    width: $ii-icon-width;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 3rem;
-    right: 0;
-    left: auto;
-    cursor: pointer;
-    z-index: 1025;
-    background: rgba(0, 0, 0, 0.15);
-    opacity: 0.5;
-    @include drop-shadow(0.5);
-
-    &:hover, &:active {
-      opacity: 1;
-    }
-  }
-
-  &.hide {
-    .toggle {
-      @include svg-icon('info', $defineWidth: false);
-    }
-    .body {
-      display:none;
-    }
-  }
-  &.show .body {
-    .toggle {
-      @include svg-icon('close', $defineWidth: false);
-    }
-    .body {
-      display:block;
-    }
-  }
-
-
-  .body {
-    position:absolute;
-    right:0;
-    bottom:0;
-    width:16rem;
-    @include media-breakpoint-down(md) {
-      // * Make ii take up the whole image box.
-      width:100%;
-      top:0;
-      left:0;
-    }
-  }
-
-  .toggle {
-    @include svg-icon('close', $defineWidth: false);
-  }
+  background:rgba(0,0,0,0.5);
 
 
   .details {
-    list-style:none;
-    margin:0;
-    padding:0;
+    flex:1;
+    text-align:right;
+    .detail {
+      display:inline;
+    }
   }
-  .share-links {
-    float: right;
-    margin: .33rem;
-    margin-right: 0;
-    padding: 0;
+
+  &.extended {
+    width:100%;
+
+    .body {
+      display:flex;
+      flex-grow:1;
+    }
+    .description {
+      flex:0 0 75%;
+    }
+
+  }
+  &.short {
+    width:16rem;
+    .description {
+      display:none;
+    }
+  }
+
+  // Mobile toggle
+  @include media-breakpoint-down(md) {
+    .m-toggle {
+      width:20px;
+      height:20px;
+      content:'';
+    }
+    &.m-hide {
+      .m-toggle {
+        @include svg-icon(
+          'info',
+          $size: $ii-share-icon-size
+        );
+      }
+      .body {
+        display:none;
+      }
+    }
+    &.m-show .body {
+      .m-toggle {
+        @include svg-icon(
+          'close',
+          $size: $ii-share-icon-size
+        );
+      }
+      .body {
+        display:flex;
+      }
+    }
+  }
+
+  .share {
     .icon {
-      width: 20px;
-      height: 20px;
-      background-size: 20px 20px;
+      // These parameters are necessary because the social
+      // icons are pre-generated at 32px
+      width: $ii-share-icon-size;
+      height: $ii-share-icon-size;
+      background-size: $ii-share-icon-size $ii-share-icon-size;
       padding: 0 .75rem;
     }
-    @include media-breakpoint-down(md) {
-      // On mobile:
-      // Move the icons over to the left so
-      // they do not clash with the Info icon.
-      margin-right:$ii-icon-width;
+    .share-toggle {
+      @include media-breakpoint-down(md) {
+        // On mobile: hide the Export 'share' icon.
+        display:none;
+      }
+      @include media-breakpoint-up(md) {
+        // On tablet/higher: show it.
+        display:inline;
+        @include svg-icon('export', false);
+      }
     }
+    &.share-show {
+      .icon.social {
+        display:inline;
+      }
+    }
+    &.share-hide {
+      .icon.social {
+        display:none;
+      }
+    }
+
   }
+
 }
 
 

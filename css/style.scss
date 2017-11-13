@@ -5,22 +5,23 @@
 @import "bootstrap-custom";
 // Bytesize icons. View the file for credits.
 $bytesize_icons_desired:
-    link
-  , close
-  , caret-bottom
-  , arrow-top
-  , info
+  after-effects
   , arrow-left
-  , play
-  , twitter
-  , facebook
-  , instagram
-  , tumblr
+  , arrow-top
+  , avid
+  , caret-bottom
+  , close
   , ellipsis-horizontal
-  , premiere-pro
+  , export
+  , facebook
+  , info
+  , instagram
+  , link
   , photoshop
-  , after-effects
-  , avid;
+  , play
+  , premiere-pro
+  , tumblr
+  , twitter;
 @import "bytesize-icons-inline";
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');

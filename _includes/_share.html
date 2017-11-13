@@ -29,13 +29,13 @@ https://www.tumblr.com/widgets/share/tool
 {%- endif -%}
 {%- assign shareLinkURLCanonical = site.url | absolute_url | url_encode -%}
 {%- capture shareLinkFacebook -%}
-<a class="i-facebook icon popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ shareLinkURL }}"></a>
+<a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ shareLinkURL }}"></a>
 {%- endcapture -%}
 {%- capture shareLinkTwitter -%}
-<a class="i-twitter icon popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ shareLinkURL }}"></a>
+<a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ shareLinkURL }}"></a>
 {%- endcapture -%}
 {%- capture shareLinkTumblr -%}
-<a class="i-tumblr icon popup" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype={{ include.tumblr-posttype }}&amp;content={{ shareLinkURL }}&amp;title={{ shareLinkTitle }}&amp;canonicalUrl={{ shareLinkURLCanonical }}&amp;shareSource=tumblr_share_button"></a>
+<a class="i-tumblr icon social popup" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype={{ include.tumblr-posttype }}&amp;content={{ shareLinkURL }}&amp;title={{ shareLinkTitle }}&amp;canonicalUrl={{ shareLinkURLCanonical }}&amp;shareSource=tumblr_share_button"></a>
 {%- endcapture -%}
 {%- if include.sites == 'all' -%}
 {{ shareLinkFacebook }}{{ shareLinkTwitter }}{{ shareLinkTumblr }}
