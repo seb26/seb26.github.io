@@ -1,6 +1,7 @@
 ## 2017-11-07
 * [Photography]
   * Add a rule to highlight links inside image descriptions so they stand out more.
+  * On large viewports, make the Photo information always visible.
   * Add series functionality so that an image can link to a corresponding blog post.
 
 ## Ongoing

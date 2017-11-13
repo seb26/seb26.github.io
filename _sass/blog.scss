@@ -230,19 +230,31 @@ body.page-blog {
 // BLOG index
 // /post/index.html
 //
-.blog-index {
+section.blog-index {
   max-width:1000px;
   @include make-container();
+  margin-top:45px;
 
   .page-header {
-    display:none;
+    margin:0 auto;
+    min-width:16rem;
+  }
+
+  .categories {
+    list-style:none;
+    padding:0;
+    margin:0 auto;
+
+    li {
+      @include tight-font;
+      display:inline;
+    }
   }
 
   .items {
     @include make-row();
     margin-left:auto;
     margin-right:auto;
-    margin-top:2rem;
   }
   .item {
     @include make-col-ready();

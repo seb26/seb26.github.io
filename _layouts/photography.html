@@ -2,9 +2,9 @@
 layout:             default
 subcategory_parent: photography
 thumbnail:
-  url:              "/img/photography-category-thumb-1.jpg"
-  width:            853
-  height:           480
+  url:      "/img/photography-category-thumb-1.jpg"
+  width:    853
+  height:   480
 ---
 {% assign subcategories = site.data.photography.subcategories %}
 {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
@@ -12,9 +12,18 @@ thumbnail:
 <main class="images">
 
   {% for image in page.images %}
-  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
-    {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
-    {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
+  {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
+  {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
+  {%- if image.dimensions -%}
+    {%- comment -%} If image has different dimensions, assign them as an inline style for the image section. {%- endcomment -%}
+    {%- capture imageCustomDimensions -%}
+    style="max-width:{{ image.dimensions.width }}px; max-height:{{ image.dimensions.height }}px;"
+    {%- endcapture -%}
+  {%- else -%}
+    {%- comment -%} Reset this variable so it doesn't affect subsequent images. {%- endcomment -%}
+    {%- assign imageCustomDimensions = '' -%}
+  {%- endif -%}
+  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph"{{ imageCustomDimensions }}>
     <meta itemprop="name" content="{{ image.alt }}">
     <meta itemprop="description" content="{{ image.description }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
@@ -28,15 +37,18 @@ thumbnail:
     {%- else -%}
       {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
     {% endif %}
-    <img class="image-file" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
-    <div class="ii">
-      <div class="ii-body">
-        <div class="arrow"></div>
-        <div class="ii-desc">
+    <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    <div class="ii hide">
+      <div class="toggle"></div>
+      <div class="body">
+        <div class="description">
           {{ image.description }}
+          {% if image.series %}
+          <span class="series"><a href="{{ image.series }}">View more from this series.</a></span>
+          {% endif %}
         </div>
-        <h3 class="ii-details">
-          <div class="ii-share-links">
+        <ul class="details">
+          <li class="share-links">
             {%- if image.description -%}
             {%- assign shareLinkDesc = image.description -%}
             {%- else -%}
@@ -44,13 +56,12 @@ thumbnail:
             {%- endif -%}
             {%- assign shareLinkTitle = image.title -%}
             {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
-          </div>
-          <div class="ii-location" itemprop="locationCreated">{{ image.location }}</div>
-          <time class="ii-date" datetime="{{ page.date }}">{{ image.date | date: "%e %B %Y" }}</time>
-        </h3>
+          </li>
+          <li class="location" itemprop="locationCreated">{{ image.location }}</li>
+          <li><time class="date" datetime="{{ page.date }}">{{ image.date | date: "%e %B %Y" }}</time></li>
+        </ul>
       </div>
     </div>
-    <div class="ii-icon"></div>
   </section>
   {% endfor %}
   <div class="end-of-images"></div>

@@ -80,9 +80,11 @@ $sc-height-mobile:  240px;
       // * Show the list vertically
       // * With JS, hide all items except for .active
       // * And then show them when .active is clicked.
+      // * Remove drop shadow.
       background:none;
       height:auto; //$sc-height-mobile;
       transform:translate(0px, 0px);
+      filter:none;
 
       &.sc-up {
       // For mobile, don't even hide this
@@ -110,7 +112,10 @@ $sc-height-mobile:  240px;
       &.mobile-show {
         // * Show links again when toggled specifically with .mobile-show
         // * Give them a dark background for text visibility.
+        // * Remove border styling.
         background:rgba(0,0,0,.75);
+        border:none;
+        border-radius:none;
         .nav-link {
           &.active,
           &:hover {
@@ -165,172 +170,122 @@ $sc-height-mobile:  240px;
   }
 }
 
- //
- //
- // Primary page layout
- //
- //
-.images h2 {
-  text-align: right;
+//
+//
+// Primary page layout
+//
+//
+
+$photography-image-size: 1280px;
+
+section.image {
   position: relative;
-  top: 50px;
-  margin-top: -50px;
-  color: white;
-}
+  max-width: $photography-image-size;
+  height:auto;
+  margin:0 auto;
 
-.image {
-  position: relative;
-}
-
-.image-file {
-  @include fluid;
-  display: block;
-  margin: 0 auto;
-}
-
-.ii {
-  /* Bootstrap: .card-img-overlay MODIFIED*/
-  display: none;
-  width: 400px;
-  position: absolute;
-  top: auto;
-  right: 6rem;
-  bottom: 40%;
-  left: auto;
-  padding: 1.25rem;
-  color: #ddd;
-
-  a {
-    color: white;
+  .object {
+    @include fluid;
+    display: block;
+    margin: 0 auto;
   }
+
 }
 
-.ii-body {
-  /* Bootstrap: .popover MODIFIED */
-  max-width: 552px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-  font-size: .875rem;
-  word-wrap: break-word;
-  background-color: rgba(51, 51, 51, 0.75);
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: .3rem;
 
-  /* Bootstrap: .bs-popover-left */
-  margin-right: 10px;
-}
+// A photo information palette
+//
+//
 
-.ii-desc {
-  padding: 9px 14px;
-  a {
-    color:royalblue;
-  }
-}
-
-.ii-details {
-  /* Bootstrap: .popover-header */
-  padding: 8px 14px;
-  margin-bottom: 0;
-  font-size: .8rem;
-  color: inherit;
-  background-color: #222;
-}
 
 $ii-icon-width: 4em;
-.ii-icon {
-  width: $ii-icon-width;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 3rem;
-  right: 0;
-  left: auto;
-  cursor: pointer;
-  z-index: 1025;
-  background: rgba(0, 0, 0, 0.15);
-  @include svg-icon('info', $defineWidth: false);
-  opacity: 0.5;
-  @include drop-shadow(0.5);
+.ii {
+  background:rgba(255,255,255,.5);
 
-  &:hover, &:active {
-    opacity: 1;
-  }
-}
-
-.ii-share-links {
-  float: right;
-  margin: .33rem;
-  margin-right: 0;
-  padding: 0;
-  .icon {
-    width: 20px;
-    height: 20px;
-    background-size: 20px 20px;
-    padding: 0 .75rem;
-  }
-  @include media-breakpoint-down(md) {
-    // On mobile:
-    // Move the icons over to the left so
-    // they do not clash with the Info icon.
-    margin-right:$ii-icon-width;
-  }
-}
-
-
-.ii-icon-active {
-  opacity: 1;
-}
-/* xl and above */
-@include media-breakpoint-up(xl) {
-  .images {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: block;
-  }
-}
-
-/* lg and above */
-@include media-breakpoint-up(lg) {
-  .ii-icon {}
-}
-
-/* above sm */
-@include media-breakpoint-up(xs) {
-  .ii-icon {}
-}
-
-/* sm and below */
-@include media-breakpoint-down(xs) {
-  .ii {
-    width: 100%;
-    top: auto;
+  .toggle {
+    width: $ii-icon-width;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 3rem;
     right: 0;
-    bottom: 0;
     left: auto;
+    cursor: pointer;
+    z-index: 1025;
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0.5;
+    @include drop-shadow(0.5);
+
+    &:hover, &:active {
+      opacity: 1;
+    }
+  }
+
+  &.hide {
+    .toggle {
+      @include svg-icon('info', $defineWidth: false);
+    }
+    .body {
+      display:none;
+    }
+  }
+  &.show .body {
+    .toggle {
+      @include svg-icon('close', $defineWidth: false);
+    }
+    .body {
+      display:block;
+    }
+  }
+
+
+  .body {
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:16rem;
+    @include media-breakpoint-down(md) {
+      // * Make ii take up the whole image box.
+      width:100%;
+      top:0;
+      left:0;
+    }
+  }
+
+  .toggle {
+    @include svg-icon('close', $defineWidth: false);
+  }
+
+
+  .details {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .share-links {
+    float: right;
+    margin: .33rem;
+    margin-right: 0;
     padding: 0;
-    margin: 0;
-  }
-
-  .ii-body {
-    margin: 0;
-  }
-
-  .ii-icon {
-    background-position: center 95%;
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
-    opacity: .15;
-  }
-
-  .ii-details {
-    background-color: rgba(0, 0, 0, 0);
+    .icon {
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
+      padding: 0 .75rem;
+    }
+    @include media-breakpoint-down(md) {
+      // On mobile:
+      // Move the icons over to the left so
+      // they do not clash with the Info icon.
+      margin-right:$ii-icon-width;
+    }
   }
 }
+
+
 
 // A hidden element which helps the script know
-// when the end of the image gallery has bene reached.
+// when the end of the image gallery has been reached.
 .end-of-images {
   display:block;
   content:'';

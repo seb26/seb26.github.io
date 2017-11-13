@@ -16,7 +16,15 @@ redirect_from:
 ---
 
 <section class="container blog blog-index" itemscope itemtype="http://schema.org/Blog">
-  <header class="page-header">Recent</header>
+  {%- comment -%} // Feature disabled for now
+  <header class="page-header">
+    <h6 class="title">Recent work & writing</h6>
+    <ul class="categories">
+      <li><a href="/posts/photojournalism">Photojournalism</a></li>
+      <li><a href="/posts/photography">Photography</a></li>
+      <li><a href="/posts/opinion">Opinion</a></li>
+    </ul>
+  </header>{%- endcomment -%}
   <div class="items">
     {% for post in site.posts %}
     <section class="item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -28,7 +36,7 @@ redirect_from:
           <a href="{{ post.url }}">{{ post.title }}</a>
         </header>
         <div class="line category">
-          <a href="/posts/{{ post.categories[0] }}">{{ post.categories[0] | capitalize }}</a>
+          <a href="/posts/{{ post.categories[1] }}">{{ post.categories[1] | capitalize }}</a>
         </div>
         <time class="line date" datetime="{{ post.date }}" itemprop="datePublished dateModified">{{ post.date | date: "%e %B %Y" | upcase }}</time>
         <a href="{{ post.url }}" class="action">Read</a>

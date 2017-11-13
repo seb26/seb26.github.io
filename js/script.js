@@ -93,7 +93,7 @@ $(document).ready(function() {
     // The overlay text (ii-body)
     // is found just one element prior
     image_info_overlay = $(this).prev();
-    $(image_info_overlay).toggle();
+    $(image_info_overlay).toggleClass('hide show');
   });
   $(window).click( function(e) {
     if ( image_info_overlay ) {
@@ -110,7 +110,7 @@ $(document).ready(function() {
       else {
         // If you click anywhere else,
         // Then hide *all* info overlays
-        $('.ii').hide();
+        $('.ii').removeClass('show').addClass('hide');
       }
     }
     else {
