@@ -1,77 +1,88 @@
 ---
 layout:     default
 title:      About
+classes:
 permalink:  /about
 ---
 
-<div class="container">
-<div class="row">
+<main class="container about">
 
-  <div class="col-md-4 about-image">
-    <img class="img-fluid" src="img/Sebastian-Reategui-by-Steph-Newman-2016.jpg" alt="Me, by Steph Newman, September 2016" />
-  </div>
-
-  <!-- Rest of page content in one box -->
-  <div class="col-md-8 about-contact">
   <div class="row">
-     <div class="col-md-12 col-lg-6 about-para" lang="en">
-       <p class="lead">About me</p>
-       <p>I’m a photographer, videographer and writer in Sydney, Australia.</p>
-       <p>I’m a photographer, videographer and writer in Sydney, Australia.</p>
-     </div>
 
-     <div class="col-md-12 col-lg-6 about-para" lang="es">
-       <p class="lead">Quién soy yo</p>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor facilisis tortor. Proin ornare, dui at fermentum laoreet, purus velit tincidunt nisl, non consequat felis nulla a erat. Suspendisse faucibus nec quam a rhoncus. Cras commodo tortor dui, nec cursus metus vehicula vitae. Sed magna dui, interdum vitae risus non, tincidunt eleifend odio. Suspendisse massa purus, tincidunt at erat sodales, mattis interdum tellus. Etiam et libero eu nisi maximus dapibus.
-       </p>
-     </div>
+    <section class="about-image" id="image" itemscope itemtype="http://schema.org/Photograph">
+      <meta itemprop="creator" content="David Puentes">
+      <meta itemprop="description" content="Sebastian Reategui portrait">
+      <meta itemprop="dateCreated" content="2017-08-13">
+      <meta itemprop="datePublished" content="2017-08-13">
+      <img alt="Me, by David Puentes, August 2017" class="fluid" src="/img/profile-sebastian-reategui-by-david-puentes-20170813.jpg" />
+    </section>
+
+    <section class="about-content" id="content">
+      <div class="row">
+        <section class="about-para" id="about-en" lang="en">
+          <header class="lead">About me</header>
+          <p>I’ve been interested in photography, film, digital art and design for as long as I was able to get my hands on a computer.</p>
+          <p>Now I study communication at UTS in Sydney, Australia, and am working toward expanding my online publishing so my work can reach more people.</p>
+          <p>I really like hearing stories and sharing fragments of them so that others can understand the realities of people’s lives.</p>
+        </section>
+        <section class="about-para" id="about-es" lang="es">
+          <header class="lead">Acerca de</header>
+          <p>Hasta donde recuerdo que por primera vez pude conseguir un computador cuando tenía 11 me han fascinado la fotografía, el cine, el arte digital y el diseño.</p>
+          <p>Ya que pasaron muchos años estudio la comunicación audiovisual en UTS en Sídney, Australia. En estos días me encuentro enfocado más en lograr un mayor alcance para mi trabajo en cuanto la publicación en linea para que llegue aún a más gente.</p>
+          <p>Me encanta escuchar y averiguar las historias de personas y trato de compartir y representar fragmentos de ellas para que inspiren a otros a reflejar y identificarse con la vida de los demás.</p>
+        </section>
+      </div>
+    <hr />
+    <section id="contact">
+      <header class="lead">Contact</header>
+      <div class="buttons-contact">
+        <a class="button" href="mailto:seb.reategui@gmail.com">seb.reategui@gmail.com</a>
+        <a class="button" href="#" id="about-contact-form-toggle">Send a message</a>
+      </div>
+      <section class="about-contact-form" id="about-contact-form">
+        <form method="POST" action="http://formspree.io/seb.reategui@gmail.com">
+          <input class="form-control" type="email" name="email"  placeholder="Your email">
+          <textarea class="form-control" name="message" placeholder="Your message"></textarea>
+          <button class="btn action" href="/about" type="submit" id="about-contact-form-submit">Send</button>
+          <p class="about-contact-form-note">I'll get back to you as soon as I can.</p>
+        </form>
+      </section>
+    </section>
+    <section id="social">
+      <header class="lead">Social</header>
+      <div class="buttons-contact">
+        <a class="button" href="https://instagram.com/seb_rg">Instagram</a>
+        <a class="button" href="https://spebz.tumblr.com">Tumblr</a>
+        <a class="button" href="https://youtube.com/sebreategui">YouTube</a>
+        <a class="button" href="https://vimeo.com/sebreategui">Vimeo</a>
+        <a class="button" href="https://linkedin.com/sebastianreategui">LinkedIn</a>
+      </div>
+    </section>
+    <hr />
+    <section id="licensing">
+      <header class="lead">Licensing</header>
+      <dl>
+        <dt>Selected photos available freely</dt>
+        <dd>
+          <p>I release many photographs so that they <a href="https://freedomdefined.org/Definition">can be used freely</a>, permitting anyone to use, copy, distribute and modify them for any purpose. These are typically photos that illustrate environmental or historical locations around the world. They are available <a href="//creativecommons.org/publicdomain/zero/1.0/">in the public domain (Creative Commons-Zero)</a> and can be found on <a href="https://commons.wikimedia.org/wiki/User:Seb26/work">Wikimedia Commons</a>. While it is not required that you give credit, it is appreciated if you write my name somewhere in your credits section as it may help others to discover my work.</p>
+        </dd>
+        <dt>All other photos and creative work</dt>
+        <dd>
+          <p>I reserve rights for all other material, but I'm always happy to permit you to use any work if you write to me with details first.</p>
+        </dd>
+      </dl>
+    </section>
+    <section id="website">
+      <header class="lead">Website</header>
+      <dl>
+        <dt>Frameworks and material used</dt>
+        <dd>
+          <p>This site was built by me using <a href="https://jekyllrb.com">Jekyll</a> (3.6.0), <a href="https://getbootstrap.com/">Bootstrap</a> (4.0.2-beta), <a href="http://jquery.com/download/">jQuery Slim</a> (3.2.1), and the <a href="https://github.com/danklammer/bytesize-icons">Bytesize</a> icon set.</p>
+        </dd>
+      </dl>
+    </section>
+
   </div>
-  <div class="row">
-    <div class="col">
-    <!-- Contact -->
-    <hr>
-    <p class="lead">Contact</p>
-    <ul class="about-buttons">
-      <li><a class="about-button" href="mailto:seb.reategui@gmail.com">seb.reategui@gmail.com</a></li>
-    </ul>
-
-    <!-- Social -->
-    <br style="clear:both;" />
-    <p class="lead mt-3">Social</p>
-      <ul class="about-buttons">
-        <li><a class="about-button" href="//instagram.com/seb_rg">Instagram</a></li>
-        <li><a class="about-button" href="//spebz.tumblr.com">Tumblr</a></li>
-        <li><a class="about-button" href="//youtube.com/sebreategui">YouTube</a></li>
-        <li><a class="about-button" href="//vimeo.com/sebreategui">Vimeo</a></li>
-        <li><a class="about-button" href="//linkedin.com/sebastianreategui">LinkedIn</a></li>
-      </ul>
-
-    <!-- Licensing -->
-    <br style="clear:both;" />
-      <hr>
-    <p class="lead mt-3">Licensing</p>
-    <div class="small">
-      <dt>Selected photos available freely</dt>
-      <p>I release many photographs so that they <a href="//freedomdefined.org/Definition">can be used freely</a>, permitting anyone to use, copy, distribute and modify them for any purpose. These are typically photos that illustrate environmental or historical locations around the world. They are  available <a href="//creativecommons.org/publicdomain/zero/1.0/">in the public domain (Creative Commons-Zero)</a> and can be found on <a href="//commons.wikimedia.org/wiki/User:Seb26/work">Wikimedia Commons</a>. While it is not required that you give credit, it is appreciated if you write my name somewhere in your credits section as it may help others to discover my work.</p>
-
-      <dt>All other photos and creative work</dt>
-      <p>I reserve rights for all other material, but I'm always happy to permit you to use any work if you write to me with details first.
-    </div>
-        <!-- Website -->
-    <p class="lead mt-4">Website</p>
-    <div class="small">
-      <dt>Frameworks and material used</dt>
-      <p>This site was built by me using <a href="https://jekyllrb.com">Jekyll</a> (3.6.0), <a href="https://getbootstrap.com/">Bootstrap</a> (4.0.0-beta), <a href="http://jquery.com/download/">jQuery Slim</a> (3.2.1), and the <a href="https://github.com/danklammer/bytesize-icons">Bytesize</a> icon set by <a href="https://danklammer.com/">Dan Klammer</a>.
-    </div>
 
 
-    <footer> © 2017 </footer>
-
-    </div>
-
-  </div>
-</div>
-
-
-  </div>
-  </div>
+</main>

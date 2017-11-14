@@ -184,6 +184,8 @@ section.image {
   height:auto;
   margin:0 auto;
 
+  color:#e0e0e0;
+
   .object {
     @include fluid;
     display: block;
@@ -212,6 +214,8 @@ $ii-share-icon-size: 20px;
     text-align:right;
     .detail {
       display:inline;
+      font-size:.8rem;
+      padding:0 0.5rem;
     }
   }
 
