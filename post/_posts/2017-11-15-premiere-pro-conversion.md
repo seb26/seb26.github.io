@@ -1,6 +1,8 @@
 ---
 title:      Como abrir un proyecto de Premiere en versiones anteriores sin problema
 date:       2017-11-15T11:36:19Z
+description: |
+  Hay una solución. Se puede modificar el archivo de proyecto para esforzarle a Premiere abrir el proyecto, para que puedas rescatar tu trabajo y seguir editando.
 slug:       como-convertir-un-archivo-premiere-de-una-version-a-otra
 lang:       es
 categories: tutorials español
@@ -22,6 +24,8 @@ Lo más probable es que no habría problemas de abrir el proyecto si Premiere te
 Pero hay una solución.
 
 Se puede modificar el archivo de proyecto para esforzarle a Premiere abrir el proyecto, para que puedas rescatar tu trabajo y seguir editando.
+
+<div class="alert">For instructions in English, see <a href="https://video.stackexchange.com/questions/3804/how-do-i-downgrade-an-adobe-premiere-pro-project-file-to-open-in-older-version#answer-21635" target="_blank">this StackExchange post by user nmu</a>.</div>
 
 ### Como se hace
 
