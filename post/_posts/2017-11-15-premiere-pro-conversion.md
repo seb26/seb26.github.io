@@ -48,7 +48,7 @@ Estas indicaciones son para Mac OS X o macOS. Para Windows, vea [la sección a l
 
 1. Abre una ventana de Terminal
 
-2. Cambie la ubicación a la carpeta en dónde queda el archivo por ingresar el siguiente comando en la ventana:
+2. Cambie la ubicación a la carpeta en dónde queda el archivo ingresando el siguiente comando en la ventana:
 
     `cd /Volumes/DISCODURO/Proyecto.prproj`
     
@@ -115,13 +115,13 @@ Estas indicaciones son para Mac OS X o macOS. Para Windows, vea [la sección a l
 
     ![paso10](/post/img/guia-como-convertir-archivo-premiere-pro-sebreategui-8.png)
 
-11. Escoja un nombre y una carpeta para el nuevo proyecto y asegúrase que elija un nombre distinto a los demás para evitar confundirse mientras trabajar.
+11. Escoja un nombre y una carpeta para el nuevo proyecto y asegúrase que elija un nombre distinto a los demás en su carpeta para evitar confundirse mientras trabajando.
 
-    Es recomendable indicar que el proyecto ha sido "convertido" por este método:
+    Es recomendable indicar que el proyecto haya sido "convertido" por este método:
     
     e.g.: `proyecto-convertido.prproj`
 
-12. Podría haber que se necesita vincular los medios del proyecto, si le salga este error, simplemente intentar ubicarlos y guardar el proyecto.
+12. Se podría necesitar vincular los archivos medios del proyecto, si le salga este error, simplemente intente ubicarlos y guarde el proyecto.
 
     ![paso12](/post/img/guia-como-convertir-archivo-premiere-pro-sebreategui-9.png)
     
