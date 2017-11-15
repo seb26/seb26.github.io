@@ -25,7 +25,8 @@ Pero hay una solución.
 
 Se puede modificar el archivo de proyecto para esforzarle a Premiere abrir el proyecto, para que puedas rescatar tu trabajo y seguir editando.
 
-<div class="alert">For instructions in English, see <a href="https://video.stackexchange.com/questions/3804/how-do-i-downgrade-an-adobe-premiere-pro-project-file-to-open-in-older-version#answer-21635" target="_blank">this StackExchange post by user nmu</a>.</div>
+For instructions in English, see <a href="https://video.stackexchange.com/questions/3804/how-do-i-downgrade-an-adobe-premiere-pro-project-file-to-open-in-older-version#answer-21635" target="_blank">this StackExchange post by user nmu</a>.
+{:.alert}
 
 ### Como se hace
 
@@ -43,6 +44,7 @@ Además de esta estructura, el archivo XML es de hecho comprimido por Premiere u
 #### Solución detallada
 
 Estas indicaciones son para Mac OS X o macOS. Para Windows, vea [la sección a la parte inferior de la página](#windows): se necesita más software para poder hacerlo.
+{:.alert}
 
 1. Abre una ventana de Terminal
 
