@@ -37,7 +37,10 @@ thumbnail:
     {%- else -%}
       {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
     {%- endif -%}
-    <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    <img class="object lazy" data-src="{{ imageFilepath }}" alt="{{ imageAltText }}" style="display:none;" />
+    <noscript>
+      <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    </noscript>
     {%- if image.description -%}
       {%- assign iiClass = 'extended' -%}
     {%- else -%}

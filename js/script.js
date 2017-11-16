@@ -18,8 +18,7 @@ $( document ).ready( function() {
   //
 
   // (1) Lazy Loading
-  // Use Unveil to dynamically load images with this class
-  // $(".load-dyn").unveil(200);
+  $('.lazy').show().Lazy();
 
   // (2) Subcategory Navigator
   //
