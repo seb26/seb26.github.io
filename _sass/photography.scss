@@ -176,11 +176,12 @@ $sc-height-mobile:  240px;
 //
 //
 
-$photography-image-size: 1280px;
+$photography-width: 1280px;
+$photography-height: 853px;
 
 section.image {
   position: relative;
-  max-width: $photography-image-size;
+  max-width: $photography-width;
   height:auto;
   margin:0 auto;
 
@@ -190,120 +191,232 @@ section.image {
     @include fluid;
     display: block;
     margin: 0 auto;
+
+    &.nolazy {
+      max-height:$photography-height;
+    }
   }
 
 }
 
 
+// ii
 // A photo information palette
 //
 //
 
-$ii-share-icon-size: 20px;
+$ii-padding:16px;
+$ii-background: rgba(0,0,0,.5);
+$ii-m-toggle-size: 28px;
+$ii-share-count: 3;
+$ii-share-size: 24px;
+$ii-share-margin: 5px;
+
 .ii {
-  position:absolute;
-  bottom:0;
-  right:0;
-  padding:1rem;
+  font-size:.8rem;
 
-  background:rgba(0,0,0,0.5);
-
-
-  .details {
-    flex:1;
-    text-align:right;
-    .detail {
-      display:inline;
-      font-size:.8rem;
-      padding:0 0.5rem;
-    }
+  .date {
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:.25rem;
+    padding:2px 8px;
+    margin:0px 8px;
   }
 
-  &.extended {
-    width:100%;
+  .description {
+    a {
+      color:inherit;
+    }
+    a:hover {
+      color:inherit;
+    }
+  }
+}
+
+// Viewport above SM
+// Separate definitions entirely for Mobile and Desktop
+@include media-breakpoint-up(sm) {
+  .ii {
+    &.with-desc {
+      .body {
+        background:$ii-background;
+      }
+      .description {
+        flex: 0 0 66.6666%;
+      }
+      .details {
+        // No flex definition
+        // And push it to the right hand side
+        margin-left: auto;
+      }
+    }
+    &.no-desc {
+      .body {
+        background:none;
+      }
+      .description {
+        flex:0;
+        display:none;
+      }
+      .details {
+        background:$ii-background;
+        // Push this to the right hand side
+        margin-left:auto;
+        border-top-left-radius:.25rem;
+      }
+    }
 
     .body {
+      position:absolute;
+      bottom:0;
+      width:100%;
       display:flex;
       flex-grow:1;
-    }
-    .description {
-      flex:0 0 75%;
+      justify-content: space-between;
     }
 
-  }
-  &.short {
-    width:16rem;
     .description {
-      display:none;
+      padding:$ii-padding;
+      p {
+        margin:0;
+      }
+    }
+
+    .details {
+      padding:$ii-padding;
     }
   }
+}
+// ii
+// VIEWPORTS sm and below
+//
+//
+@include media-breakpoint-down(sm) {
+  .ii {
+    // Structure for the body
+    .body {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      height: 100%;
+      display:flex;
+      flex-grow:1;
+      justify-content: space-between;
+      flex-direction: column;
+      background: $ii-background;
+    }
+    .description {
+      padding:$ii-padding;
+      flex: 1 1 auto;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-wrap: wrap;
 
-  // Mobile toggle
-  @include media-breakpoint-down(md) {
+      p {
+        overflow:scroll;
+        margin:0;
+      }
+    }
+    .details {
+      flex:0;
+      padding:$ii-padding;
+    }
+    .share {
+      flex:0;
+      padding:$ii-padding;
+    }
+
+    // Toggle button
     .m-toggle {
-      width:20px;
-      height:20px;
-      content:'';
+      display:block;
+      position: absolute;
+      bottom:16px;
+      right: 16px;
+      width: $ii-m-toggle-size;
+      height: $ii-m-toggle-size;
+      z-index:4;
+      opacity:0.5;
     }
     &.m-hide {
+      // Toggle button styling
       .m-toggle {
-        @include svg-icon(
-          'info',
-          $size: $ii-share-icon-size
-        );
+        @include svg-icon('info', $size: $ii-m-toggle-size, $defineWidth: false);
       }
+      // Toggle on/off
       .body {
         display:none;
       }
     }
-    &.m-show .body {
+    &.m-show {
+      // Toggle button styling
       .m-toggle {
-        @include svg-icon(
-          'close',
-          $size: $ii-share-icon-size
-        );
+        @include svg-icon('close', $size: $ii-m-toggle-size, $defineWidth: false);
       }
+      // Toggle on/off
       .body {
         display:flex;
       }
     }
   }
+}
 
-  .share {
-    .icon {
-      // These parameters are necessary because the social
-      // icons are pre-generated at 32px
-      width: $ii-share-icon-size;
-      height: $ii-share-icon-size;
-      background-size: $ii-share-icon-size $ii-share-icon-size;
-      padding: 0 .75rem;
-    }
+// ii
+// Social media icons
+//
+.share {
+
+  .social {
+    // Force the social icons to a consistent dimension
+    width:$ii-share-size;
+    height:$ii-share-size;
+    background-size:$ii-share-size;
+    margin:0 $ii-share-margin;
+  }
+
+  // Settings for viewports SM and higher
+  //
+  @include media-breakpoint-up(sm) {
+    position: absolute;
+    right: 8px;
+    bottom: 110%;
+    opacity: .5;
+    padding: 4px 16px;
+    cursor: pointer;
+    display:flex;
+
+    // Toggle button
     .share-toggle {
-      @include media-breakpoint-down(md) {
-        // On mobile: hide the Export 'share' icon.
+      @include svg-icon('export', $size: $ii-share-size, $defineWidth: false);
+      width:$ii-share-size;
+      height:$ii-share-size;
+      margin:0 $ii-share-margin;
+    }
+    // Toggle functionality
+    &.share-hide {
+      .social {
+        // Hide the icons
         display:none;
-      }
-      @include media-breakpoint-up(md) {
-        // On tablet/higher: show it.
-        display:inline;
-        @include svg-icon('export', false);
       }
     }
     &.share-show {
-      .icon.social {
-        display:inline;
+      .social {
+        // Show the icons
+        display:block;
       }
+      // Then make the whole box stand out more
+      opacity:1;
+      background:rgba(51, 51, 51, 0.35);
+      border-radius: .25rem;
     }
-    &.share-hide {
-      .icon.social {
-        display:none;
-      }
-    }
-
   }
-
+  // Settings for viewports SM and below (mobile)
+  //
+  @include media-breakpoint-down(sm) {
+    .share-toggle {
+      display:none;
+    }
+  }
 }
-
 
 
 // A hidden element which helps the script know

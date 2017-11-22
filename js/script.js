@@ -88,36 +88,26 @@ $( document ).ready( function() {
 
 
     // (3) Image Info Panel Toggler
-    $( '.ii-icon' ).mousedown( function( e ) {
-       // Prevent double-click selecting on the icon box
-      e.preventDefault();
-    } );
-    var image_info_overlay = false;
-    $( '.ii-icon' ).click( function() {
-      // The overlay text (ii-body)
-      // is found just one element prior
-      image_info_overlay = $( this ).prev();
-      $( image_info_overlay ).toggleClass( 'hide show' );
-    } );
-    $( window ).click( function( e ) {
-      if ( image_info_overlay ) {
-        // User has clicked on an Info bubble
-        clicked = $( e.target );
-        parents = clicked.parents();
-        if ( clicked.hasClass( 'ii-icon' ) || parents.hasClass( 'ii' ) || parents.hasClass( 'ii-icon' ) ) {
-          // If you click the icon, or the infobox
-          return;
-        } else {
-          // If you click anywhere else,
-          // Then hide *all* info overlays
-          $( '.ii' ).removeClass( 'show' ).addClass( 'hide' );
-        }
-      } else {
-        // User has not clicked on an Info bubble
-        return;
-      }
-    } );
+    //
+    //
+    $('.ii').each( function(i) {
+      var ii = $( this );
+      var children = ii.find('.m-toggle, .share');
+      var mToggle = $( children[0] );
+      var mShare = $( children[1] );
+
+      mToggle.click( function() {
+        ii.toggleClass('m-hide m-show');
+      });
+
+      mShare.click( function() {
+        $( this ).toggleClass('share-hide share-show');
+      });
+    });
+
+
   }
+
 
   // (4) Show/Hide contact form
   // For use on about.html

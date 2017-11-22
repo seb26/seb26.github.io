@@ -40,7 +40,7 @@ thumbnail:
 
     {%- comment -%} The first 3 images are formatted normally so they load normally. {%- endcomment -%}
     {%- if forloop.index0 <= 2 -%}
-    <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    <img class="object nolazy" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
     {%- else -%}
     {%- comment -%} Then every other image is structured for lazy loading. {%- endcomment -%}
     <img class="object lazy" data-src="{{ imageFilepath }}" alt="{{ imageAltText }}" style="display:none;" />
@@ -50,34 +50,36 @@ thumbnail:
     {%- endif -%}
 
     {%- if image.description -%}
-      {%- assign iiClass = 'extended' -%}
+      {%- assign iiClass = 'with-desc' -%}
     {%- else -%}
-      {%- assign iiClass = 'short' -%}
+      {%- assign iiClass = 'no-desc' -%}
     {%- endif -%}
     <div class="ii {{ iiClass }} m-hide">
       <div class="m-toggle"></div>
       <div class="body">
-        {% if image.description %}
         <div class="description">
-          {{ image.description }}
-          {% if image.series %}
-          <span class="series"><a href="{{ image.series }}">View more from this series.</a></span>
-          {% endif %}
+          <p>
+            {{ image.description }}
+            {% if image.series %}
+            <span class="series"><a href="{{ image.series }}">View more from this series</a>.</span>
+            {% endif %}
+          </p>
         </div>
-        {% endif %}
         <div class="details">
-          <div class="detail location" itemprop="locationCreated">{{ image.location }}</div>
-          <time class="detail date" datetime="{{ image.date }}">{{ image.date | date: "%e %B %Y" }}</time>
-          <div class="detail share share-hide">
-            <a class="detail icon share-toggle"></a>
-            {%- if image.description -%}
-            {%- assign shareLinkDesc = image.description -%}
-            {%- else -%}
-            {%- assign shareLinkDesc = image.location -%}
-            {%- endif -%}
-            {%- assign shareLinkTitle = image.title -%}
-            {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
-          </div>
+          <span class="location" itemprop="locationCreated">{{ image.location }}</span>
+          <time class="date" datetime="{{ image.date }}">
+            <span class="date-short">{{ image.date | date: "%b %Y" }}</span>
+          </time>
+        </div>
+        <div class="share share-hide">
+          {%- if image.description -%}
+          {%- assign shareLinkDesc = image.description -%}
+          {%- else -%}
+          {%- assign shareLinkDesc = image.location -%}
+          {%- endif -%}
+          {%- assign shareLinkTitle = image.title -%}
+          {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
+          <a class="icon share-toggle"></a>
         </div>
       </div>
     </div>
