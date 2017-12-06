@@ -63,6 +63,11 @@
       width: 100%;
       -webkit-overflow-scrolling: touch;
 
+      // But hide the actual scrollbars themselves.
+      &::-webkit-scrollbar {
+        display:none;
+      }
+
       // Goal: visually indicate to viewers that they
       // can horizontally scroll to view more images.
       // (1) On hover, animate the whole scrollbox to the left.
@@ -243,15 +248,16 @@
       border: 0;
       border-bottom: 1px solid rgba(204, 204, 204, 0.05);
     }
-    .genre {
-      color: #717171;
-      margin:.5rem auto;
-    }
     .details {
       list-style: none;
       padding: 0;
       color: #717171;
       margin:auto;
+    }
+    .genre {
+      color: #717171;
+      margin:.5rem auto;
+      margin-bottom: 1rem;
     }
     .action {
       // This class is in addition to .btn which is already fixed on the element

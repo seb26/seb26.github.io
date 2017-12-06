@@ -29,6 +29,25 @@ main.about {
     padding:2rem;
     padding-top:1rem;
     text-align:center;
+
+    #about-image-caption {
+      font-size: .6rem;
+      margin: .5rem 0;
+      color: #888;
+      a, a:hover {
+        color: #888;
+      }
+    }
+    // On desktop:
+    // * Hide the caption so it appears by hovering.
+    @include media-breakpoint-up(lg) {
+      #about-image-caption {
+        display:none;
+      }
+      &:hover #about-image-caption {
+        display:block;
+      }
+    }
   }
   section.about-content {
     @include make-col-ready();
