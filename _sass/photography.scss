@@ -224,10 +224,10 @@ $ii-share-margin: 5px;
 
   .description {
     a {
-      color:inherit;
+      color:$accent-purple-bright-super;
     }
     a:hover {
-      color:inherit;
+      color:$accent-purple-bright2;
     }
   }
 }
@@ -272,6 +272,8 @@ $ii-share-margin: 5px;
       display:flex;
       flex-grow:1;
       justify-content: space-between;
+      // Vertical align
+      align-items: center;
     }
 
     .description {

@@ -25,15 +25,15 @@ thumbnail:
   {%- endif -%}
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph"{{ imageCustomDimensions }}>
     <meta itemprop="name" content="{{ image.alt }}">
-    <meta itemprop="description" content="{{ image.description }}">
+    <meta itemprop="description" content="{{ image.description | strip_html | strip_newlines }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
     <meta itemprop="creator" content="Sebastian Reategui">
     <meta itemprop="dateCreated" content="{{ image.date }}">
     <meta itemprop="datePublished" content="{{ image.date }}">
     {%- if image.alt -%}
-      {%- assign imageAltText = image.alt -%}
+      {%- capture imageAltText -%}{{ image.alt | strip_html | strip_newlines }}{%- endcapture -%}
     {%- elsif image.description -%}
-      {%- assign imageAltText = image.description -%}
+      {%- capture imageAltText -%}{{ image.description | strip_html | strip_newlines }}{%- endcapture -%}
     {%- else -%}
       {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
     {%- endif -%}

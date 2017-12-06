@@ -9,10 +9,6 @@ Comments observed from testing the site on a Windows 7 desktop inside Google Chr
 * /video
   * Videos should be viewable embedded on the page
 
-## 2017-11-07
-* [Photography]
-  * Add a rule to highlight links inside image descriptions so they stand out more.
-
 ## Ongoing
 * Posts
   * Write a post on methods, design and success of Website project.
