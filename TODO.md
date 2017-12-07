@@ -2,7 +2,6 @@
 Comments observed from testing the site on a Windows 7 desktop inside Google Chrome.
 * /design & video
   * image horizontal scroll bars are visible.
-  * Between SM and LG viewports, the offsets for the About section are wrong and display incorrectly. Reproduce by resizing browser to these viewports' widths.
 * /video
   * Videos should be viewable embedded on the page
 * /photography
