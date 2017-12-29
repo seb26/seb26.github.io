@@ -32,8 +32,10 @@ gallery:
         dates (<em>brevas</em>).
     - url: 20170520-la-candelaria-sebastian-reategui-2723.jpg
     - url: 20170520-la-candelaria-sebastian-reategui-2690.jpg
-    - url: 20170926-la-candelaria-book-sebastian-reategui-1.jpg
-    - url: 20170926-la-candelaria-book-sebastian-reategui-2.jpg
+    - url: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-001-6896.jpg
+      caption: |
+        Now available as a limited edition photo book. <a href="/about/#contact">Contact me</a>.
+    - url: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-002-6902.jpg
 ---
 La Candelaria is Bogotá's historic district, constructed as early as 1530s. Perusing its squares and sidestreets for a few hours will reveal the richness in its Spanish colonial and Baroque construction. A history is told together. A body of work of Fernando Botero, Colombia's perhaps most well-recognised visual artist, can be found embodied in Museo Botero, among many other delicate museums and cultural centres scattered through the zone.
 
