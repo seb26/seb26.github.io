@@ -1,8 +1,8 @@
 ---
 title:          "In photos: Black gums in Canberra's valley district"
 slug:           in-photos-black-gums-tuggeranong-valley-chisholm
-date:           2018-01-11T17:15:00+11:00
-dateModified:   2018-01-11T17:15:00+11:00
+date:           2018-01-18T20:00:00+11:00
+dateModified:   2018-01-18T20:00:00+11:00
 description:    |
   A short walk through paths in Chisholm, Gowrie and Wanniassa in Canberra's valley district of Tuggeranong.
 categories:     gallery photography environment
@@ -24,4 +24,4 @@ gallery:
     - url: 20180111-erindale-walk-009-7019.jpg
     - url: 20180111-erindale-walk-011-7021.jpg
 ---
-A short walk through paths in Chisholm, Gowrie and Wanniassa in Canberra's valley district of Tuggeranong revealed black gums ([*Eucalyptus aggregata*](https://en.wikipedia.org/wiki/Eucalyptus_aggregata)) and other flora.
+A short walk through paths in Chisholm, Gowrie and Wanniassa in Canberra's valley district of Tuggeranong can easily reveal black gums ([*Eucalyptus aggregata*](https://en.wikipedia.org/wiki/Eucalyptus_aggregata)) and other flora lining the landscape.
