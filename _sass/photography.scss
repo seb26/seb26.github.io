@@ -178,6 +178,7 @@ $sc-height-mobile:  240px;
 
 $photography-width: 1280px;
 $photography-height: 853px;
+$photography-ratio-pc: 66.66667%;
 
 section.image {
   position: relative;
@@ -186,6 +187,11 @@ section.image {
   margin:0 auto;
 
   color:#e0e0e0;
+
+  .image-wrapper {
+    height:0;
+    padding-bottom:$photography-ratio-pc;
+  }
 
   .object {
     @include fluid;
@@ -220,7 +226,7 @@ $ii-share-margin: 5px;
       border:1px solid rgba(255,255,255,.5);
       margin:0px 8px;
       padding:2px 8px;
-      border-radius:.25rem;  
+      border-radius:.25rem;
     }
   }
 
