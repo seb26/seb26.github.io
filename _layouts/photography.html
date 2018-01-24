@@ -14,16 +14,14 @@ thumbnail:
   {% for image in page.images %}
   {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
   {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
-  {%- if image.dimensions -%}
-    {%- comment -%} If image has different dimensions, assign them as an inline style for the image section. {%- endcomment -%}
-    {%- capture imageCustomDimensions -%}
-    style="max-width:{{ image.dimensions.width }}px; max-height:{{ image.dimensions.height }}px;"
-    {%- endcapture -%}
+
+  {%- comment -%} Special behaviour for first 3 images. {%- endcomment -%}
+  {%- if forloop.index0 <= 2 -%}
+    {%- assign imageIsLazy = false -%}
   {%- else -%}
-    {%- comment -%} Reset this variable so it doesn't affect subsequent images. {%- endcomment -%}
-    {%- assign imageCustomDimensions = '' -%}
+    {%- assign imageIsLazy = true -%}
   {%- endif -%}
-  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph"{{ imageCustomDimensions }}>
+  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
     <meta itemprop="name" content="{{ image.alt }}">
     <meta itemprop="description" content="{{ image.description | strip_html | strip_newlines }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
@@ -38,18 +36,16 @@ thumbnail:
       {%- capture imageAltText -%}{{ image.location }}, {{ img.date | date: "%e %B %Y" }}{%- endcapture -%}
     {%- endif -%}
 
-    <div class="image-wrapper">
-      {%- comment -%} The first 3 images are formatted normally so they load normally. {%- endcomment -%}
-      {%- if forloop.index0 <= 2 -%}
-      <img class="object nolazy" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
-      {%- else -%}
-      {%- comment -%} Then every other image is structured for lazy loading. {%- endcomment -%}
-      <img class="object lazy" data-src="{{ imageFilepath }}" alt="{{ imageAltText }}" style="display:none;" />
-      <noscript>
-        <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
-      </noscript>
-      {%- endif -%}
-    </div>
+    {%- comment -%} The first 3 images are formatted normally so they load normally. {%- endcomment -%}
+    {%- unless imageIsLazy -%}
+    <img class="object nolazy" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    {%- else -%}
+    {%- comment -%} Then every other image is structured for lazy loading. {%- endcomment -%}
+    <img class="object lazy" data-src="{{ imageFilepath }}" alt="{{ imageAltText }}" style="display:none;" />
+    <noscript>
+      <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    </noscript>
+    {%- endunless -%}
 
     {%- if image.description -%}
       {%- assign iiClass = 'with-desc' -%}
