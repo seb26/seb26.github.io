@@ -1,7 +1,12 @@
 ---
 layout: default
 ---
-<article class="blog" {% if page.lang %}lang="{{ page.lang }}"{% endif %}>
+{%- if page.body.en and page.body.es -%}
+  {%- assign pageIsBilingual = true -%}
+{%- else -%}
+  {%- assign pageIsBilingual = false -%}
+{%- endif -%}
+<article class="blog {% if pageIsBilingual %}bilingual{% endif %}" lang="en">
   <div class="container">
     <header class="blog-head">
       <div class="unit blog-info">
@@ -27,15 +32,33 @@ layout: default
       </div>
     </header>
     <main class="unit blog-body">
+      {%- if pageIsBilingual -%}
+      <div class="blog-languages">
+        <a href="#" id="change-language">
+          <span class="change-language-label en" lang="en">Read in English</span>
+          <span class="change-language-label es" lang="es">Lea en español</span>
+        </a>
+      </div>
+      {%- endif -%}
       {% if page.gallery %}
       <p class="blog-scroll-for-photos">
-        <span class="en">Scroll for photos.</span><br />
+        <span class="en" lang="en">Scroll for photos.</span><br />
         <span class="es" lang="es">Fotos a continuación.</span>
       </p>
       {% endif %}
-      <div class="blog-text-content" itemprop="articleBody">
+      {%- comment -%} Some articles use this format, others don't. {%- endcomment -%}
+      {% if pageIsBilingual %}
+      <div class="blog-text-content en" itemprop="articleBody" lang="en">
+        {{ page.body.en | markdownify }}
+      </div>
+      <div class="blog-text-content es" itemprop="articleBody" lang="es">
+        {{ page.body.es | markdownify }}
+      </div>
+      {% else %}
+      <div class="blog-text-content en" itemprop="articleBody" lang="en">
         {{ content }}
       </div>
+      {% endif %}
     </main>
     {% if page.gallery %}
     <div class="unit-free blog-gallery" itemscope itemtype="http://schema.org/ImageGallery">

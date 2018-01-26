@@ -29,39 +29,6 @@ body.page-blog {
   a:hover {
     color:#007bff;
   }
-  .es {
-    color:#666;
-  }
-  p.es::before {
-    content:'Español';
-    display:block;
-    font-size:0.75rem;
-    color:#aaa;
-    padding-top:1rem;
-  }
-  .es-hide {
-    background:#eee;
-    padding:8px;
-    margin:-8px;
-    border-radius:.125rem;
-  }
-  .es-hide-banner {
-    display:block;
-  }
-  .es-hide-banner-label {
-    display:inline-block;
-    background:#666;
-    color:#fff;
-    padding:.5rem;
-    margin:1rem 0;
-    border-radius:.25rem;
-    font-size:.8rem;
-    &:hover {
-      cursor:pointer;
-      background:#ccc;
-      color:#333;
-    }
-  }
 }
 .blog {
   // Typography.
@@ -130,6 +97,20 @@ body.page-blog {
     font-weight:bold;
     letter-spacing:.04rem;
     margin-bottom:2rem;
+  }
+  .blog-languages {
+    float:right;
+    #change-language {
+      background: #0d5597;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      color: white;
+      text-decoration:none;
+      &:hover {
+        text-decoration:none;
+        background:#007bff;
+      }
+    }
   }
   .blog-body {
     margin:3rem auto;

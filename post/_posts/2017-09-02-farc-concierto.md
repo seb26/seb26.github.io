@@ -11,6 +11,11 @@ location:       Bogotá
 country:        Colombia
 thumbnail:
   url: "/post/img/20170901-concierto-de-farc-sebastian-reategui-4191.jpg"
+body:
+  en: |
+    Supporters gather on Friday in the Plaza de Bolívar Square in Bogotá, Colombia, for [an official concert launching the new political party front](http://cadenaser.com/ser/2017/09/02/internacional/1504347564_198798.html) of the FARC (formerly known as Revolutionary Armed Forces of Colombia). Eight months after the group signed a peace agreement in November 2016 and began disarmament, this new platform for their activism and ideology indicates a significant change in the political scene of a nation whose history has been marked by conflict violence for close to 60 years, perpetrated by many including the FARC. The group has taken on a new name (Common Alternative Revolutionary Force) with their branding and logo depicting a red rose.
+  es: |
+    Seguidores se congregan en la céntrica Plaza de Bolivar en Bogotá, Colombia, en un concierto marcando el lanzamiento del partido político de las FARC. Tras 8 meses desde que el grupo firmó un acuerdo de paz en noviembre de 2016 y comenzó procesos de desarme, esta nueva plataforma para su ideología y activismo indica un cambio significado en el ámbito political de la nación cuya historia ha sido atormentada por el conflicto violento que ha durado casi 60 años, perpetraron por las FARC y muchos otros. El grupo lleva un nuevo nombre (Fuerza Alternative Revolucionaria del Común) y una marca y logotipo que plasman una rosa roja.
 gallery:
   images:
     - url: 20170901-concierto-de-farc-sebastian-reategui-4191.jpg
@@ -30,7 +35,3 @@ gallery:
     - url: 20170901-concierto-de-farc-sebastian-reategui-3867.jpg
     - url: 20170901-concierto-de-farc-sebastian-reategui-4065.jpg
 ---
-Supporters gather on Friday in the Plaza de Bolívar Square in Bogotá, Colombia, for <a href="http://cadenaser.com/ser/2017/09/02/internacional/1504347564_198798.html" target="_blank">an official concert launching the new political party front</a> of the FARC (formerly known as Revolutionary Armed Forces of Colombia). Eight months after the group signed a peace agreement in November 2016 and began disarmament, this new platform for their activism and ideology indicates a significant change in the political scene of a nation whose history has been marked by conflict violence for close to 60 years, perpetrated by many including the FARC. The group has taken on a new name (Common Alternative Revolutionary Force) with their branding and logo depicting a red rose.
-
-Seguidores se congregan en la céntrica Plaza de Bolivar en Bogotá, Colombia, en un concierto marcando el lanzamiento del partido político de las FARC. Tras 8 meses desde que el grupo firmó un acuerdo de paz en noviembre de 2016 y comenzó procesos de desarme, esta nueva plataforma para su ideología y activismo indica un cambio significado en el ámbito political de la nación cuya historia ha sido atormentada por el conflicto violento que ha durado casi 60 años, perpetraron por las FARC y muchos otros. El grupo lleva un nuevo nombre (Fuerza Alternative Revolucionaria del Común) y una marca y logotipo que plasman una rosa roja.
-{:.es}
