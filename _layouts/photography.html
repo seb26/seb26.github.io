@@ -14,14 +14,16 @@ thumbnail:
   {% for image in page.images %}
   {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
   {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
-
-  {%- comment -%} Special behaviour for first 3 images. {%- endcomment -%}
-  {%- if forloop.index0 <= 2 -%}
-    {%- assign imageIsLazy = false -%}
+  {%- if image.dimensions -%}
+    {%- comment -%} If image has different dimensions, assign them as an inline style for the image section. {%- endcomment -%}
+    {%- capture imageCustomDimensions -%}
+    style="max-width:{{ image.dimensions.width }}px; max-height:{{ image.dimensions.height }}px;"
+    {%- endcapture -%}
   {%- else -%}
-    {%- assign imageIsLazy = true -%}
+    {%- comment -%} Reset this variable so it doesn't affect subsequent images. {%- endcomment -%}
+    {%- assign imageCustomDimensions = '' -%}
   {%- endif -%}
-  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
+  <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph"{{ imageCustomDimensions }}>
     <meta itemprop="name" content="{{ image.alt }}">
     <meta itemprop="description" content="{{ image.description | strip_html | strip_newlines }}">
     <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
@@ -37,7 +39,7 @@ thumbnail:
     {%- endif -%}
 
     {%- comment -%} The first 3 images are formatted normally so they load normally. {%- endcomment -%}
-    {%- unless imageIsLazy -%}
+    {%- if forloop.index0 <= 2 -%}
     <img class="object nolazy" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
     {%- else -%}
     {%- comment -%} Then every other image is structured for lazy loading. {%- endcomment -%}
@@ -45,7 +47,7 @@ thumbnail:
     <noscript>
       <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
     </noscript>
-    {%- endunless -%}
+    {%- endif -%}
 
     {%- if image.description -%}
       {%- assign iiClass = 'with-desc' -%}

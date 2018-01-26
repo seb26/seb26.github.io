@@ -18,13 +18,7 @@ $( document ).ready( function() {
   //
 
   // (1) Lazy Loading
-  $('.lazy').show().Lazy({
-    afterLoad: function(e) {
-      // When done, remove this class, which gives the <img> the proper shape
-      // prior to being loaded
-      // e.parent().removeClass('notloaded');
-    }
-  });
+  $('.lazy').show().Lazy();
 
   // (2) Subcategory Navigator
   //

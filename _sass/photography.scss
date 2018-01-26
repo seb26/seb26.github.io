@@ -178,12 +178,6 @@ $sc-height-mobile:  240px;
 
 $photography-width: 1280px;
 $photography-height: 853px;
-$photography-ratio-pc: 66.66667%;
-
-$photography-preload-height-sm: 192px;
-$photography-preload-height-md: 384px;
-$photography-preload-height-lg: 512px;
-$photography-preload-height-xl: 661px;
 
 section.image {
   position: relative;
@@ -192,21 +186,6 @@ section.image {
   margin:0 auto;
 
   color:#e0e0e0;
-
-  // Give it a predetermined min height, so that images prior to being
-  // loaded, do not stack on top of each other.
-  @include media-breakpoint-down(sm) {
-    min-height: $photography-preload-height-sm;
-  }
-  @include media-breakpoint-only(sm) {
-    min-height: $photography-preload-height-md;
-  }
-  @include media-breakpoint-only(md) {
-    min-height: $photography-preload-height-lg;
-  }
-  @include media-breakpoint-up(lg) {
-    min-height: $photography-preload-height-xl;
-  }
 
   .object {
     @include fluid;
@@ -229,7 +208,6 @@ section.image {
 $ii-padding:16px;
 $ii-background: rgba(0,0,0,.5);
 $ii-m-toggle-size: 28px;
-$ii-m-toggle-size-small: 16px;
 $ii-share-count: 3;
 $ii-share-size: 24px;
 $ii-share-margin: 5px;
@@ -242,7 +220,7 @@ $ii-share-margin: 5px;
       border:1px solid rgba(255,255,255,.5);
       margin:0px 8px;
       padding:2px 8px;
-      border-radius:.25rem;
+      border-radius:.25rem;  
     }
   }
 
@@ -256,9 +234,9 @@ $ii-share-margin: 5px;
   }
 }
 
-// Viewport above md
+// Viewport above SM
 // Separate definitions entirely for Mobile and Desktop
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(sm) {
   .ii {
     &.with-desc {
       .body {
@@ -339,14 +317,8 @@ $ii-share-margin: 5px;
       flex-wrap: wrap;
 
       p {
-        overflow:hidden;
+        overflow:scroll;
         margin:0;
-      }
-    }
-    // Hide the description <p> tag if there is none.
-    &.no-desc {
-      .description p {
-        display:none;
       }
     }
     .details {
@@ -382,7 +354,7 @@ $ii-share-margin: 5px;
     &.m-show {
       // Toggle button styling
       .m-toggle {
-        @include svg-icon('close', $size: $ii-m-toggle-size-small, $defineWidth: false);
+        @include svg-icon('close', $size: $ii-m-toggle-size, $defineWidth: false);
       }
       // Toggle on/off
       .body {
@@ -405,9 +377,9 @@ $ii-share-margin: 5px;
     margin:0 $ii-share-margin;
   }
 
-  // Settings for viewports md and higher
+  // Settings for viewports SM and higher
   //
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(sm) {
     position: absolute;
     right: 8px;
     bottom: 110%;
@@ -441,7 +413,7 @@ $ii-share-margin: 5px;
       border-radius: .25rem;
     }
   }
-  // Settings for viewports md and below (mobile)
+  // Settings for viewports SM and below (mobile)
   //
   @include media-breakpoint-down(sm) {
     .share-toggle {
