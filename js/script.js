@@ -127,4 +127,18 @@ $( document ).ready( function() {
 
   }
 
+  // (5) Show/Hide content in spanish
+  // For use on blog pages
+  if ( $('body').hasClass('page-blog') ) {
+
+    // If the language tag has the hide class
+    // (not all do)
+      // Then hide the <p class="es">
+    $('.es').hide();
+    $('.es-hide-banner').click( function(e) {
+      $('.es').toggle();
+    });
+
+  }
+
 } ); // All code above this.
