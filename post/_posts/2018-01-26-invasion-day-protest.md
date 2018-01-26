@@ -9,7 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3363.jpg"
+  url: "/post/img/20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3606.jpg"
 gallery:
   images:
     - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3514.jpg
