@@ -1,5 +1,7 @@
 ---
 layout: default
+image_directory: "/post/img/"
+image_directory_sizes: "/post/img/sizes/"
 ---
 {%- if page.body.en and page.body.es -%}
   {%- assign pageIsBilingual = true -%}
@@ -27,8 +29,26 @@ layout: default
       <div class="unit blog-title">
         <h2 itemprop="name headline">{{ page.title }}</h2>
       </div>
+      {%- comment -%} Set up file names. {%- endcomment -%}
+      {%- assign fnNameOriginal = page.thumbnail.url | remove_first: "/post/img/" -%}
+      {%- assign fnSplit = fnNameOriginal | split: "." -%}
+      {%- assign fnNameOnly = fnSplit[0] -%}
+      {%- assign fnExtension = fnSplit[1] -%}
+      {%- capture fnPathRelative -%}{{ layout.image_directory }}{{ fnNameOriginal }}{%- endcapture -%}
+      {%- assign fnPathAbsolute = fnPathRelative | absolute_url -%}
+
+      {%- capture imageSrcAttributes -%}
+      sizes="(max-width: 1280px) 100vw, 1280px"
+      srcset="
+        {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_627.jpg 627w,
+        {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_940.jpg 940w,
+        {{ layout.image_directory }}{{ fnNameOriginal }} 1280w"
+      src="
+        {{ layout.image_directory }}{{ fnNameOriginal }}"
+      {%- endcapture -%}
       <div class="unit-free blog-thumb-primary">
-        <img src="{{ page.thumbnail.url | relative_url }}" alt="{{ page.thumbnail.alt }}" />
+        <img alt="{{ page.thumbnail.alt }}"
+        {{ imageSrcAttributes }} />
       </div>
     </header>
     <main class="unit blog-body">
@@ -78,8 +98,27 @@ layout: default
       {%- else -%}
         {%- assign image_alt = i.url -%}
       {%- endif -%}
+
+      {%- comment -%} Set up file names. {%- endcomment -%}
+      {%- assign fnNameOriginal = i.url -%}
+      {%- assign fnSplit = i.url | split: "." -%}
+      {%- assign fnNameOnly = fnSplit[0] -%}
+      {%- assign fnExtension = fnSplit[1] -%}
+      {%- capture fnPathRelative -%}{{ layout.image_directory }}{{ fnNameOriginal }}{%- endcapture -%}
+      {%- assign fnPathAbsolute = fnPathRelative | absolute_url -%}
+
+      {%- capture imageSrcAttributes -%}
+      data-sizes="(max-width: 1280px) 100vw, 1280px"
+      data-srcset="
+        {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_627.jpg 627w,
+        {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_940.jpg 940w,
+        {{ layout.image_directory }}{{ fnNameOriginal }} 1280w"
+      data-src="
+        {{ layout.image_directory }}{{ fnNameOriginal }}"
+      {%- endcapture -%}
+
       <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <img itemprop="thumbnail" src="{{ image_url }}" alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
+        <img class="lazy" itemprop="thumbnail" {{ imageSrcAttributes }} alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
           <meta itemprop="width" content="{{ image_width }}" />
           <meta itemprop="height" content="{{ image_height }}" />
         {%- if i.caption or i.credit -%}
