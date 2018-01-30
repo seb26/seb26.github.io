@@ -24,7 +24,7 @@ $bytesize_icons_desired:
   , twitter;
 @import "bytesize-icons-inline";
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+// @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 // Mixins.
 @mixin drop-shadow($transparency: 0.5) {
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, $transparency));

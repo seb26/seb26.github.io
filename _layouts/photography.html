@@ -2,10 +2,11 @@
 layout:             default
 subcategory_parent: photography
 thumbnail:
-  url:      "/img/photography-category-thumb-1.jpg"
+  url:      "/img/categories/photography-category-thumb-2.jpg"
   width:    853
   height:   480
 image_directory: "/img/photography/"
+image_directory_sizes: "/img/photography/sizes/"
 ---
 {% assign subcategories = site.data.photography.subcategories %}
 {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
@@ -36,9 +37,12 @@ image_directory: "/img/photography/"
   {%- endif -%}
   {%- capture imageSrcAttributes -%}
   {{ imageSrcAttributesPrefix }}sizes="(max-width: 1280px) 100vw, 1280px"
-  {{ imageSrcAttributesPrefix }}srcset="{{ layout.image_directory }}{{ fnNameOnly }},w_627.jpg 627w,
-       {{ layout.image_directory }}{{ fnNameOriginal }} 1280w"
-  {{ imageSrcAttributesPrefix }}src="{{ layout.image_directory }}{{ fnNameOriginal }}"
+  {{ imageSrcAttributesPrefix }}srcset="
+    {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_627.jpg 627w,
+    {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_940.jpg 940w,
+    {{ layout.image_directory }}{{ fnNameOriginal }} 1280w"
+  {{ imageSrcAttributesPrefix }}src="
+    {{ layout.image_directory }}{{ fnNameOriginal }}"
   {%- endcapture -%}
 
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
