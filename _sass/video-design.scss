@@ -50,75 +50,7 @@
       padding:0;
     }
 
-    .slidebox {
-      // Bootstrap: .align-items-center
-      // Vertical align for images inside.
-      -ms-flex-align: center !important;
-      align-items: center !important;
-      // Make it horizontal scroll.
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      height:auto;
-      width: 100%;
-      -webkit-overflow-scrolling: touch;
-
-      // But hide the actual scrollbars themselves.
-      &::-webkit-scrollbar {
-        display:none;
-      }
-
-      // Goal: visually indicate to viewers that they
-      // can horizontally scroll to view more images.
-      // (1) On hover, animate the whole scrollbox to the left.
-      transition: all .2s ease-out;
-      &:hover {
-        transform: translate(-15px, 0);
-        opacity: 1;
-      }
-      // (2) Show an arrow pointing left.
-      &::before {
-        @include media-breakpoint-up(xs) {
-          // On mobile: hide it.
-          display:none;
-        }
-        @include media-breakpoint-up(sm) {
-          // On tablet and higher: show.
-          display:inline-block;
-        }
-        // Make the arrow element visible with spaces. Hacky but I couldn't find another way.
-        content:'\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
-        @include svg-icon('arrow-left');
-        margin-right:15px;
-        opacity:.25;
-      }
-      &:hover::before {
-        // On hover, light up the arrow.
-        opacity:1;
-      }
-      // But, not for just 1x thumb on its own:
-      &.single {
-        // * remove the slide animation,
-        transform:none;
-        transition:none;
-        // * hide the arrow icon.
-        &::before {
-          display:none;
-          background:none;
-        }
-        .thumb {
-          // * make the image full width.
-          max-width:100%;
-          height:auto;
-          // * adjust the margin by 2 columns,
-          // (but avoid it for mobile)
-          @include media-breakpoint-up(md) {
-            @include make-col-offset(2);
-          }
-        }
-      }
-    }
-    .thumb {
+    .gallery-thumb-link {
       // Each thumb is a flex object.
       flex: 0 0 auto;
       height:auto;
@@ -144,12 +76,25 @@
         max-width:90%;
       }
     }
-    .thumb-play {
+
+    .gallery-thumb-link {
+      &.first {
+
+      }
+      &.subsequent {
+        img {
+          width:200px;
+        }
+      }
+    }
+
+    // Create a video Play icon on the first thumb
+    .gallery-thumb-link.video {
       display: inline-block;
       position: relative;
       width:auto;
     }
-    .thumb-play-icon {
+    .gallery-thumb-play {
       display: block;
       position: absolute;
       top: 50%;
@@ -169,6 +114,9 @@
         opacity: 1;
       }
     }
+
+
+
   }
 
   // Section 3: About box.

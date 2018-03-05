@@ -174,4 +174,11 @@ $( document ).ready( function() {
     }
   }
 
-} ); // All code above this.
+  // (6)
+  // Enable lightbox gallery through Ekko Lightbox
+  $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+  });
+
+} );
