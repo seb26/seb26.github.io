@@ -6,10 +6,8 @@ layout: default
   <section class="project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
 
     {%- comment -%} Section 0: Metadata. {%- endcomment -%}
-    {%- assign thumbFirst = video.thumbs[0].file -%}
     <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="duration" content="{{ video.duration }}">
-    <meta itemprop="thumbnailUrl" content="{{ page.thumbs_directory | absolute_url }}{{ thumbFirst }}">
     {% if video.creditDirector %}
       <meta itemprop="contributor" content="{{ video.credit }}">
       <meta itemprop="creator" content="{{ video.credit-director }}">
@@ -23,49 +21,66 @@ layout: default
 
     {%- comment -%} Section 1: Gallery box. {%- endcomment -%}
     <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
-      <div class="gallery-thumbs">
-      {% for image in video.thumbs %}
-        {%- assign thumbFileSplit = image.file | split: "." -%}
-        {%- assign thumbFileName = thumbFileSplit[0] -%}
-        {%- assign thumbFileExt = thumbFileSplit[1] -%}
-        {%- assign thumbFileFull = image.file -%}
-        {%- capture thumbFilepathFull -%}
-          {{ page.thumbs_directory }}{{ thumbFileFull }}
-        {%- endcapture -%}
-        {%- capture thumbFilepathSmall -%}
-          {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
-        {%- endcapture -%}
 
-          {%- if forloop.index == 1 -%}
-          {%- comment -%} First thumbnail. {%- endcomment -%}
-          <a class="gallery-thumb-link first {% if video.url %}video{% endif %}"
-            data-toggle="lightbox"
-            data-gallery="gallery-{{ video.title | slugify }}"
-            {% if video.url %}
-            href="{{ video.url }}"
-            {% else %}
-            href="{{ thumbFilepathFull }}"
-            {% endif %}>
-              <img class="gallery-thumb"
-                src="{{ thumbFilepathSmall }}">
+      {%- assign first = video.thumbs[0] -%}
+
+      {%- assign thumbFileSplit = first.file | split: "." -%}
+      {%- assign thumbFileName = thumbFileSplit[0] -%}
+      {%- assign thumbFileExt = thumbFileSplit[1] -%}
+      {%- assign thumbFileFull = first.file -%}
+      {%- capture thumbFilepathFull -%}
+        {{ page.thumbs_directory }}{{ thumbFileFull }}
+      {%- endcapture -%}
+      {%- capture thumbFilepathSmall -%}
+        {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+      {%- endcapture -%}
+
+      <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
+        <div class="row">
+          <div class="gallery-primary">
+            <a class="link primary {% if video.url %}video{% endif %}"
+              data-toggle="lightbox"
+              data-gallery="gallery-{{ video.title | slugify }}"
               {% if video.url %}
-              <div class="gallery-thumb-play"></div>
-              {% endif %}
-          </a>
+              href="{{ video.url }}"
+              {% else %}
+              href="{{ thumbFilepathFull }}"
+              {% endif %}>
+                <img class="gallery-thumb"
+                  src="{{ thumbFilepathSmall }}">
+                {% if video.url %}
+                <div class="icon-primary-play"></div>
+                {% endif %}
+            </a>
+          </div>
+          <div class="gallery-thumbs">
+          {% for image in video.thumbs %}
+            {%- if forloop.index0 == 0 -%}
+              {%- continue -%}
+            {%- endif -%}
 
-          {%- else -%}
-          {%- comment -%} Subsequent thumbnails. {%- endcomment -%}
-          <a class="gallery-thumb-link subsequent"
-            data-toggle="lightbox"
-            data-gallery="gallery-{{ video.title | slugify }}"
-            href="{{ thumbFilepathFull }}">
-              <img class="gallery-thumb"
-                src="{{ thumbFilepathSmall }}">
-          </a>
-          {%- endif -%}
+            {%- assign thumbFileSplit = image.file | split: "." -%}
+            {%- assign thumbFileName = thumbFileSplit[0] -%}
+            {%- assign thumbFileExt = thumbFileSplit[1] -%}
+            {%- assign thumbFileFull = image.file -%}
+            {%- capture thumbFilepathFull -%}
+              {{ page.thumbs_directory }}{{ thumbFileFull }}
+            {%- endcapture -%}
+            {%- capture thumbFilepathSmall -%}
+              {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+            {%- endcapture -%}
 
-      {% endfor %}
-    </div>
+            <a class="link secondary"
+              data-toggle="lightbox"
+              data-gallery="gallery-{{ video.title | slugify }}"
+              href="{{ thumbFilepathFull }}">
+                <img class="gallery-thumb"
+                  src="{{ thumbFilepathSmall }}">
+            </a>
+
+          {% endfor %}
+        </div>
+      </div>
     </section>
 
     {%- comment -%} Section 2: About box. {%- endcomment -%}

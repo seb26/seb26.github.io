@@ -42,59 +42,53 @@
   section.gallery {
     @include make-col-ready();
     @include make-col(12);
-    overflow-x: scroll;
-    white-space: nowrap;
 
     // On mobile: less padding.
     @include media-breakpoint-down(md) {
       padding:0;
     }
 
-    .gallery-thumb-link {
-      // Each thumb is a flex object.
-      flex: 0 0 auto;
-      height:auto;
-      // Some spacing for each thumb.
-      padding-left:.25rem;
-      padding-right:.25rem;
-      // Fluid for the <img> elements themselves.
-      img {
-        @include fluid;
-        // And curved borders.
-        border-radius:.25rem;
+    .gallery-primary {
+      @include make-col-ready();
+      @include media-breakpoint-down(lg) {
+        // Full width of display
+        @include make-col(12);
       }
-
-      // On mobile:
-      // make each image width 80%, so that a little
-      // of the next image appears on screen, visually
-      // implying that there is a series.
-      @include media-breakpoint-only(xs) {
-        max-width:80%;
-      }
-      // On bigger: do the same, but with larger width.
-      @include media-breakpoint-up(sm) {
-        max-width:90%;
+      @include media-breakpoint-up(lg) {
+        // Segmented
+        @include make-col(5);
+        @include make-col-offset(2);
       }
     }
 
-    .gallery-thumb-link {
-      &.first {
-
+    .gallery-thumbs {
+      @include make-col-ready();
+      @include media-breakpoint-down(lg) {
+        // Full width of display
+        @include make-col(12);
       }
-      &.subsequent {
-        img {
-          width:200px;
+      @include media-breakpoint-up(lg) {
+        // Segmented
+        @include make-col(4);
+      }
+
+      .link.secondary {
+        .gallery-thumb {
+          width:180px;
+          @include border-radius-specific(0.25rem);
+          margin:.25rem;
         }
       }
     }
 
+
     // Create a video Play icon on the first thumb
-    .gallery-thumb-link.video {
+    .gallery-primary .link.video {
       display: inline-block;
       position: relative;
       width:auto;
     }
-    .gallery-thumb-play {
+    .gallery-primary .icon-primary-play {
       display: block;
       position: absolute;
       top: 50%;
@@ -106,7 +100,7 @@
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.1);
       @include svg-icon(play, 64px, $defineWidth: false);
-      opacity: 0.1;
+      opacity: 0.25;
       transition: all .15s ease;
       z-index:10;
 
