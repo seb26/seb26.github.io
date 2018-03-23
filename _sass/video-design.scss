@@ -23,7 +23,6 @@
 
 .project {
   @include make-row();
-  font-size: 80%;
   margin: 2rem auto;
   margin-bottom: 4.5rem;
   @include media-breakpoint-down(md) {
@@ -50,11 +49,20 @@
 
     .gallery-primary {
       @include make-col-ready();
-      @include media-breakpoint-down(lg) {
+      @include media-breakpoint-up(xs) {
         // Full width of display
         @include make-col(12);
       }
+      @include media-breakpoint-up(md) {
+        // Full width of display, with a bit of left lip
+        @include make-col-offset(1);
+        @include make-col(11);
+      }
       @include media-breakpoint-up(lg) {
+        @include make-col-offset(2);
+        @include make-col(10);
+      }
+      @include media-breakpoint-up(xl) {
         // Segmented
         @include make-col(5);
         @include make-col-offset(2);
@@ -63,20 +71,36 @@
 
     .gallery-thumbs {
       @include make-col-ready();
-      @include media-breakpoint-down(lg) {
+      @include media-breakpoint-up(xs) {
         // Full width of display
         @include make-col(12);
+        padding-top:7.5px;
+        padding-bottom:7.5px;
+        padding-left:22.5px;
+        padding-right:15px;
+      }
+      @include media-breakpoint-up(md) {
+        // Full width of display, with a bit of left lip
+        @include make-col-offset(1);
+        @include make-col(11);
+        padding-left:15px;
       }
       @include media-breakpoint-up(lg) {
+        @include make-col-offset(2);
+        @include make-col(10);
+      }
+      @include media-breakpoint-up(xl) {
         // Segmented
-        @include make-col(4);
+        @include make-col-offset(2);
+        @include make-col(2);
       }
 
       .link.secondary {
+        text-decoration: none;
         .gallery-thumb {
-          width:180px;
+          width: 120px;
           @include border-radius-specific(0.25rem);
-          margin:.25rem;
+          margin:0.1rem;
         }
       }
     }
@@ -109,6 +133,17 @@
       }
     }
 
+    // Make first gallery image fluid
+    // but only on small viewports
+    @include media-breakpoint-down(md) {
+      .gallery-primary {
+        .gallery-thumb {
+          @include fluid;
+        }
+      }
+    }
+
+
 
 
   }
@@ -121,7 +156,7 @@
     @include media-breakpoint-up(xs) {
       @include make-col(12);
     }
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       @include make-col(8);
       @include make-col-offset(1);
     }

@@ -42,7 +42,11 @@ layout: default
               data-toggle="lightbox"
               data-gallery="gallery-{{ video.title | slugify }}"
               {% if video.url %}
-              href="{{ video.url }}"
+                {%- if video.urlEmbed -%}
+                href="{{ video.urlEmbed }}"
+                {%- else -%}
+                href="{{ video.url }}"
+                {%- endif -%}
               {% else %}
               href="{{ thumbFilepathFull }}"
               {% endif %}>
