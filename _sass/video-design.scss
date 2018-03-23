@@ -280,25 +280,12 @@
 
 .design {
   .gallery {
-  }
-  .thumb {
-    @include media-breakpoint-up(md) {
-      // For design, thumbs should be smaller.
-      // Because the design images are much larger.
-      // Do not apply this to mobile, mobile needs images at 100% max-width.
-      max-width: 540px !important;
-    }
-    // This class is applied to design projects with just 1 thumb.
-    &.large {
-      width: 900px;
-      height: auto;
-    }
-    &.vertical {
-      height:25% !important;
-    }
-    img {
-      // A small detail for thumbnails.
-      border-radius: .2rem;
+    .gallery-primary {
+      .gallery-thumb {
+        // On Design, use full resolution image,
+        // but constrain its CSS presentation size.
+        max-width: 627px;
+      }
     }
   }
 }

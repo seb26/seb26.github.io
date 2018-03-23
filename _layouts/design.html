@@ -9,8 +9,6 @@ layout: default
     {%- else -%}
       {%- assign schemaType = "CreativeWork"-%}
     {%- endif -%}
-    {%- assign thumbFirst = design.thumbs[0].file -%}
-    {%- assign thumbFilepath = "/img/design/" -%}
   <section class="project design" itemscope itemtype="https://schema.org/{{ schemaType }}">
     {%- comment -%} Metadata. {%- endcomment -%}
     <meta itemprop="name" content="{{ design.title }}" />
@@ -29,36 +27,62 @@ layout: default
       {{ design.schemaAttributes }}
     {% endif %}
 
-    {%- comment -%} Gallery. {%- endcomment -%}
-    <section class="gallery" itemscope itemtype="https://schema.org/ImageGallery">
-      {%- if design.thumbs.size > 1 -%}
-      <div class="slidebox">
-        {%- for thisThumb in design.thumbs -%}
-        {%- if thisThumb.dimensions -%}
-          {%- comment -%} If a thumb has its own dimensions, use them. {%- endcomment -%}
-          {%- capture thumbWidthAndHeight -%}width="{{ thisThumb.dimensions.width }}" height="{{ thisThumb.dimensions.height }}"{%- endcapture -%}
-          {%- assign thumbWidth = thisThumb.dimensions.width -%}
-          {%- assign thumbHeight = thisThumb.dimensions.height -%}
-        {%- else -%}
-        {%- comment -%} If not, use the values that have been designated in the set. {%- endcomment -%}
-          {%- capture thumbWidthAndHeight -%}width="{{ design.thumbDimensions.width }}" height="{{ design.thumbDimensions.height }}"{%- endcapture -%}
-          {%- assign thumbWidth = design.thumbDimensions.width -%}
-          {%- assign thumbHeight = design.thumbDimensions.height -%}
-        {%- endif -%}
-        <div class="thumb {{ thisThumb.orientation }}" itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
-          <img class="thumb-file" src="{{ thumbFilepath }}{{ thisThumb.file }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
-          <meta itemprop="width" content="{{ thumbWidth }}" />
-          <meta itemprop="height" content="{{ thumbHeight }}" />
+    {%- comment -%} Section 1: Gallery box. {%- endcomment -%}
+    <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+
+      {%- assign first = design.thumbs[0] -%}
+
+      {%- assign thumbFileSplit = first.file | split: "." -%}
+      {%- assign thumbFileName = thumbFileSplit[0] -%}
+      {%- assign thumbFileExt = thumbFileSplit[1] -%}
+      {%- assign thumbFileFull = first.file -%}
+      {%- capture thumbFilepathFull -%}
+        {{ page.thumbs_directory }}{{ thumbFileFull }}
+      {%- endcapture -%}
+      {%- capture thumbFilepathSmall -%}
+        {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.jpg
+      {%- endcapture -%}
+
+      <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
+        <div class="row">
+          <div class="gallery-primary">
+            <a class="link primary"
+              data-toggle="lightbox"
+              data-gallery="gallery-{{ design.title | slugify }}"
+              href="{{ thumbFilepathFull }}">
+              {%- comment -%} Decision here to use full resolution first image. See SCSS for a rule that constrains the displayed width. {%- endcomment -%}
+                <img class="gallery-thumb"
+                  src="{{ thumbFilepathFull }}">
+            </a>
+          </div>
+          <div class="gallery-thumbs">
+          {% for image in design.thumbs %}
+            {%- if forloop.index0 == 0 -%}
+              {%- continue -%}
+            {%- endif -%}
+
+            {%- assign thumbFileSplit = image.file | split: "." -%}
+            {%- assign thumbFileName = thumbFileSplit[0] -%}
+            {%- assign thumbFileExt = thumbFileSplit[1] -%}
+            {%- assign thumbFileFull = image.file -%}
+            {%- capture thumbFilepathFull -%}
+              {{ page.thumbs_directory }}{{ thumbFileFull }}
+            {%- endcapture -%}
+            {%- capture thumbFilepathSmall -%}
+              {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.jpg
+            {%- endcapture -%}
+
+            <a class="link secondary"
+              data-toggle="lightbox"
+              data-gallery="gallery-{{ design.title | slugify }}"
+              href="{{ thumbFilepathFull }}">
+                <img class="gallery-thumb"
+                  src="{{ thumbFilepathSmall }}">
+            </a>
+
+          {% endfor %}
         </div>
-        {%- endfor -%}
       </div>
-      {%- else -%}
-      <div class="slidebox single">
-        <div class="thumb">
-          <img class="thumb-file large" src="{{ thumbFilepath }}{{ thumbFirst }}" alt="{{ design.thumbAlt }}" {{ thumbWidthAndHeight }} />
-        </div>
-      </div>
-      {%- endif -%}
     </section>
 
     {%- comment -%} About. {%- endcomment -%}
