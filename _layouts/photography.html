@@ -2,9 +2,11 @@
 layout:             default
 subcategory_parent: photography
 thumbnail:
-  url:      "/img/photography-category-thumb-1.jpg"
+  url:      "/img/categories/photography-category-thumb-2.jpg"
   width:    853
   height:   480
+image_directory: "/img/photography/"
+image_directory_sizes: "/img/photography/sizes/"
 ---
 {% assign subcategories = site.data.photography.subcategories %}
 {% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
@@ -12,8 +14,6 @@ thumbnail:
 <main class="images">
 
   {% for image in page.images %}
-  {%- capture imageFilepath -%}{{ page.image_filepath }}{{ image.file }}{%- endcapture -%}
-  {%- assign imageFilepathURL = imageFilepath | absolute_url -%}
 
   {%- comment -%} Special behaviour for first 3 images. {%- endcomment -%}
   {%- if forloop.index0 <= 2 -%}
@@ -21,10 +21,34 @@ thumbnail:
   {%- else -%}
     {%- assign imageIsLazy = true -%}
   {%- endif -%}
+
+  {%- comment -%} Set up file names. {%- endcomment -%}
+  {%- assign fnNameOriginal = image.file -%}
+  {%- assign fnSplit = image.file | split: "." -%}
+  {%- assign fnNameOnly = fnSplit[0] -%}
+  {%- assign fnExtension = fnSplit[1] -%}
+  {%- capture fnPathRelative -%}{{ layout.image_directory }}{{ fnNameOriginal }}{%- endcapture -%}
+  {%- assign fnPathAbsolute = fnPathRelative | absolute_url -%}
+
+  {%- if imageIsLazy -%}
+    {%- assign imageSrcAttributesPrefix = 'data-' -%}
+  {%- else -%}
+    {%- assign imageSrcAttributesPrefix = '' -%}
+  {%- endif -%}
+  {%- capture imageSrcAttributes -%}
+  {{ imageSrcAttributesPrefix }}sizes="(max-width: 1280px) 100vw, 1280px"
+  {{ imageSrcAttributesPrefix }}srcset="
+    {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_627.jpg 627w,
+    {{ layout.image_directory_sizes }}{{ fnNameOnly }},w_940.jpg 940w,
+    {{ layout.image_directory }}{{ fnNameOriginal }} 1280w"
+  {{ imageSrcAttributesPrefix }}src="
+    {{ layout.image_directory }}{{ fnNameOriginal }}"
+  {%- endcapture -%}
+
   <section class="image" itemprop="photo" itemscope itemtype="http://schema.org/Photograph">
     <meta itemprop="name" content="{{ image.alt }}">
     <meta itemprop="description" content="{{ image.description | strip_html | strip_newlines }}">
-    <meta itemprop="thumbnailUrl" content="{{ imageFilepathURL }}">
+    <meta itemprop="thumbnailUrl" content="{{ fnPathAbsolute }}">
     <meta itemprop="creator" content="Sebastian Reategui">
     <meta itemprop="dateCreated" content="{{ image.date }}">
     <meta itemprop="datePublished" content="{{ image.date }}">
@@ -38,12 +62,13 @@ thumbnail:
 
     {%- comment -%} The first 3 images are formatted normally so they load normally. {%- endcomment -%}
     {%- unless imageIsLazy -%}
-    <img class="object nolazy" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+    <img class="object nolazy" alt="{{ imageAltText }}" {{ imageSrcAttributes }} />
     {%- else -%}
     {%- comment -%} Then every other image is structured for lazy loading. {%- endcomment -%}
-    <img class="object lazy" data-src="{{ imageFilepath }}" alt="{{ imageAltText }}" style="display:none;" />
+    <img class="object lazy" alt="{{ imageAltText }}" style="display:none;" {{ imageSrcAttributes }}  />
     <noscript>
-      <img class="object" src="{{ imageFilepath }}" alt="{{ imageAltText }}" />
+      {%- comment -%} Plain original file for non-JS browsers, srcset is not being used. {%- endcomment -%}
+      <img class="object" alt="{{ imageAltText }}" src="{{ fnPathRelative }}" />
     </noscript>
     {%- endunless -%}
 
@@ -76,7 +101,7 @@ thumbnail:
           {%- assign shareLinkDesc = image.location -%}
           {%- endif -%}
           {%- assign shareLinkTitle = image.title -%}
-          {%- include _share.html sites='all' url=imageFilepathURL title=shareLinkTitle tumblr-posttype="photo" -%}
+          {%- include _share.html sites='all' url=fnPathAbsolute title=shareLinkTitle tumblr-posttype="photo" -%}
           <a class="icon share-toggle"></a>
         </div>
       </div>

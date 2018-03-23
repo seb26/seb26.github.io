@@ -18,13 +18,7 @@ $( document ).ready( function() {
   //
 
   // (1) Lazy Loading
-  $('.lazy').show().Lazy({
-    afterLoad: function(e) {
-      // When done, remove this class, which gives the <img> the proper shape
-      // prior to being loaded
-      // e.parent().removeClass('notloaded');
-    }
-  });
+  $('.lazy').show().Lazy();
 
   // (2) Subcategory Navigator
   //
@@ -164,7 +158,7 @@ $( document ).ready( function() {
         } else {
           change_to = 'en-fail';
         }
-        
+
         // Switch body text
         $('.blog-text-content.' + current_lang).hide();
         $('.blog-text-content.' + change_to).show();
@@ -180,4 +174,11 @@ $( document ).ready( function() {
     }
   }
 
-} ); // All code above this.
+  // (6)
+  // Enable lightbox gallery through Ekko Lightbox
+  $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+  });
+
+} );

@@ -23,7 +23,6 @@
 
 .project {
   @include make-row();
-  font-size: 80%;
   margin: 2rem auto;
   margin-bottom: 4.5rem;
   @include media-breakpoint-down(md) {
@@ -42,114 +41,78 @@
   section.gallery {
     @include make-col-ready();
     @include make-col(12);
-    overflow-x: scroll;
-    white-space: nowrap;
 
     // On mobile: less padding.
     @include media-breakpoint-down(md) {
       padding:0;
     }
 
-    .slidebox {
-      // Bootstrap: .align-items-center
-      // Vertical align for images inside.
-      -ms-flex-align: center !important;
-      align-items: center !important;
-      // Make it horizontal scroll.
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      height:auto;
-      width: 100%;
-      -webkit-overflow-scrolling: touch;
+    .gallery-primary {
+      @include make-col-ready();
+      @include media-breakpoint-up(xs) {
+        // Full width of display
+        @include make-col(12);
+      }
+      @include media-breakpoint-up(md) {
+        // Full width of display, with a bit of left lip
+        @include make-col-offset(1);
+        @include make-col(11);
+      }
+      @include media-breakpoint-up(lg) {
+        @include make-col-offset(2);
+        @include make-col(10);
+      }
+      @include media-breakpoint-up(xl) {
+        // Segmented
+        @include make-col(5);
+        @include make-col-offset(2);
+      }
+    }
 
-      // But hide the actual scrollbars themselves.
-      &::-webkit-scrollbar {
-        display:none;
+    .gallery-thumbs {
+      @include make-col-ready();
+      @include media-breakpoint-up(xs) {
+        // Full width of display
+        @include make-col(12);
+        padding-top:7.5px;
+        padding-bottom:7.5px;
+        padding-left:22.5px;
+        padding-right:15px;
+      }
+      @include media-breakpoint-up(md) {
+        // Full width of display, with a bit of left lip
+        @include make-col-offset(1);
+        @include make-col(11);
+        padding-left:15px;
+      }
+      @include media-breakpoint-up(lg) {
+        @include make-col-offset(2);
+        @include make-col(10);
+      }
+      @include media-breakpoint-up(xl) {
+        // Segmented
+        @include make-col-offset(2);
+        @include make-col(2);
       }
 
-      // Goal: visually indicate to viewers that they
-      // can horizontally scroll to view more images.
-      // (1) On hover, animate the whole scrollbox to the left.
-      transition: all .2s ease-out;
-      &:hover {
-        transform: translate(-15px, 0);
-        opacity: 1;
-      }
-      // (2) Show an arrow pointing left.
-      &::before {
-        @include media-breakpoint-up(xs) {
-          // On mobile: hide it.
-          display:none;
-        }
-        @include media-breakpoint-up(sm) {
-          // On tablet and higher: show.
-          display:inline-block;
-        }
-        // Make the arrow element visible with spaces. Hacky but I couldn't find another way.
-        content:'\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
-        @include svg-icon('arrow-left');
-        margin-right:15px;
-        opacity:.25;
-      }
-      &:hover::before {
-        // On hover, light up the arrow.
-        opacity:1;
-      }
-      // But, not for just 1x thumb on its own:
-      &.single {
-        // * remove the slide animation,
-        transform:none;
-        transition:none;
-        // * hide the arrow icon.
-        &::before {
-          display:none;
-          background:none;
-        }
-        .thumb {
-          // * make the image full width.
-          max-width:100%;
-          height:auto;
-          // * adjust the margin by 2 columns,
-          // (but avoid it for mobile)
-          @include media-breakpoint-up(md) {
-            @include make-col-offset(2);
-          }
+      .link.secondary {
+        text-decoration: none;
+        .gallery-thumb {
+          width: 120px;
+          @include border-radius-specific(0.25rem);
+          margin:0.1rem;
         }
       }
     }
-    .thumb {
-      // Each thumb is a flex object.
-      flex: 0 0 auto;
-      height:auto;
-      // Some spacing for each thumb.
-      padding-left:.25rem;
-      padding-right:.25rem;
-      // Fluid for the <img> elements themselves.
-      img {
-        @include fluid;
-        // And curved borders.
-        border-radius:.25rem;
-      }
 
-      // On mobile:
-      // make each image width 80%, so that a little
-      // of the next image appears on screen, visually
-      // implying that there is a series.
-      @include media-breakpoint-only(xs) {
-        max-width:80%;
-      }
-      // On bigger: do the same, but with larger width.
-      @include media-breakpoint-up(sm) {
-        max-width:90%;
-      }
-    }
-    .thumb-play {
+
+    // Create a video Play icon on the first thumb
+    .gallery-primary .link.video {
       display: inline-block;
       position: relative;
       width:auto;
     }
-    .thumb-play-icon {
+    .gallery-primary .icon-primary-play {
       display: block;
       position: absolute;
       top: 50%;
@@ -161,7 +124,7 @@
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.1);
       @include svg-icon(play, 64px, $defineWidth: false);
-      opacity: 0.1;
+      opacity: 0.25;
       transition: all .15s ease;
       z-index:10;
 
@@ -169,6 +132,20 @@
         opacity: 1;
       }
     }
+
+    // Make first gallery image fluid
+    // but only on small viewports
+    @include media-breakpoint-down(md) {
+      .gallery-primary {
+        .gallery-thumb {
+          @include fluid;
+        }
+      }
+    }
+
+
+
+
   }
 
   // Section 3: About box.
@@ -179,7 +156,7 @@
     @include media-breakpoint-up(xs) {
       @include make-col(12);
     }
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       @include make-col(8);
       @include make-col-offset(1);
     }
@@ -303,25 +280,12 @@
 
 .design {
   .gallery {
-  }
-  .thumb {
-    @include media-breakpoint-up(md) {
-      // For design, thumbs should be smaller.
-      // Because the design images are much larger.
-      // Do not apply this to mobile, mobile needs images at 100% max-width.
-      max-width: 540px !important;
-    }
-    // This class is applied to design projects with just 1 thumb.
-    &.large {
-      width: 900px;
-      height: auto;
-    }
-    &.vertical {
-      height:25% !important;
-    }
-    img {
-      // A small detail for thumbnails.
-      border-radius: .2rem;
+    .gallery-primary {
+      .gallery-thumb {
+        // On Design, use full resolution image,
+        // but constrain its CSS presentation size.
+        max-width: 627px;
+      }
     }
   }
 }
