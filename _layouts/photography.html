@@ -9,7 +9,31 @@ image_directory: "/img/photography/"
 image_directory_sizes: "/img/photography/sizes/"
 ---
 {% assign subcategories = site.data.photography.subcategories %}
-{% assign subcategory = site.data.photography.subcategories[page.subcategory] %}
+
+<nav class="navbar navbar-expand-md navbar-dark" id="nav-photography">
+
+  <a class="navbar-brand nav-photography-active-label" href="{{ page.permalink }}">{{ page.subcategory-label }}</a>
+
+  <div class="collapse navbar-collapse justify-content-md-center" id="nav-photography-items">
+    <ul class="navbar-nav">
+      {% for cat in subcategories %}
+      <li class="nav-item {% if cat.name == page.subcategory %}active{%- endif -%}">
+        <a class="nav-link" href="{{ cat.url }}">{{ cat.label }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <button class="navbar-toggler"
+  type="button"
+  data-toggle="collapse"
+  data-target="#nav-photography-items"
+  aria-controls="nav-photography-items"
+  aria-expanded="false"
+  aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon i-caret-top"></span>
+  </button>
+</nav>
 
 <main class="images">
 
@@ -110,14 +134,5 @@ image_directory_sizes: "/img/photography/sizes/"
   {% endfor %}
   <div class="end-of-images"></div>
 </main>
-<div class="sc-hover"></div>
-<nav class="nav sc sticky">
-  {% for cat in subcategories %}
-  {%- if cat.name == page.subcategory -%}
-  <a class="nav-item nav-link active" href="">{{ cat.label }}</a>
-  {%- else -%}
-  <a class="nav-item nav-link notactive" href="{{ cat.url }}">{{ cat.label }}</a>
-  {%- endif -%}
-  {% endfor %}
-</nav>
+
 {{ content }}

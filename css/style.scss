@@ -9,6 +9,7 @@ $bytesize_icons_desired:
   , arrow-left
   , arrow-top
   , avid
+  , caret-top
   , caret-bottom
   , close
   , ellipsis-horizontal
@@ -68,6 +69,9 @@ $accent-purple-bright: #734fa6;
 $accent-purple-bright2: #a86aff;
 $accent-purple-bright-super: #c0baf2;
 
+// nav-sitewide
+$nav-sitewide-max-height: 56px; // Stop it from changing height by itself
+
 // Stylesheets for each subpage area.
 @import "index";
 @import "about";
@@ -120,6 +124,7 @@ nav#nav-sitewide {
   right: 0;
   left: 0;
   z-index: 1030;
+
 }
 #nav-sitewide {
   .nav-item {
