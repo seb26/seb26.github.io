@@ -3,172 +3,68 @@
  * photography.html layout pages
  */
 
- /* Nav subcategory */
- /* Transparent bar that occupies
- * same space as subcat nav.
- * JS hover means it will show/hide
- * the subcat nav. */
+/* Nav subcategory using 'navbar' */
+$nav-photography-max-height: 36px;
+$nav-photography-font-size: .8rem;
 
-$sc-height:         60px;
-$sc-height-mobile:  240px;
-@mixin sc-width-xl {
-  @include media-breakpoint-up(xl) {
-    max-width:992px;
-  }
-}
-.sc-hover {
-  position:fixed;
-  width:100%;
-  height:$sc-height;
-  bottom:0;
-  left:0;
-  z-index:1025;
-  background:none;
-}
-.sc {
-  // Define the transitions here so they apply between class changes.
-  transition: transform 0.4s ease-in-out;
-  .nav-link {
-    transition: all 0.1s ease-in-out
-              , opacity 0s;
-  }
-  &.sticky {
-    position: fixed;
-    top:auto;
-    bottom:0;
-    left: 0;
+#nav-photography {
+  position: fixed;
+  z-index: 1030;
+
+  background: rgba( $accent-purple, .5);
+  font-size: $nav-photography-font-size;
+  letter-spacing:.01rem;
+
+  @include media-breakpoint-between(xs, md) {
+    // Sticky to bottom of viewport
+    top: auto;
+    bottom: 0;
     right: 0;
-    z-index: 1030;
-    justify-content: center;
+    left: 0;
+    max-height:none;
+    text-align:right;
 
-    height:$sc-height;
-    background: rgba(0, 0, 0, .5);
-    padding:.5rem 2rem;
-    display:flex;
-    margin:0 auto;
-    @include border-radius-specific(top);
-
-    &.sc-up {
-      transform:translate(0px, $sc-height);
+    .nav-link,
+    .nav-photography-active-label {
+      // Force them to have this size
+      font-size: $nav-photography-font-size;
+    }
+    // Show active label link through this BRAND element,
+    // which is always visible, even when toggled closed.
+    .nav-photography-active-label {
+      display:block;
+      text-align:right;
+      margin-left:auto;
+      margin-right:0;
+    }
+    .navbar-nav {
+      text-align:right;
+    }
+    .navbar-toggler {
+      // Keep to right side.
+      margin-left: auto;
+      margin-right: 0;
     }
 
-    .nav-link {
-      background:none;
-      padding: .5rem 1rem;
-      color: #fff;
-      margin:0 .5rem;
-      text-align: center;
-      flex-basis: 0;
-      flex-grow: 1;
-      align-self: center;
-      max-width: 100%;
-      border-radius:.25rem;
-      @include drop-shadow;
-
-      &.active,
-      &:hover {
-        background:rgba(255,255,255,.25);
-        color:#fff;
-      }
-    }
-    // Display links that are not active
-    .nav-link.notactive {
-      display:inline-block;
-    }
-    @include media-breakpoint-down(sm) {
-      // On mobile:
-      // * Show the list vertically
-      // * With JS, hide all items except for .active
-      // * And then show them when .active is clicked.
-      // * Remove drop shadow.
-      background:none;
-      height:auto; //$sc-height-mobile;
-      transform:translate(0px, 0px);
-      filter:none;
-
-      &.sc-up {
-      // For mobile, don't even hide this
-        transform:translate(0px, 0px);
-      }
-      .nav-link {
-        flex: 0 0 100%;
-        padding:.5rem .2rem;
-        text-align:center;
-        margin:.5rem 0;
-        border:2px solid $accent-purple;
-        color:$accent-purple-bright2;
-
-        &.active,
-        &:hover {
-          background-color:rgba($accent-purple, 0.65);
-          border-color:rgba($accent-purple, 0.05);
-          color:#fff;
-        }
-        &.notactive {
-          // Hide links that are not active
-          display:none;
-        }
-      }
-      &.mobile-show {
-        // * Show links again when toggled specifically with .mobile-show
-        // * Give them a dark background for text visibility.
-        // * Remove border styling.
-        background:rgba(0,0,0,.75);
-        border:none;
-        border-radius:none;
-        .nav-link {
-          &.active,
-          &:hover {
-            background-color:$accent-purple;
-          }
-          &.notactive {
-            display:inline-block;
-          }
-        }
-      }
-    }
-    @include sc-width-xl;
   }
-  &.static {
-    position:static;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    right:auto;
-    z-index:auto;
-    width:100%;
-    display:flex;
-    padding:1rem 2rem;
-    margin:0 auto;
+  @include media-breakpoint-up(md) {
+    // Sticky at the top, underneath sitewide nav
+    top: $nav-sitewide-max-height;
+    bottom: auto;
+    right: 0;
+    left: 0;
+    max-height: $nav-photography-max-height;
 
-    .nav-link {
-      background:none;
-      padding: .5rem 1rem;
-      color: $accent-purple-bright;
-      border: 2px solid $accent-purple;
-      border-radius: .25rem;
-      margin: .5rem;
-      text-align: center;
-      flex-basis: 0;
-      flex-grow: 1;
-      max-width: 100%;
+    // Hide this BRAND element, not necessary.
+    .nav-photography-active-label {
+      display:none;
+    }
 
-      &.active,
-      &:hover {
-        text-decoration: none;
-        color:#fff;
-        background-color:$accent-purple;
-      }
-    }
-    @include media-breakpoint-down(sm) {
-      .nav-link {
-        flex: 0 0 100%;
-        margin:.5rem 0;
-      }
-    }
-    @include sc-width-xl;
   }
+
+
 }
+
 
 //
 //
