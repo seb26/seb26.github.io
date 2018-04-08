@@ -4,7 +4,7 @@ slug:           in-photos-solidarity-for-palestine-in-sydney-following-deaths-in
 date:           2018-04-08T19:30:00+16:00
 dateModified:   2018-04-08T19:30:00+16:00
 description:    |
-  Palestinian migrants to Australia and protestors marched today in Sydney's centre in solidarity with the people of Palestine after deaths and injuries in protests in Gaza.
+  Palestinian migrants to Australia and protestors marched today in Sydney's centre in solidarity with the people of Palestine, after injuries and deaths at protests in Gaza this week.
 categories:     photojournalism photography
 location:       Sydney
 country:        Australia
