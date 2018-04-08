@@ -28,6 +28,7 @@ gallery:
     - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-5.jpg
       caption: Student activist Mona Abu Zalaf speaks at the rally.
     - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-6.jpg
+      caption: Palestinian man Zakariya Helou speaks at the rally.
     - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-3.jpg
     - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-4.jpg
     - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-14.jpg
