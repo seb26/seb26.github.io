@@ -2,7 +2,7 @@
 title:          "In photos: Aboriginal protesters challenge Sunrise program outside their studios"
 slug:           in-photos-aboriginal-protesters-challenge-sunrise-program-sydney
 date:           2018-03-16T08:30:00+16:00
-dateModified:   2018-03-16T08:30:00+16:00
+dateModified:   2018-04-16T21:00:00+15:00
 description:    |
   Aboriginal community supporters gathered outside Channel 7 studios in Martin Place, Sydney, on Friday morning to challenge comments made by a panel segment aired by the show Sunrise earlier in the week.
 categories:     photojournalism photography
@@ -40,11 +40,11 @@ body:
     Photographs below appeared on [NITV](https://www.sbs.com.au/nitv/nitv-news/article/2018/03/16/leave-kids-alone-sunrise-tries-hide-protesters-after-stolen-generations-comments) and [Pedestrian.tv](https://www.pedestrian.tv/news/indigenous-led-protest-sunrise-channel-7/), tweeted photographs on [News.com.au](http://www.news.com.au/entertainment/tv/morning-shows/the-protest-sunrise-didnt-want-you-to-see/news-story/98b8e7c174d13c268da0b87e21a13148), and video footage on [ABC Media Watch](http://www.abc.net.au/mediawatch/transcripts/s4819017.htm).
   es: |
 
-    Manifestantes de la comunidad indígena se congregaron afuera de los studios de Channel 7 en Martin Place, Sídney, para rechazar a comentarios hechos por un segmento del programa Sunrise a comienzos de esta semana. El programa [había provocado indignación al animar a un debate](https://www.sbs.com.au/nitv/nitv-news/article/2018/03/13/sunrise-slammed-inaccurate-claims-regarding-white-adoption-indigenous-kids?cid=inbody:sunrise-rushes-in-indigenous-panel-after-train-wreck-show-leads-to-protests) haciendo la cuestión de que si se debería dejar que padres blancos adoptaran a los niños indígenas en peligro. Un comentarista dijo que las [Generaciones Robadas](https://es.wikipedia.org/wiki/Generaciones_robadas_(Australia)) ‘eran bueno para los niños’ y que deberían repetirse.
+    Manifestantes de la comunidad indígena se congregaron afuera de los studios de Channel 7 en Martin Place, Sídney, para rechazar a comentarios hechos por un segmento del programa Sunrise a comienzos de esta semana. El programa [había provocado indignación al transmitir a un debate](https://www.sbs.com.au/nitv/nitv-news/article/2018/03/13/sunrise-slammed-inaccurate-claims-regarding-white-adoption-indigenous-kids?cid=inbody:sunrise-rushes-in-indigenous-panel-after-train-wreck-show-leads-to-protests) haciendo la cuestión de que si se debería dejar que padres blancos adoptaran a los niños indígenas en peligro. Un comentarista dijo que las [Generaciones Robadas](https://es.wikipedia.org/wiki/Generaciones_robadas_(Australia)) ‘eran bueno para los niños’ y que deberían repetirse.
 
-    Se reunieron los manifestantes alrededor de las ventanas de vista publica desde las 6.45 am, y se dieron discursos por activistas Lynda June-Coe, Paddy Gibson, la actriz Rarriwuy Hick y un joven exdetenido Dylan Voller.
+    Se reunieron los manifestantes alrededor de las ventanas de vista publica desde las 6:45 am, y se dieron discursos por activistas Lynda June-Coe, Paddy Gibson, la actriz Rarriwuy Hick y un joven exdetenido Dylan Voller.
 
-    Luego bajaron los productores del programa a las cortinas negras sobre las ventanas para impedir que la visión de los manifestantes se viera en el fondo del programa, empezando reproducir a imágenes grabadas previamente de la plaza. Un portavoz del programa dijo que fue necesario para proteger a los jóvenes espectadores de letreros ‘ofensivos’ de los manifestantes.
+    Luego los productores del programa bajaron las cortinas negras sobre las ventanas para impedir que la visión de los manifestantes se viera en el fondo de la transmisión, empezando a reproducir imágenes previamente grabadas de la plaza. Un portavoz del programa dijo que esto fue necesario para proteger a los jóvenes espectadores de letreros ‘ofensivos’ de los manifestantes.
 
     Las fotografías a continuación aparecieron en [NITV](https://www.sbs.com.au/nitv/nitv-news/article/2018/03/16/leave-kids-alone-sunrise-tries-hide-protesters-after-stolen-generations-comments) y [Pedestrian.tv](https://www.pedestrian.tv/news/indigenous-led-protest-sunrise-channel-7/), fotos de Twitter en  [News.com.au](http://www.news.com.au/entertainment/tv/morning-shows/the-protest-sunrise-didnt-want-you-to-see/news-story/98b8e7c174d13c268da0b87e21a13148), grabación de video en [ABC Media Watch](http://www.abc.net.au/mediawatch/transcripts/s4819017.htm).
 
