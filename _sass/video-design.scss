@@ -63,9 +63,6 @@
         @include make-col(10);
       }
       @include media-breakpoint-up(xl) {
-        // Segmented
-        @include make-col(5);
-        @include make-col-offset(2);
       }
     }
 
@@ -87,25 +84,26 @@
       }
       @include media-breakpoint-up(lg) {
         @include make-col-offset(2);
-        @include make-col(10);
+        @include make-col(6);
       }
       @include media-breakpoint-up(xl) {
-        // Segmented
-        @include make-col-offset(2);
-        @include make-col(2);
       }
 
       .link.secondary {
         text-decoration: none;
         .gallery-thumb {
           width: 120px;
-          @include border-radius-specific(0.25rem);
+          @include border-radius-specific($amount: 0.25rem);
           margin:0.1rem;
         }
       }
     }
 
-
+    .gallery-primary {
+      img.gallery-thumb {
+        @include border-radius-specific($amount: 0.15rem);
+      }
+    }
     // Create a video Play icon on the first thumb
     .gallery-primary .link.video {
       display: inline-block;
@@ -161,7 +159,11 @@
       @include make-col-offset(1);
     }
     @include media-breakpoint-up(lg) {
-      @include make-col(5);
+      @include make-col(8);
+      @include make-col-offset(2);
+    }
+    @include media-breakpoint-up(xl) {
+      @include make-col(6);
       @include make-col-offset(2);
     }
     background: rgba(28, 28, 28, 1);
