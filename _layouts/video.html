@@ -15,26 +15,28 @@ layout: default
       <meta itemprop="creator" content="Sebastian Reategui">
     {%- endif -%}
     <meta itemprop="contentUrl" content="{{ video.url }}">
-    <meta itemprop="embedUrl" content="{{ video.url }}">
+    <meta itemprop="embedUrl" content="{% if video.urlEmbed %}{{ video.urlEmbed }}{% else %}{{ video.url }}{% endif %}">
     <meta itemprop="uploadDate" content="{{ video.date }}">
     <meta itemprop="datePublished" content="{{ video.date }}">
 
     {%- comment -%} Section 1: Gallery box. {%- endcomment -%}
+    {%- assign first = video.thumbs[0] -%}
+    {%- assign thumbFileSplit = first.file | split: "." -%}
+    {%- assign thumbFileName = thumbFileSplit[0] -%}
+    {%- assign thumbFileExt = thumbFileSplit[1] -%}
+    {%- assign thumbFileFull = first.file -%}
+    {%- capture thumbFilepathFull -%}
+    {{ page.thumbs_directory }}{{ thumbFileFull }}
+    {%- endcapture -%}
+    {%- capture thumbFilepathSmall -%}
+    {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+    {%- endcapture -%}
+    {%- comment -%} The URL once for the VideoObject. {%- endcomment -%}
+    <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
+
     <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
 
-      {%- assign first = video.thumbs[0] -%}
-
-      {%- assign thumbFileSplit = first.file | split: "." -%}
-      {%- assign thumbFileName = thumbFileSplit[0] -%}
-      {%- assign thumbFileExt = thumbFileSplit[1] -%}
-      {%- assign thumbFileFull = first.file -%}
-      {%- capture thumbFilepathFull -%}
-        {{ page.thumbs_directory }}{{ thumbFileFull }}
-      {%- endcapture -%}
-      {%- capture thumbFilepathSmall -%}
-        {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
-      {%- endcapture -%}
-
+      {%- comment -%} And the URL again for the Gallery object. {%- endcomment -%}
       <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
         <div class="row">
           <div class="gallery-primary">
@@ -104,7 +106,7 @@ layout: default
           <li>
             <span class="duration">{{ video.duration | date: "%-M min" }}</span>
             &sdot;
-            <span class="genre">{{ video.genre }}</span>
+            <span itemprop="genre" class="genre">{{ video.genre }}</span>
           </li>
           {%- if video.license -%}
           <li class="license" itemprop="license">{{ video.license }}</li>
