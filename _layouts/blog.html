@@ -143,9 +143,9 @@ image_directory_sizes: "/post/img/sizes/"
     {% endif %}
   </div>
   <div class="unit blog-social">
-    <a href="#"><span class="i-facebook icon"></span></a>
-    <a href="#"><span class="i-twitter icon"></span></a>
-    <a href="#"><span class="i-link icon"></span></a>
+    <a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"></a>
+    <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ page.url | absolute_url }}"></a>
+    <a href="{{ page.url | absolute_url }}"><span class="i-link icon"></span></a>
   </div>
   <div class="unit-free blog-author-credit">
     <div class="unit">
