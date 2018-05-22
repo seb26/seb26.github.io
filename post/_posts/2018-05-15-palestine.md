@@ -1,8 +1,8 @@
 ---
 title:          "In photos: Palestinians in Sydney mark 70 years since removal from lands"
 slug:           in-photos-palestinians-in-sydney-mark-70-years-since-removal-from-lands
-date:           2018-05-12T16:00:00+16:00
-dateModified:   2018-05-22T11:00:00+16:00
+date:           2018-05-15T16:20:00+16:00
+dateModified:   2018-05-22T12:30:00+16:00
 description:    |
   Hundreds gathered in Sydney tonight to mark 70 years since Palestinian people were removed in 1948, calling for an end to violence and to return to their homelands.
 categories:     photojournalism photography
@@ -45,7 +45,7 @@ body:
 
     Se escucharon varios oradores incluyendo el autor Dr Ramzy Baroud, Fouad Charida, testigo de los eventos de 1948, activista y poeta Sara Saleh, miembro de parlamento del partido Greens David Shoebridge, entre otros.
 
-    Shoebridge le criticó al primer ministro australiano Malcolm Turnbull y al gobierno federal para haber defendido anteriormente al derecho de ‘autodefensa’ de Israel.
+    Shoebridge le criticó al primer ministro australiano Malcolm Turnbull y al gobierno federal para haber defendido anteriormente el derecho de ‘autodefensa’ de Israel.
 
     “Es esencial y necesario luchar por la libertad de la gente palestina”, dijo.
 
