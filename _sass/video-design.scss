@@ -242,6 +242,7 @@
     .action {
       // This class is in addition to .btn which is already fixed on the element
       display: inline-block;
+      margin-top:1rem;
       background: rgb(53, 71, 88);
       @include media-breakpoint-down(sm) {
         // On mobile: make the button occupy 100% from left-to-right screenwise
@@ -258,11 +259,13 @@
  */
 
 .video {
+  .gallery-primary {
+    .gallery-thumb {
+      max-width: 940px;
+    }
+  }
   .credit {
     display: none;
-  }
-  .credit-director {
-    font-style: italic;
   }
   .license {
     a {

@@ -53,7 +53,7 @@ layout: default
               href="{{ thumbFilepathFull }}"
               {% endif %}>
                 <img class="gallery-thumb"
-                  src="{{ thumbFilepathSmall }}">
+                  src="{{ thumbFilepathFull }}">
                 {% if video.url %}
                 <div class="icon-primary-play"></div>
                 {% endif %}
@@ -81,7 +81,7 @@ layout: default
               data-gallery="gallery-{{ video.title | slugify }}"
               href="{{ thumbFilepathFull }}">
                 <img class="gallery-thumb"
-                  src="{{ thumbFilepathSmall }}">
+                  src="{{ thumbFilepathFull }}">
             </a>
 
           {% endfor %}
@@ -100,21 +100,20 @@ layout: default
         <ul class="details">
           <li class="credit">{{ video.credit }}</li>
           <li class="credit-display">{{ video.creditDisplay }}</li>
-          {%- if video.creditDirector -%}
-          <li class="credit-director" itemprop="director">Director: {{ video.creditDirector }}</li>
-          {%- endif -%}
           <li>
             <span class="duration">{{ video.duration | date: "%-M min" }}</span>
             &sdot;
             <span itemprop="genre" class="genre">{{ video.genre }}</span>
           </li>
-          {%- if video.license -%}
-          <li class="license" itemprop="license">{{ video.license }}</li>
+          {%- if video.creditDirector -%}
+          <li class="credit-director" itemprop="director"><i>Director</i>: {{ video.creditDirector }}</li>
           {%- endif -%}
-          <li class="location" itemprop="locationCreated">{{ video.location }}</li>
-          <br />
+          {%- if video.license -%}
+          <li class="license" itemprop="license"><i>License</i>: {{ video.license }}</li>
+          {%- endif -%}
           {%- if video.software -%}
-          <li class="software"><strong>Software</strong>: {{ video.software }}</li>
+          <li class="software"><i>Using</i>: {{ video.software }}</li>
+          <li class="location" itemprop="locationCreated">{{ video.location }}</li>
           {%- endif -%}
         </ul>
         {%- if video.available != false -%}
