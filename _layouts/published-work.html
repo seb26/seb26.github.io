@@ -1,0 +1,27 @@
+---
+layout: blog
+classes: page-bright
+---
+{{ content }}
+<br><br>
+<ul>
+{%- for event in page.events reversed -%}
+  <li>
+    {{ event.name }} ({{ event.date | date: "%d %b %Y" }})
+  </li>
+  <ul>
+  {%- assign use_sorted = event.uses | sort: 'date' -%}
+  {%- for use in use_sorted -%}
+    <li>
+      {{ use.date | date: "%d %b %Y" }}
+      &ndash; <i>{{ use.outlet }}</i>
+      &ndash; <a href="{{ use.url }}">{{ use.label }}</a>
+      {% if use.note %}
+      &ndash; {{ use.note }}
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+  </ul>
+
+{%- endfor -%}
+</ul>
