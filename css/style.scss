@@ -36,6 +36,9 @@ $bytesize_icons_desired:
   max-width:100%;
   height:auto;
 }
+.fluid {
+  @include fluid;
+}
 @mixin border-radius-specific($position:all, $amount:.25rem) {
   @if $position == 'top' {
     border-radius:none;
@@ -91,6 +94,17 @@ body {
   color: #969fa7;
   background: #151515;
 }
+body.page-bright {
+  background:#fcfcfc;
+  color:#212529;
+
+  a {
+    color:#0d5597;
+  }
+  a:hover {
+    color:#007bff;
+  }
+}
 a {
   color: #84b0d8;
   &:hover {
@@ -107,9 +121,6 @@ footer#footer-sitewide {
   a:hover {
     color:inherit;
   }
-}
-.fluid {
-  @include fluid;
 }
 
 /*
