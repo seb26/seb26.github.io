@@ -3,7 +3,7 @@ $page-published-work-width: 960px;
 body.page-published-work {
   main {
     max-width: $page-published-work-width;
-    margin:1rem auto;
+    margin:1rem auto; //
     padding:1rem;
   }
   section.event {
