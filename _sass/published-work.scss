@@ -1,0 +1,30 @@
+$page-published-work-width: 960px;
+
+body.page-published-work {
+  main {
+    max-width: $page-published-work-width;
+    margin:1rem auto;
+    padding:1rem;
+  }
+  section.event {
+    margin:2rem 0;
+    margin-bottom:2.5rem;
+
+    header {
+      font-weight:bold;
+      font-size:120%;
+      color:#555;
+    }
+
+    .gallery {
+      margin:.5rem auto;
+    }
+
+    img.gallery-thumb {
+      height:140px;
+      @include border-radius-specific($amount: .5rem);
+      margin:.25rem;
+    }
+
+  }
+}

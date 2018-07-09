@@ -148,15 +148,9 @@ image_directory_sizes: "/post/img/sizes/"
     <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ page.url | absolute_url }}"></a>
     <a href="{{ page.url | absolute_url }}"><span class="i-link icon"></span></a>
   </div>
-  <div class="unit-free blog-author-credit">
-    <div class="unit">
-      <div class="image-circle" style='background-image:url("{{ site.author.photo.url }}");'>
-        <span class="sr-only">About the author, Sebastian Reategui, with image</span>
-      </div>
-      <p>I'm <strong>Sebastian</strong>. I'm an aspiring photojournalist, videographer and post-production editor. I like showing people what's going on in the world.</p>
-      <a class="faux-link" href="/about/">Read more ▸</a>
-    </div>
-  </div>
+
+  {% include _footer-intro-to-me.html %}
+  
   {%- if page.previous.url or page.next.url -%}
   <div class="container blog-nextup">
     {%- comment -%} // Apply the unit class when there is only Next or Previous by itself.

@@ -1,27 +1,56 @@
 ---
-layout: blog
+layout: default
 classes: page-bright
 ---
-{{ content }}
-<br><br>
-<ul>
-{%- for event in page.events reversed -%}
-  <li>
-    {{ event.name }} ({{ event.date | date: "%d %b %Y" }})
-  </li>
-  <ul>
-  {%- assign use_sorted = event.uses | sort: 'date' -%}
-  {%- for use in use_sorted -%}
-    <li>
-      {{ use.date | date: "%d %b %Y" }}
-      &ndash; <i>{{ use.outlet }}</i>
-      &ndash; <a href="{{ use.url }}">{{ use.label }}</a>
-      {% if use.note %}
-      &ndash; {{ use.note }}
-      {%- endif -%}
-    </li>
-  {%- endfor -%}
-  </ul>
+<main>
 
-{%- endfor -%}
-</ul>
+  <header>
+    <h2>Published work</h1>
+  </header>
+
+  {{ content }}
+
+  <section id="publications">
+    {%- for event in page.events -%}
+      <section class="event">
+        <header>
+          {{ event.name }}
+        </header>
+        <div class="event-date">
+          Taken: {{ event.date | date: "%e %B %Y" }}
+        </div>
+        {%- assign gallery_id = 'gallery-' | append: event.name | slugify -%}
+        <div class="gallery" id="{{ gallery_id }}">
+          {%- for image in event.images -%}
+            {%- assign thumb_size_full = page.images_folder | append: image.filename -%}
+            <a class="link secondary"
+              data-toggle="lightbox"
+              data-gallery="{{ gallery_id }}"
+              href="{{ thumb_size_full }}">
+                <img class="gallery-thumb"
+                  src="{{ thumb_size_full }}">
+            </a>
+          {%- endfor -%}
+        </div>
+        <div class="event-uses">
+          <ul>
+          {%- assign use_sorted = event.uses | sort: 'date' -%}
+          {%- for use in use_sorted -%}
+            <li>
+              {{ use.date | date: "%e %B %Y" }}
+              &ndash; <i>{{ use.outlet }}</i>
+              &ndash; <a href="{{ use.url }}">{{ use.label }}</a>
+              {% if use.note %}
+              &ndash; {{ use.note }}
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+          </ul>
+        </div>
+      </section>
+    {%- endfor -%}
+  </section>
+
+</main>
+
+{% include _footer-intro-to-me.html %}
