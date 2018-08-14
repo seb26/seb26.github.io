@@ -8,7 +8,7 @@ categories:   opinion personal
 location:     Bogotá
 country:      Colombia
 thumbnail:
-  url: "/post/img/tumblr_nhaa3iqu8d1tecr5po1_1280.jpg"
+  name:        tumblr_nhaa3iqu8d1tecr5po1_1280
 ---
 **Opinion**
 

@@ -9,19 +9,19 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3606.jpg"
+  name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3606
 gallery:
   images:
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3514.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3655.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-0053.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-0095.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3601.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3606.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3619.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3363.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3447.jpg
-    - url: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3639.jpg
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3514
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3655
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-0053
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-0095
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3601
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3606
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3619
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3363
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3447
+    - name: 20180126-sebastian-reategui-aboriginal-protest-march-in-sydney-3639
 body:
   en: |
     More than 3,000 people rallied in support of rights for Australian Aboriginal people, bursting onto the streets from The Block in Sydney's Redfern. The Invasion Day march is held each year, with today marking 223 years since the British invasion on the continent. Young Aboriginal men performed traditional dances in the middle of one of Sydney's largest avenues, with the march then meeting the Yabun Festival in Victoria Park for music performances and talks by elders. Event organisers Fighting In Resistance Equally reported that the protestors' route was lined with "almost a kilometre of marchers".

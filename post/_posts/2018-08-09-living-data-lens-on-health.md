@@ -9,25 +9,25 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: /post/img/20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594.jpg
+  name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594
 gallery:
   images:
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8146.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8356.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7227.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8459.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8418.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8448.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7237.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8561.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8592.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8614.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7307.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8676.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8606.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8757.jpg
-  - url: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8836.jpg
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8146
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8356
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7227
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8459
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8418
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8448
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7237
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8561
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8592
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8614
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-7307
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8676
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8606
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8757
+    - name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8836
 
 body:
   en: |

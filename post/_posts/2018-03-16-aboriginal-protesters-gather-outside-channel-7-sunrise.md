@@ -9,24 +9,24 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011.jpg"
+  name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011
 gallery:
   images:
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0794.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1008.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0971.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0938.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0856.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0562.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0921.jpg
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0794
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1008
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0971
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0938
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0856
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0562
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0921
       caption: "Actress Rarriwuy Hick spoke at the gathering alongside her son, calling for Aboriginal children to remain with their families."
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0553.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0697.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0683.jpg
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0553
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0697
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0683
       caption: "Former Northern Territory teen inmate Dylan Voller addresses protesters."
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1022.jpg
-    - url: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0600.jpg
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1022
+    - name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-0600
       caption: "Sunrise presenters Mark Beretta, Natalie Barr, Samantha Armytage, and Edwina Bartholomew are visible from outside the studios at 7.03 am, an hour before producers closed blinds and blocked protesters from view."
 
 body:

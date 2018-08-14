@@ -9,7 +9,7 @@ categories:     gallery photography architecture
 location:       Bogotá
 country:        Colombia
 thumbnail:
-  url: "/post/img/20170520-la-candelaria-sebastian-reategui-2555.jpg"
+  name: 20170520-la-candelaria-sebastian-reategui-2555
 body:
   en: |
     La Candelaria is Bogotá's historic district, constructed as early as 1530s. Perusing its squares and sidestreets for a few hours will reveal the richness in its Spanish colonial and Baroque construction. A history is told together. A body of work of Fernando Botero, Colombia's perhaps most well-recognised visual artist, can be found embodied in Museo Botero, among many other delicate museums and cultural centres scattered through the zone.
@@ -22,17 +22,17 @@ body:
 
 gallery:
   images:
-    - url: 20170520-la-candelaria-sebastian-reategui-2552.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2555.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2619.jpg
+    - name: 20170520-la-candelaria-sebastian-reategui-2552
+    - name: 20170520-la-candelaria-sebastian-reategui-2555
+    - name: 20170520-la-candelaria-sebastian-reategui-2619
       caption: Casa de Nariño, the presidential residence
-    - url: 20170520-la-candelaria-sebastian-reategui-2637.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2647.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2663.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2668.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2677.jpg
+    - name: 20170520-la-candelaria-sebastian-reategui-2637
+    - name: 20170520-la-candelaria-sebastian-reategui-2647
+    - name: 20170520-la-candelaria-sebastian-reategui-2663
+    - name: 20170520-la-candelaria-sebastian-reategui-2668
+    - name: 20170520-la-candelaria-sebastian-reategui-2677
       caption: Museo del Banco de la República (Museum of the Bank of the Republic)
-    - url: 20170520-la-candelaria-sebastian-reategui-2682.jpg
+    - name: 20170520-la-candelaria-sebastian-reategui-2682
       caption: |
         A soldier guards a street corner. The shop sells
         biscuits (<em>cucas, polvorosas, herpos, achiras</em>),
@@ -40,10 +40,10 @@ gallery:
         baked goods (<em>panochas, cotudos, garullas, almojabanas, marquezas, merengues, mogollas</em>),
         rice drink (<em>masato</em>) and
         dates (<em>brevas</em>).
-    - url: 20170520-la-candelaria-sebastian-reategui-2723.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-2690.jpg
-    - url: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-001-6896.jpg
+    - name: 20170520-la-candelaria-sebastian-reategui-2723
+    - name: 20170520-la-candelaria-sebastian-reategui-2690
+    - name: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-001-6896
       caption: |
         Now available as a limited edition photo book. <a href="/about/#contact">Contact me</a>.
-    - url: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-002-6902.jpg
+    - name: 20170520-la-candelaria-sebastian-reategui-bogota-colombia-photo-book-top-down-002-6902
 ---

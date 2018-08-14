@@ -9,25 +9,25 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/20180512-stop-black-deaths-in-custody-sebastian-reategui--2996.jpg"
+  name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2996
 gallery:
   images:
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2736.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2775.jpg
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2736
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2775
       caption: Activists Lizzy Jarrett and Vanessa Turnbull Roberts.
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2802.jpg
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2802
       caption: NSW Greens MP David Shoebridge.
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2949.jpg
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2949
       caption: "\'Minor offences should not be a death sentence\'"
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2996.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3061.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3093.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3223.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3294.jpg
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2996
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3061
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3093
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3223
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3294
       caption: Vanessa Turnbull Roberts and Justice Nixon (on shoulders).
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3316.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3380.jpg
-    - url: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2751.jpg
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3316
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3380
+    - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2751
 
 body:
   en: |

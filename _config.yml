@@ -94,6 +94,7 @@ defaults:
       thumbnail:
         width: "1280"
         height: "853"
+        format: jpg
       gallery_dimensions:
         width: "1280"
         height: "853"

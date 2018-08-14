@@ -9,29 +9,29 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10.jpg"
+  name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10
 gallery:
   images:
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-1.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-7.jpg
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-1
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-7
       caption: Activist Assala Sayara.
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-8.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-9.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-11.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-12.jpg
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-8
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-9
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-11
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-12
       caption: Assala Sayara.
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-13.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-15.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-16.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-17.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-5.jpg
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-13
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-15
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-16
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-17
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-5
       caption: Student activist Mona Abu Zalaf speaks at the rally.
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-6.jpg
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-6
       caption: Palestinian man Zakariya Helou speaks at the rally.
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-3.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-4.jpg
-    - url: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-14.jpg
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-3
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-4
+    - name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-14
 
 body:
   en: |

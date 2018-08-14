@@ -9,26 +9,26 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
-  url: "/post/img/20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685.jpg"
+  name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685
 gallery:
   images:
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3522.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3497.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3712.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3769.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3788.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3822.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3861.jpg
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3536.jpg
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3522
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3497
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3712
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3769
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3788
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3822
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3861
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3536
       caption: Author Dr Ramzy Baroud
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3545.jpg
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3545
       caption: Fouad Charida
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3562.jpg
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3562
       caption: Activist and poet Sara Saleh
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3569.jpg
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3569
       caption: David Shoebridge MP
-    - url: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3524.jpg
+    - name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3524
 
 body:
   en: |
