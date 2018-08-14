@@ -1,14 +1,9 @@
-## 2017-12-05
-Comments observed from testing the site on a Windows 7 desktop inside Google Chrome.
-* /design & video
-  * image horizontal scroll bars are visible.
-* /video
-  * Videos should be viewable embedded on the page
-* /photography
-    * Some images appear black and white before changing to colour.
-    * Tumblr share is broken, no preview is shown, just the site's general description
+## 2018-08-15
+* Blog
+  * Make Prev/Next boxes show a 627px image
+  * Consider changing the filename syntax for 940px and 627px sizes
 
-## Ongoing
+## Old
 * Posts
   * Write a post on methods, design and success of Website project.
   * Brainstorm other ideas for posts.
