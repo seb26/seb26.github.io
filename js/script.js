@@ -1,6 +1,6 @@
 $( document ).ready( function() {
 
-  // RESOURCES
+  // RESOURCES.
   //
   // http://upshots.org/javascript/jquery-test-if-element-is-in-viewport-visible-on-screen
   // Mike Dunn.
