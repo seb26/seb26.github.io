@@ -9,6 +9,7 @@ categories:     gallery photography architecture
 location:       Bogotá
 country:        Colombia
 thumbnail:
+  url: "/post/img/20170520-la-candelaria-sebastian-reategui-2555.jpg"
   name: 20170520-la-candelaria-sebastian-reategui-2555
 body:
   en: |

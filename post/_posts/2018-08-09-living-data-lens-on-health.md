@@ -9,6 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
+  url: "/post/img/20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594.jpg"
   name: 20180809-sebastian-reategui-lens-on-health-lisa-roberts-8594
 gallery:
   images:

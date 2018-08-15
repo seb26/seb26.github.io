@@ -9,6 +9,7 @@ categories:     gallery photography environment
 location:       Canberra
 country:        Australia
 thumbnail:
+  url: "/post/img/20180111-erindale-walk-017-7051.jpg"
   name: 20180111-erindale-walk-017-7051
 gallery:
   images:

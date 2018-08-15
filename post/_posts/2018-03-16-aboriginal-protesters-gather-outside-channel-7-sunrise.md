@@ -9,6 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
+  url: "/post/img/20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011.jpg"
   name: 20180316-sebastian-reategui-aboriginal-protesters-sunrise-1011
 gallery:
   images:

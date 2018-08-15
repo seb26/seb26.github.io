@@ -7,6 +7,7 @@ slug:       como-abrir-un-proyecto-de-premiere-en-versiones-anteriores-sin-probl
 lang:       es
 categories: tutorials español
 thumbnail:  
+  url: "/post/img/guia-como-convertir-archivo-premiere-pro-banner.jpg"
   name: guia-como-convertir-archivo-premiere-pro-banner
   width: 853
   height: 480

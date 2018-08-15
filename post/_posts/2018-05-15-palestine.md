@@ -9,6 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
+  url: "/post/img/20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685.jpg"
   name: 20180515-palestinians-march-in-sydney-70-years-nakba-sebastian-reategui-3685
 gallery:
   images:

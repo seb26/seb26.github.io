@@ -10,6 +10,7 @@ categories:     photojournalism photography
 location:       Bogotá
 country:        Colombia
 thumbnail:
+  url: "/post/img/20170901-concierto-de-farc-sebastian-reategui-4191.jpg"
   name: 20170901-concierto-de-farc-sebastian-reategui-4191
 body:
   en: |

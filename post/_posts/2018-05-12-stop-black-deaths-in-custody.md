@@ -9,6 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
+  url: "/post/img/20180512-stop-black-deaths-in-custody-sebastian-reategui--2996.jpg"
   name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2996
 gallery:
   images:

@@ -9,6 +9,7 @@ categories:     photojournalism photography
 location:       Sydney
 country:        Australia
 thumbnail:
+  url: "/post/img/2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10.jpg"
   name: 2018-04-08-palestine-gaza-rally-sydney-cbd-australia-sebastian-reategui-10
 gallery:
   images:

@@ -10,7 +10,8 @@ categories:     photojournalism photography recentwork
 location:       Bogotá
 country:        Colombia
 thumbnail:
-  name:         20170923-marcha-de-colores-4819
+  url: "/post/img/20170923-marcha-de-colores-4819.jpg"
+  name: 20170923-marcha-de-colores-4819
 body:
   en: |
     Ending the city's Week of Equality celebrations, hundreds turned out to march along one of Bogotá's largest avenues in appreciation of pride and sexual equality on Saturday. The march culminated in a concert headlined by Colombian acts Martina La Peligrosa and La 33. The mayor's entertainment office named the concert in honour of Sergio Urrego, a 16-year-old teenager who committed suicide in 2014 after abuse and discrimination he experienced in high school targeting his sexuality.
