@@ -62,25 +62,50 @@ gallery_directory_sizes: "/post/img/sizes/"
       <div class="image">
         <a href="{{ post.url }}">
           {%- comment -%}
-          Excluded the 1280w version, it is never used.
+          Define the image URLs.
+          Excluded the 1280w version, it is never needed.
           Using the 940w instead.
           {%- endcomment -%}
-          <img
-            class="fluid lazy"
-            itemprop="image"
-            data-sizes="(max-width: 1280px) 100vw, 1280px"
-            data-srcset="
-              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_627.{{ post.thumbnail.format }} 627w,
-              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
-            data-src="
-              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
-          />
-          <noscript>
+          {%- capture post_thumbnail_url_627 -%}
+            {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_627.{{ post.thumbnail.format }}
+          {%- endcapture -%}
+          {%- capture post_thumbnail_url -%}
+            {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }}
+          {%- endcapture -%}
+
+          {%- comment -%}
+          Structure the first two images as non-lazy, regular <img> tags.
+          So they show up and are downloaded as normal images on a webpage.
+          {%- endcomment -%}
+          {%- if forloop.index < 3 -%}
             <img
+              class="fluid"
               itemprop="image"
-              src="{{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              srcset="
+                {{ post_thumbnail_url_627 }} 627w,
+                {{ post_thumbnail_url }} 940w"
+              src="
+                {{ post_thumbnail_url }} 940w"
             />
-          </noscript>
+          {%- else -%}
+            <img
+              class="fluid lazy"
+              itemprop="image"
+              data-sizes="(max-width: 1280px) 100vw, 1280px"
+              data-srcset="
+                {{ post_thumbnail_url_627 }} 627w,
+                {{ post_thumbnail_url }} 940w"
+              data-src="
+                {{ post_thumbnail_url }} 940w"
+            />
+            <noscript>
+              <img
+                itemprop="image"
+                src="{{ post_thumbnail_url }} 940w"
+              />
+            </noscript>
+          {%- endif -%}
         </a>
       </div>
     </section>

@@ -1,6 +1,6 @@
 ## 2018-08-15
-* Blog
-
+* Combine all JS scripts into one
+  * Use CoffeeScript to achieve this (?)
 
 ## Old
 * Posts
