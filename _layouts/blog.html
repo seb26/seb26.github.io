@@ -164,7 +164,7 @@ gallery_default_format: jpg
       <div class="col-12 col-sm-6 previous">
         <a href="{{ page.previous.url }}">
           <div class="label top">← PREVIOUS</div>
-          <img src="{{ layout.gallery_directory_sizes }}{{ page.previous.thumbnail.name }},w_627.{{ page.previous.thumbnail.format }}"
+          <img class="lazy" data-src="{{ layout.gallery_directory_sizes }}{{ page.previous.thumbnail.name }},w_627.{{ page.previous.thumbnail.format }}"
             alt="{{ page.previous.title }}">
           <div class="label bottom">{{ page.previous.title }}</div>
         </a>
@@ -174,7 +174,7 @@ gallery_default_format: jpg
       <div class="col-12 col-sm-6 next">
         <a href="{{ page.next.url }}">
           <div class="label top">NEXT →</div>
-          <img src="{{ layout.gallery_directory_sizes }}{{ page.next.thumbnail.name }},w_627.{{ page.next.thumbnail.format }}"
+          <img class="lazy" data-src="{{ layout.gallery_directory_sizes }}{{ page.next.thumbnail.name }},w_627.{{ page.next.thumbnail.format }}"
             alt="{{ page.next.title }}">
           <div class="label bottom">{{ page.next.title }}</div>
         </a>

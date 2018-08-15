@@ -13,8 +13,8 @@ redirect_from:
   - '/post/'
   - '/post/2017/'
   - '/recent/'
-image_directory: "/post/img/"
-image_directory_sizes: "/post/img/sizes/"
+gallery_directory: "/post/img/"
+gallery_directory_sizes: "/post/img/sizes/"
 ---
 
 <section class="container blog blog-index" itemscope itemtype="http://schema.org/Blog">
@@ -60,22 +60,17 @@ image_directory_sizes: "/post/img/sizes/"
         <a href="{{ post.url }}" class="action">Read</a>
       </div>
       <div class="image">
-        {%- comment -%} Set up file names. {%- endcomment -%}
-        {%- assign fnNameOriginal = post.thumbnail.url -%}
-        {%- assign fnSplit = fnNameOriginal | remove_first: "/post/img/" | split: "." -%}
-        {%- assign fnNameOnly = fnSplit[0] -%}
-        {%- assign fnExtension = fnSplit[1] -%}
-        {%- capture fnPathRelative -%}{{ layout.image_directory }}{{ fnNameOriginal }}{%- endcapture -%}
-        {%- assign fnPathAbsolute = fnPathRelative | absolute_url -%}
-
+        {%- comment -%}
+        Set up file names.
+        Exclude the 1280w version, it is never used.
+        {%- endcomment -%}
         {%- capture imageSrcAttributes -%}
         data-sizes="(max-width: 1280px) 100vw, 1280px"
         data-srcset="
-          /post/img/sizes/{{ fnNameOnly }},w_627.jpg 627w,
-          /post/img/sizes/{{ fnNameOnly }},w_940.jpg 940w,
-          {{ fnNameOriginal }} 1280w"
+          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_627.{{ post.thumbnail.format }} 627w,
+          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w
         data-src="
-          {{ fnNameOriginal }}"
+          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
         {%- endcapture -%}
         <a href="{{ post.url }}">
           <img class="fluid lazy" itemprop="image" {{ imageSrcAttributes }}/>
