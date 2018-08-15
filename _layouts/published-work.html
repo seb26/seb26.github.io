@@ -27,8 +27,11 @@ classes: page-bright
               data-toggle="lightbox"
               data-gallery="{{ gallery_id }}"
               href="{{ thumb_size_full }}">
-                <img class="gallery-thumb"
-                  src="{{ thumb_size_full }}">
+                <img class="lazy gallery-thumb" data-src="{{ thumb_size_full }}">
+                <noscript>
+                  <img class="gallery-thumb" src="{{ thumb_size_full }}">
+                </noscript>
+
             </a>
           {%- endfor -%}
         </div>

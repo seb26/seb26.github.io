@@ -31,19 +31,18 @@ gallery_default_format: jpg
       <div class="unit blog-title">
         <h2 itemprop="name headline">{{ page.title }}</h2>
       </div>
-      {%- comment -%} Set up file names. {%- endcomment -%}
-      {%- capture imageSrcAttributes -%}
-      sizes="(max-width: 1280px) 100vw, 1280px"
-      srcset="
-        {{ layout.gallery_directory_sizes }}{{ page.thumbnail.name }},w_627.{{ page.thumbnail.format }} 627w,
-        {{ layout.gallery_directory_sizes }}{{ page.thumbnail.name }},w_940.{{ page.thumbnail.format }} 940w,
-        {{ layout.gallery_directory }}{{ page.thumbnail.name }}.{{ page.thumbnail.format }} 1280w"
-      src="
-        {{ layout.gallery_directory }}{{ page.thumbnail.name }}.{{ page.thumbnail.format }}"
-      {%- endcapture -%}
+
       <div class="unit-free blog-thumb-primary">
-        <img alt="{{ page.thumbnail.alt }}"
-        {{ imageSrcAttributes }} />
+        <img
+          alt="{{ page.thumbnail.alt }}"
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          srcset="
+            {{ layout.gallery_directory_sizes }}{{ page.thumbnail.name }},w_627.{{ page.thumbnail.format }} 627w,
+            {{ layout.gallery_directory_sizes }}{{ page.thumbnail.name }},w_940.{{ page.thumbnail.format }} 940w,
+            {{ layout.gallery_directory }}{{ page.thumbnail.name }}.{{ page.thumbnail.format }} 1280w"
+          src="
+            {{ layout.gallery_directory }}{{ page.thumbnail.name }}.{{ page.thumbnail.format }}"
+        />
       </div>
     </header>
     <main class="unit blog-body">
@@ -105,27 +104,32 @@ gallery_default_format: jpg
           {%- assign image_height = page.gallery_dimensions.height -%}
         {%- endif -%}
 
-        {%- if i.alt -%}
-          {%- assign image_alt = i.alt -%}
-        {%- else -%}
-          {%- assign image_alt = i.name -%}
-        {%- endif -%}
-
-        {%- comment -%} Set up file names. {%- endcomment -%}
-        {%- capture imageSrcAttributes -%}
-        data-sizes="(max-width: 1280px) 100vw, 1280px"
-        data-srcset="
-          {{ layout.gallery_directory_sizes }}{{ i.name }},w_627.{{ i_format }} 627w,
-          {{ layout.gallery_directory_sizes }}{{ i.name }},w_940.{{ i_format }} 940w,
-          {{ layout.gallery_directory }}{{ i.name }}.{{ i_format }} 1280w"
-        data-src="
-          {{ layout.gallery_directory }}{{ i.name }}.{{ i_format }}"
-        {%- endcapture -%}
-
         <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-          <img class="lazy" itemprop="thumbnail" {{ imageSrcAttributes }} alt="{{ image_alt }}" width="{{ page.gallery_dimensions.width }}"/>
-            <meta itemprop="width" content="{{ image_width }}" />
-            <meta itemprop="height" content="{{ image_height }}" />
+          {%- comment -%} Set up file names. {%- endcomment -%}
+          <img
+            class="lazy"
+            itemprop="thumbnail"
+            data-sizes="(max-width: 1280px) 100vw, 1280px"
+            data-srcset="
+              {{ layout.gallery_directory_sizes }}{{ i.name }},w_627.{{ i_format }} 627w,
+              {{ layout.gallery_directory_sizes }}{{ i.name }},w_940.{{ i_format }} 940w,
+              {{ layout.gallery_directory }}{{ i.name }}.{{ i_format }} 1280w"
+            data-src="
+              {{ layout.gallery_directory }}{{ i.name }}.{{ i_format }}"
+            {%- if i.alt -%}
+            alt="{{ i.alt }}"
+            {%- endif -%}
+            width="{{ page.gallery_dimensions.width }}"
+          />
+          <noscript>
+            <img
+              itemprop="thumbnail"
+              src="{{ layout.gallery_directory }}{{ i.name }}.{{ i_format }}"
+            />
+          </noscript>
+          <meta itemprop="width" content="{{ image_width }}" />
+          <meta itemprop="height" content="{{ image_height }}" />
+
           {%- if i.caption or i.credit -%}
           <figcaption class="caption">
             {%- if i.caption and i.credit -%}
@@ -164,8 +168,15 @@ gallery_default_format: jpg
       <div class="col-12 col-sm-6 previous">
         <a href="{{ page.previous.url }}">
           <div class="label top">← PREVIOUS</div>
-          <img class="lazy" data-src="{{ layout.gallery_directory_sizes }}{{ page.previous.thumbnail.name }},w_627.{{ page.previous.thumbnail.format }}"
+          <img
+            class="lazy"
+            data-src="{{ layout.gallery_directory_sizes }}{{ page.previous.thumbnail.name }},w_627.{{ page.previous.thumbnail.format }}"
             alt="{{ page.previous.title }}">
+          <noscript>
+            <img
+            src="{{ layout.gallery_directory_sizes }}{{ page.previous.thumbnail.name }},w_627.{{ page.previous.thumbnail.format }}"
+            alt="{{ page.previous.title }}">
+          </noscript>
           <div class="label bottom">{{ page.previous.title }}</div>
         </a>
       </div>
@@ -174,8 +185,15 @@ gallery_default_format: jpg
       <div class="col-12 col-sm-6 next">
         <a href="{{ page.next.url }}">
           <div class="label top">NEXT →</div>
-          <img class="lazy" data-src="{{ layout.gallery_directory_sizes }}{{ page.next.thumbnail.name }},w_627.{{ page.next.thumbnail.format }}"
+          <img
+            class="lazy"
+            data-src="{{ layout.gallery_directory_sizes }}{{ page.next.thumbnail.name }},w_627.{{ page.next.thumbnail.format }}"
             alt="{{ page.next.title }}">
+          <noscript>
+            <img
+            src="{{ layout.gallery_directory_sizes }}{{ page.next.thumbnail.name }},w_627.{{ page.next.thumbnail.format }}"
+            alt="{{ page.next.title }}">
+          </noscript>
           <div class="label bottom">{{ page.next.title }}</div>
         </a>
       </div>

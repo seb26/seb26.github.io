@@ -60,20 +60,27 @@ gallery_directory_sizes: "/post/img/sizes/"
         <a href="{{ post.url }}" class="action">Read</a>
       </div>
       <div class="image">
-        {%- comment -%}
-        Set up file names.
-        Exclude the 1280w version, it is never used.
-        {%- endcomment -%}
-        {%- capture imageSrcAttributes -%}
-        data-sizes="(max-width: 1280px) 100vw, 1280px"
-        data-srcset="
-          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_627.{{ post.thumbnail.format }} 627w,
-          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w
-        data-src="
-          {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
-        {%- endcapture -%}
         <a href="{{ post.url }}">
-          <img class="fluid lazy" itemprop="image" {{ imageSrcAttributes }}/>
+          {%- comment -%}
+          Excluded the 1280w version, it is never used.
+          Using the 940w instead.
+          {%- endcomment -%}
+          <img
+            class="fluid lazy"
+            itemprop="image"
+            data-sizes="(max-width: 1280px) 100vw, 1280px"
+            data-srcset="
+              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_627.{{ post.thumbnail.format }} 627w,
+              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
+            data-src="
+              {{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
+          />
+          <noscript>
+            <img
+              itemprop="image"
+              src="{{ page.gallery_directory_sizes }}{{ post.thumbnail.name }},w_940.{{ post.thumbnail.format }} 940w"
+            />
+          </noscript>
         </a>
       </div>
     </section>
