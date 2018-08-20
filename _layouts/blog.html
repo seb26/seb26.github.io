@@ -151,6 +151,11 @@ gallery_default_format: jpg
     </div>
     {% endif %}
   </div>
+  {% if page.conclusion %}
+  <div class="unit conclusion">
+    {{ page.conclusion }}
+  </div>
+  {% endif %}
   <div class="unit blog-social">
     <a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"></a>
     <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url={{ page.url | absolute_url }}"></a>

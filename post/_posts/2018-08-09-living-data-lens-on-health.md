@@ -58,5 +58,9 @@ body:
 
     “Mientras se mueve el jugador virtual, se agregan las historias como pedazos de su cuerpo, absorbiendo el significado en su ser”, <a href="http://www.livingdata.net.au/content/research/trackchanges/2018interactions/PedestriansOnCountry.php">escribió Kutay</a>.
 
+conclusion: |
+  <h5>More links</h5>
+
+  <a href="https://www.youtube.com/watch?v=6K9Wf0eC17U">Data Arena Pedestrian Journey</a>: Video by Lisa Roberts
 
 ---
