@@ -163,7 +163,7 @@ $blog-width: 880px;
     border-radius:.25rem;
     @include media-breakpoint-down(md) {
       width:100%;
-      border-radius:none;
+      border-radius:0;
     }
     .icon {
       display:inline-block;
