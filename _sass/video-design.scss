@@ -94,7 +94,9 @@
         .gallery-thumb {
           width: 120px;
           @include border-radius-specific($amount: 0.25rem);
-          margin:0.1rem;
+          // Creating gutter space between each thumbnail
+          margin: 0.1rem;
+          padding: 0.1rem 0;
         }
       }
     }
