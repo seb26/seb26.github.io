@@ -46,6 +46,8 @@ layout: default
               {% if video.url %}
                 {%- if video.urlEmbed -%}
                 href="{{ video.urlEmbed }}"
+                {%- elsif video.urlEmbed == false -%}
+                href="{{ thumbFilepathFull }}"
                 {%- else -%}
                 href="{{ video.url }}"
                 {%- endif -%}
