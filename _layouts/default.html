@@ -18,13 +18,7 @@
   {% include _nav.html %}
   {{ content }}
   {% include _footer.html %}
-  <script src="{{ "js/jquery-3.2.1.slim.min.js" | relative_url }}"></script>
-  {%- comment -%} Lazy loader http://jquery.eisbehr.de/lazy {%- endcomment -%}
-  <script src="{{ "js/jquery.lazy.min.js" | relative_url }}"></script>
-  {%- comment -%} Ekko Lightbox by AshleyDW http://ashleydw.github.io/lightbox/ {%- endcomment -%}
-  <script src="{{ "js/ekko-lightbox.min.js" | relative_url }}"></script>
-  <script src="{{ "js/popper.min.js" | relative_url }}"></script>
-  <script src="{{ "js/bootstrap.min.js" | relative_url }}"></script>
+  <script src="{{ "js/jquery-popper-bootstrap.js" | relative_url }}"></script>
   <script src="{{ "js/script.js" | relative_url }}"></script>
   </body>
 </html>
