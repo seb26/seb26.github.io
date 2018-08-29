@@ -5,6 +5,10 @@ body.page-published-work {
     max-width: $page-published-work-width;
     margin:1rem auto; //
     padding:1rem;
+
+    .page-header {
+      margin-bottom:1.5rem;
+    }
   }
   section.event {
     margin:2rem 0;
@@ -14,6 +18,11 @@ body.page-published-work {
       font-weight:bold;
       font-size:120%;
       color:#555;
+    }
+
+    .event-date {
+      font-size:0.8rem;
+      color:#999;
     }
 
     .gallery {

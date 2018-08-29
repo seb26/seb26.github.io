@@ -5,7 +5,7 @@ classes: page-bright
 <main>
 
   <header>
-    <h2>Published work</h1>
+    <h2 class="page-header">Published work</h1>
   </header>
 
   {{ content }}
@@ -17,7 +17,7 @@ classes: page-bright
           {{ event.name }}
         </header>
         <div class="event-date">
-          Taken: {{ event.date | date: "%e %B %Y" }}
+          {{ event.date | date: "%e %B %Y" | upcase }}
         </div>
         {%- assign gallery_id = 'gallery-' | append: event.name | slugify -%}
         <div class="gallery" id="{{ gallery_id }}">
