@@ -54,7 +54,7 @@ body:
 
     Una obra interactiva digital, dirigida por Cat Kutay y Michael Lynch, fue presentada en una sala de proyección envolvente.
 
-    El paisaje renderizado en 3D se concibe como un ambiente interactivo para que visitantes puedan aprender de la tierra y descubrir que “las historias se encuentran en ella”.
+    El paisaje renderizado en 3D se concibe como un ambiente interactivo para facilitar que los visitantes aprendan de la tierra y descubran que “las historias se encuentran en ella”.
 
     “Mientras se mueve el jugador virtual, se agregan las historias como pedazos de su cuerpo, absorbiendo el significado en su ser”, <a href="http://www.livingdata.net.au/content/research/trackchanges/2018interactions/PedestriansOnCountry.php">escribió Kutay</a>.
 
