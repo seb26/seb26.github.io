@@ -1,6 +1,5 @@
-## 2018-08-15
-* Combine all JS scripts into one
-  * Use CoffeeScript to achieve this (?)
+## 2018-08-29
+* Reduce size of images on /posts/
 
 ## Old
 * Posts
