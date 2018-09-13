@@ -76,7 +76,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap (~> 4.0.0)
+  bootstrap (~> 4.1.2)
   jekyll (~> 3.7.3)
   jekyll-feed (~> 0.6)
   jekyll-redirect-from
