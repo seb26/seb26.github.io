@@ -1,6 +1,6 @@
 ---
-title:          "In photos: Drummers and stylists parade to raise funds for maternal health"
-slug:           in-photos-drummers-and-stylists-parade-raise-funds-aminata-maternal-foundation
+title:          "In photos: Fashion raises funds for the Aminata Maternal Foundation"
+slug:           in-photos-fashion-raises-funds-for-the-aminata-maternal-foundation
 date:           2018-10-04T11:00:00+15:00
 dateModified:   2018-10-04T11:00:00+15:00
 description:    |
@@ -40,7 +40,7 @@ body:
 
     The <a href="https://aminatamaternalfoundation.org/2018/07/30/training-hostel-project/">Bluff and Swagger event</a> showcased young African women and their individual style, raising funds for the Foundation at $150 per head.
 
-    The Foundation aims to raise $50,000 for the Aberdeen Women's Centre in Sierra Leone, which works to prevent deaths of newborn babies from obstretic fistula and other natal complications.
+    The Foundation has set the goal to draw in $50,000 for the Aberdeen Women's Centre in Sierra Leone, which works to prevent deaths of newborn babies from obstretic fistula and other natal complications.
 
     A snippet of street style and fashion expression in the Sierra Leone capital from the 2016 ABC Arts documentary <em>FashPack: Freetown</em> with Jo Dunlop was played to attendees.
 
