@@ -1,8 +1,8 @@
 ---
 title:          "In photos: Fashion raises funds for the Aminata Maternal Foundation"
 slug:           in-photos-fashion-raises-funds-for-the-aminata-maternal-foundation
-date:           2018-10-04T11:00:00+15:00
-dateModified:   2018-10-04T11:00:00+15:00
+date:           2018-10-04T11:00:00
+dateModified:   2018-10-04T11:00:00
 description:    |
   The Aminata Maternal Foundation hopes to raise $50,000 to support a medical centre in Sierra Leone
 categories:     photojournalism photography charity
