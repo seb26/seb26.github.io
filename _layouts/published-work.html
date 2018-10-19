@@ -19,6 +19,11 @@ classes: page-bright
         <div class="event-date">
           {{ event.date | date: "%e %B %Y" | upcase }}
         </div>
+        {%- if event.description -%}
+        <p>
+          {{ event.description }}
+        </p>
+        {%- endif -%}
         {%- assign gallery_id = 'gallery-' | append: event.name | slugify -%}
         <div class="gallery" id="{{ gallery_id }}">
           {%- for image in event.images -%}
