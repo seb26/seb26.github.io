@@ -18,7 +18,7 @@ gallery:
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0334
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0360
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-8412
-      caption: Student and activist Jean Hinchcliffe (14).
+      caption: Student and activist Jean Hinchcliffe.
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0452
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0490
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0531
@@ -32,7 +32,7 @@ gallery:
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0256
       caption: Slam poet Fergus.
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0275
-      caption: Ben Hart sung \"Stand By Me\" with the crowd.
+      caption: "Ben Hart sung "Stand By Me" with the crowd."
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0327
       caption: Criticising Tony Abbott.
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0566
