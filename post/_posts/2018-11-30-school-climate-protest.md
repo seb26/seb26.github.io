@@ -32,7 +32,7 @@ gallery:
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0256
       caption: Slam poet Fergus.
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0275
-      caption: "Ben Hart sung "Stand By Me" with the crowd."
+      caption: "Ben Hart sung 'Stand By Me' with the crowd."
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0327
       caption: Criticising Tony Abbott.
     - name: 20181130-school-kids-protest-climate-change-sebastian-reategui-0566
