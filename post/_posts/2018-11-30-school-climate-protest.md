@@ -40,9 +40,9 @@ gallery:
 
 body:
   en: |
-    Thousands of school students across Australia skipped school today to protest inaction on climate change.
+    Thousands of students across Australia skipped school today to protest inaction on climate change.
 
-    The strike in Sydney drew kids and parents from both primary and high schools and as far as regional NSW, who heard from an all-children lineup of speakers.
+    The strike in Sydney drew kids and parents from both primary and high schools as far as regional NSW, who heard from an all-children lineup of speakers.
 
     The strike movement was inflamed by Prime Minister Scott Morrison, who rejected the premise of children leaving school and said they needed "more learning and less activism".
 
@@ -57,7 +57,7 @@ body:
   es: |
     Miles de estudiantes jóvenes por toda la nación saltaron clase hoy para protestar la inacción del gobierno contra el cambio climático.
 
-    En Sídney la huelga atrajo niños y padres desde varios colegios primarios y secundarios y hasta las áreas regionales de NSW, y se escuchó una banda de hablantes todos niños y ninguno adulto.
+    En Sídney la huelga atrajo niños y padres desde varios colegios primarios y secundarios hasta las áreas regionales de NSW, y se escuchó una banda de hablantes todos niños y ninguno adulto.
 
     El furor de los estudiantes fue agravado aún más con unos comentarios del primer ministro Scott Morrison, quién el lunes rechazó la ausencia de los estudiantes y dijo que en su lugar necesitan a “más aprendizaje y menos activismo”.
 
