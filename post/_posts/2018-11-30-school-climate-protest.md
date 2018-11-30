@@ -4,7 +4,7 @@ slug:           in-photos-school-students-walk-out-nationwide-to-call-for-action
 date:           2018-11-30T22:00:00+16:00
 dateModified:   2018-11-30T22:00:00+16:00
 description:    |
-  The strike movement was inflamed by Prime Minister Scott Morrison, who rejected the premise of children leaving school and said they needed \'more learning and less activism\'.
+  The strike movement was inflamed by Prime Minister Scott Morrison, who rejected the premise of children leaving school and said they needed 'more learning and less activism'.
 categories:     photojournalism photography
 location:       Sydney
 country:        Australia
