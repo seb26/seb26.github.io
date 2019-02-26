@@ -19,7 +19,7 @@ gallery:
     - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2802
       caption: NSW Greens MP David Shoebridge.
     - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2949
-      caption: "\'Minor offences should not be a death sentence\'"
+      caption: "'Minor offences should not be a death sentence'"
     - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--2996
     - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3061
     - name: 20180512-stop-black-deaths-in-custody-sebastian-reategui--3093

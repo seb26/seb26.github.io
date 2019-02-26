@@ -17,6 +17,31 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url:     "https://sebreategui.com"
 locale:  "en-AU"
 
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+sass:
+  style: compressed
+  load_paths:
+    # Use a managed version of Bootstrap
+    'vendor/bootstrap-4.3.1/assets/stylesheets/'
+
 # Metadata for <head>
 title:        Sebastian Reategui
 titleLong:    Sebastian Reategui, photographer
@@ -99,25 +124,3 @@ defaults:
         width: "1280"
         height: "853"
       gallery_footer: true
-
-# Build settings
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-redirect-from
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-sass:
-  style: compressed
