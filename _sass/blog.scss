@@ -206,6 +206,25 @@ $blog-width: 880px;
   }
 }
 
+// Custom blog styling
+body.blog-workflow {
+  section.blog-text-content {
+    img {
+      margin:0;
+    }
+    p.caption {
+      margin-top:-1rem;
+    }
+
+    h3 {
+      margin-top:3rem;
+    }
+    h5 {
+      margin:2rem 0;
+    }
+  }
+}
+
 
 //
 // BLOG index

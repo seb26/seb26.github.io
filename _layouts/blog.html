@@ -62,16 +62,16 @@ gallery_default_format: jpg
       {% endif %}
       {%- comment -%} Some articles use this format, others don't. {%- endcomment -%}
       {% if pageIsBilingual %}
-      <div class="blog-text-content en" itemprop="articleBody" lang="en">
+      <section class="blog-text-content en" itemprop="articleBody" lang="en">
         {{ page.body.en | markdownify }}
-      </div>
-      <div class="blog-text-content es" itemprop="articleBody" lang="es">
+      </section>
+      <section class="blog-text-content es" itemprop="articleBody" lang="es">
         {{ page.body.es | markdownify }}
-      </div>
+      </section>
       {% else %}
-      <div class="blog-text-content en" itemprop="articleBody" lang="en">
+      <section class="blog-text-content en" itemprop="articleBody" lang="en">
         {{ content }}
-      </div>
+      </section>
       {% endif %}
     </main>
     {% if page.gallery %}

@@ -12,6 +12,8 @@ redirect_from:
   - '/blog/'
   - '/post/'
   - '/post/2017/'
+  - '/post/2018/'
+  - '/post/2019/'
   - '/recent/'
 gallery_directory: "/post/img/"
 gallery_directory_sizes: "/post/img/sizes/"
@@ -77,22 +79,16 @@ gallery_directory_sizes: "/post/img/sizes/"
             <img
               class="fluid"
               itemprop="image"
-              src="
-                {{ post_thumbnail_url_627 }}"
-            />
+              src="{{ post_thumbnail_url_627 }}" />
           {%- else -%}
             <img
               class="fluid lazy"
               itemprop="image"
-              data-src="
-                {{ post_thumbnail_url_627 }}"
-            />
+              data-src="{{ post_thumbnail_url_627 }}" />
             <noscript>
               <img
                 itemprop="image"
-                src="
-                  {{ post_thumbnail_url_627 }}"
-              />
+                src="{{ post_thumbnail_url_627 }}" />
             </noscript>
           {%- endif -%}
         </a>

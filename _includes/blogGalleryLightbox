@@ -1,0 +1,3 @@
+<a href="{{ page.blogGalleryLightbox.dir }}{{ include.name }}" data-toggle="lightbox" data-gallery="gallery-{{ include.group }}">
+  <img src="{{ page.blogGalleryLightbox.dir }}{{ include.name }}">
+</a>
