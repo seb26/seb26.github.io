@@ -19,9 +19,9 @@ thumbnail:
 
 ---
 
-I edited three short films and shared with us his process and designs.
+Early this year, I served as the editor on three short films.
 
-This post is a work in progress.
+*This post is a work in progress.*
 
 ##### MAAI: My Aaji and I
 
