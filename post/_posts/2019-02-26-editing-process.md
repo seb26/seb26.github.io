@@ -2,7 +2,7 @@
 title:          "Process: how I edited three short films"
 slug:           process-how-i-edited-three-short-films
 date:           2019-02-26T14:00:00+16:00
-dateModified:   2019-02-26T14:00:00+16:00
+dateModified:   2019-03-09T12:39:00-05:00
 description:    |
 
 classes:        "blog-workflow"
@@ -286,6 +286,8 @@ While the directors of each film are interested in refining their film further, 
 
 ##### Where can we watch the films?
 
-_My Aaji and I_ and _The Next Cycle_ are considering their festival routes and options over the next 6-12 months, so there won't be any public screenings of these films for a while. Look out for an excerpt video or highlights of the visual effects in _TNC_ however.
+_My Aaji and I_ is considering festival routes and options over the next 6-12 months, so there won't be any public screenings for a while.
 
-_The Torchlight Collective_ is a concept episode of a web-series. Episode 2 is under development.
+_The Next Cycle_ is [available online now on Vimeo](https://vimeo.com/321158374).
+
+_The Torchlight Collective_ is a concept episode of a web-series, but remains offline at this time. Episode 2 is under development.
