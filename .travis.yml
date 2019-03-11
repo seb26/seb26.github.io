@@ -11,3 +11,6 @@ deploy:
   target_branch: master
   on:
     branch: source
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
