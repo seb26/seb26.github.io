@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby RUBY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
@@ -8,6 +9,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+gem "rake", "~> 12"
 gem "jekyll", "~> 3.8.5"
 gem "bootstrap", "~> 4.3.1", :path => "vendor/bootstrap-4.3.1"
 
