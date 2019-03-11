@@ -149,8 +149,12 @@ DEPENDENCIES
   jekyll (~> 3.8.5)
   jekyll-redirect-from
   minima (~> 2.0)
+  rake (~> 12)
   tzinfo-data
   wdm
+
+RUBY VERSION
+   ruby 2.6.1p33
 
 BUNDLED WITH
    1.17.2
