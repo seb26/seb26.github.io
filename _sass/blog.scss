@@ -223,6 +223,14 @@ body.blog-workflow {
       margin:2rem 0;
     }
   }
+
+  .blog-toc-floating {
+    // This hides inner layers of TOC items, specifically in the floating TOC which needs to be condensed.
+    ul#markdown-toc ul {
+      display:none;
+    }
+  }
+
 }
 
 

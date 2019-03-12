@@ -1,27 +1,38 @@
 ---
-title:          "Process: how I edited three short films"
+title:          "Process: how I edited three short films at the same time"
 slug:           process-how-i-edited-three-short-films
 date:           2019-02-26T14:00:00+16:00
-dateModified:   2019-03-09T12:39:00-05:00
+dateModified:   2019-03-12T11:05:00-05:00
 description:    |
 
-classes:        "blog-workflow"
-categories:     filmmaking video_editing visual_effects
+classes:        "blog-workflow nav-static"
+categories:     workflow filmmaking video_editing visual_effects
 location:       Sydney
 country:        Australia
 
 blogGalleryLightbox:
-  dir:    "/post/img/20190226/sebastian-reategui-editing-process-"
+  directoryPrefix:    "/post/img/20190226/sebastian-reategui-editing-process-"
 
 thumbnail:
-  url:    "/post/img/20190226/sebastian-reategui-editing-process-TNC_15.jpg"
-  name:   "20190226/sebastian-reategui-editing-process-TNC_15"
+  url:    "/post/img/20190226/sebastian-reategui-editing-process-banner-2.jpg"
+  name:   "20190226/sebastian-reategui-editing-process-banner-2"
 
 ---
 
-Early this year, I served as the editor on three short films.
+The first time I found myself in front of a program resembling a non-linear editor, I was 12 years old and its name was Windows Movie Maker.
 
-*This post is a work in progress.*
+Flash forward to the present and I have managed to cut three short films in the space of three months.
+
+In this post I detail my workflow, the creative process in assembling the story of each, working with directors, and the boatload of visual effects work I also performed on one of the shorts.
+
+Hopefully this can give you some insight into how manage your own technical workflow, and what to pay attention to when constructing stories.
+
+### Contents
+* TOC
+{:toc}
+
+
+### Meet the films
 
 ##### MAAI: My Aaji and I
 
@@ -33,14 +44,16 @@ A granddaughter is plagued with serious regret for not realising the consequence
 
 * Short, drama, 10 min 47 s
 * Location: Penrith, NSW
+* Shoot finish: 6 January 2019
+* Picture lock achieved: 29 January 2019 (23 days)
 
-Key crew
+**Key crew**
 * Director: Varuna Naicker
 * Producer: Marija Nikolic
 * Cinematographer: Vivian Tang
 * Cast: Shereen Nand, Uma Kali Shakti, Raj Bajpai
 
-Technical detail
+**Technical detail**
 * Camera: Blackmagic Ursa Mini 4.6K
 * Captured in: 4096 x 2160, 25 fps, ProRes 422 HQ
 * Delivery: 1920 x 1080, 25 fps, 2.35:1 Letterbox
@@ -56,15 +69,17 @@ Body transfers, hologram, gunshots and blood. A cyberpunk thriller.
 
 *   Short, sci-fi, 11 min 2 s
 *   Location: Ultimo, NSW
+*   Shoot finish: 11 January 2019
+*   Picture lock: 31 January 2019 (20 days)
 
-Key crew
+**Key crew**
 *   Director: Harri Tran
 *   Producer: Alexandra Patrick-Dunn
 *   Cinematographer: Andreus ten Brink
 *   Sound Designer: Furqan Cansiz
 *   Cast: Talita Mollerup-Degn, Jierlyn Gregg, Jasper Bruce
 
-Technical detail
+**Technical detail**
 * Camera: Blackmagic Ursa Mini 4.6K
 * Captured in: 2048 x 1152, 50 fps, ProRes 4444
 * Delivery: 1920 x 1080, 25 fps, 2.35:1 Letterbox
@@ -82,13 +97,15 @@ A comedy channeling _The Office_ and _Rostered On_.
 
 *   Short, mockumentary, 12 min
 *   Location: Ultimo, NSW
+*   Shoot finish: 22 January 2019
+*   Picture lock: 5 February 2019 (14 days)
 
-Key crew
+**Key crew**
 *   Director, Producer: Ashleigh Hales
 *   Cinematographer: Benjamin Gageler
 * Cast: Eli Gallagher, Adam Bowes
 
-Technical detail
+**Technical detail**
 * Camera: Sony FS5
 * Captured in: 4096 x 2160, 25 fps, Atomos Shogun, ProRes 422 HQ
 * Delivery: 1920 x 1080, 25 fps, 16:9

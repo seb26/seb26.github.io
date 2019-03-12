@@ -38,12 +38,15 @@ plugins:
 exclude:
 - Rakefile
 
-
 sass:
   style: compressed
   load_paths:
     # Use a managed version of Bootstrap
     'vendor/bootstrap-4.3.1/assets/stylesheets/'
+
+# Cloudinary: image management
+cloudinary:
+  cloud_name: sebreategui
 
 # Metadata for <head>
 title:        Sebastian Reategui
