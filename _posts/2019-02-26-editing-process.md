@@ -4,7 +4,7 @@ slug:           process-how-i-edited-three-short-films
 date:           2019-02-26T14:00:00+16:00
 dateModified:   2019-03-12T11:05:00-05:00
 description:    |
-
+  I detail my workflow, the creative process in assembling the story of each, working with directors, and a boatload of visual effects work. Hopefully this can give you some insight into how manage your own technical workflow, and what to pay attention to when constructing stories.
 classes:        "blog-workflow nav-static"
 categories:     workflow filmmaking video_editing visual_effects
 location:       Sydney
@@ -149,7 +149,7 @@ We did have occasional differences, mainly in relation to the side characters. T
 
 {% include blogGalleryLightbox name="MAAI_4.jpg" group="directors" %}
 
-With director Varuna Naicker. (Photo: Sophia McGregor)
+With director Varuna Naicker. We were actually a boss team. (Photo: Sophia McGregor)
 {:.caption}
 
 {% include blogGalleryLightbox name="TNC_6.jpg" group="directors" %}
@@ -169,6 +169,8 @@ With director Ashleigh Hales.
 I created merged clips according to scene and their shot names.
 
 I preferred the Merged Clips workflow compared to Multicam or other methods in PrPro. I created a single sequence for a whole day's footage, inserted all video clips, inserted all audio, broke them up to add space in between, and used Premiere's Synchronise with waveform. Then, after trimming ends, I created a Merged Clip named after the shot name on the slate. A Wacom tablet, a consistent mouse and hand position, and keyboard shortcuts for Merge, Link and Synchronise came in handy and turned a repetitive task into quite light work.
+
+Sofi Marshall <a href="https://blog.frame.io/2018/05/14/premiere-batch-syncing/">beautifully outlines this particular workflow</a> on Frame.io, but fundamentally it differs as it makes use of Multi-Camera Clips to automate the audio sync process, which was otherwise done by hand by me. Automated audio syncing was not possible on these projects as none of them used timecode sync for budgetary reasons: student films though, who even knows what those long flashing numbers mean! 
 
 The act of sorting clips into scene bins reveals an almost clean, perfect chronological rendition of the content of the film. Scrubbing through the clips once they are in scene view, for me became like rapidly previewing the story, a stark difference to sorting clips by their arbitrary recording time or day of shoot.
 
@@ -263,9 +265,9 @@ The final interface created from the skeleton drafts.
 
 ##### How did you manage integrate the visual effects with the rest of the film?
 
-The visual effects shots begun in Premiere, selecting the clips and replacing them with After Effects compositions. Compositing and masking began and eventually the composition was exported out as a ProRes 4444 file, which made its way back into the edit.
+The visual effects shots begun in Premiere, selecting the clips and replacing them with After Effects compositions. This meant the exact portions of video used by the picture lock would appear as own sequences. Then, compositing and masking began and eventually the compositions were exported out as ProRes 4444 files. I brought them back into the edit, placing them over the top on a separate video layer, as they were exactly the correct duration.
 
-Dynamic linking was impossible as I worked across my own machine and UTS workstations. Again, CC 2018 and CC 2019 act like estranged, identical twins separated by some kind of family dispute who refuse to recognise each other's files. This in spite of minute differences in the way they structure them. Rendering out compositions as ProRes 4444 files became the way to go, but involved a fair bit of manual labor. A spreadsheet with file names, timecodes and description of Practical & digital effects helped me understand and determine exactly what needed to be done to a particular shot. For the final export, After Effects' command-line rendering tool `aerender.exe` and a `.bat` file helped automate the task. Colour grading of the final clips in Resolve performed by colourist Christopher Kolkaris seemed to provide a lot of visual authenticity to most shots.
+Dynamic linking was impossible as I worked across my own machine and UTS workstations. Again, CC 2018 and CC 2019 act like estranged, identical twins separated by some kind of family dispute who refuse to recognise each other's files. This in spite of minute differences in the way they structure them. Rendering out compositions as ProRes 4444 files became the way to go, but involved a fair bit of manual labor. The VFX spreadsheet having file names, timecodes and description of Practical & digital effects helped me understand and determine exactly what needed to be done to a particular shot. For the final export, After Effects' command-line rendering tool `aerender.exe` and a `.bat` file helped automate the task. Colour grading of the final clips in Resolve performed by colourist Christopher Kolkaris seemed to provide a lot of visual authenticity to most shots.
 
 ##### Did the other two films (MAAI & AHTC) use visual effects?
 
@@ -293,13 +295,13 @@ Camera tests and equipment familiarity prior to the actual shoot will save time 
 
 Limit yourself and delegate tasks. If you feel you are the only person capable of performing a specific task, you will end up better off if you take time out to teach that task to someone else.
 
-By the evening that AHTC finished shooting, I was fiercely adjusting the picture lock for MAAI and TNC, and knew it wouldn't have been productive to sit through two days of footage and sync it. I brought on second-year UTS student Zac Agius, spending a couple of hours with him on the process of syncing and labelling. It took a fair bit of theory and teaching about what sync sound is but because it contextualised each step, he was able to work independently and finish the rest without much guidance. A hands-off approach to teaching &mdash; using words and occasional pointing instead of clicking the mouse yourself &mdash; was beneficial and helped build muscle memory.
+By the evening that AHTC finished shooting, I was fiercely adjusting the picture lock for MAAI and TNC, and knew it wouldn't have been productive to sit through two days of footage from a completely unrelated project and start syncing it. I brought on second-year UTS student Zac Agius, spending a couple of hours with him on the process of syncing and labelling. It took a fair bit of theory and teaching about what sync sound is but because it contextualised each step, he was able to work independently and finish the rest without much guidance. A hands-off approach to teaching &mdash; using words and occasional pointing instead of clicking the mouse yourself &mdash; was beneficial and helped build muscle memory.
 
 There were no interested parties in filling the role of data wrangler on set for MAAI. I wrote a PDF guide with screenshots and provided guidance to the producer Marija Nikolic and her co-producer Connor McGlynn. They both executed wrangling flawlessly, using [Hedge](https://hedge.video). This saved me from being on set and was clearly worth the time spent on educating.
 
 ##### What's next?
 
-While the directors of each film are interested in refining their film further, I'm off on holiday and then beginning work on a TV production (as a data wrangler). Stay tuned for some workflow posts and cool tricks about how its multi-camera 4K footage will be handled.
+While the directors of each film are interested in refining their film further, I'm off on holiday and then beginning work on a TV production as a data wrangler. Stay tuned for some workflow posts and cool tricks about how its multi-camera 4K footage will be handled.
 
 ##### Where can we watch the films?
 
