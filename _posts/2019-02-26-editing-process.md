@@ -1,8 +1,8 @@
 ---
 title:          "Process: how I edited three short films at the same time"
-slug:           process-how-i-edited-three-short-films
+slug:           process-how-i-edited-three-short-films-at-the-same-time
 date:           2019-02-26T14:00:00+16:00
-dateModified:   2019-03-12T11:05:00-05:00
+dateModified:   2019-03-12T22:00:00-05:00
 description:    |
   I detail my workflow, the creative process in assembling the story of each, working with directors, and a boatload of visual effects work. Hopefully this can give you some insight into how manage your own technical workflow, and what to pay attention to when constructing stories.
 classes:        "blog-workflow nav-static"
@@ -170,7 +170,7 @@ I created merged clips according to scene and their shot names.
 
 I preferred the Merged Clips workflow compared to Multicam or other methods in PrPro. I created a single sequence for a whole day's footage, inserted all video clips, inserted all audio, broke them up to add space in between, and used Premiere's Synchronise with waveform. Then, after trimming ends, I created a Merged Clip named after the shot name on the slate. A Wacom tablet, a consistent mouse and hand position, and keyboard shortcuts for Merge, Link and Synchronise came in handy and turned a repetitive task into quite light work.
 
-Sofi Marshall <a href="https://blog.frame.io/2018/05/14/premiere-batch-syncing/">beautifully outlines this particular workflow</a> on Frame.io, but fundamentally it differs as it makes use of Multi-Camera Clips to automate the audio sync process, which was otherwise done by hand by me. Automated audio syncing was not possible on these projects as none of them used timecode sync for budgetary reasons: student films though, who even knows what those long flashing numbers mean! 
+Sofi Marshall <a href="https://blog.frame.io/2018/05/14/premiere-batch-syncing/">beautifully outlines this particular workflow</a> on Frame.io, but fundamentally it differs as it makes use of Multi-Camera Clips to automate the audio sync process, which was otherwise done by hand by me. Automated audio syncing was not possible on these projects as none of them used timecode sync for budgetary reasons: student films though, who even knows what those long flashing numbers mean!
 
 The act of sorting clips into scene bins reveals an almost clean, perfect chronological rendition of the content of the film. Scrubbing through the clips once they are in scene view, for me became like rapidly previewing the story, a stark difference to sorting clips by their arbitrary recording time or day of shoot.
 
