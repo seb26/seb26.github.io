@@ -46,6 +46,7 @@ layout: default
               {% if video.url %}
                 {%- if video.urlEmbed -%}
                 href="{{ video.urlEmbed }}"
+                data-width="1280"
                 {%- elsif video.urlEmbed == false -%}
                 href="{{ thumbFilepathFull }}"
                 {%- else -%}
@@ -119,7 +120,7 @@ layout: default
           {%- endif -%}
         </ul>
         {%- if video.available != false -%}
-          <a class="btn action" href="{{ video.url }}" target="_blank">Watch</a>
+          <a class="btn btn-dark action" href="{{ video.url }}" target="_blank">Watch</a>
         {%- endif -%}
     </section>
 
