@@ -19,9 +19,9 @@ thumbnail:
 
 ---
 
-The first time I found myself in front of a program resembling a non-linear editor, I was 12 years old and its name was Windows Movie Maker.
+The first time I found myself in front of a program resembling a non-linear editor, the year was 2005 and its name was Windows Movie Maker.
 
-Flash forward to the present and I have managed to cut three short films in the space of three months.
+Flash forward to the present and I now use more modern software, and have managed to cut three short films in the space of three months.
 
 In this post I detail my workflow, the creative process in assembling the story of each, working with directors, and the boatload of visual effects work I also performed on one of the shorts.
 
@@ -262,6 +262,9 @@ Drafts for a new design, more medical and clinical, involving a database but als
 The final interface created from the skeleton drafts.
 {:.caption}
 
+<div style='position:relative; padding-bottom:calc(56.25% + 44px)'>
+  <iframe src='https://gfycat.com/ifr/RemarkableDazzlingBichonfrise' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe>
+</div>
 
 ##### How did you manage integrate the visual effects with the rest of the film?
 
