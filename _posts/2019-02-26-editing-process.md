@@ -302,6 +302,8 @@ By the evening that AHTC finished shooting, I was fiercely adjusting the picture
 
 There were no interested parties in filling the role of data wrangler on set for MAAI. I wrote a PDF guide with screenshots and provided guidance to the producer Marija Nikolic and her co-producer Connor McGlynn. They both executed wrangling flawlessly, using [Hedge](https://hedge.video). This saved me from being on set and was clearly worth the time spent on educating.
 
+<div style='position:relative; padding-bottom:calc(56.60% + 44px)'><iframe src='https://gfycat.com/ifr/TangibleCanineGoldfinch' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+
 ##### What's next?
 
 While the directors of each film are interested in refining their film further, I'm off on holiday and then beginning work on a TV production as a data wrangler. Stay tuned for some workflow posts and cool tricks about how its multi-camera 4K footage will be handled.
