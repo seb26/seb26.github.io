@@ -104,8 +104,57 @@ gallery_default_format: jpg
           {%- assign image_height = page.gallery_dimensions.height -%}
         {%- endif -%}
 
-        <figure class="blog-gallery-image {%if i.orientation == 'vertical'%}vertical{%endif%}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <figure class="blog-gallery-image
+        {%- if i.orientation == 'vertical' %} vertical {% endif -%}
+        {%- if i.double %} double {% endif -%}"
+        itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
           {%- comment -%} Set up file names. {%- endcomment -%}
+
+          {%- if i.double -%}
+            {%- assign i_double_a_name = i.double[0].name -%}
+            {%- assign i_double_b_name = i.double[1].name -%}
+            <img
+              class="lazy"
+              itemprop="thumbnail"
+              data-sizes="(max-width: 1280px) 100vw, 1280px"
+              data-srcset="
+                {{ layout.gallery_directory_sizes }}{{ i_double_a_name }},w_627.{{ i_format }} 627w,
+                {{ layout.gallery_directory_sizes }}{{ i_double_a_name }},w_940.{{ i_format }} 940w,
+                {{ layout.gallery_directory }}{{ i_double_a_name }}.{{ i_format }} 1280w"
+              data-src="
+                {{ layout.gallery_directory }}{{ i_double_a_name }}.{{ i_format }}"
+              {%- if i.alt -%}
+              alt="{{ i.alt }}"
+              {%- endif -%}
+              width="{{ page.gallery_dimensions.width | divided_by: 2 }}"
+            />
+            <img
+              class="lazy"
+              itemprop="thumbnail"
+              data-sizes="(max-width: 1280px) 100vw, 1280px"
+              data-srcset="
+                {{ layout.gallery_directory_sizes }}{{ i_double_b_name }},w_627.{{ i_format }} 627w,
+                {{ layout.gallery_directory_sizes }}{{ i_double_b_name }},w_940.{{ i_format }} 940w,
+                {{ layout.gallery_directory }}{{ i_double_b_name }}.{{ i_format }} 1280w"
+              data-src="
+                {{ layout.gallery_directory }}{{ i_double_b_name }}.{{ i_format }}"
+              {%- if i.alt -%}
+              alt="{{ i.alt }}"
+              {%- endif -%}
+              width="{{ page.gallery_dimensions.width | divided_by: 2 }}"
+            />
+            <noscript>
+              <img
+                itemprop="thumbnail"
+                src="{{ layout.gallery_directory }}{{ i_double_a_name }}.{{ i_format }}"
+              />
+              <img
+                itemprop="thumbnail"
+                src="{{ layout.gallery_directory }}{{ i_double_b_name }}.{{ i_format }}"
+              />
+            </noscript>
+
+          {%- else -%}
           <img
             class="lazy"
             itemprop="thumbnail"
@@ -127,8 +176,7 @@ gallery_default_format: jpg
               src="{{ layout.gallery_directory }}{{ i.name }}.{{ i_format }}"
             />
           </noscript>
-          <meta itemprop="width" content="{{ image_width }}" />
-          <meta itemprop="height" content="{{ image_height }}" />
+          {%- endif -%}
 
           {%- if i.caption or i.credit -%}
           <figcaption class="caption">

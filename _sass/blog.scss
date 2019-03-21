@@ -103,6 +103,16 @@ $blog-width: 880px;
   .blog-gallery {
     max-width:$blog-width;
   }
+
+  // Double images
+  .blog-gallery-image.double {
+    img {
+      max-width:49%;
+      padding:5px;
+    }
+  }
+
+
   // A caption style. Can be used inside/outside of a gallery.
   .caption {
     @include label;

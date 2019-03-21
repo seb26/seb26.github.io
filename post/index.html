@@ -47,6 +47,11 @@ gallery_directory_sizes: "/post/img/sizes/"
       {{ nav_to_published_work }}
       {%- endif -%}
 
+      {%- if post.draft -%}
+      {%- comment -%} Skip draft posts. {%- endcomment -%}
+      {%- continue -%}
+      {%- endif -%}
+
     <section class="item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
       <meta itemprop="url" content="{{ post.url }}" />
       <meta itemprop="mainEntityOfPage" content="{{ page.url }}" />{% comment %} The blog index page. {% endcomment %}
