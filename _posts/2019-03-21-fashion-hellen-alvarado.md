@@ -3,7 +3,6 @@ title:          "In photos: Hellen Alvarado"
 slug:           in-photos-draft-hellen-alvarado
 date:           2019-03-21T00:00:00-05:00
 dateModified:   2019-03-21T00:00:00-05:00
-draft:          true
 description:    |
   "draft only".
 categories:     photography Fashion
@@ -31,7 +30,7 @@ gallery:
 
 body:
   en: |
-    DRAFT ONLY
+    Hellen 
 
   es: |
     es

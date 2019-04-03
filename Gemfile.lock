@@ -181,7 +181,7 @@ DEPENDENCIES
   wdm
 
 RUBY VERSION
-   ruby 2.6.1p33
+   ruby 2.3.7p456
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
