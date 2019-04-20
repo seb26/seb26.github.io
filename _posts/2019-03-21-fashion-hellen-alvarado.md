@@ -13,24 +13,23 @@ thumbnail:
   name: sebastian-reategui-2019-03-15-hellen-alvarado-lead-3641
 gallery:
   images:
-    - name: sebastian-reategui-2019-03-15-hellen-alvarado-3420
-    - name: sebastian-reategui-2019-03-15-hellen-alvarado-3419
+    - double:
+      - name: sebastian-reategui-2019-03-15-hellen-alvarado-3420
+      - name: sebastian-reategui-2019-03-15-hellen-alvarado-3419
     - double:
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3233
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3273
     - double:
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3438
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3442
-    - name: sebastian-reategui-2019-03-15-hellen-alvarado-3515
     - double:
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3657
-      - name: sebastian-reategui-2019-03-15-hellen-alvarado-3688
-    - name: sebastian-reategui-2019-03-15-hellen-alvarado-3704
+      - name: sebastian-reategui-2019-03-15-hellen-alvarado-3704
 
 
 body:
   en: |
-    Hellen 
+    Hellen
 
   es: |
     es
