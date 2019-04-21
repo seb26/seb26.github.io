@@ -1,10 +1,10 @@
 ---
 title:          "In photos: Hellen Alvarado"
-slug:           in-photos-draft-hellen-alvarado
+slug:           in-photos-hellen-alvarado
 date:           2019-03-21T00:00:00-05:00
-dateModified:   2019-03-21T00:00:00-05:00
+dateModified:   2019-04-21T10:00:00+15:00
 description:    |
-  "draft only".
+  "Fashion with Hellen Alvarado in Bogotá."
 categories:     photography Fashion
 location:       Bogotá
 country:        Colombia
@@ -26,13 +26,12 @@ gallery:
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3657
       - name: sebastian-reategui-2019-03-15-hellen-alvarado-3704
 
-
-body:
-  en: |
-    Hellen
-
-  es: |
-    es
-
-
 ---
+
+An experiment with Hellen Alvarado.
+
+The creative restriction that I have always imposed is *natural lighting only*.
+
+We trialled two outfits with distinct styles and they illustrate her poise and nature differently.
+
+I want to keep working on angles that are less geometrically stable and straight, and deviate from the norm a bit more.
