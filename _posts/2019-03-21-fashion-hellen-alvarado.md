@@ -30,7 +30,7 @@ gallery:
 
 An experiment with Hellen Alvarado.
 
-The creative restriction that I have always imposed is *natural lighting only*.
+The creative restriction that I have always imposed is *natural lighting*, although I'd love to experiment with the myriad of equipment available as off-camera flash.
 
 We trialled two outfits with distinct styles and they illustrate her poise and nature differently.
 

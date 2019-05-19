@@ -73,6 +73,10 @@ Observations:
 
 I chose to make the default printed output to be brief and short, only a tally-number list of what's different, so you can quickly make a conclusion from it. A `--verbose` option exists to actually list the files and show in detail what attributes are different.
 
+## Download mhl-compare
+
+You can find the latest binary for Mac, and the source code at the [repository on GitHub](https://github.com/seb26/mhl-compare).
+
 ## Techniques learned in Python
 
 * Parsing XML files
