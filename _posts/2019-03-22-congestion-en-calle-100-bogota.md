@@ -1,7 +1,7 @@
 ---
 title:          "In photos: Congestion packs out stations across Bogotá's mass transit system"
 slug:           in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system
-date:           2019-03-22T11:00:00-05:00
+date:           2019-03-22T11:00:00
 dateModified:   2019-07-14T11:00:00+15:00
 description:    |
   "For more than half an hour I was unable to move in the station, trying to grab onto something. I was breathless and I almost fainted".
@@ -9,17 +9,17 @@ categories:     photojournalism photography
 location:       Bogotá
 country:        Colombia
 thumbnail:
-  url: "/post/img/2019-03-22-congestion-en-calle-100-sebastian-reategui-3906.jpg"
-  name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3906
+  url: "/post/img/2019-03-22-congestion-en-calle-100-sebastian-reategui-3988.jpg"
+  name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3988
 gallery:
   images:
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3906.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3909.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3951.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3959.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3988.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-4007.jpg
-    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-4058.jpg
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3906
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3909
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3951
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3959
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-3988
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-4007
+    - name: 2019-03-22-congestion-en-calle-100-sebastian-reategui-4058
 
 body:
   en: |
@@ -27,7 +27,7 @@ body:
 
     I photographed the 100th Street station (Calle 100) and caught impasses of people and dangerous pushing.
 
-    Other stations were affected too: at 106th, [Maria F. Torres saw a](https://twitter.com/3vecesmareia/status/1109227582619295745) "human stampede, people without air, crying, we couldn't leave the station.""
+    Other stations were affected too: at 106th, [Maria F. Torres saw a](https://twitter.com/3vecesmareia/status/1109227582619295745) "human stampede, people without air, crying, we couldn't leave the station."
 
     "To be able to get out of the station, people started to climb through the metallic sides like Spider Man and not even like that."
 
@@ -35,7 +35,6 @@ body:
 
 
   es: |
-
     Congestion en una gran escala y estaciones desabordadas con pasajeros se vieron en el TransMilenio de Bogota, el sistema de transporte masivo de buses, el viernes.
 
     Yo fotografié a la estacion Calle 100 y alcanze a ver varias estancamientos de pasajeros, empujandose y agarrandose para poder moverse dentro de los vagones.
