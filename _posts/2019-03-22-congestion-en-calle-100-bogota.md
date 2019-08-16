@@ -1,7 +1,7 @@
 ---
 title:          "In photos: Congestion packs out stations across Bogotá's mass transit system"
 slug:           in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system
-date:           2019-03-22T11:00:00
+date:           2019-03-22T11:00:00+15:00
 dateModified:   2019-07-14T11:00:00+15:00
 description:    |
   "For more than half an hour I was unable to move in the station, trying to grab onto something. I was breathless and I almost fainted".
