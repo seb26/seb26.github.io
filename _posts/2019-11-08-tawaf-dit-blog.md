@@ -32,7 +32,7 @@ This is an insight post into the production workflow of the music video *Tawaf*,
 ### Directorial goals
 ***Tawaf*** is a visual soundtrack envisioned by filmmaker and music producer Kaan Cansiz ([@kaansaesthetic](https://www.instagram.com/kaansaesthetic/)).
 
-It annotates the debut release [*A Quiet Farewell, 2016 to 2018*](https://slausonmalone.bandcamp.com/album/a-quiet-farwell-2016-2018) by [Slauson Malone](http://slausonmalone.com).
+It annotates the album [*A Quiet Farewell, 2016 to 2018*](https://slausonmalone.bandcamp.com/album/a-quiet-farwell-2016-2018) by [Slauson Malone](http://slausonmalone.com).
 
 Its style is characterised by wide open spaces, in natural environments and urban areas.
 
