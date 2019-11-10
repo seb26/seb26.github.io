@@ -43,6 +43,12 @@
     @include media-breakpoint-up(md) {
       @include make-col(4);
     }
+
+    ul {
+      list-style:none;
+      margin-left: 0;
+      padding-left: 0;
+    }
   }
 }
 
