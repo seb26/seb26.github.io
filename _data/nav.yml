@@ -7,10 +7,6 @@ items:
     label: Video
     file: /video-narrative.html
     url: /video/narrative
-  - name: design
-    label: Design
-    file: /design.html
-    url: /design
   - name: posts
     label: Recent
     file: /posts/index.html
