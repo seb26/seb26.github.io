@@ -5,12 +5,8 @@ items:
     url: "/photo/photojournalism"
   - name: video
     label: Video
-    file: /video.html
-    url: /video
-  - name: design
-    label: Design
-    file: /design.html
-    url: /design
+    file: /video-narrative.html
+    url: /video/narrative
   - name: posts
     label: Recent
     file: /posts/index.html

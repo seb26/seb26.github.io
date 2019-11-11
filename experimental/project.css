@@ -1,0 +1,50 @@
+body {
+  background-color:#151515;
+  color:#969fa7;
+}
+
+.container {
+  padding:2rem;
+  background:#181818;
+}
+
+.img-fluid {
+}
+
+h3 {
+}
+
+.inside {
+}
+
+.inside img {
+  border-radius:5px;
+  border:1px solid transparent;
+}
+
+.inside .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  color: rgba(255,255,255,255);
+
+  text-align:center;
+}
+
+.project-thumb {
+  margin-bottom:1rem;
+
+}
+
+.active .inside img {
+  border-color: red;
+}
+
+
+
+.infodeep {
+  display:none;
+}

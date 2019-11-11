@@ -1,0 +1,124 @@
+---
+layout: default
+---
+<main class="projects videos">
+
+  {% assign subcategories = site.data.video.subcategories %}
+  <nav class="navbar navbar-expand-md navbar-dark nav-video" id="nav-video">
+
+    <a class="navbar-brand nav-video-active-label" href="{{ page.permalink }}">{{ page.subcategory-label }}</a>
+
+    <div class="collapse navbar-collapse justify-content-md-center" id="nav-video-items">
+      <ul class="navbar-nav">
+        {% for cat in subcategories %}
+        <li class="nav-item {% if cat.name == page.subcategory %}active{%- endif -%}">
+          <a class="nav-link" href="{{ cat.url }}">{{ cat.label }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <button class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#nav-video-items"
+    aria-controls="nav-video-items"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon i-caret-top"></span>
+    </button>
+  </nav>
+
+  <section class="infodeep-row">
+    {%- assign videosSorted = page.videos -%}
+    {%- for video in videosSorted -%}
+    <div class="project video container infodeep" id="project-{{ video.title | slugify }}" data-projectname="{{ video.title | slugify }}">
+    	<div class="row">
+        <div class="infodeep-gallery">
+          {%- for image in video.thumbs -%}
+          {%- assign thumbFileSplit = image.file | split: "." -%}
+          {%- assign thumbFileName = thumbFileSplit[0] -%}
+          {%- assign thumbFileExt = thumbFileSplit[1] -%}
+          {%- assign thumbFileFull = image.file -%}
+          {%- capture thumbFilepathFull -%}
+            {{ page.thumbs_directory }}{{ thumbFileFull }}
+          {%- endcapture -%}
+          {%- capture thumbFilepathSmall -%}
+            {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+          {%- endcapture -%}
+
+          <img class="infodeep-gallery-img" src="{{ thumbFilepathFull }}">
+          {%- endfor -%}
+        </div>
+        <div class="infodeep-description">
+          <h5>{{ video.title }}</h5>
+
+          <p>
+          {{ video.description }}
+          </p>
+
+          <ul>
+            {%- for credit in video.creditsCrew -%}
+            <li>{{ credit[0] }}: {{ credit[1] }}</li>
+            {%- endfor -%}
+          </ul>
+
+          <ul>
+            <li>
+              <span class="duration">{{ video.duration | date: "%-M min" }}</span>
+              &sdot;
+              <span itemprop="genre" class="genre">{{ video.genre }}</span>
+            </li>
+            <li>
+              <span class="date month-full">{{ video.date | date:"%B %Y" }}</span>
+            </li>
+
+            {%- if video.available == true -%}
+            </ul>
+              <a class="btn btn-dark action" href="{{ video.url }}" target="_blank">Watch</a>
+            {%- else -%}
+              {%- if video.availableDesc -%}
+              <li>{{ video.availableDesc }}</li>
+            </ul>
+              {%- endif -%}
+            {%- endif -%}
+
+          </ul>
+
+
+
+        </div>
+      </div>
+      <!-- <a class="infodeep-close" data-project-name="{{ video.title | slugify }}" href="#">Back</a> -->
+    </div>
+    {%- endfor -%}
+  </section>
+  <section class="projects-nav videos-nav container">
+
+    <h3 class="projects-nav-title">{{ page.category_to_display }}</h3>
+  	<div class="row align-items-center">
+      {%- for video in videosSorted -%}
+
+        {%- comment -%} GRAB THE URL OF FIRST IMAGE {%- endcomment -%}
+        {%- assign first = video.thumbs[0] -%}
+        {%- assign thumbFileSplit = first.file | split: "." -%}
+        {%- assign thumbFileName = thumbFileSplit[0] -%}
+        {%- assign thumbFileExt = thumbFileSplit[1] -%}
+        {%- assign thumbFileFull = first.file -%}
+        {%- capture thumbFilepathFull -%}
+        {{ page.thumbs_directory }}{{ thumbFileFull }}
+        {%- endcapture -%}
+        {%- capture thumbFilepathSmall -%}
+        {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+        {%- endcapture -%}
+
+    		<a class="project-thumb" href="#" id="project-{{ video.title | slugify }}-thumb" data-projectname="{{ video.title | slugify }}">
+          <div class="project-thumb-inside" style="background-image:url('{{ thumbFilepathFull }}');">
+            <span class="project-thumb-title">{{ video.title }}</span>
+          </div>
+    		</a>
+      {%- endfor -%}
+      </div>
+
+  </section>
+</main>

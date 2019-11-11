@@ -1,0 +1,77 @@
+---
+layout: default
+---
+<main class="projects videos">
+  {%- for video in page.videos -%}
+  <section class="project video" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+
+    {%- comment -%} Section 0: Metadata. {%- endcomment -%}
+    <meta itemprop="name" content="{{ video.title }}">
+    <meta itemprop="duration" content="{{ video.duration }}">
+    {% if video.creditDirector %}
+      <meta itemprop="contributor" content="{{ video.credit }}">
+      <meta itemprop="creator" content="{{ video.credit-director }}">
+    {% else %}
+      <meta itemprop="creator" content="Sebastian Reategui">
+    {%- endif -%}
+    <meta itemprop="contentUrl" content="{{ video.url }}">
+    <meta itemprop="embedUrl" content="{% if video.urlEmbed %}{{ video.urlEmbed }}{% else %}{{ video.url }}{% endif %}">
+    <meta itemprop="uploadDate" content="{{ video.date }}">
+    <meta itemprop="datePublished" content="{{ video.date }}">
+
+    <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
+
+    <section class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+
+      <meta itemprop="thumbnailUrl" content="{{ thumbFilepathSmall | absolute_url }}">
+        <div class="row">
+          <div class="project-infodeep-gallery">
+            {% for image in video.thumbs %}
+              {%- assign thumbFileSplit = image.file | split: "." -%}
+              {%- assign thumbFileName = thumbFileSplit[0] -%}
+              {%- assign thumbFileExt = thumbFileSplit[1] -%}
+              {%- assign thumbFileFull = image.file -%}
+              {%- capture thumbFilepathFull -%}
+                {{ page.thumbs_directory }}{{ thumbFileFull }}
+              {%- endcapture -%}
+              {%- capture thumbFilepathSmall -%}
+                {{ page.thumbs_directory }}{{ thumbFileName }},w_{{ page.thumbs_size_small }}.{{ thumbFileExt }}
+              {%- endcapture -%}
+
+            {% endfor %}
+          </div>
+        </div>
+    </section>
+
+    {%- comment -%} Section 2: About box. {%- endcomment -%}
+    <section class="about">
+        <h4 class="title">{{ video.title }}</h4>
+        <p class="description" itemprop="description">{{ video.description }}</p>
+        <ul class="details">
+          <li class="credit">{{ video.credit }}</li>
+          <li class="credit-display">{{ video.creditDisplay }}</li>
+          <li>
+            <span class="duration">{{ video.duration | date: "%-M min" }}</span>
+            &sdot;
+            <span itemprop="genre" class="genre">{{ video.genre }}</span>
+          </li>
+          {%- if video.creditDirector -%}
+          <li class="credit-director" itemprop="director"><i>Director</i>: {{ video.creditDirector }}</li>
+          {%- endif -%}
+          {%- if video.license -%}
+          <li class="license" itemprop="license"><i>License</i>: {{ video.license }}</li>
+          {%- endif -%}
+          {%- if video.software -%}
+          <li class="software"><i>Using</i>: {{ video.software }}</li>
+          <li class="location" itemprop="locationCreated">{{ video.location }}</li>
+          {%- endif -%}
+        </ul>
+        {%- if video.available != false -%}
+          <a class="btn btn-dark action" href="{{ video.url }}" target="_blank">Watch</a>
+        {%- endif -%}
+    </section>
+
+  </section>
+  {%- endfor -%}
+</main>
+{{ content }}

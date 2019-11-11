@@ -52,6 +52,8 @@ main.about {
       @include make-col(12);
     }
     @include make-col(8);
+
+    font-size:.95rem;
   }
   section.about-para {
     @include make-col-ready();
