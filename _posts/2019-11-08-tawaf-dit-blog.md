@@ -1,8 +1,8 @@
 ---
-title:          "Process: Tawaf, a slow-mo long-take music video on rooftops and in the bush"
+title:          "Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush"
 slug:           process-tawaf-slow-mo-long-take-music-video-rooftops-in-the-bush
-date:           20191109T17:00:00+16:00
-dateModified:   20191109T17:00:00+16:00
+date:           20191109T17:00:00+11:00
+dateModified:   20191115T12:00:00+11:00
 description:    |
   To hedge all our bets and improve our chances of getting a clean image to work with and flexibility to make changes down the line, we went with the top option available for the camera body.
 
@@ -40,13 +40,19 @@ It often pits its characters in portrait form, and at other moments glowing by s
 
 To translate some of these ideas into picture, there were a number of techniques that could be put into play.
 
-I observe Kaan's creativity as inherently experimental and natural, drawing himself to concepts primarily by music. In the context of his ideas, I see light as capable of being both a feeling and a texture.
+I observe Kaan's creativity as inherently experimental and natural, drawing himself to concepts primarily by music, not necessarily being literal. In this context I see light as capable of being both a feeling and a texture.
 
 But most of all, from the experimental origins of the project, I knew that committing changes or techniques destructively to a medium was going to be something that could ultimately inhibit further experimental choices.
 
 This extends to the capture format used but also to lighting choices, colour, and the edit itself.
 
-This article speaks about the rather incidental choice to use RAW capture at high resolution to hedge our bets and enable as many creative choices and options further down the line.
+So why not shoot 4.6K RAW?
+
+[Cries in Spanish]
+
+This article talks about the rather incidental choice to use both RAW capture and high resolution to hedge our bets and enable as many creative choices and options further down the line.
+
+It'll also touch on Blackmagic RAW as a codec being used in the field & practical considerations for doing so.
 
 
 **Principal crew**
@@ -64,11 +70,11 @@ This article speaks about the rather incidental choice to use RAW capture at hig
 
 ### Cameras
 
-The camera body was Blackmagic's URSA Mini Pro G1 (4.6K & PL Mount), primarily on sticks, with shoulder attachment and partially on a Steadicam rig. DOP Trudi Gultom chose Zeus Superspeeds, shooting mostly wide open.
+The camera body was Blackmagic's URSA Mini Pro G1 (PL mount), primarily on sticks, with shoulder attachment, and partially on a Steadicam rig. DOP Trudi Gultom chose Zeus Superspeeds, shooting mostly wide open.
 
-We also used the Blackmagic Pocket 4K with Metabones PL mount adapter on a DJI Ronin gimbal apparatus, not as a simultaneous B-cam but as our primary cam for a variety of setups.
+We also used the Blackmagic Pocket 4K with Metabones PL mount adapter on a DJI Ronin gimbal apparatus, as an additional primary cam for a variety of setups.
 
-Our 1st AC Stephanie Todd pulled focus using PDMovie Remote Air and monitored on a Blackmagic 7" Video Assist 4K, with Diamond Tat, Gerard Cabellon and Bobi Perdulovski supporting on alternate days.
+Our 1st AC Stephanie Todd pulled focus using PDMovie Remote Air and monitored on a Blackmagic 7" Video Assist 4K. Diamond Tat, Gerard Cabellon and Bobi Perdulovski supported on alternate days.
 
 Tyron Seeto served as Steadicam operator, and Steven Chen, Zaid Chowdhury and Bobi Perdulovski as Ronin operators.
 
@@ -84,7 +90,7 @@ Tyron Seeto served as Steadicam operator, and Steven Chen, Zaid Chowdhury and Bo
 
 The format chosen was BRAW 5:1 compression, at 4.6K resolution (4608 x 2592, 16:9).
 
-The project frame rate was 25 FPS, and about 90% of the shots were at off-speed 50 FPS.
+The project frame rate was 25 FPS, and about 90% of our shots were at off-speed 50 FPS.
 
 This gave an average data rate of 774 Mbps (~96 MB/s, ~348 GB/hour, 21 min per 128 GB card) at 25 FPS.
 
@@ -92,22 +98,22 @@ To give a comparison rate, ProRes 4444 at the same resolution would have been 1.
 
 This is nearly double the size. That's right, ProRes 4444 at this resolution, double the size of BRAW.
 
-Blackmagic's BRAW really is contrary to people's existing expectations for RAW capture: unmanageably high file sizes and long transfer times. This was certainly the case with their previous implementation of CinemaDNG. (I don't envy anyone who captured longform material using CinemaDNG.)
+Blackmagic's BRAW really is contrary to people's existing expectations for RAW capture: unmanageably high file sizes and long transfer times. And it was certainly the case with their previous implementation of CinemaDNG. (I don't envy anyone who captured longform material using CinemaDNG.)
 
 But the format has clearly been designed quite well in terms of efficiency.
 
-Its data rate just beats than RED Monstro @ 5K HD which is 800 Mbps (~360 GB/hour). It's also drastically lower than ARRIRAW on the Alexa LF @ 4.5K which is a whopping 4,175 Mbps (1.8 TB/hour). However this speaks more about those manufacturers' approach to streamlining RAW capture than anything else.
+Its data rate is about on par with RED DSMC2 these days @ 5K HD which is roughly 800 Mbps (~360 GB/hour). It's also drastically lower than ARRIRAW on the Alexa LF @ 4.5K which is a whopping 4,175 Mbps (1.8 TB/hour). However this speaks more about those manufacturers' approach to streamlining RAW capture than anything else.
 
-The relatively non-noticeable noise floor that I witnessed throughout the footage at ISO 800, however, can probably be credited to [a November 2018 firmware update for the URSA Mini](https://www.blackmagicdesign.com/support/readme/42b11f6891ad4877b9fd08214d4297c5) that altered its native ISO level. But still good to prevent further noise or compression artifacts if one has the option to.
+The relatively non-noticeable noise floor that I witnessed throughout the footage at ISO 800, however, can probably be credited to [a November 2018 firmware update for the URSA Mini](https://www.blackmagicdesign.com/support/readme/42b11f6891ad4877b9fd08214d4297c5) that altered its native ISO level. But still good to prevent further noise or compression artifacts from the capture method, if one has the option to.
 
 A side note is that RAW capture on this camera necessitates 4.6K capture as well. Any lower settings and you get windowed sensor mode, disturbing a DOP's framing and focal length choices.
 
-Cropping or rescaling sensor data is not an easy operation for RAW formats like it is for an already processed RGB signal in ProRes. Both Blackmagic and RED cameras window the sensor and take fragments from it in order to deliver a smaller resolution RAW image which isn't ideal for those seeking wide angle framing.
+This is because cropping or rescaling sensor data is not an easy operation for RAW formats like it is for an already processed RGB signal in ProRes. Both Blackmagic and RED cameras window the sensor and take fragments from it in order to deliver a smaller resolution RAW image which isn't ideal for those seeking wide angle framing.
 
 <div>
 <p><strong>Side note on the Pocket 4K as a B-cam</strong></p>
-<p>If you are pairing the Blackmagic Pocket 4K with the URSA Mini, the Pocket obviously won't be able to match the URSA Mini's 4.6K resolution. It only provides 4K DCI (4096 x 2160) and 4K UHD (3840 x 2160), and the latter is windowed-sensor mode to achieve this. My recommendation is to use 4K UHD because the 16:9 aspect ratio will match the 4.6K 16:9 provided by the URSA Mini.</p>
-<p style="margin-bottom:0;">The windowed sensor mode will really only crop off 256 pixels which is nothing. Then, the only operation required in post will be a simple downscale. Which is much much easier given the <em>many</em> other areas of post where an aspect ratio mismatch is inconvenient to resolve.</p>
+<p>If you are pairing the Blackmagic Pocket 4K with the URSA Mini, the Pocket obviously won't be able to exactly match the URSA Mini's 4.6K resolution. It only provides 4K DCI (4096 x 2160) and 4K UHD (3840 x 2160), and the latter is windowed-sensor mode to achieve this. My recommendation is to use 4K UHD because the 16:9 aspect ratio will match the 4.6K 16:9 provided by the URSA Mini.</p>
+<p style="margin-bottom:0;">The windowed sensor mode will really only crop off 256 pixels which is marginal. Then, virtually no extra operations are required in post because the aspect ratio matches. There are <em>many</em> places where a different ratio will generally cause extra hurdles (all the way from dailies to the online).</p>
 </div>
 {:.callout-info}
 
@@ -117,7 +123,7 @@ Our capture colour profile was BMD Film and our monitoring profile was BMD Video
 
 Even though Trudi and Kaan ran through a number of test shoots prior to the date, time didn't permit the creation of a custom LUT at this point, but it would have been helpful as a way to shape the look a bit and support our lighting setups more appropriately.
 
-With about 3-4 different monitors, it became difficult at certain moments to assess which 'version' of the image is the closest to the capture. We used the onboard LCD panel, two SmallHD 702 monitors in various mount positions, a Blackmagic 7" Video Assist and two Atomos Shoguns, across our A and B cams.
+With about 3-4 different monitors, it became difficult at certain moments to assess which 'version' of the image is the closest to the capture. We used the onboard LCD panel, two SmallHD 502 monitors in various mount positions, a Blackmagic 7" Video Assist and two Atomos Shoguns, across our A and B cams.
 
 In spite of differences in monitor presentation, which can amount to screen brightness, colour tint, reflections and the sharpness of the LCD panel (e.g. Atomos Shogun versus Blackmagic Video Assist 4K, the latter's LCD panel is noticeably sharper to my eyes.), histograms and false colour remain the go-to tools for assessing exposure.
 
@@ -150,15 +156,17 @@ It does. Flashing red. I quietly call out to Trudi to end it - it's clear the ta
 
 Camera crew switches to a different SATA SSD and I take this present one back to wrangle it and inspect which recordings are in tact.
 
-Takes 1 through 7 are preserved and fine, there's no corruption or issues with playback. Takes 8 and 9 end abruptly (but cleanly) during the performance, they didn't cover it the whole way, meaning those takes are basically lost, since the director needed a full uninterrupted performance to use.
+Takes 1 through 7 are preserved and fine, there's no corruption or issues with playback. Takes 8 and 9 end abruptly (but cleanly) during the performance about midway. It meant those takes were basically lost, since the director needed a full uninterrupted performance to use.
 
 {% include blogGalleryLightbox name="20191108-tawaf-dit-clips-dropped-frame-example.png" %}
 A visual example of the takes running 2-3 minutes long. Takes 8 and 9 are on top, and are noticeably shorter in duration than their companions.
 {:.caption}
 
-Some reprieve: our Steadicam operator Tyron had been monitoring via SDI to his Shogun display rigged to the apparatus and was also recording that signal to an internal drive. Steph also recorded the SDI signal through the BM Video Assist onto an SD card. We really benefitted from having these 1080p ProRes 422 recordings, luckily they were clean and had no UI overlays burnt in either.
+Some reprieve: our Steadicam operator Tyron had been monitoring via SDI to his Shogun display rigged to the apparatus and was also recording that signal to an internal drive. Steph also recorded the SDI signal through the BM Video Assist onto an SD card, as we wanted playback access earlier.
 
-It was particularly odd because we filled up least one SATA SSD (Samsung 860 EVO 500GB) at 4.6K BRAW 5:1 at 50 FPS with no single issue throughout the entire morning.
+Having these recordings saved the day: luckily they were clean, at 1080p ProRes 422 which was reasonable, and had no UI overlays burnt in either.
+
+The whole ordeal was particularly odd because we filled up least one SATA SSD (Samsung 860 EVO 500GB) at 4.6K BRAW 5:1 at 50 FPS with no single issue throughout the entire morning.
 
 The final verdict however: URSA Mini G1 with firmware 6.2 still suffered from frames dropping when writing to some SATA SSDs via the SSD attachment unit, at least at 4.6K BRAW 5:1 at 50 FPS. The SSD in question was a Samsung 250GB 960 EVO. After the shoot, a firmware update to the latest available on the date (6.5.1) resolved the issue, but for the rest of the shoot, we only trusted CFast cards.
 
@@ -186,7 +194,7 @@ Reading from a USB 3.0 CFast reader, I got offload rates of about ~390-400 MB/s 
 
 A note to anyone using YoYotta V3 #109, as of October 2019 it didn't support BRAW that I saw. So while it offloaded the files fine, it didn't gather much metadata about them like duration or any thumbnails for reports.
 
-(I'm not actually sure how many of us are using this program though to be honest, given the target markets for both the URSA and YoYotta are quite different, and that YoYotta is kind of obscure.)
+(I'm not actually sure how many of us are using this program though to be honest, given the target markets for both the URSA and [YoYotta](https://yoyotta.com/) are quite different, and that YoYotta is kind of obscure.)
 
 Generating proxies on my field MBP 13" inside Resolve netted render speeds of 15 FPS which isn't ideal but fine if I'm leaving the machine unattended and setups throughout the day permitted time to do so.
 
@@ -230,7 +238,7 @@ There's other components of post-production pipelines for music video and film t
 * What support exists for online & conform outside of just DaVinci Resolve, and instead inside Flame, Assimilate Scratch or Mistika Boutique?
 * Or for either of these purposes, will uncompressed intermediate formats simply become a necessity when working with BRAW? Such as DPX or OpenEXR sequences.
 
-Even among lower-end video projects like weddings and low-budget music videos, the demands for VFX are going to be small, but those users are still likely to find themselves encumbered by the lack of support of BRAW outside of the immediate circle of DaVinci Resolve and select versions of Adobe products. Or, if you count yourself as one of those users, you'll need to look for solutions within Resolve.
+Even among lower-end video projects like weddings and low-budget music videos, the demands for VFX are going to be small, but those users are still likely to find themselves encumbered by the lack of support of BRAW outside of the immediate circle of DaVinci Resolve and select versions of Adobe products. So, if you count yourself as a user with rapid turnarounds and still a need for VFX or similar, you'll need to look for solutions within Resolve.
 
 ### BRAW material in Resolve
 
@@ -262,11 +270,13 @@ You can force renders to full resolution in spite of this choice here in the Del
 
 ### Conclusions
 
-BRAW is really just another proprietary camera format, which is to say, its value lives and dies in how far it reaches in terms of third-party software support.
+BRAW is really just another proprietary camera format, which is to say, it lives and dies by its third-party software support and how far that can reach.
 
-On set, the sensor is the same. The usual remarks about Blackmagic sensors apply. They don't hold up super well in low light, but they do perform remarkably better than their competitors' models at the same price point. BRAW capture isn't inherently better, but at least it (a) prevents further compression from the ProRes codec, (b) gives you options to change white balance and exposure, and (c) uses up far less data than ProRes. This makes it a fantastic choice from a cinematographer's perspective.
+On set, the sensor is the same regardless of capture format. So the usual remarks about Blackmagic sensors apply. They don't hold up super well in low light, but they do perform remarkably better than their competitors' models at the same price point.
 
-From the perspective of post-production however, it's not the easiest choice Current support for BRAW makes working with BRAW OCN material a complex process. An offline editing workflow is still required in almost all cases. Developers appear to be moving in the right direction, however.
+BRAW capture isn't inherently better, but at least it (a) prevents further compression from the ProRes codec, (b) gives you options to change white balance and exposure, and (c) uses up far less data than ProRes. This makes it a fantastic choice from a cinematographer's perspective.
+
+From the perspective of post-production however, it's not the easiest choice. Current support for BRAW makes working with BRAW OCN material a complex process. An offline editing workflow is still required in almost all cases. Developers appear to be moving in the right direction, however.
 
 It'll be interesting to see how the rest of post on *Tawaf* plays out, although I expect it to be pretty smooth at this point, considering how well BRAW material works inside Resolve.
 
