@@ -15,8 +15,8 @@ blogGalleryLightbox:
   directoryPrefix:    "/post/img/"
 
 thumbnail:
-  url:    "/post/img/20191108_(photo_20191006)-tawaf-dit-9269.jpg"
-  name:   "20191108_(photo_20191006)-tawaf-dit-9269"
+  url:    "/post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.png"
+  name:   "20200927_create_mhl_file_on_ios_sebastian_reategui"
 
 
 ---
@@ -50,7 +50,7 @@ Place this MHL file in the same root folder as your newly-copied iPhone media fi
 - Click the link above inside a browser on your iOS device itself
 - Choose 'Get Shortcut'
 - 'Add Shortcut' window appears
-- Scroll all the way to the bottom, past all of the transparent steps of the program itself
+- Scroll all the way to the bottom, past all of the steps of the program itself
 - Choose `Add Untrusted Shortcut`
 - The Shortcut should now be installed, and visible from the Share panel of any file-based picker within iOS
 - It is not a separate app or icon on the Home screen, you access it from the Share panel.
@@ -71,18 +71,18 @@ An example workflow would be:
 - Navigate to Files app > 'Filmic Pro' folder
 - Select all video files > Share > 'Create an MHL file'; Name it
 - AirDrop your video files
-- AirDrop your MHL file, which saves to `Shortcuts` directoy in 'On My iPhone'.
+- AirDrop your MHL file, which saves to `Shortcuts` directory in 'On My iPhone'.
 - Verify the MHL file using [Pomfort SealVerify](https://pomfort.com/sealverify/), YoYotta, or another verification program.
 
 ### Development
 
 For those reading outside of familiarity with film & TV post-production workflows, checksum hashes are a very common means of providing a tangible, documented 'identity' of media files that pass through the pipeline. They help both in (a) data management to ensure subsequent copies of original media files are in identical state to the time they were drawn from the camera cards; and (b) during all of the other stages long after the shoot like conform, VFX and archival where media files are changing hands multiple times (across hard drives, Internet uploads, LTO tape restores).
 
-MD5 is the most common hashing algorithm in use, with XXHash-64 being a newer, more efficient favourite. The SHA family of algorithms are not typically employed.
+MD5 is the most common hashing algorithm in use. But XXHash-64 is a newer, more efficient favourite and is almost just as commonplace. The SHA family of algorithms are not typically employed.
 
 For recordings from an iPhone or iOS device, it would be fantastic to provide checksum hashes as well and permit them the same identification throughout the post pipeline.
 
-So, I've employed the Shortcuts app as the basis for this program.
+I've employed the Shortcuts app as a basis to implement this.
 
 The Shortcuts app allows users to create 'functions' which repeat basic tasks within the OS, like 'send loved one a preset text message then show directions to home'.
 
@@ -96,12 +96,6 @@ Could those hashes then be laid out in an MHL file, along with other metadata, e
 
 The answer was an exciting yes.
 
-[link]
-
-[screenshot of iOS file picker > create MHL file]
-
-This is the first version I have put out of the 'shortcut'.
-
 ### Some improvements that could be made
 
 - Can it save MHL files to the original location of the files? Assumedly not in all cases: e.g., if the media originated from the Photos.app, surely a Shortcut cannot write non-media files there
@@ -112,11 +106,11 @@ This is the first version I have put out of the 'shortcut'.
 
 - Could it use XXHASH checksums instead of (or in addition to MD5)? Very unlikely. XXHASH is a third-party library. I'm not going to get greedy here, given I'm already astonished that Apple permits users to manipulate programming-like tools within their closed system.
 
-- There may be room to establish this app through Pythonista, but I'm hesitant to add dependencies and appreciate the simplicity of one shortcut that functions natively.
+- There may be room to establish this app through Pythonista, but I'm hesitant to add dependencies and appreciate the simplicity of one shortcut that functions natively. At that point, it would best to consider a proper iOS Cocoa app.
 
 ### A real-world use case
 
-On a TV production that I worked on recently, vertical front-camera footage was shot on an iPhone Xs Max using Filmic Pro, designed to be comped onto the show's 4K UHD timeline along with main camera footage, to show two sides of a video call.
+On a production that I worked on recently, vertical front-camera footage was shot on an iPhone Xs Max using Filmic Pro, designed to be comped onto the show's 4K UHD timeline along with main camera footage, to depict the two people on either side of a video call.
 
 My usual way of offloading was using a Lighting to USB-C cable and iTunes on macOS Mojave.
 
@@ -166,7 +160,7 @@ Often times, checksums are merely generated after copy, and provided that a huma
 
 Additionally, checksums by themselves don't wield that power to determine if footage is flawed or not, only humans can do that through manual playback.
 
-That is to say, watching back the footage on an iPhone after AirDropping it to your Mac is actually more of an important integrity check, because you and your eyes will determine if it plays back correctly, if the clips don't end early.
+That is to say, **watching back the footage on an iPhone after AirDropping it to your Mac is actually more of an important integrity check**, because you and your eyes will determine if it plays back correctly, if the clips don't end early.
 
 But I suspect there is utility in documenting the state of a file on iOS and being able to confirm that a subsequent copy does not deviate from the original, as a result of file corruption, metadata changes, user error or trimming.
 
