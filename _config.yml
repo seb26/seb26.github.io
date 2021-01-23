@@ -47,6 +47,10 @@ sass:
 cloudinary:
   cloud_name: sebreategui
 
+# Blog comments
+commentbox:
+  id: 5760094331469824-proj
+
 # Metadata for <head>
 title:        Sebastian Reategui
 titleLong:    Sebastian Reategui, photographer
