@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-AU" itemscope itemtype="https://schema.org/BlogPosting">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+    <base href="">
+    <title>Offload video footage from an iPhone with checksums &mdash; Sebastian Reategui</title>
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Sebastian Reategui, photographer" />
+<meta property="og:url" content="https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/" />
+<meta property="og:title" content="Offload video footage from an iPhone with checksums" />
+<meta property="og:description" content="How do you rescue the video recordings from a phone? Here's a native way to get MD5 checksums in an MHL format on iOS 13 devices.
+" />
+<meta property="article:published_time" content="2020-09-27 06:00:00 +0000" />
+<meta property="article:modified_time" content="20200927T17:00:00+11:00" />
+<meta property="og:updated_time" content="20200927T17:00:00+11:00" />
+<meta property="og:image" content="https://sebreategui.com/post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.png" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="853" />
+
+<meta itemprop="name headline" content="Offload video footage from an iPhone with checksums" />
+<meta itemprop="author publisher" content="Sebastian Reategui" />
+<meta itemprop="description" content="How do you rescue the video recordings from a phone? Here's a native way to get MD5 checksums in an MHL format on iOS 13 devices.
+" />
+<meta itemprop="datePublished" content="2020-09-27 06:00:00 +0000" />
+<meta itemprop="dateModified" content="20200927T17:00:00+11:00" />
+<meta itemprop="url mainEntityOfPage" content="https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/" />
+<meta itemprop="image thumbnailUrl" content="https://sebreategui.com/post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@spebz" />
+<meta name="twitter:creator" content="@spebz" />
+
+<link rel="canonical" content="https://sebreategui.com" />
+<link rel="image_src" content="https://sebreategui.com/post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.png" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head><body class="page-blog-2020-2020-09-27-iphone-mhl page-blog page-bright blog-workflow nav-static" id="top">
+    <nav class="navbar navbar-expand-md navbar-dark" id="nav-sitewide" role="navigation">
+      <a class="nav-item nav-link navbar-brand" href="/">Sebastian Reategui</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-01" aria-controls="nav-01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon i-caret-bottom"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-center" id="nav-01">
+        <div class="navbar-nav"><a class="nav-item nav-link" href="/photo/photojournalism">Photography</a><a class="nav-item nav-link" href="/video/narrative">Video</a><a class="nav-item nav-link" href="/posts/">Recent</a><a class="nav-item nav-link" href="/about">About&nbsp;&sdot;&nbsp;Contact</a><!-- This element aims to balance the other items in the exact center, but itself is otherwise kept invisible. d-none d-sm-block avoids showing it in mobile viewports. -->
+          <a class="item item-faux-brand invisible d-none d-sm-block" href="#" aria-hidden="true">Sebastian Reategui</a>
+        </div>
+      </div>
+    </nav>
+
+  <article class="blog " lang="en">
+  <div class="container">
+    <header class="blog-head">
+      <div class="unit blog-info">
+        <time class="line blog-date" datetime="2020-09-27 06:00:00 +0000">
+          <a href="/post/2020/offload-video-footage-from-an-iphone-with-checksums/">27 SEPTEMBER 2020</a>
+        </time>
+        <div class="line blog-category">
+          <a href="/posts/filmmaking">
+            Filmmaking
+          </a>
+        </div><div class="line blog-location" itemprop="contentLocation">
+          Sydney, Australia
+        </div></div>
+      <div class="unit blog-title">
+        <h2 itemprop="name headline">Offload video footage from an iPhone with checksums</h2>
+      </div>
+
+      <div class="unit-free blog-thumb-primary">
+        <img
+          alt=""
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          srcset="
+            /post/img/sizes/20200927_create_mhl_file_on_ios_sebastian_reategui,w_627.jpg 627w,
+            /post/img/sizes/20200927_create_mhl_file_on_ios_sebastian_reategui,w_940.jpg 940w,
+            /post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.jpg 1280w"
+          src="
+            /post/img/20200927_create_mhl_file_on_ios_sebastian_reategui.jpg"
+        />
+      </div>
+    </header>
+    <main class="unit blog-body">
+      <section class="blog-text-content en" itemprop="articleBody" lang="en">
+        <p>With the ubiquitous iPhone encroaching its way into film and TV production, there will be some point where someone will ask you to copy off video recordings from an iPhone.</p>
+
+<p>How do you rescue the video recordings from that phone? The mechanisms that we typically use for processing regular digital cinema cameras (Arri, RED, Sony) are not the same.</p>
+
+<p>The iPhone records to its own internal memory, not a removable mag or card. Its OS is closed and limits you to access it via iTunes, or through Finder on macOS Catalina. Neither method can expose the recorded media files in an easy way to offloading programs like <a href="https://pomfort.com/silverstack/">Silverstack</a>, <a href="https://yoyotta.com/">YoYotta</a> or ShotPut Pro.</p>
+
+<p>Enter ‘Create MHL file’ for iOS, a native way to obtain checksums on iOS devices running iOS 13 and up, implemented using the Shortcuts app.</p>
+
+<p><strong>How does it work?</strong></p>
+
+<p>After adding it, the Shortcut appears in the Share menu.</p>
+
+<p>So anywhere you can ‘pick’ a file - either in Photos.app, Files.app or Filmic Pro, you can generate an MHL for those files, with the checksums of each media file described within.</p>
+
+<p>Then use existing copying methods (iTunes, Finder or AirDrop) to perform the actual transfer of the media files from the iOS device to your data computer.</p>
+
+<p>Confirm that each media files matches the MHL you generated on the iPhone.</p>
+
+<p>Place this MHL file in the same root folder as your newly-copied iPhone media files, both within your structure of OCN files and your backups, and throughout handovers and archival.</p>
+
+<h3 id="install">Install</h3>
+
+<p><strong><a href="https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6">This is the link to the Shortcut</a></strong>, v1, dated 2020-09-27, or the full URL below:</p>
+
+<p><a href="https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6"><code class="language-plaintext highlighter-rouge">https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6</code></a></p>
+
+<ul>
+  <li>Click the link above inside a browser on your iOS device itself</li>
+  <li>Choose ‘Get Shortcut’</li>
+  <li>‘Add Shortcut’ window appears</li>
+  <li>Scroll all the way to the bottom, past all of the steps of the program itself</li>
+  <li>Choose <code class="language-plaintext highlighter-rouge">Add Untrusted Shortcut</code></li>
+  <li>The Shortcut should now be installed, and visible from the Share panel of any file-based picker within iOS</li>
+  <li>It is not a separate app or icon on the Home screen, you access it from the Share panel.</li>
+</ul>
+
+<h3 id="how-to-use-it">How to use it</h3>
+
+<ul>
+  <li>Select the files you wish to checksum, from any file picker in iOS (Photos, Filmic Pro, anywhere with a ‘Share’ option)</li>
+  <li>Choose ‘Create an MHL file’</li>
+  <li>Give the MHL file a name (it automatically includes the date to start with)</li>
+  <li>Wait momentarily for checksums to be created</li>
+  <li>Return to the Files app &gt; Shortcuts folder</li>
+  <li>See your <code class="language-plaintext highlighter-rouge">.mhl</code> file there, and copy it off iOS by AirDrop, email, or other</li>
+</ul>
+
+<p>An example workflow would be:</p>
+
+<ul>
+  <li>Get handed an iPhone with video footage recorded on Filmic Pro</li>
+  <li>Install the Shortcut from the URL above</li>
+  <li>Navigate to Files app &gt; ‘Filmic Pro’ folder</li>
+  <li>Select all video files &gt; Share &gt; ‘Create an MHL file’; Name it</li>
+  <li>AirDrop your video files</li>
+  <li>AirDrop your MHL file, which saves to <code class="language-plaintext highlighter-rouge">Shortcuts</code> directory in ‘On My iPhone’.</li>
+  <li>Verify the MHL file using <a href="https://pomfort.com/sealverify/">Pomfort SealVerify</a>, YoYotta, or another verification program.</li>
+</ul>
+
+<h3 id="development">Development</h3>
+
+<p>For those reading outside of familiarity with film &amp; TV post-production workflows, checksum hashes are a very common means of providing a tangible, documented ‘identity’ of media files that pass through the pipeline. They help both in (a) data management to ensure subsequent copies of original media files are in identical state to the time they were drawn from the camera cards; and (b) during all of the other stages long after the shoot like conform, VFX and archival where media files are changing hands multiple times (across hard drives, Internet uploads, LTO tape restores).</p>
+
+<p>MD5 is the most common hashing algorithm in use. But XXHash-64 is a newer, more efficient favourite and is almost just as commonplace. The SHA family of algorithms are not typically employed.</p>
+
+<p>For recordings from an iPhone or iOS device, it would be fantastic to provide checksum hashes as well and permit them the same identification throughout the post pipeline.</p>
+
+<p>I’ve employed the Shortcuts app as a basis to implement this.</p>
+
+<p>The Shortcuts app allows users to create ‘functions’ which repeat basic tasks within the OS, like ‘send loved one a preset text message then show directions to home’.</p>
+
+<p>It’s a fascinating direction that Apple has taken its development in, as it includes quite a functional base of options, from logical controllers (if, else, case), handling of types (numbers, text, dates) and named variables.</p>
+
+<p>I was surprised to find that Shortcuts also featured a “generate hash” action, assumedly to provide a secure way to store user input like passwords, with MD5 and SHA offered as algorithms.</p>
+
+<p>Could this same function be used to work on files?</p>
+
+<p>Could those hashes then be laid out in an MHL file, along with other metadata, enabling them to be checked by the myriad of data verification tools available?</p>
+
+<p>The answer was an exciting yes.</p>
+
+<h3 id="some-improvements-that-could-be-made">Some improvements that could be made</h3>
+
+<ul>
+  <li>
+    <p>Can it save MHL files to the original location of the files? Assumedly not in all cases: e.g., if the media originated from the Photos.app, surely a Shortcut cannot write non-media files there</p>
+  </li>
+  <li>
+    <p>Can it combine AirDrop with generation of the MHL file, in one single action?</p>
+  </li>
+  <li>
+    <p>Could it allow you to run a verification check <strong>on</strong> the iOS device itself? Tricksy stuff.</p>
+  </li>
+  <li>
+    <p>Could it use XXHASH checksums instead of (or in addition to MD5)? Very unlikely. XXHASH is a third-party library. I’m not going to get greedy here, given I’m already astonished that Apple permits users to manipulate programming-like tools within their closed system.</p>
+  </li>
+  <li>
+    <p>There may be room to establish this app through Pythonista, but I’m hesitant to add dependencies and appreciate the simplicity of one shortcut that functions natively. At that point, it would best to consider a proper iOS Cocoa app.</p>
+  </li>
+</ul>
+
+<h3 id="a-real-world-use-case">A real-world use case</h3>
+
+<p>On a production that I worked on recently, vertical front-camera footage was shot on an iPhone Xs Max using Filmic Pro, designed to be comped onto the show’s 4K UHD timeline along with main camera footage, to depict the two people on either side of a video call.</p>
+
+<p>My usual way of offloading was using a Lighting to USB-C cable and iTunes on macOS Mojave.</p>
+
+<p>I’d connect the device, select its icon in iTunes, and nav to “On My iPhone” -&gt; Files -&gt; Filmic Pro and see media files listed there, choosing ‘Save As’ and setting the directory to my RAID volume.</p>
+
+<p>Following the transfer’s completion, I’d run the folder of files on the RAID through YoYotta (v3.0 161) to create a thumbnail PDF and an MHL file, essentially ‘baptising’ it like all other camera footage.</p>
+
+<p>Despite repeating this without any trouble on multiple shoot days with iPhone footage, on a recent one I encountered a weird glitch.</p>
+
+<p>Adding the folder of iPhone media files to a YoYotta job and choosing ‘Verify’ would complete successfully, but:</p>
+<ul>
+  <li>I could no longer quick-preview the files in Finder;</li>
+  <li>The files no longer had a thumbnail shown in Finder; and, worse still,</li>
+  <li>The files vanished from Resolve’s Media Pool picker, meaning they weren’t recognised as having a valid file header which would make them addable to the media pool.</li>
+  <li>Selecting the files manually through File &gt; Import closed the Import dialog without any error message and no file was added to the media pool.</li>
+</ul>
+
+<p>In other words, they had been modified somehow <strong>after</strong> the iTunes copy but <strong>before</strong> processing in YoYotta.</p>
+
+<p>And were no longer recognisable as valid .MOV files.</p>
+
+<p>In this instance, I didn’t have time to investigate what was to blame, so I trashed this now flawed set of media files and created a new copy using AirDrop, so as to try a different transfer method.</p>
+
+<p>Resolve recognised them and I transcoded them successfully to get that out of the way, and then used YoYotta’s verify &amp; add to index, instead of running a job.</p>
+
+<p>Regardless of the cause (YoYotta likely), my solution or the following steps, what had occurred was essentially: <strong>inadvertent modification to original camera files</strong>.</p>
+
+<p>This is what we try to avoid at all costs.</p>
+
+<p>A record of checksums could certainly have been handy in this case.</p>
+
+<p>Writing the media files to LTO, depending on the program and if it parsed MHL files, would have flagged as an alert or report that the files in question didn’t match their identity at the time of copy.</p>
+
+<p>YoYotta’s manipulation of the files (whether that be operator error on my part or a program bug) is actually just an example of a destructive action taking place at a hardware, software or human level, and could take place at any time.</p>
+
+<p>Humans do make mistakes, especially those working late at night, and software programs do as well, no matter how battle-tested they are (think <a href="http://web.archive.org/web/20161125043005/https://blog.vellumatlanta.com/2016/05/04/apple-stole-my-music-no-seriously/">when iTunes deleted the entire music collection of a user and Apple sent an engineer to the user’s house to investigate</a>).</p>
+
+<h3 id="final-words">Final words</h3>
+
+<p>This tool and its development was completely <em>extra</em> and wasn’t really calling to be made.</p>
+
+<p>It’s also clunky and needs other modifications to make it more user-friendly.</p>
+
+<p>My brief success in developing a working version means it has validity as a proof-of-concept but not necessarily as a critical or mandatory step that demands implementation in all cinema workflows with iPhone.</p>
+
+<p>We have been squeezing footage off of iPhones for use in cuts for a long time using the conventional means listed above and without the need for such a tool, and off other devices with unusual interfaces.</p>
+
+<p>Often times, checksums are merely generated after copy, and provided that a human has done a basic QC, these checksums would be valid throughout the rest of post-production as well.</p>
+
+<p>Additionally, checksums by themselves don’t wield that power to determine if footage is flawed or not, only humans can do that through manual playback.</p>
+
+<p>That is to say, <strong>watching back the footage on an iPhone after AirDropping it to your Mac is actually more of an important integrity check</strong>, because you and your eyes will determine if it plays back correctly, if the clips don’t end early.</p>
+
+<p>But I suspect there is utility in documenting the state of a file on iOS and being able to confirm that a subsequent copy does not deviate from the original, as a result of file corruption, metadata changes, user error or trimming.</p>
+
+<p>Especially since we demand this from original camera media files at all stages.</p>
+
+      </section>
+      
+    </main>
+    
+
+    
+
+    <div class="unit blog-date-disclaimer">
+      Article first published on 27 September 2020.
+    </div>
+  </div><div class="unit blog-social">
+    <a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/"></a>
+    <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url=https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/"></a>
+    <a href="https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/"><span class="i-link icon"></span></a>
+  </div><div class="unit blog-comments">
+      <div class="commentbox"></div>
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <script>
+        commentBox('5760094331469824-proj');
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+  </div><footer id="footer-intro-to-me" class="footer-author-credit">
+  <div class="unit">
+    <div class="image-circle" style='background-image:url("/img/profiles/profile-square-sebastian-reategui-by-david-puentes.jpg");'>
+      <span class="sr-only">About the author, Sebastian Reategui, with image</span>
+    </div>
+    <p>I'm <strong>Sebastian</strong>. I'm a digital imaging technician for the film & television industry in Australia. I'm also a photojournalist and I like showing people what's going on in the world.</p>
+    <a class="faux-link" href="/about">Read more ▸</a>
+  </div>
+</footer>
+<div class="container blog-nextup"><div class="row "><div class="col-12 col-sm-6 previous">
+        <a href="/post/2019/process-tawaf-slow-mo-long-take-music-video-rooftops-in-the-bush/">
+          <div class="label top">← PREVIOUS</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/20191108_(photo_20191006)-tawaf-dit-9269,w_627.jpg"
+            alt="Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush">
+          <noscript>
+            <img
+            src="/post/img/sizes/20191108_(photo_20191006)-tawaf-dit-9269,w_627.jpg"
+            alt="Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush">
+          </noscript>
+          <div class="label bottom">Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush</div>
+        </a>
+      </div><div class="col-12 col-sm-6 next">
+        <a href="/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/">
+          <div class="label top">NEXT →</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/202101_nvme_cfast_raid_sebastian_reategui__still-0952,w_627.jpg"
+            alt="Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3">
+          <noscript>
+            <img
+            src="/post/img/sizes/202101_nvme_cfast_raid_sebastian_reategui__still-0952,w_627.jpg"
+            alt="Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3">
+          </noscript>
+          <div class="label bottom">Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3</div>
+        </a>
+      </div></div>
+  </div></article>
+
+      <footer id="footer-sitewide">
+      <a href="/about">&copy; 2021</a>
+    </footer>
+
+  <script src="/js/jquery-popper-bootstrap.js"></script>
+  <script src="/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en-AU" itemscope itemtype="https://schema.org/BlogPosting">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+    <base href="">
+    <title>Process: What I learned from making mhl-compare &mdash; Sebastian Reategui</title>
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Sebastian Reategui, photographer" />
+<meta property="og:url" content="https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/" />
+<meta property="og:title" content="Process: What I learned from making mhl-compare" />
+<meta property="og:description" content="You give it two MHL files and it reads them, works with the described list of media within, compares each media file's filename, path, size, hash and modified-date strings, and reports to the user a variety of different outcomes.
+" />
+<meta property="article:published_time" content="2019-04-20 20:00:00 +0000" />
+<meta property="article:modified_time" content="2019-04-21 11:00:00 +1500" />
+<meta property="og:updated_time" content="2019-04-21 11:00:00 +1500" />
+<meta property="og:image" content="https://sebreategui.com/post/img/20190421_mhlcompare_thumb.jpg" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="853" />
+
+<meta itemprop="name headline" content="Process: What I learned from making mhl-compare" />
+<meta itemprop="author publisher" content="Sebastian Reategui" />
+<meta itemprop="description" content="You give it two MHL files and it reads them, works with the described list of media within, compares each media file's filename, path, size, hash and modified-date strings, and reports to the user a variety of different outcomes.
+" />
+<meta itemprop="datePublished" content="2019-04-20 20:00:00 +0000" />
+<meta itemprop="dateModified" content="2019-04-21 11:00:00 +1500" />
+<meta itemprop="url mainEntityOfPage" content="https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/" />
+<meta itemprop="image thumbnailUrl" content="https://sebreategui.com/post/img/20190421_mhlcompare_thumb.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@spebz" />
+<meta name="twitter:creator" content="@spebz" />
+
+<link rel="canonical" content="https://sebreategui.com" />
+<link rel="image_src" content="https://sebreategui.com/post/img/20190421_mhlcompare_thumb.jpg" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head><body class="page-blog-2019-2019-04-21-mhl-compare page-blog page-bright blog-workflow nav-static" id="top">
+    <nav class="navbar navbar-expand-md navbar-dark" id="nav-sitewide" role="navigation">
+      <a class="nav-item nav-link navbar-brand" href="/">Sebastian Reategui</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-01" aria-controls="nav-01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon i-caret-bottom"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-center" id="nav-01">
+        <div class="navbar-nav"><a class="nav-item nav-link" href="/photo/photojournalism">Photography</a><a class="nav-item nav-link" href="/video/narrative">Video</a><a class="nav-item nav-link" href="/posts/">Recent</a><a class="nav-item nav-link" href="/about">About&nbsp;&sdot;&nbsp;Contact</a><!-- This element aims to balance the other items in the exact center, but itself is otherwise kept invisible. d-none d-sm-block avoids showing it in mobile viewports. -->
+          <a class="item item-faux-brand invisible d-none d-sm-block" href="#" aria-hidden="true">Sebastian Reategui</a>
+        </div>
+      </div>
+    </nav>
+
+  <article class="blog " lang="en">
+  <div class="container">
+    <header class="blog-head">
+      <div class="unit blog-info">
+        <time class="line blog-date" datetime="2019-04-20 20:00:00 +0000">
+          <a href="/post/2019/process-what-i-learned-from-making-mhl-compare/">20 APRIL 2019</a>
+        </time>
+        <div class="line blog-category">
+          <a href="/posts/programming">
+            Programming
+          </a>
+        </div><div class="line blog-location" itemprop="contentLocation">
+          Sydney, Australia
+        </div></div>
+      <div class="unit blog-title">
+        <h2 itemprop="name headline">Process: What I learned from making mhl-compare</h2>
+      </div>
+
+      <div class="unit-free blog-thumb-primary">
+        <img
+          alt=""
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          srcset="
+            /post/img/sizes/20190421_mhlcompare_thumb,w_627.jpg 627w,
+            /post/img/sizes/20190421_mhlcompare_thumb,w_940.jpg 940w,
+            /post/img/20190421_mhlcompare_thumb.jpg 1280w"
+          src="
+            /post/img/20190421_mhlcompare_thumb.jpg"
+        />
+      </div>
+    </header>
+    <main class="unit blog-body">
+      <section class="blog-text-content en" itemprop="articleBody" lang="en">
+        <p>It’s a command line utility that when given two MHL files, will tell you the differences between the two.</p>
+
+<h2 id="what-are-mhl-files">What are MHL files?</h2>
+
+<p>A media hash list file is a small metadata file that basically contains a unique signature of a given set of media files. If you create an MHL file, you have a point of comparison for those files’ integrity and can clearly see later down the track if the files have been modified, corrupted or made missing, because their original state is recorded and can be compared against later.</p>
+
+<p>The standard was designed for use in digital cinema, television and other media producing sectors of the industry, by German software company <a href="https://pomfort.com">Pomfort</a>. It is a human-readable XML format and the <a href="https://mediahashlist.org">standard is open and available</a>.</p>
+
+<p>A technician who receives a storage card with digital media files, will create copies of those files in multiple locations. Depending on the tool they use, an MHL file can be generated and it will sit inside the same folder as those media files. It’ll be quite small in size, typically a couple of hundred KB.</p>
+
+<p>Later, when other members of the post-production process begin to get involved and handle the media, they can at anytime compare the media files they have now, to the <a href="https://en.wikipedia.org/wiki/Checksum">checksum hashes</a> preserved inside the MHL file. Comparing is done by one of a few programs that interpret MHL files: Silverstack, <a href="http://pomfort.com/sealverify/">SealVerify</a>, <a href="https://hedge.video/checkpoint">Checkpoint</a> and the basic <a href="https://mediahashlist.org/reference-implementation/">MHL reference tool</a>. The tool will clearly report if any file has changed from what was recorded earlier. Technicians can then take action to cross-check their media files for quality, observe what might have happened or changed, and try to seek another set of copies if available or necessary. At least the fact that there is a modification in the file set will now be made clear to them.</p>
+
+<h2 id="why-so-much-concern-over-media-files-suddenly-being-changed">Why so much concern over media files suddenly being changed?</h2>
+
+<p>There are many opportunities for files to be modified without the user even knowing. Discovering the existence of file integrity issues or accidental modifications is difficult to do when files are just simply stored as files in a file system, and nothing more than macOS Finder is used.</p>
+
+<p>If media is changed from its original state, it may have actually become damaged and become unreadable (like broken or corrupt files) which are of course unusable. If they are modified inadvertently, their use in the later stages of post-production is compromised because they may be treated differently by different programs.</p>
+
+<p>Some examples:</p>
+<ul>
+  <li>Adobe Prelude has been caught out modifying metadata directly inside QuickTime files</li>
+  <li>Adobe Bridge will modify metadata when you change values in its Metadata column</li>
+</ul>
+
+<h2 id="mhl-compare">mhl-compare</h2>
+
+<p>How does mhl-compare work?</p>
+
+<p>It was written as a quick-run script in Python, but as I got further into the concept, it branched out into a command-line utility.</p>
+
+<p>You give it two MHL files and it reads them, works with the described list of media within, compares each media file’s filename, path, size, hash and modified-date strings, and reports to the user a variety of different outcomes, like:</p>
+
+<ul>
+  <li>A media file has been modified</li>
+  <li>A media file has had its name changed, but its content is the same (hash is the same)</li>
+  <li>A media file exists in both lists, but doesn’t have comparable hashes</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--------------
+mhl-compare (v0.3) (Python) (Author: Sebastian Reategui) (MIT License)
+
+1st MHL file: samples/a01.mhl
+              22 files
+              1.7 GiB (1845943311 bytes)
+2nd MHL file: samples/a02.mhl
+              20 files
+              1.3 GiB (1377904103 bytes)
+
+Observations:
+    19 files matched, but with differences in name, directory or modification date
+    2 files had different hashes. The files were likely different at the time the MHLs were generated
+    1 file was present only in one MHL or the other
+    1 file was a duplicate, as it had the same hash as another file
+
+    Run the check again with --info to view details.
+--------------
+</code></pre></div></div>
+
+<p>I chose to make the default printed output to be brief and short, only a tally-number list of what’s different, so you can quickly make a conclusion from it. A <code class="language-plaintext highlighter-rouge">--verbose</code> option exists to actually list the files and show in detail what attributes are different.</p>
+
+<h2 id="download-mhl-compare">Download mhl-compare</h2>
+
+<p>You can find the latest binary for Mac, and the source code at the <a href="https://github.com/seb26/mhl-compare">repository on GitHub</a>.</p>
+
+<h2 id="techniques-learned-in-python">Techniques learned in Python</h2>
+
+<ul>
+  <li>Parsing XML files</li>
+  <li>Traversing a dictionary structure: dealing with when keys don’t exist, or when the structure of the dictionary is different to what you are expecting</li>
+  <li>Delta and differences</li>
+  <li>Objects and classes
+    <ul>
+      <li>Hashing the objects and changing how they are hashed, affecting comparisons made between</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="future-plans">Future plans</h2>
+
+<p>I now have plans to make a general MHL tool (perhaps called <code class="language-plaintext highlighter-rouge">mhltool</code>) with my own implementation for creating and verifying MHL files against the real file sets, but with also the added feature of being able to supplement MHL files with more data and to add additional hashes.</p>
+
+<p>For example, ShotPut Pro allows for hash creation with XXHash and MD5, but not both at the same time. XXHash is substantially faster for most transfers (depending on the hardware) so that is the best choice for time-strict data dumping on set rather than MD5. However, many post houses still prefer to work with MD5 anyway. So currently, after the initial copy is run with ShotPut I have to run <code class="language-plaintext highlighter-rouge">md5deep</code> on the directory and generate a separate md5 file there. Now that produces two checksum files. Perhaps it may be useful to be able to update an MHL file with additional hashes to describe its files. Before committing those new hashes to the list, the program would need to verify that the real file set does indeed match the existing hashes in the list. Otherwise we may have a case of file A with the XXhash (<code class="language-plaintext highlighter-rouge">sd8f97sds</code>) recorded at the time of copy, but with differences in the file now (<code class="language-plaintext highlighter-rouge">asda89sd</code>). If we make a new MD5 sum of this file, it won’t be recognisable and both will be treated as signatures of the file despite being signatures of literally different states.</p>
+
+      </section>
+      
+    </main>
+    
+
+    
+
+    <div class="unit blog-date-disclaimer">
+      Article first published on 20 April 2019.
+    </div>
+  </div><div class="unit blog-social">
+    <a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/"></a>
+    <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url=https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/"></a>
+    <a href="https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/"><span class="i-link icon"></span></a>
+  </div><div class="unit blog-comments">
+      <div class="commentbox"></div>
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <script>
+        commentBox('5760094331469824-proj');
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+  </div><footer id="footer-intro-to-me" class="footer-author-credit">
+  <div class="unit">
+    <div class="image-circle" style='background-image:url("/img/profiles/profile-square-sebastian-reategui-by-david-puentes.jpg");'>
+      <span class="sr-only">About the author, Sebastian Reategui, with image</span>
+    </div>
+    <p>I'm <strong>Sebastian</strong>. I'm a digital imaging technician for the film & television industry in Australia. I'm also a photojournalist and I like showing people what's going on in the world.</p>
+    <a class="faux-link" href="/about">Read more ▸</a>
+  </div>
+</footer>
+<div class="container blog-nextup"><div class="row "><div class="col-12 col-sm-6 previous">
+        <a href="/post/2019/in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system/">
+          <div class="label top">← PREVIOUS</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/2019-03-22-congestion-en-calle-100-sebastian-reategui-3988,w_627.jpg"
+            alt="In photos: Congestion packs out stations across Bogotá's mass transit system">
+          <noscript>
+            <img
+            src="/post/img/sizes/2019-03-22-congestion-en-calle-100-sebastian-reategui-3988,w_627.jpg"
+            alt="In photos: Congestion packs out stations across Bogotá's mass transit system">
+          </noscript>
+          <div class="label bottom">In photos: Congestion packs out stations across Bogotá's mass transit system</div>
+        </a>
+      </div><div class="col-12 col-sm-6 next">
+        <a href="/post/2019/in-photos-hong-kong-supporters-gather-in-sydney-to-demand-an-end-to-violence/">
+          <div class="label top">NEXT →</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/2019-08-16-hong-kong-rally-in-sydney-cbd-sebastian-reategui-4905,w_627.jpg"
+            alt="In photos: Hong Kong supporters gather in Sydney to demand an end to violence">
+          <noscript>
+            <img
+            src="/post/img/sizes/2019-08-16-hong-kong-rally-in-sydney-cbd-sebastian-reategui-4905,w_627.jpg"
+            alt="In photos: Hong Kong supporters gather in Sydney to demand an end to violence">
+          </noscript>
+          <div class="label bottom">In photos: Hong Kong supporters gather in Sydney to demand an end to violence</div>
+        </a>
+      </div></div>
+  </div></article>
+
+      <footer id="footer-sitewide">
+      <a href="/about">&copy; 2021</a>
+    </footer>
+
+  <script src="/js/jquery-popper-bootstrap.js"></script>
+  <script src="/js/script.js"></script>
+  </body>
+</html>

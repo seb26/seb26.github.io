@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en-AU" itemscope itemtype="https://schema.org/BlogPosting">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+    <base href="">
+    <title>Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3 &mdash; Sebastian Reategui</title>
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Sebastian Reategui, photographer" />
+<meta property="og:url" content="https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/" />
+<meta property="og:title" content="Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3" />
+<meta property="og:description" content="description
+" />
+<meta property="article:published_time" content="2021-01-23 02:00:00 +0000" />
+<meta property="article:modified_time" content="20210123T13:00:00+11:00" />
+<meta property="og:updated_time" content="20210123T13:00:00+11:00" />
+<meta property="og:image" content="https://sebreategui.com/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="853" />
+
+<meta itemprop="name headline" content="Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3" />
+<meta itemprop="author publisher" content="Sebastian Reategui" />
+<meta itemprop="description" content="description
+" />
+<meta itemprop="datePublished" content="2021-01-23 02:00:00 +0000" />
+<meta itemprop="dateModified" content="20210123T13:00:00+11:00" />
+<meta itemprop="url mainEntityOfPage" content="https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/" />
+<meta itemprop="image thumbnailUrl" content="https://sebreategui.com/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@spebz" />
+<meta name="twitter:creator" content="@spebz" />
+
+<link rel="canonical" content="https://sebreategui.com" />
+<link rel="image_src" content="https://sebreategui.com/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head><body class="page-blog-2021-01-18-nvme-cfast-raid-article-1 page-blog page-bright blog-workflow nav-static" id="top">
+    <nav class="navbar navbar-expand-md navbar-dark" id="nav-sitewide" role="navigation">
+      <a class="nav-item nav-link navbar-brand" href="/">Sebastian Reategui</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-01" aria-controls="nav-01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon i-caret-bottom"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-center" id="nav-01">
+        <div class="navbar-nav"><a class="nav-item nav-link" href="/photo/photojournalism">Photography</a><a class="nav-item nav-link" href="/video/narrative">Video</a><a class="nav-item nav-link" href="/posts/">Recent</a><a class="nav-item nav-link" href="/about">About&nbsp;&sdot;&nbsp;Contact</a><!-- This element aims to balance the other items in the exact center, but itself is otherwise kept invisible. d-none d-sm-block avoids showing it in mobile viewports. -->
+          <a class="item item-faux-brand invisible d-none d-sm-block" href="#" aria-hidden="true">Sebastian Reategui</a>
+        </div>
+      </div>
+    </nav>
+
+  <article class="blog " lang="en">
+  <div class="container">
+    <header class="blog-head">
+      <div class="unit blog-info">
+        <time class="line blog-date" datetime="2021-01-23 02:00:00 +0000">
+          <a href="/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/">23 JANUARY 2021</a>
+        </time>
+        <div class="line blog-category">
+          <a href="/posts/data">
+            Data
+          </a>
+        </div><div class="line blog-location" itemprop="contentLocation">
+          Sydney, Australia
+        </div></div>
+      <div class="unit blog-title">
+        <h2 itemprop="name headline">Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3</h2>
+      </div>
+
+      <div class="unit-free blog-thumb-primary">
+        <img
+          alt=""
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          srcset="
+            /post/img/sizes/202101_nvme_cfast_raid_sebastian_reategui__still-0952,w_627.jpg 627w,
+            /post/img/sizes/202101_nvme_cfast_raid_sebastian_reategui__still-0952,w_940.jpg 940w,
+            /post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg 1280w"
+          src="
+            /post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg"
+        />
+      </div>
+    </header>
+    <main class="unit blog-body">
+      <section class="blog-text-content en" itemprop="articleBody" lang="en">
+        <p>M.2 NVME SSD devices offer about the fastest transfer speeds among all other products readily available in the consumer market today.</p>
+
+<p>I recently picked up an <a href="https://www.owcdigital.com/products/express-4m2"><strong>OWC Express 4M2</strong></a>, which is a Thunderbolt 3 RAID enclosure for M.2 NVME SSDs.</p>
+
+<p>According to OWC’s product page, when four M.2 NVME drives are placed inside in a RAID array, it can achieve up to 2,800 MB/s transfer speed.</p>
+
+<p>This is an exceedingly generous amount of bandwidth compared to offerings in spinning-disk or SATA SSD offerings, which can reach between about 600 to 1,000 MB/s in RAID.</p>
+
+<p>I can therefore envision the unit as being a target destination for <strong>multiple camera memory cards</strong>, <strong>simultaneously</strong>.</p>
+
+<p class="callout-info small"><strong>Units</strong>
+<br />Given the frequent interchange of bytes and bits as measurements throughout this article, all units for data/speed measurements will from now on be indicated in <em>giga-</em> to 3 decimal places and not <em>mega-</em>, and with byte and bit spelled out. e.g.: <code class="language-plaintext highlighter-rouge">500 MB/second</code> = <code class="language-plaintext highlighter-rouge">0.500 Gbyte/s</code>.
+<br /><br />
+(The formatting that I usually prefer is <code class="language-plaintext highlighter-rouge">GB/s</code> and <code class="language-plaintext highlighter-rouge">Gbps</code> with upper &amp; lowercase <code class="language-plaintext highlighter-rouge">b</code>. But to avoid <em>that</em> slice of wonderful confusion I have chosen to also spell out bytes and bits.)</p>
+
+<p><strong>Contents</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#why-thunderbolt-3" id="markdown-toc-why-thunderbolt-3">Why Thunderbolt 3?</a></li>
+  <li><a href="#why-m2-nvme-drives" id="markdown-toc-why-m2-nvme-drives">Why M.2 NVME drives?</a></li>
+  <li><a href="#on-paper" id="markdown-toc-on-paper">On paper</a></li>
+  <li><a href="#hypothesis" id="markdown-toc-hypothesis">Hypothesis</a></li>
+  <li><a href="#hardware--system-used" id="markdown-toc-hardware--system-used">Hardware &amp; system used</a></li>
+  <li><a href="#baseline-readwrite-performance" id="markdown-toc-baseline-readwrite-performance">Baseline read/write performance</a></li>
+  <li><a href="#testing-media" id="markdown-toc-testing-media">Testing media</a></li>
+  <li><a href="#test-1" id="markdown-toc-test-1">Test 1</a></li>
+  <li><a href="#test-2" id="markdown-toc-test-2">Test 2</a></li>
+  <li><a href="#considerations" id="markdown-toc-considerations">Considerations</a></li>
+  <li><a href="#methodology" id="markdown-toc-methodology">Methodology</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+<h3 id="why-thunderbolt-3">Why Thunderbolt 3?</h3>
+
+<p>In the DIT/data management world, macOS is virtually mandatory at least for offload operations because it is required by software &amp; hardware at many stages. Codex card readers &amp; software are exclusively macOS, as are Silverstack &amp; YoYotta offloading programs. This means at least one host machine needs to be macOS natively and hence the hardware falls that way.</p>
+
+<p>This means we need to look at options that can work within the Thunderbolt 3 ecosystem of independent ‘box’ or ‘dock’-type devices connected by external cables. These are much more readily accessible than PCIe expansion, even though the latter is available (expensively) within the Mac Pro platform. These same M.2 NVME SSD units could be used on a PCIe RAID card on a Mac Pro and otherwise achieve <strong>somewhere in the vicinity of 6 and 10 Gbyte/s</strong> depending on the RAID card.</p>
+
+<p>On the outset, you might be thinking: when RAID-0’d together, why is it that  four M.2 NVME drives are permitted to only transfer at a cumulative 2.8 Gbyte/s only, when individually a Samsung 970 EVO Plus unit would be capable of putting out 2.5 Gbyte/s by itself?</p>
+
+<p>The quick answer is that PCIe when delivered over Thunderbolt 3 is only afforded approximately 2.8 Gbyte/s (or ~22.4 Gbit/s). A more detailed explanation <a href="#considerations">is covered at the end</a>.</p>
+
+<p>Yes, 6 Gbyte/s is enormously fast and 2.8 Gbyte/s pales as watered down in comparison, but it may be <strong>a necessary tradeoff to maintain connectivity</strong> within the Thunderbolt &amp; portable Mac world, and keeping costs down.</p>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0892.jpg" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0892.jpg" />
+</a></p>
+
+<p class="caption">The OWC Express 4M2.</p>
+
+<h3 id="why-m2-nvme-drives">Why M.2 NVME drives?</h3>
+
+<p>M.2 NVME SSDs are not cheap. The 1TB 970 EVO Plus unit from Samsung used in my tests was AUD $259.00 at the time of purchase (December 2020). It has since come down about $10 at the time of writing this post.</p>
+
+<p>To compare it against other media:</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Brand</th>
+      <th>Unit</th>
+      <th style="text-align: right">Price (AUD)</th>
+      <th style="text-align: right">$/TB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M.2 NVME</td>
+      <td>Samsung</td>
+      <td>1TB 970 EVO Plus</td>
+      <td style="text-align: right">$249.00</td>
+      <td style="text-align: right">$249/TB</td>
+    </tr>
+    <tr>
+      <td>M.2 NVME</td>
+      <td>Samsung</td>
+      <td>2TB 970 EVO Plus</td>
+      <td style="text-align: right">$499.00</td>
+      <td style="text-align: right">$249.50/TB</td>
+    </tr>
+    <tr>
+      <td>SATA SSD</td>
+      <td>Samsung</td>
+      <td>1TB 860 EVO</td>
+      <td style="text-align: right">$175.00</td>
+      <td style="text-align: right">$175/TB</td>
+    </tr>
+    <tr>
+      <td>SATA HDD</td>
+      <td>WD</td>
+      <td>10TB RED EFAX</td>
+      <td style="text-align: right">$445.00</td>
+      <td style="text-align: right">$44.50/TB</td>
+    </tr>
+  </tbody>
+</table>
+<p class="caption"><em>Prices are in AUD, were taken from a single vendor (not specified) and were current as of 16/01/2021.</em></p>
+
+<p>It’s easy to see how quickly M.2 NVME SSDs would become impractical for larger, mass-storage volumes.</p>
+
+<p>The spinning-disk drive example in this table is approximately 18% of the $/TB cost.</p>
+
+<p>But the benefits provided by M.2 NVME drives are the plentiful read &amp; write speeds that they can offer within RAID.</p>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0977.jpg" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0977.jpg" />
+</a></p>
+
+<p class="caption">4x Samsung 970 EVO Plus 1TB blades installed inside the OWC 4M2.</p>
+
+<h3 id="on-paper">On paper</h3>
+
+<p>I’m imagining a 4 TB <strong>super-fast storage device</strong> where multiple camera cards can be dumped at full speed, simultaneously.</p>
+
+<p>If the OWC 4M2 can offer 2.8 Gbyte/s (22.4 Gbit/s) as a ceiling, <strong>how many camera cards</strong> could be offloaded at their full speed within that bandwidth?</p>
+
+<p>Assuming that:</p>
+<ul>
+  <li>a separate TB3 bus is used for both the source media, and the OWC 4M2;</li>
+  <li>the sky’s the limit on CPU or RAM with regard to a performance bottleneck on the host machine;</li>
+</ul>
+
+<p>How many full speed card reads can we fit within the bandwidth?</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Media type</th>
+      <th>Interface</th>
+      <th style="text-align: right">Max read speed (Gbyte/s)</th>
+      <th style="text-align: right"># of simultaneous reads within bandwidth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><em>Bandwidth available</em></strong></td>
+      <td> </td>
+      <td style="text-align: right">2.800</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td>Sony AXSM</td>
+      <td>USB 3.0<br />(5 Gbit/s; 0.625 Gbyte/s)</td>
+      <td style="text-align: right">~0.235</td>
+      <td style="text-align: right">11 (2 at interface limit)</td>
+    </tr>
+    <tr>
+      <td>CFast 2.0</td>
+      <td>USB 3.2<br />(10 Gbit/s; 1.250 Gbyte/s)</td>
+      <td style="text-align: right">~0.550</td>
+      <td style="text-align: right">5 (2 at interface limit)</td>
+    </tr>
+    <tr>
+      <td>Codex Compact Drive</td>
+      <td>USB 3.2<br />(8 Gbit/s; 1.000 Gbyte/s)</td>
+      <td style="text-align: right">1.000</td>
+      <td style="text-align: right">2 (2 at interface limit)</td>
+    </tr>
+    <tr>
+      <td>Codex Capture Dock</td>
+      <td>TB3<br />(22.4 Gbit/s; 2.800 Gbyte/s)</td>
+      <td style="text-align: right">2.500</td>
+      <td style="text-align: right">1 (1 at interface limit)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table suggests we should be able to read 11 Sony Venice AXSM cards simultaneously and write them to the OWC 4M2 within the bandwidth provided by that drive. This is definitely a bit pie-in-the-sky, because we could really only fit 2 AXS-CR1 readers per USB 3.0 bus (<code class="language-plaintext highlighter-rouge">2 * 0.235 Gbyte/s = 3.760 Gbit/s &lt; 5.000 Gbit/s interface limit</code>). Although I’d love to push this more to say 3 or 4 readers, it would come down to host system design and availability of USB buses as to whether they would be supported at full speed. Not to mention the availability of having 11x expensive Sony readers at one’s disposal.</p>
+
+<p>The suggestion of 5x CFast 2.0 cards is a much more achievable goal to try and reach. The cards themselves can only be read at a certain speed: 0.550 Gbyte/s is usually what is available on the fastest CFast 2.0 cards on the market. The USB 3.2 bus is rated for 10 Gbit/s or 1.25 Gbyte/s, so we could fit about 2 full-speed reads or 3 slightly-less-than-full reads. If a machine could then  establish just two USB 3.2 buses, it may even be possible to net 4x simultaneous CFast 2.0 reads.</p>
+
+<p>So, let’s begin testing!</p>
+
+<h3 id="hypothesis">Hypothesis</h3>
+
+<p>How many CFast 2.0 cards can be read simultaneously and written to the OWC 4M2 at their full speed?</p>
+
+<p>My numbers suggest <strong>five</strong> (5) of them.</p>
+
+<p>At the time of writing, I had access to only two CFast 2.0 readers and two media cards filled with content.</p>
+
+<p>So straight away I’m not able to confirm with certainty if the goal can be achieved, but we should be able to see from the numbers if there is room for another two or three more additional simultaneous reads.</p>
+
+<p>I would love to be able to test with more readers and when I do so, I’ll update this article.</p>
+
+<h3 id="hardware--system-used">Hardware &amp; system used</h3>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Storage device</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Storage device</td>
+      <td>OWC Express 4M2</td>
+    </tr>
+    <tr>
+      <td>RAID config</td>
+      <td>RAID 0 (SoftRaid XT)</td>
+    </tr>
+    <tr>
+      <td>Drives</td>
+      <td>4x Samsung 970 EVO Plus 1TB</td>
+    </tr>
+    <tr>
+      <td>Capacity</td>
+      <td>4.00 TB</td>
+    </tr>
+    <tr>
+      <td>Filesystem</td>
+      <td>Mac OS Extended (Journaled)</td>
+    </tr>
+    <tr>
+      <td>Connection</td>
+      <td>TB3 Bus 0 (port 1) with OWC TB3 to TB3 cable</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Host</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Machine</td>
+      <td>MacBook Pro 13” 2018 (<code class="language-plaintext highlighter-rouge">MacBookPro15,2</code>)</td>
+    </tr>
+    <tr>
+      <td>Specs</td>
+      <td>i5 2.3 GHz, 16 GB 2133 MHz DDR3, 512 GB SSD, 2 x TB3 Bus</td>
+    </tr>
+    <tr>
+      <td>I/O</td>
+      <td>4 x TB3 Ports; 2 x TB3 Bus</td>
+    </tr>
+    <tr>
+      <td>OS</td>
+      <td>macOS 10.14.6</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="baseline-readwrite-performance">Baseline read/write performance</h3>
+
+<p>First, to share some unit test results to establish a baseline.</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Test</th>
+      <th style="text-align: right">Max Write<br />(Gbyte/s)</th>
+      <th style="text-align: right">Max Read<br />(Gbyte/s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>AJA System Test<br />Single File 4GB, 16bit RGB</td>
+      <td style="text-align: right">1.824</td>
+      <td style="text-align: right">2.350</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>ATTO Disk Benchmark<br />Snapshot 4GiB IO 64 MiB, Various I/O</td>
+      <td style="text-align: right">2.068</td>
+      <td style="text-align: right">2.625</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>ATTO Disk Benchmark<br />Continuous 4GiB IO 64 MiB for 5 Minutes Separately for R/W</td>
+      <td style="text-align: right">2.213</td>
+      <td style="text-align: right">2.626</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Stats.png" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Stats.png" />
+</a></p>
+
+<p class="caption">Test 1.</p>
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Graph.png" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Graph.png" />
+</a></p>
+
+<p class="caption">Test 2.</p>
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_19_ATTO.png" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_19_ATTO.png" />
+</a></p>
+
+<p class="caption">Graph showing disk activity during Test 3. The ATTO Disk Benchmark 5 minute test (read &amp; write) commences before x = 11:33, and a subsequent 30 minute test (write) at x = 11:51. The sustained write performance over 30 minutes is incredible. Clearly no disk in the array fills its internal cache during the operation.</p>
+
+<p>AJA in Test 1 reported a write speed of 1.824 Gbyte/s, which is lower than various other speed tests I ran. Likely that choice of the simulated codec  (‘16bit RGB’) could lead to different results.</p>
+
+<p>A sustained benchmark test for 5 minutes gave 2.213 Gbyte/s.</p>
+
+<p>This is <strong>lower</strong> than the marketed 2.8 Gbyte/s marketed by OWC – approximately 21% slower – but when considering a whole heap of real world factors I’m not sure 2.8 was strictly achievable.</p>
+
+<p>Approximately 2.2 Gbyte/s is consistent with at least <a href="https://9to5mac.com/2018/09/13/hands-on-owc-express-4m2-thunderbolt-3-enclosure-accommodates-four-m-2-ssd-8tb-video/#comment-4099647190">one other reviewer’s results</a> using the OWC 4M2 unit.</p>
+
+<p>If we consider that now <strong>2.2 Gbyte/s is our achievable write speed</strong>, this will have an impact on my earlier predictions.</p>
+
+<p>We could likely only fit <strong>four CFast 2.0 cards</strong> simultaneously read at full speed – read at 0.55 Gbyte/s (4.4 Gbit/s) and working within 2.2 Gbyte/s (17.6 Gbit/s) bandwidth.</p>
+
+<h3 id="testing-media">Testing media</h3>
+
+<p>A static scene was rolled on for approximately 5 minutes.</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Test card 1: A023</th>
+      <th>Test card 2: A024</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Storage media</td>
+      <td>Angelbird CFast 128GB</td>
+      <td>Angelbird CFast 128GB</td>
+    </tr>
+    <tr>
+      <td>Used</td>
+      <td>58.57 GB</td>
+      <td>78.87 GB</td>
+    </tr>
+    <tr>
+      <td>Clips</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td>00:04:53:08 (7,333 frames)</td>
+      <td>00:06:35:00 (9,875 frames)</td>
+    </tr>
+    <tr>
+      <td>Camera</td>
+      <td>Blackmagic URSA Mini Pro 4.6K</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Format</td>
+      <td>4608 x 2592 ProRes 444 XQ</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Filesystem</td>
+      <td>Mac OS Extended</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="test-1">Test 1</h3>
+
+<p>The first test offload was performed using YoYotta 3.0 (v166) on 12/12/2020.</p>
+
+<p>The I/O configuration was straightforward: two Angelbird CFast readers directly into the MacBook Pro’s port 3 &amp; 4 on the right-hand side, using the included USB 3.2 USB-C to USB-C cable.</p>
+
+<p>See the I/O configuration chart:</p>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram1_offload.png" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram1_offload.png" />
+</a></p>
+
+<p>Once mounted, I added both cards as separate jobs in YoYotta, set the destination to <code class="language-plaintext highlighter-rouge">/Volumes/OWC_Raid0</code> and begun both simultaneously.</p>
+
+<p>The result:</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Test 1</th>
+      <th>A023</th>
+      <th>A024</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Copy</td>
+      <td>~0.468</td>
+      <td>~0.468</td>
+    </tr>
+    <tr>
+      <td>Verify</td>
+      <td>1.900</td>
+      <td>Not recorded</td>
+    </tr>
+    <tr>
+      <td>Total time</td>
+      <td>Not recorded</td>
+      <td>Not recorded</td>
+    </tr>
+    <tr>
+      <td>Cumulative TB/hour</td>
+      <td>1.352 TB/hour</td>
+      <td>1.820 TB/hour</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some holes in my data here on this test. At the time I was recording, I didn’t have my screen recording running and had limited time with the cards &amp; camera. This largely means my numbers are eyeballed averages. This is probably OK considering I am commenting in quite a hypothetical space here.</p>
+
+<p><strong>Two CFast cards at 0.468 Gbyte/s</strong> is how much was achieved for the YoYotta copy, for a simultaneous read speed of 0.936 Gbyte/s. Individually, this rate is shy of the 0.550 Gbyte/s I was expecting, which is approximately the maximum rated read speed for a CFast 2.0 Card. The simultaneous read speed indicates ~43% saturation of the OWC 4M2’s 2.2 Gbyte/s bandwidth: there was still plenty of bandwidth to be consumed during the YoYotta copy.</p>
+
+<p>For the YoYotta verify, the <strong>read speed</strong> of the data <em>after</em> offloading was a great result: reading from the files stored on the OWC 4M2 was performed at <strong>1.900 Gbyte/s</strong>, at least for one of the two jobs. I did not catch the simultaneous read speed for both jobs while verifying.</p>
+
+<p>It’s hard to explain why the two readers were not hitting 0.550. The ‘hit’ must have been at the readers or some other device(s) on the bus. 0.936 Gbyte/s simultaneous would have been 7.488 Gbit/s which is shy of the 10 Gbit/s ceiling provided by USB 3.2. It could also be explained by host machine performance  (YoYotta generates both MD5 and XXHash – contributing factor here?) or even heat. I didn’t monitor these factors.</p>
+
+<h3 id="test-2">Test 2</h3>
+
+<p>Same YoYotta software, same CFast media &amp; readers, but different I/O configuration:</p>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram2_offload.png" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram2_offload.png" />
+</a></p>
+
+<p>Here I look to minimise the native TB3 ports being used, by routing both readers through a single TB3 dock (CalDigit TS3 Plus). This is to mimick a real world scenario where the user needs the remaining TB3 ports for other hardware.</p>
+
+<p>One reader uses the 10 Gbit/s USB-C port and the other using the 5 Gbit/s USB-C port on the front. We might immediately expect that the 5 Gbit/s-connected reader will perform worse.</p>
+
+<p><a href="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg" data-toggle="lightbox" data-gallery="gallery-">
+  <img src="/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg" />
+</a></p>
+
+<p class="caption">Creating clean, dust-free product photography is much harder than it actually seems.</p>
+
+<p>The result:</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Test 2</th>
+      <th>A023</th>
+      <th>A024</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Copy (Gbyte/s)</td>
+      <td>~0.530</td>
+      <td>~0.350</td>
+    </tr>
+    <tr>
+      <td>Verify (Gbyte/s)</td>
+      <td>1.300</td>
+      <td>1.100</td>
+    </tr>
+    <tr>
+      <td>Total time</td>
+      <td>Not recorded</td>
+      <td>Not recorded</td>
+    </tr>
+    <tr>
+      <td>Cumulative TB/hour</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Port</td>
+      <td>10 Gbit/s</td>
+      <td>5 Gbit/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Indeed, we get <strong>one CFast card at 0.530 Gbyte/s and the other card at 0.350 Gbyte/s</strong>, for a combined simultaneous read speed of <strong>0.880 Gbyte/s</strong> which saturates the target device <code class="language-plaintext highlighter-rouge">OWC_Raid0</code> at about 40%.</p>
+
+<p>As expected, the 5 Gbit/s-connected reader performs worse, assumedly because the OS is not permitting it to saturate the USB 3.0 bus entirely.</p>
+
+<p>But the total transfer speed of two cards does balance out somewhat, as it is <strong>only 5% slower</strong> than the total transfer speed of two cards on Test 1 (0.880 Gbyte/s versus 0.936 Gbyte/s).</p>
+
+<p>I suggest that there may be sufficient room to add another CalDigit and 2x readers on either this TB3 Bus (Bus 1), or on TB3 Bus 0 with the OWC 4M2. That is, if the OS permits those two readers to occupy a separate USB 3.1 or 3.2 bus, or if it adds them to an existing USB bus combined with the first 2 readers, forcing all of them to share the same approximate bandwidth of ~0.9 Gbyte/s. If the case is the latter, we may see simultaneous transfer speeds of 0.225 Gbyte/s instead.</p>
+
+<h3 id="considerations">Considerations</h3>
+
+<p><strong>Thunderbolt 3 bus specification</strong></p>
+
+<p><a href="https://www.amazon.com/ask/questions/Tx1ZAW96405XD1F/ref=ask_ql_ql_al_hza">According to OWC</a>, the OWC Express 4M2 can only feed a single PCIe lane to each drive inside the RAID group, affording them approximately 0.700 Gbyte/s each. PCIe traffic is structured within the Thunderbolt 3 protocol (<a href="https://thunderbolttechnology.net/sites/default/files/Thunderbolt3_TechBrief_FINAL.pdf">1</a>, <a href="https://eshop.macsales.com/blog/68484-thunderbolt-on-the-m1-mac-mini/#comment-172924">2</a>) such that displays are allocated a certain amount of bandwidth (between 17 and 25 Gbit/s) and PCIe is afforded the difference up to a maximum of ~22 Gbit/s. Even in a scenario in which no displays are present at all on the chain, PCIe is restricted.</p>
+
+<p>So in discussions regarding Thunderbolt 3, perhaps the available bandwidth for data transfers should be referred to as 22 Gbit/s, not 40 Gbit/s for data. This actually exposes a very common trope in hard drive &amp; SSD marketing copy in the last few years, where on a bar graph, an overpoweringly tall column for Thunderbolt 3’s 40 Gbit/s speed is shown to be enormous compared to the speed of Thunderbolt 2, USB 3.2, 3.0 and 2.0, etc. Talk about fact checked. (See also <a href="https://filmdrives.com/blogs/blog/will-thunderbolt-make-my-drives-faster">more reasons why most hard drive &amp; SSD marketing is misleading</a>.)</p>
+
+<p>In a normal scenario where my source media is USB-based and the target drive also USB-based, it would be my standing operating procedure to <strong>not place both the readers and target drive on the same ‘bus’</strong> to prevent bandwidth being squeezed down a single pipe. In the process of researching this article, however, I’m discovering more about how buses are routed and the manner in which bandwidth is allocated by the TB3 protocol. On a dual TB3 bus machine, where each bus provides 22 Gbit/s for PCIe and 10 Gbit/s for USB 3.2, it may even be a grand idea to distribute readers &amp; RAID accordingly:</p>
+
+<table class="table small">
+  <thead>
+    <tr>
+      <th>Bus</th>
+      <th>PCIe (22 Gbit/s)</th>
+      <th>USB 3.2 (10 Gbit/s)</th>
+      <th style="text-align: right">Total Used</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TB3 Bus 0</td>
+      <td>OWC 4M2</td>
+      <td>Readers 1 &amp; 2</td>
+      <td style="text-align: right">32 Gbit/s</td>
+    </tr>
+    <tr>
+      <td>TB3 Bus 1</td>
+      <td> </td>
+      <td>Readers 3 &amp; 4</td>
+      <td style="text-align: right">10 Gbit/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Data workflow</strong></p>
+
+<p>On heavy data jobs, this 4 TB unit is not likely to provide more than 1-2 days capacity. I can envision it being used as an temporary ultra-fast dumping ground to move data ASAP. A larger mass-storage device (NAS or DAS) is still going to be needed in tandem with this device if you are storing cumulatively store shoot days, which of course you will be.</p>
+
+<p>If a single shoot day is generating between 1.5 and 3.0 TB, using this device with a 4 TB capacity could easily present trouble if the turnaround time for post-production to archive is longer. Having 8 TB capacity would mitigate this, and at time of writing in AUD a 2TB Samsung 970 EVO Plus was approximately the same $/TB anyway.</p>
+
+<p><strong>Disk operations</strong></p>
+
+<p>Both reading AND writing to a storage device simultaneously is a combination of operations that typically hampers the performance of any storage device. HDDs perform quite poorly when attempting to read &amp; write, the effective transfer rate is lowered quite a bit in these moments.</p>
+
+<p>Even though I described simultaneous card offloads above, the operations for the pair of 2 cards are typically write-write then read-read, and so not usually read-write. Especially when the cards are matched in size (which in most cases they are closely matched because ACs are trying to fill them up close to the brim), i.e. two 256 GB-capacity camera mags that are 210 and 220 GB in size will both begin and finish their copy at more or less the same time, and the same for their verify.</p>
+
+<p>What is not explored in this analysis however is the impact that performing an offload copy parallel to an offload verify, a.k.a where the OWC 4M2 is having data written from one source and is expected to also feed out existing data as a verify operation for another source (2 jobs that did not start at similar times), or to a transcoding program or playback.</p>
+
+<h3 id="methodology">Methodology</h3>
+
+<p>It is imperative on the next test that I run screen recordings so I can be more precise about the start and end time of jobs, particularly given that I am running simultaneous jobs.</p>
+
+<p>I will also copy-paste YoYotta’s log file contents periodically, as it logs the final copy &amp; verify individual average at the end of the job. Arguably I should also be monitoring disk activity in iStat Menus to confirm YY’s reported rates are consistent with actual host machine activity.</p>
+
+<p>I’d like to also gather system sensor values (CPU %, RAM usage, and temperature) throughout as well. I’d love a way to export this data from iStat Menus but there is no such feature (<em>dear developers if you’re reading, please implement this</em>).</p>
+
+<p>I will also be putting Silverstack &amp; Offload Manager to the test to offer an insight into multiple card performance across different apps.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Big thanks to Andy Diep for providing the CFast cards &amp; camera for the test.</p>
+
+      </section>
+      
+    </main>
+    
+
+    
+
+    <div class="unit blog-date-disclaimer">
+      Article first published on 23 January 2021.
+    </div>
+  </div><div class="unit blog-social">
+    <a class="i-facebook icon social popup" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/"></a>
+    <a class="i-twitter icon social popup" target="_blank" href="https://twitter.com/intent/tweet/?url=https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/"></a>
+    <a href="https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/"><span class="i-link icon"></span></a>
+  </div><div class="unit blog-comments">
+      <div class="commentbox"></div>
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <script>
+        commentBox('5760094331469824-proj');
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+  </div><footer id="footer-intro-to-me" class="footer-author-credit">
+  <div class="unit">
+    <div class="image-circle" style='background-image:url("/img/profiles/profile-square-sebastian-reategui-by-david-puentes.jpg");'>
+      <span class="sr-only">About the author, Sebastian Reategui, with image</span>
+    </div>
+    <p>I'm <strong>Sebastian</strong>. I'm a digital imaging technician for the film & television industry in Australia. I'm also a photojournalist and I like showing people what's going on in the world.</p>
+    <a class="faux-link" href="/about">Read more ▸</a>
+  </div>
+</footer>
+<div class="container blog-nextup"><div class="row "><div class="col-12 col-sm-6 previous">
+        <a href="/post/2020/offload-video-footage-from-an-iphone-with-checksums/">
+          <div class="label top">← PREVIOUS</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/20200927_create_mhl_file_on_ios_sebastian_reategui,w_627.jpg"
+            alt="Offload video footage from an iPhone with checksums">
+          <noscript>
+            <img
+            src="/post/img/sizes/20200927_create_mhl_file_on_ios_sebastian_reategui,w_627.jpg"
+            alt="Offload video footage from an iPhone with checksums">
+          </noscript>
+          <div class="label bottom">Offload video footage from an iPhone with checksums</div>
+        </a>
+      </div><div class="col-12 col-sm-6 next">
+        <a href="/post/2021/quickly-previewing-cdl-files-in-macos-finder-with-this-quicklook-plugin/">
+          <div class="label top">NEXT →</div>
+          <img
+            class="lazy"
+            data-src="/post/img/sizes/20210525_cdl_quickpreview_banner,w_627.jpg"
+            alt="Quickly previewing CDL files in macOS Finder with this QuickLook plugin">
+          <noscript>
+            <img
+            src="/post/img/sizes/20210525_cdl_quickpreview_banner,w_627.jpg"
+            alt="Quickly previewing CDL files in macOS Finder with this QuickLook plugin">
+          </noscript>
+          <div class="label bottom">Quickly previewing CDL files in macOS Finder with this QuickLook plugin</div>
+        </a>
+      </div></div>
+  </div></article>
+
+      <footer id="footer-sitewide">
+      <a href="/about">&copy; 2021</a>
+    </footer>
+
+  <script src="/js/jquery-popper-bootstrap.js"></script>
+  <script src="/js/script.js"></script>
+  </body>
+</html>

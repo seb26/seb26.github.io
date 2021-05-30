@@ -1,0 +1,1574 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sebreategui.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sebreategui.com/" rel="alternate" type="text/html" /><updated>2021-05-30T08:52:55+00:00</updated><id>https://sebreategui.com/feed.xml</id><title type="html">Sebastian Reategui</title><subtitle>A photographer and video editor from Sydney, Australia. View photojournalism, design concepts, and video work.
+</subtitle><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><entry><title type="html">Quickly previewing CDL files in macOS Finder with this QuickLook plugin</title><link href="https://sebreategui.com/post/2021/quickly-previewing-cdl-files-in-macos-finder-with-this-quicklook-plugin/" rel="alternate" type="text/html" title="Quickly previewing CDL files in macOS Finder with this QuickLook plugin" /><published>2021-05-24T23:00:00+00:00</published><updated>2021-05-24T23:00:00+00:00</updated><id>https://sebreategui.com/post/2021/quickly-previewing-cdl-files-in-macos-finder-with-this-quicklook-plugin</id><content type="html" xml:base="https://sebreategui.com/post/2021/quickly-previewing-cdl-files-in-macos-finder-with-this-quicklook-plugin/">&lt;p&gt;I have often needed a quick way to review the contents of a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cdl&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p class=&quot;callout-info&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/ASC_CDL&quot;&gt;CDL files&lt;/a&gt; contain ASC-SOP and SAT values which are used to transfer colour grading information between programs.
+&lt;br /&gt;&lt;br /&gt;
+In simpler words, they are a set of creative instructions to push red, green or blue values of an image in a particular way.&lt;/p&gt;
+
+&lt;p&gt;Sure, it can be quickly opened and understood using a text editor since the structure of an ASC-CDL file is XML.&lt;/p&gt;
+
+&lt;p&gt;But if you have 20 to 30 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cdl&lt;/code&gt; files, each for one clip on a camera roll, you need a quicker way to view those values.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20210525_cdl-quickpreview-1.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20210525_cdl-quickpreview-1.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;An example of the QuickLook preview window on an example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cdl&lt;/code&gt; file in Finder in macOS Mojave 10.14.6 with Dark Mode.&lt;/p&gt;
+
+&lt;p&gt;It is obviously not a great visual way of understanding the colour instructions, as you can only see the numbers themselves:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;Slope&amp;gt;1.13947 1.13502 1.13947&amp;lt;/Slope&amp;gt;&lt;/code&gt;, and so on.&lt;/p&gt;
+
+&lt;p&gt;But this is enough for me to quickly determine if two or more grades are the same, since I can see if the numeric values inside are identical.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-plugin-for-finder-on-macos&quot;&gt;A plugin for Finder on macOS&lt;/h3&gt;
+
+&lt;p&gt;The above is achieved using a plugin for Finder’s QuickLook function, installed into the user’s Library folder.&lt;/p&gt;
+
+&lt;p&gt;Fabio Lecca (&lt;a href=&quot;https://github.com/fabiolecca&quot;&gt;@fabiolecca&lt;/a&gt;) wrote this QuickLook plugin to display XML files: &lt;a href=&quot;https://github.com/fabiolecca/colorxml-quicklook&quot;&gt;&lt;strong&gt;colorxml-quicklook&lt;/strong&gt; on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have simply modified it to support &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.cdl&lt;/code&gt; files.&lt;/p&gt;
+
+&lt;p&gt;This is done by adding an extra entry to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LSItemContentTypes&lt;/code&gt; inside &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Info.plist&lt;/code&gt;, which is the dyn signature of the file:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Line 16
++        &amp;lt;string&amp;gt;dyn.ah62d4rv4ge80g3dq&amp;lt;/string&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lecca has welcomed additions of other XML filetypes to the program, but I can’t find a working email address for him.&lt;/p&gt;
+
+&lt;p&gt;And I otherwise needed the functionality immediately, so I made the change myself first.&lt;/p&gt;
+
+&lt;p&gt;I also include it for for download below, with links and credit back to Lecca’s repo.&lt;/p&gt;
+
+&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;Download link: &lt;a href=&quot;https://gist.github.com/seb26/72c19a9b0a54bf2d09120f91b0221e29/raw/e93073749458adafc7307beb95f3231c4b6ccd45/colorxml.qlgenerator_(seb_cdl).zip&quot;&gt;&lt;strong&gt;colorxml.qlgenerator_(seb_cdl).zip&lt;/strong&gt;&lt;/a&gt; (GitHub Gist)&lt;/p&gt;
+
+&lt;p&gt;Originally forked from &lt;a href=&quot;https://github.com/fabiolecca/colorxml-quicklook&quot;&gt;&lt;strong&gt;colorxml-quicklook&lt;/strong&gt; on GitHub&lt;/a&gt;, authored by Fabio Lecca.&lt;/p&gt;
+
+&lt;h3 id=&quot;install&quot;&gt;Install&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Unzip &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;colorxml.qlgenerator_(seb_cdl).zip&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;In Finder, Go -&amp;gt; Go To Folder (Shift+Cmd+G): &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/Library/QuickLook&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Paste the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;colorxml.qlgenerator&lt;/code&gt; file inside.&lt;/li&gt;
+  &lt;li&gt;Relaunch Finder&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;compatibility&quot;&gt;Compatibility&lt;/h3&gt;
+
+&lt;p&gt;Tested on macOS Mojave 10.14.6. No other OS variants tested to date.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="colour" /><category term="data_wrangling" /><summary type="html">I have often needed a quick way to review the contents of a .cdl file.</summary></entry><entry><title type="html">Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3</title><link href="https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/" rel="alternate" type="text/html" title="Offloading CFast cards to a super-fast M.2 NVME RAID unit over Thunderbolt 3" /><published>2021-01-23T02:00:00+00:00</published><updated>2021-01-23T02:00:00+00:00</updated><id>https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3</id><content type="html" xml:base="https://sebreategui.com/post/2021/offloading-cfast-cards-to-a-super-fast-m2-nvme-raid-unit-over-thunderbolt-3/">&lt;p&gt;M.2 NVME SSD devices offer about the fastest transfer speeds among all other products readily available in the consumer market today.&lt;/p&gt;
+
+&lt;p&gt;I recently picked up an &lt;a href=&quot;https://www.owcdigital.com/products/express-4m2&quot;&gt;&lt;strong&gt;OWC Express 4M2&lt;/strong&gt;&lt;/a&gt;, which is a Thunderbolt 3 RAID enclosure for M.2 NVME SSDs.&lt;/p&gt;
+
+&lt;p&gt;According to OWC’s product page, when four M.2 NVME drives are placed inside in a RAID array, it can achieve up to 2,800 MB/s transfer speed.&lt;/p&gt;
+
+&lt;p&gt;This is an exceedingly generous amount of bandwidth compared to offerings in spinning-disk or SATA SSD offerings, which can reach between about 600 to 1,000 MB/s in RAID.&lt;/p&gt;
+
+&lt;p&gt;I can therefore envision the unit as being a target destination for &lt;strong&gt;multiple camera memory cards&lt;/strong&gt;, &lt;strong&gt;simultaneously&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;callout-info small&quot;&gt;&lt;strong&gt;Units&lt;/strong&gt;
+&lt;br /&gt;Given the frequent interchange of bytes and bits as measurements throughout this article, all units for data/speed measurements will from now on be indicated in &lt;em&gt;giga-&lt;/em&gt; to 3 decimal places and not &lt;em&gt;mega-&lt;/em&gt;, and with byte and bit spelled out. e.g.: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;500 MB/second&lt;/code&gt; = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.500 Gbyte/s&lt;/code&gt;.
+&lt;br /&gt;&lt;br /&gt;
+(The formatting that I usually prefer is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GB/s&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gbps&lt;/code&gt; with upper &amp;amp; lowercase &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;. But to avoid &lt;em&gt;that&lt;/em&gt; slice of wonderful confusion I have chosen to also spell out bytes and bits.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#why-thunderbolt-3&quot; id=&quot;markdown-toc-why-thunderbolt-3&quot;&gt;Why Thunderbolt 3?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#why-m2-nvme-drives&quot; id=&quot;markdown-toc-why-m2-nvme-drives&quot;&gt;Why M.2 NVME drives?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#on-paper&quot; id=&quot;markdown-toc-on-paper&quot;&gt;On paper&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hypothesis&quot; id=&quot;markdown-toc-hypothesis&quot;&gt;Hypothesis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hardware--system-used&quot; id=&quot;markdown-toc-hardware--system-used&quot;&gt;Hardware &amp;amp; system used&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#baseline-readwrite-performance&quot; id=&quot;markdown-toc-baseline-readwrite-performance&quot;&gt;Baseline read/write performance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#testing-media&quot; id=&quot;markdown-toc-testing-media&quot;&gt;Testing media&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#test-1&quot; id=&quot;markdown-toc-test-1&quot;&gt;Test 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#test-2&quot; id=&quot;markdown-toc-test-2&quot;&gt;Test 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#considerations&quot; id=&quot;markdown-toc-considerations&quot;&gt;Considerations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#methodology&quot; id=&quot;markdown-toc-methodology&quot;&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-thunderbolt-3&quot;&gt;Why Thunderbolt 3?&lt;/h3&gt;
+
+&lt;p&gt;In the DIT/data management world, macOS is virtually mandatory at least for offload operations because it is required by software &amp;amp; hardware at many stages. Codex card readers &amp;amp; software are exclusively macOS, as are Silverstack &amp;amp; YoYotta offloading programs. This means at least one host machine needs to be macOS natively and hence the hardware falls that way.&lt;/p&gt;
+
+&lt;p&gt;This means we need to look at options that can work within the Thunderbolt 3 ecosystem of independent ‘box’ or ‘dock’-type devices connected by external cables. These are much more readily accessible than PCIe expansion, even though the latter is available (expensively) within the Mac Pro platform. These same M.2 NVME SSD units could be used on a PCIe RAID card on a Mac Pro and otherwise achieve &lt;strong&gt;somewhere in the vicinity of 6 and 10 Gbyte/s&lt;/strong&gt; depending on the RAID card.&lt;/p&gt;
+
+&lt;p&gt;On the outset, you might be thinking: when RAID-0’d together, why is it that  four M.2 NVME drives are permitted to only transfer at a cumulative 2.8 Gbyte/s only, when individually a Samsung 970 EVO Plus unit would be capable of putting out 2.5 Gbyte/s by itself?&lt;/p&gt;
+
+&lt;p&gt;The quick answer is that PCIe when delivered over Thunderbolt 3 is only afforded approximately 2.8 Gbyte/s (or ~22.4 Gbit/s). A more detailed explanation &lt;a href=&quot;#considerations&quot;&gt;is covered at the end&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Yes, 6 Gbyte/s is enormously fast and 2.8 Gbyte/s pales as watered down in comparison, but it may be &lt;strong&gt;a necessary tradeoff to maintain connectivity&lt;/strong&gt; within the Thunderbolt &amp;amp; portable Mac world, and keeping costs down.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0892.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0892.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;The OWC Express 4M2.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-m2-nvme-drives&quot;&gt;Why M.2 NVME drives?&lt;/h3&gt;
+
+&lt;p&gt;M.2 NVME SSDs are not cheap. The 1TB 970 EVO Plus unit from Samsung used in my tests was AUD $259.00 at the time of purchase (December 2020). It has since come down about $10 at the time of writing this post.&lt;/p&gt;
+
+&lt;p&gt;To compare it against other media:&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Brand&lt;/th&gt;
+      &lt;th&gt;Unit&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Price (AUD)&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;$/TB&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;M.2 NVME&lt;/td&gt;
+      &lt;td&gt;Samsung&lt;/td&gt;
+      &lt;td&gt;1TB 970 EVO Plus&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$249.00&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$249/TB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;M.2 NVME&lt;/td&gt;
+      &lt;td&gt;Samsung&lt;/td&gt;
+      &lt;td&gt;2TB 970 EVO Plus&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$499.00&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$249.50/TB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SATA SSD&lt;/td&gt;
+      &lt;td&gt;Samsung&lt;/td&gt;
+      &lt;td&gt;1TB 860 EVO&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$175.00&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$175/TB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SATA HDD&lt;/td&gt;
+      &lt;td&gt;WD&lt;/td&gt;
+      &lt;td&gt;10TB RED EFAX&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$445.00&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$44.50/TB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;em&gt;Prices are in AUD, were taken from a single vendor (not specified) and were current as of 16/01/2021.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s easy to see how quickly M.2 NVME SSDs would become impractical for larger, mass-storage volumes.&lt;/p&gt;
+
+&lt;p&gt;The spinning-disk drive example in this table is approximately 18% of the $/TB cost.&lt;/p&gt;
+
+&lt;p&gt;But the benefits provided by M.2 NVME drives are the plentiful read &amp;amp; write speeds that they can offer within RAID.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0977.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0977.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;4x Samsung 970 EVO Plus 1TB blades installed inside the OWC 4M2.&lt;/p&gt;
+
+&lt;h3 id=&quot;on-paper&quot;&gt;On paper&lt;/h3&gt;
+
+&lt;p&gt;I’m imagining a 4 TB &lt;strong&gt;super-fast storage device&lt;/strong&gt; where multiple camera cards can be dumped at full speed, simultaneously.&lt;/p&gt;
+
+&lt;p&gt;If the OWC 4M2 can offer 2.8 Gbyte/s (22.4 Gbit/s) as a ceiling, &lt;strong&gt;how many camera cards&lt;/strong&gt; could be offloaded at their full speed within that bandwidth?&lt;/p&gt;
+
+&lt;p&gt;Assuming that:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a separate TB3 bus is used for both the source media, and the OWC 4M2;&lt;/li&gt;
+  &lt;li&gt;the sky’s the limit on CPU or RAM with regard to a performance bottleneck on the host machine;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How many full speed card reads can we fit within the bandwidth?&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Media type&lt;/th&gt;
+      &lt;th&gt;Interface&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Max read speed (Gbyte/s)&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;# of simultaneous reads within bandwidth&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;&lt;em&gt;Bandwidth available&lt;/em&gt;&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.800&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sony AXSM&lt;/td&gt;
+      &lt;td&gt;USB 3.0&lt;br /&gt;(5 Gbit/s; 0.625 Gbyte/s)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;~0.235&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;11 (2 at interface limit)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CFast 2.0&lt;/td&gt;
+      &lt;td&gt;USB 3.2&lt;br /&gt;(10 Gbit/s; 1.250 Gbyte/s)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;~0.550&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;5 (2 at interface limit)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Codex Compact Drive&lt;/td&gt;
+      &lt;td&gt;USB 3.2&lt;br /&gt;(8 Gbit/s; 1.000 Gbyte/s)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2 (2 at interface limit)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Codex Capture Dock&lt;/td&gt;
+      &lt;td&gt;TB3&lt;br /&gt;(22.4 Gbit/s; 2.800 Gbyte/s)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.500&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1 (1 at interface limit)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The table suggests we should be able to read 11 Sony Venice AXSM cards simultaneously and write them to the OWC 4M2 within the bandwidth provided by that drive. This is definitely a bit pie-in-the-sky, because we could really only fit 2 AXS-CR1 readers per USB 3.0 bus (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * 0.235 Gbyte/s = 3.760 Gbit/s &amp;lt; 5.000 Gbit/s interface limit&lt;/code&gt;). Although I’d love to push this more to say 3 or 4 readers, it would come down to host system design and availability of USB buses as to whether they would be supported at full speed. Not to mention the availability of having 11x expensive Sony readers at one’s disposal.&lt;/p&gt;
+
+&lt;p&gt;The suggestion of 5x CFast 2.0 cards is a much more achievable goal to try and reach. The cards themselves can only be read at a certain speed: 0.550 Gbyte/s is usually what is available on the fastest CFast 2.0 cards on the market. The USB 3.2 bus is rated for 10 Gbit/s or 1.25 Gbyte/s, so we could fit about 2 full-speed reads or 3 slightly-less-than-full reads. If a machine could then  establish just two USB 3.2 buses, it may even be possible to net 4x simultaneous CFast 2.0 reads.&lt;/p&gt;
+
+&lt;p&gt;So, let’s begin testing!&lt;/p&gt;
+
+&lt;h3 id=&quot;hypothesis&quot;&gt;Hypothesis&lt;/h3&gt;
+
+&lt;p&gt;How many CFast 2.0 cards can be read simultaneously and written to the OWC 4M2 at their full speed?&lt;/p&gt;
+
+&lt;p&gt;My numbers suggest &lt;strong&gt;five&lt;/strong&gt; (5) of them.&lt;/p&gt;
+
+&lt;p&gt;At the time of writing, I had access to only two CFast 2.0 readers and two media cards filled with content.&lt;/p&gt;
+
+&lt;p&gt;So straight away I’m not able to confirm with certainty if the goal can be achieved, but we should be able to see from the numbers if there is room for another two or three more additional simultaneous reads.&lt;/p&gt;
+
+&lt;p&gt;I would love to be able to test with more readers and when I do so, I’ll update this article.&lt;/p&gt;
+
+&lt;h3 id=&quot;hardware--system-used&quot;&gt;Hardware &amp;amp; system used&lt;/h3&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Storage device&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Storage device&lt;/td&gt;
+      &lt;td&gt;OWC Express 4M2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RAID config&lt;/td&gt;
+      &lt;td&gt;RAID 0 (SoftRaid XT)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Drives&lt;/td&gt;
+      &lt;td&gt;4x Samsung 970 EVO Plus 1TB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Capacity&lt;/td&gt;
+      &lt;td&gt;4.00 TB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Filesystem&lt;/td&gt;
+      &lt;td&gt;Mac OS Extended (Journaled)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Connection&lt;/td&gt;
+      &lt;td&gt;TB3 Bus 0 (port 1) with OWC TB3 to TB3 cable&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Host&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Machine&lt;/td&gt;
+      &lt;td&gt;MacBook Pro 13” 2018 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MacBookPro15,2&lt;/code&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Specs&lt;/td&gt;
+      &lt;td&gt;i5 2.3 GHz, 16 GB 2133 MHz DDR3, 512 GB SSD, 2 x TB3 Bus&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I/O&lt;/td&gt;
+      &lt;td&gt;4 x TB3 Ports; 2 x TB3 Bus&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;OS&lt;/td&gt;
+      &lt;td&gt;macOS 10.14.6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;baseline-readwrite-performance&quot;&gt;Baseline read/write performance&lt;/h3&gt;
+
+&lt;p&gt;First, to share some unit test results to establish a baseline.&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;
+      &lt;th&gt;Test&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Max Write&lt;br /&gt;(Gbyte/s)&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Max Read&lt;br /&gt;(Gbyte/s)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;AJA System Test&lt;br /&gt;Single File 4GB, 16bit RGB&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.824&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.350&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;ATTO Disk Benchmark&lt;br /&gt;Snapshot 4GiB IO 64 MiB, Various I/O&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.068&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.625&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;ATTO Disk Benchmark&lt;br /&gt;Continuous 4GiB IO 64 MiB for 5 Minutes Separately for R/W&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.213&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.626&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Stats.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Stats.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Test 1.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Graph.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_203_ATTO_Graph.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Test 2.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_19_ATTO.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__TestID_19_ATTO.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Graph showing disk activity during Test 3. The ATTO Disk Benchmark 5 minute test (read &amp;amp; write) commences before x = 11:33, and a subsequent 30 minute test (write) at x = 11:51. The sustained write performance over 30 minutes is incredible. Clearly no disk in the array fills its internal cache during the operation.&lt;/p&gt;
+
+&lt;p&gt;AJA in Test 1 reported a write speed of 1.824 Gbyte/s, which is lower than various other speed tests I ran. Likely that choice of the simulated codec  (‘16bit RGB’) could lead to different results.&lt;/p&gt;
+
+&lt;p&gt;A sustained benchmark test for 5 minutes gave 2.213 Gbyte/s.&lt;/p&gt;
+
+&lt;p&gt;This is &lt;strong&gt;lower&lt;/strong&gt; than the marketed 2.8 Gbyte/s marketed by OWC – approximately 21% slower – but when considering a whole heap of real world factors I’m not sure 2.8 was strictly achievable.&lt;/p&gt;
+
+&lt;p&gt;Approximately 2.2 Gbyte/s is consistent with at least &lt;a href=&quot;https://9to5mac.com/2018/09/13/hands-on-owc-express-4m2-thunderbolt-3-enclosure-accommodates-four-m-2-ssd-8tb-video/#comment-4099647190&quot;&gt;one other reviewer’s results&lt;/a&gt; using the OWC 4M2 unit.&lt;/p&gt;
+
+&lt;p&gt;If we consider that now &lt;strong&gt;2.2 Gbyte/s is our achievable write speed&lt;/strong&gt;, this will have an impact on my earlier predictions.&lt;/p&gt;
+
+&lt;p&gt;We could likely only fit &lt;strong&gt;four CFast 2.0 cards&lt;/strong&gt; simultaneously read at full speed – read at 0.55 Gbyte/s (4.4 Gbit/s) and working within 2.2 Gbyte/s (17.6 Gbit/s) bandwidth.&lt;/p&gt;
+
+&lt;h3 id=&quot;testing-media&quot;&gt;Testing media&lt;/h3&gt;
+
+&lt;p&gt;A static scene was rolled on for approximately 5 minutes.&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Test card 1: A023&lt;/th&gt;
+      &lt;th&gt;Test card 2: A024&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Storage media&lt;/td&gt;
+      &lt;td&gt;Angelbird CFast 128GB&lt;/td&gt;
+      &lt;td&gt;Angelbird CFast 128GB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Used&lt;/td&gt;
+      &lt;td&gt;58.57 GB&lt;/td&gt;
+      &lt;td&gt;78.87 GB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Clips&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Duration&lt;/td&gt;
+      &lt;td&gt;00:04:53:08 (7,333 frames)&lt;/td&gt;
+      &lt;td&gt;00:06:35:00 (9,875 frames)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Camera&lt;/td&gt;
+      &lt;td&gt;Blackmagic URSA Mini Pro 4.6K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Format&lt;/td&gt;
+      &lt;td&gt;4608 x 2592 ProRes 444 XQ&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Filesystem&lt;/td&gt;
+      &lt;td&gt;Mac OS Extended&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;test-1&quot;&gt;Test 1&lt;/h3&gt;
+
+&lt;p&gt;The first test offload was performed using YoYotta 3.0 (v166) on 12/12/2020.&lt;/p&gt;
+
+&lt;p&gt;The I/O configuration was straightforward: two Angelbird CFast readers directly into the MacBook Pro’s port 3 &amp;amp; 4 on the right-hand side, using the included USB 3.2 USB-C to USB-C cable.&lt;/p&gt;
+
+&lt;p&gt;See the I/O configuration chart:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram1_offload.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram1_offload.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once mounted, I added both cards as separate jobs in YoYotta, set the destination to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Volumes/OWC_Raid0&lt;/code&gt; and begun both simultaneously.&lt;/p&gt;
+
+&lt;p&gt;The result:&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Test 1&lt;/th&gt;
+      &lt;th&gt;A023&lt;/th&gt;
+      &lt;th&gt;A024&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Copy&lt;/td&gt;
+      &lt;td&gt;~0.468&lt;/td&gt;
+      &lt;td&gt;~0.468&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Verify&lt;/td&gt;
+      &lt;td&gt;1.900&lt;/td&gt;
+      &lt;td&gt;Not recorded&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Total time&lt;/td&gt;
+      &lt;td&gt;Not recorded&lt;/td&gt;
+      &lt;td&gt;Not recorded&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cumulative TB/hour&lt;/td&gt;
+      &lt;td&gt;1.352 TB/hour&lt;/td&gt;
+      &lt;td&gt;1.820 TB/hour&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Some holes in my data here on this test. At the time I was recording, I didn’t have my screen recording running and had limited time with the cards &amp;amp; camera. This largely means my numbers are eyeballed averages. This is probably OK considering I am commenting in quite a hypothetical space here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Two CFast cards at 0.468 Gbyte/s&lt;/strong&gt; is how much was achieved for the YoYotta copy, for a simultaneous read speed of 0.936 Gbyte/s. Individually, this rate is shy of the 0.550 Gbyte/s I was expecting, which is approximately the maximum rated read speed for a CFast 2.0 Card. The simultaneous read speed indicates ~43% saturation of the OWC 4M2’s 2.2 Gbyte/s bandwidth: there was still plenty of bandwidth to be consumed during the YoYotta copy.&lt;/p&gt;
+
+&lt;p&gt;For the YoYotta verify, the &lt;strong&gt;read speed&lt;/strong&gt; of the data &lt;em&gt;after&lt;/em&gt; offloading was a great result: reading from the files stored on the OWC 4M2 was performed at &lt;strong&gt;1.900 Gbyte/s&lt;/strong&gt;, at least for one of the two jobs. I did not catch the simultaneous read speed for both jobs while verifying.&lt;/p&gt;
+
+&lt;p&gt;It’s hard to explain why the two readers were not hitting 0.550. The ‘hit’ must have been at the readers or some other device(s) on the bus. 0.936 Gbyte/s simultaneous would have been 7.488 Gbit/s which is shy of the 10 Gbit/s ceiling provided by USB 3.2. It could also be explained by host machine performance  (YoYotta generates both MD5 and XXHash – contributing factor here?) or even heat. I didn’t monitor these factors.&lt;/p&gt;
+
+&lt;h3 id=&quot;test-2&quot;&gt;Test 2&lt;/h3&gt;
+
+&lt;p&gt;Same YoYotta software, same CFast media &amp;amp; readers, but different I/O configuration:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram2_offload.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__diagram2_offload.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I look to minimise the native TB3 ports being used, by routing both readers through a single TB3 dock (CalDigit TS3 Plus). This is to mimick a real world scenario where the user needs the remaining TB3 ports for other hardware.&lt;/p&gt;
+
+&lt;p&gt;One reader uses the 10 Gbit/s USB-C port and the other using the 5 Gbit/s USB-C port on the front. We might immediately expect that the 5 Gbit/s-connected reader will perform worse.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/202101_nvme_cfast_raid_sebastian_reategui__still-0952.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Creating clean, dust-free product photography is much harder than it actually seems.&lt;/p&gt;
+
+&lt;p&gt;The result:&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Test 2&lt;/th&gt;
+      &lt;th&gt;A023&lt;/th&gt;
+      &lt;th&gt;A024&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Copy (Gbyte/s)&lt;/td&gt;
+      &lt;td&gt;~0.530&lt;/td&gt;
+      &lt;td&gt;~0.350&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Verify (Gbyte/s)&lt;/td&gt;
+      &lt;td&gt;1.300&lt;/td&gt;
+      &lt;td&gt;1.100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Total time&lt;/td&gt;
+      &lt;td&gt;Not recorded&lt;/td&gt;
+      &lt;td&gt;Not recorded&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cumulative TB/hour&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Port&lt;/td&gt;
+      &lt;td&gt;10 Gbit/s&lt;/td&gt;
+      &lt;td&gt;5 Gbit/s&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Indeed, we get &lt;strong&gt;one CFast card at 0.530 Gbyte/s and the other card at 0.350 Gbyte/s&lt;/strong&gt;, for a combined simultaneous read speed of &lt;strong&gt;0.880 Gbyte/s&lt;/strong&gt; which saturates the target device &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OWC_Raid0&lt;/code&gt; at about 40%.&lt;/p&gt;
+
+&lt;p&gt;As expected, the 5 Gbit/s-connected reader performs worse, assumedly because the OS is not permitting it to saturate the USB 3.0 bus entirely.&lt;/p&gt;
+
+&lt;p&gt;But the total transfer speed of two cards does balance out somewhat, as it is &lt;strong&gt;only 5% slower&lt;/strong&gt; than the total transfer speed of two cards on Test 1 (0.880 Gbyte/s versus 0.936 Gbyte/s).&lt;/p&gt;
+
+&lt;p&gt;I suggest that there may be sufficient room to add another CalDigit and 2x readers on either this TB3 Bus (Bus 1), or on TB3 Bus 0 with the OWC 4M2. That is, if the OS permits those two readers to occupy a separate USB 3.1 or 3.2 bus, or if it adds them to an existing USB bus combined with the first 2 readers, forcing all of them to share the same approximate bandwidth of ~0.9 Gbyte/s. If the case is the latter, we may see simultaneous transfer speeds of 0.225 Gbyte/s instead.&lt;/p&gt;
+
+&lt;h3 id=&quot;considerations&quot;&gt;Considerations&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Thunderbolt 3 bus specification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.amazon.com/ask/questions/Tx1ZAW96405XD1F/ref=ask_ql_ql_al_hza&quot;&gt;According to OWC&lt;/a&gt;, the OWC Express 4M2 can only feed a single PCIe lane to each drive inside the RAID group, affording them approximately 0.700 Gbyte/s each. PCIe traffic is structured within the Thunderbolt 3 protocol (&lt;a href=&quot;https://thunderbolttechnology.net/sites/default/files/Thunderbolt3_TechBrief_FINAL.pdf&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://eshop.macsales.com/blog/68484-thunderbolt-on-the-m1-mac-mini/#comment-172924&quot;&gt;2&lt;/a&gt;) such that displays are allocated a certain amount of bandwidth (between 17 and 25 Gbit/s) and PCIe is afforded the difference up to a maximum of ~22 Gbit/s. Even in a scenario in which no displays are present at all on the chain, PCIe is restricted.&lt;/p&gt;
+
+&lt;p&gt;So in discussions regarding Thunderbolt 3, perhaps the available bandwidth for data transfers should be referred to as 22 Gbit/s, not 40 Gbit/s for data. This actually exposes a very common trope in hard drive &amp;amp; SSD marketing copy in the last few years, where on a bar graph, an overpoweringly tall column for Thunderbolt 3’s 40 Gbit/s speed is shown to be enormous compared to the speed of Thunderbolt 2, USB 3.2, 3.0 and 2.0, etc. Talk about fact checked. (See also &lt;a href=&quot;https://filmdrives.com/blogs/blog/will-thunderbolt-make-my-drives-faster&quot;&gt;more reasons why most hard drive &amp;amp; SSD marketing is misleading&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;In a normal scenario where my source media is USB-based and the target drive also USB-based, it would be my standing operating procedure to &lt;strong&gt;not place both the readers and target drive on the same ‘bus’&lt;/strong&gt; to prevent bandwidth being squeezed down a single pipe. In the process of researching this article, however, I’m discovering more about how buses are routed and the manner in which bandwidth is allocated by the TB3 protocol. On a dual TB3 bus machine, where each bus provides 22 Gbit/s for PCIe and 10 Gbit/s for USB 3.2, it may even be a grand idea to distribute readers &amp;amp; RAID accordingly:&lt;/p&gt;
+
+&lt;table class=&quot;table small&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Bus&lt;/th&gt;
+      &lt;th&gt;PCIe (22 Gbit/s)&lt;/th&gt;
+      &lt;th&gt;USB 3.2 (10 Gbit/s)&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Total Used&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TB3 Bus 0&lt;/td&gt;
+      &lt;td&gt;OWC 4M2&lt;/td&gt;
+      &lt;td&gt;Readers 1 &amp;amp; 2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;32 Gbit/s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TB3 Bus 1&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Readers 3 &amp;amp; 4&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;10 Gbit/s&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Data workflow&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;On heavy data jobs, this 4 TB unit is not likely to provide more than 1-2 days capacity. I can envision it being used as an temporary ultra-fast dumping ground to move data ASAP. A larger mass-storage device (NAS or DAS) is still going to be needed in tandem with this device if you are storing cumulatively store shoot days, which of course you will be.&lt;/p&gt;
+
+&lt;p&gt;If a single shoot day is generating between 1.5 and 3.0 TB, using this device with a 4 TB capacity could easily present trouble if the turnaround time for post-production to archive is longer. Having 8 TB capacity would mitigate this, and at time of writing in AUD a 2TB Samsung 970 EVO Plus was approximately the same $/TB anyway.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Disk operations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Both reading AND writing to a storage device simultaneously is a combination of operations that typically hampers the performance of any storage device. HDDs perform quite poorly when attempting to read &amp;amp; write, the effective transfer rate is lowered quite a bit in these moments.&lt;/p&gt;
+
+&lt;p&gt;Even though I described simultaneous card offloads above, the operations for the pair of 2 cards are typically write-write then read-read, and so not usually read-write. Especially when the cards are matched in size (which in most cases they are closely matched because ACs are trying to fill them up close to the brim), i.e. two 256 GB-capacity camera mags that are 210 and 220 GB in size will both begin and finish their copy at more or less the same time, and the same for their verify.&lt;/p&gt;
+
+&lt;p&gt;What is not explored in this analysis however is the impact that performing an offload copy parallel to an offload verify, a.k.a where the OWC 4M2 is having data written from one source and is expected to also feed out existing data as a verify operation for another source (2 jobs that did not start at similar times), or to a transcoding program or playback.&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;It is imperative on the next test that I run screen recordings so I can be more precise about the start and end time of jobs, particularly given that I am running simultaneous jobs.&lt;/p&gt;
+
+&lt;p&gt;I will also copy-paste YoYotta’s log file contents periodically, as it logs the final copy &amp;amp; verify individual average at the end of the job. Arguably I should also be monitoring disk activity in iStat Menus to confirm YY’s reported rates are consistent with actual host machine activity.&lt;/p&gt;
+
+&lt;p&gt;I’d like to also gather system sensor values (CPU %, RAM usage, and temperature) throughout as well. I’d love a way to export this data from iStat Menus but there is no such feature (&lt;em&gt;dear developers if you’re reading, please implement this&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;I will also be putting Silverstack &amp;amp; Offload Manager to the test to offer an insight into multiple card performance across different apps.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Big thanks to Andy Diep for providing the CFast cards &amp;amp; camera for the test.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="data" /><category term="data_wrangling" /><summary type="html">M.2 NVME SSD devices offer about the fastest transfer speeds among all other products readily available in the consumer market today.</summary></entry><entry><title type="html">Offload video footage from an iPhone with checksums</title><link href="https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/" rel="alternate" type="text/html" title="Offload video footage from an iPhone with checksums" /><published>2020-09-27T06:00:00+00:00</published><updated>2020-09-27T06:00:00+00:00</updated><id>https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums</id><content type="html" xml:base="https://sebreategui.com/post/2020/offload-video-footage-from-an-iphone-with-checksums/">&lt;p&gt;With the ubiquitous iPhone encroaching its way into film and TV production, there will be some point where someone will ask you to copy off video recordings from an iPhone.&lt;/p&gt;
+
+&lt;p&gt;How do you rescue the video recordings from that phone? The mechanisms that we typically use for processing regular digital cinema cameras (Arri, RED, Sony) are not the same.&lt;/p&gt;
+
+&lt;p&gt;The iPhone records to its own internal memory, not a removable mag or card. Its OS is closed and limits you to access it via iTunes, or through Finder on macOS Catalina. Neither method can expose the recorded media files in an easy way to offloading programs like &lt;a href=&quot;https://pomfort.com/silverstack/&quot;&gt;Silverstack&lt;/a&gt;, &lt;a href=&quot;https://yoyotta.com/&quot;&gt;YoYotta&lt;/a&gt; or ShotPut Pro.&lt;/p&gt;
+
+&lt;p&gt;Enter ‘Create MHL file’ for iOS, a native way to obtain checksums on iOS devices running iOS 13 and up, implemented using the Shortcuts app.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How does it work?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;After adding it, the Shortcut appears in the Share menu.&lt;/p&gt;
+
+&lt;p&gt;So anywhere you can ‘pick’ a file - either in Photos.app, Files.app or Filmic Pro, you can generate an MHL for those files, with the checksums of each media file described within.&lt;/p&gt;
+
+&lt;p&gt;Then use existing copying methods (iTunes, Finder or AirDrop) to perform the actual transfer of the media files from the iOS device to your data computer.&lt;/p&gt;
+
+&lt;p&gt;Confirm that each media files matches the MHL you generated on the iPhone.&lt;/p&gt;
+
+&lt;p&gt;Place this MHL file in the same root folder as your newly-copied iPhone media files, both within your structure of OCN files and your backups, and throughout handovers and archival.&lt;/p&gt;
+
+&lt;h3 id=&quot;install&quot;&gt;Install&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6&quot;&gt;This is the link to the Shortcut&lt;/a&gt;&lt;/strong&gt;, v1, dated 2020-09-27, or the full URL below:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.icloud.com/shortcuts/47eec5d5620b4d19b046f764d3eedbd6&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Click the link above inside a browser on your iOS device itself&lt;/li&gt;
+  &lt;li&gt;Choose ‘Get Shortcut’&lt;/li&gt;
+  &lt;li&gt;‘Add Shortcut’ window appears&lt;/li&gt;
+  &lt;li&gt;Scroll all the way to the bottom, past all of the steps of the program itself&lt;/li&gt;
+  &lt;li&gt;Choose &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add Untrusted Shortcut&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;The Shortcut should now be installed, and visible from the Share panel of any file-based picker within iOS&lt;/li&gt;
+  &lt;li&gt;It is not a separate app or icon on the Home screen, you access it from the Share panel.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-use-it&quot;&gt;How to use it&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Select the files you wish to checksum, from any file picker in iOS (Photos, Filmic Pro, anywhere with a ‘Share’ option)&lt;/li&gt;
+  &lt;li&gt;Choose ‘Create an MHL file’&lt;/li&gt;
+  &lt;li&gt;Give the MHL file a name (it automatically includes the date to start with)&lt;/li&gt;
+  &lt;li&gt;Wait momentarily for checksums to be created&lt;/li&gt;
+  &lt;li&gt;Return to the Files app &amp;gt; Shortcuts folder&lt;/li&gt;
+  &lt;li&gt;See your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.mhl&lt;/code&gt; file there, and copy it off iOS by AirDrop, email, or other&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An example workflow would be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get handed an iPhone with video footage recorded on Filmic Pro&lt;/li&gt;
+  &lt;li&gt;Install the Shortcut from the URL above&lt;/li&gt;
+  &lt;li&gt;Navigate to Files app &amp;gt; ‘Filmic Pro’ folder&lt;/li&gt;
+  &lt;li&gt;Select all video files &amp;gt; Share &amp;gt; ‘Create an MHL file’; Name it&lt;/li&gt;
+  &lt;li&gt;AirDrop your video files&lt;/li&gt;
+  &lt;li&gt;AirDrop your MHL file, which saves to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shortcuts&lt;/code&gt; directory in ‘On My iPhone’.&lt;/li&gt;
+  &lt;li&gt;Verify the MHL file using &lt;a href=&quot;https://pomfort.com/sealverify/&quot;&gt;Pomfort SealVerify&lt;/a&gt;, YoYotta, or another verification program.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;development&quot;&gt;Development&lt;/h3&gt;
+
+&lt;p&gt;For those reading outside of familiarity with film &amp;amp; TV post-production workflows, checksum hashes are a very common means of providing a tangible, documented ‘identity’ of media files that pass through the pipeline. They help both in (a) data management to ensure subsequent copies of original media files are in identical state to the time they were drawn from the camera cards; and (b) during all of the other stages long after the shoot like conform, VFX and archival where media files are changing hands multiple times (across hard drives, Internet uploads, LTO tape restores).&lt;/p&gt;
+
+&lt;p&gt;MD5 is the most common hashing algorithm in use. But XXHash-64 is a newer, more efficient favourite and is almost just as commonplace. The SHA family of algorithms are not typically employed.&lt;/p&gt;
+
+&lt;p&gt;For recordings from an iPhone or iOS device, it would be fantastic to provide checksum hashes as well and permit them the same identification throughout the post pipeline.&lt;/p&gt;
+
+&lt;p&gt;I’ve employed the Shortcuts app as a basis to implement this.&lt;/p&gt;
+
+&lt;p&gt;The Shortcuts app allows users to create ‘functions’ which repeat basic tasks within the OS, like ‘send loved one a preset text message then show directions to home’.&lt;/p&gt;
+
+&lt;p&gt;It’s a fascinating direction that Apple has taken its development in, as it includes quite a functional base of options, from logical controllers (if, else, case), handling of types (numbers, text, dates) and named variables.&lt;/p&gt;
+
+&lt;p&gt;I was surprised to find that Shortcuts also featured a “generate hash” action, assumedly to provide a secure way to store user input like passwords, with MD5 and SHA offered as algorithms.&lt;/p&gt;
+
+&lt;p&gt;Could this same function be used to work on files?&lt;/p&gt;
+
+&lt;p&gt;Could those hashes then be laid out in an MHL file, along with other metadata, enabling them to be checked by the myriad of data verification tools available?&lt;/p&gt;
+
+&lt;p&gt;The answer was an exciting yes.&lt;/p&gt;
+
+&lt;h3 id=&quot;some-improvements-that-could-be-made&quot;&gt;Some improvements that could be made&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can it save MHL files to the original location of the files? Assumedly not in all cases: e.g., if the media originated from the Photos.app, surely a Shortcut cannot write non-media files there&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can it combine AirDrop with generation of the MHL file, in one single action?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Could it allow you to run a verification check &lt;strong&gt;on&lt;/strong&gt; the iOS device itself? Tricksy stuff.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Could it use XXHASH checksums instead of (or in addition to MD5)? Very unlikely. XXHASH is a third-party library. I’m not going to get greedy here, given I’m already astonished that Apple permits users to manipulate programming-like tools within their closed system.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There may be room to establish this app through Pythonista, but I’m hesitant to add dependencies and appreciate the simplicity of one shortcut that functions natively. At that point, it would best to consider a proper iOS Cocoa app.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;a-real-world-use-case&quot;&gt;A real-world use case&lt;/h3&gt;
+
+&lt;p&gt;On a production that I worked on recently, vertical front-camera footage was shot on an iPhone Xs Max using Filmic Pro, designed to be comped onto the show’s 4K UHD timeline along with main camera footage, to depict the two people on either side of a video call.&lt;/p&gt;
+
+&lt;p&gt;My usual way of offloading was using a Lighting to USB-C cable and iTunes on macOS Mojave.&lt;/p&gt;
+
+&lt;p&gt;I’d connect the device, select its icon in iTunes, and nav to “On My iPhone” -&amp;gt; Files -&amp;gt; Filmic Pro and see media files listed there, choosing ‘Save As’ and setting the directory to my RAID volume.&lt;/p&gt;
+
+&lt;p&gt;Following the transfer’s completion, I’d run the folder of files on the RAID through YoYotta (v3.0 161) to create a thumbnail PDF and an MHL file, essentially ‘baptising’ it like all other camera footage.&lt;/p&gt;
+
+&lt;p&gt;Despite repeating this without any trouble on multiple shoot days with iPhone footage, on a recent one I encountered a weird glitch.&lt;/p&gt;
+
+&lt;p&gt;Adding the folder of iPhone media files to a YoYotta job and choosing ‘Verify’ would complete successfully, but:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I could no longer quick-preview the files in Finder;&lt;/li&gt;
+  &lt;li&gt;The files no longer had a thumbnail shown in Finder; and, worse still,&lt;/li&gt;
+  &lt;li&gt;The files vanished from Resolve’s Media Pool picker, meaning they weren’t recognised as having a valid file header which would make them addable to the media pool.&lt;/li&gt;
+  &lt;li&gt;Selecting the files manually through File &amp;gt; Import closed the Import dialog without any error message and no file was added to the media pool.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In other words, they had been modified somehow &lt;strong&gt;after&lt;/strong&gt; the iTunes copy but &lt;strong&gt;before&lt;/strong&gt; processing in YoYotta.&lt;/p&gt;
+
+&lt;p&gt;And were no longer recognisable as valid .MOV files.&lt;/p&gt;
+
+&lt;p&gt;In this instance, I didn’t have time to investigate what was to blame, so I trashed this now flawed set of media files and created a new copy using AirDrop, so as to try a different transfer method.&lt;/p&gt;
+
+&lt;p&gt;Resolve recognised them and I transcoded them successfully to get that out of the way, and then used YoYotta’s verify &amp;amp; add to index, instead of running a job.&lt;/p&gt;
+
+&lt;p&gt;Regardless of the cause (YoYotta likely), my solution or the following steps, what had occurred was essentially: &lt;strong&gt;inadvertent modification to original camera files&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is what we try to avoid at all costs.&lt;/p&gt;
+
+&lt;p&gt;A record of checksums could certainly have been handy in this case.&lt;/p&gt;
+
+&lt;p&gt;Writing the media files to LTO, depending on the program and if it parsed MHL files, would have flagged as an alert or report that the files in question didn’t match their identity at the time of copy.&lt;/p&gt;
+
+&lt;p&gt;YoYotta’s manipulation of the files (whether that be operator error on my part or a program bug) is actually just an example of a destructive action taking place at a hardware, software or human level, and could take place at any time.&lt;/p&gt;
+
+&lt;p&gt;Humans do make mistakes, especially those working late at night, and software programs do as well, no matter how battle-tested they are (think &lt;a href=&quot;http://web.archive.org/web/20161125043005/https://blog.vellumatlanta.com/2016/05/04/apple-stole-my-music-no-seriously/&quot;&gt;when iTunes deleted the entire music collection of a user and Apple sent an engineer to the user’s house to investigate&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;final-words&quot;&gt;Final words&lt;/h3&gt;
+
+&lt;p&gt;This tool and its development was completely &lt;em&gt;extra&lt;/em&gt; and wasn’t really calling to be made.&lt;/p&gt;
+
+&lt;p&gt;It’s also clunky and needs other modifications to make it more user-friendly.&lt;/p&gt;
+
+&lt;p&gt;My brief success in developing a working version means it has validity as a proof-of-concept but not necessarily as a critical or mandatory step that demands implementation in all cinema workflows with iPhone.&lt;/p&gt;
+
+&lt;p&gt;We have been squeezing footage off of iPhones for use in cuts for a long time using the conventional means listed above and without the need for such a tool, and off other devices with unusual interfaces.&lt;/p&gt;
+
+&lt;p&gt;Often times, checksums are merely generated after copy, and provided that a human has done a basic QC, these checksums would be valid throughout the rest of post-production as well.&lt;/p&gt;
+
+&lt;p&gt;Additionally, checksums by themselves don’t wield that power to determine if footage is flawed or not, only humans can do that through manual playback.&lt;/p&gt;
+
+&lt;p&gt;That is to say, &lt;strong&gt;watching back the footage on an iPhone after AirDropping it to your Mac is actually more of an important integrity check&lt;/strong&gt;, because you and your eyes will determine if it plays back correctly, if the clips don’t end early.&lt;/p&gt;
+
+&lt;p&gt;But I suspect there is utility in documenting the state of a file on iOS and being able to confirm that a subsequent copy does not deviate from the original, as a result of file corruption, metadata changes, user error or trimming.&lt;/p&gt;
+
+&lt;p&gt;Especially since we demand this from original camera media files at all stages.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="filmmaking" /><category term="data_wrangling" /><summary type="html">With the ubiquitous iPhone encroaching its way into film and TV production, there will be some point where someone will ask you to copy off video recordings from an iPhone.</summary></entry><entry><title type="html">Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush</title><link href="https://sebreategui.com/post/2019/process-tawaf-slow-mo-long-take-music-video-rooftops-in-the-bush/" rel="alternate" type="text/html" title="Process: Tawaf, a slow-mo, long-take music video on rooftops and in the bush" /><published>2019-11-09T06:00:00+00:00</published><updated>2019-11-09T06:00:00+00:00</updated><id>https://sebreategui.com/post/2019/process-tawaf-slow-mo-long-take-music-video-rooftops-in-the-bush</id><content type="html" xml:base="https://sebreategui.com/post/2019/process-tawaf-slow-mo-long-take-music-video-rooftops-in-the-bush/">&lt;p&gt;This is an insight post into the production workflow of the music video &lt;em&gt;Tawaf&lt;/em&gt;, from the perspective of the camera department &amp;amp; data management.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#directorial-goals&quot; id=&quot;markdown-toc-directorial-goals&quot;&gt;Directorial goals&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cameras&quot; id=&quot;markdown-toc-cameras&quot;&gt;Cameras&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#format-choice&quot; id=&quot;markdown-toc-format-choice&quot;&gt;Format choice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#colour-and-monitoring&quot; id=&quot;markdown-toc-colour-and-monitoring&quot;&gt;Colour and monitoring&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#challenges&quot; id=&quot;markdown-toc-challenges&quot;&gt;Challenges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dailies&quot; id=&quot;markdown-toc-dailies&quot;&gt;Dailies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#post&quot; id=&quot;markdown-toc-post&quot;&gt;Post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#braw-material-in-resolve&quot; id=&quot;markdown-toc-braw-material-in-resolve&quot;&gt;BRAW material in Resolve&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusions&quot; id=&quot;markdown-toc-conclusions&quot;&gt;Conclusions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;directorial-goals&quot;&gt;Directorial goals&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Tawaf&lt;/em&gt;&lt;/strong&gt; is a visual soundtrack envisioned by filmmaker and music producer Kaan Cansiz (&lt;a href=&quot;https://www.instagram.com/kaansaesthetic/&quot;&gt;@kaansaesthetic&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;It annotates the album &lt;a href=&quot;https://slausonmalone.bandcamp.com/album/a-quiet-farwell-2016-2018&quot;&gt;&lt;em&gt;A Quiet Farewell, 2016 to 2018&lt;/em&gt;&lt;/a&gt; by &lt;a href=&quot;http://slausonmalone.com&quot;&gt;Slauson Malone&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Its style is characterised by wide open spaces, in natural environments and urban areas.&lt;/p&gt;
+
+&lt;p&gt;It often pits its characters in portrait form, and at other moments glowing by sunset. Long moments in time linger and run their full course.&lt;/p&gt;
+
+&lt;p&gt;To translate some of these ideas into picture, there were a number of techniques that could be put into play.&lt;/p&gt;
+
+&lt;p&gt;I observe Kaan’s creativity as inherently experimental and natural, drawing himself to concepts primarily by music, not necessarily being literal. In this context I see light as capable of being both a feeling and a texture.&lt;/p&gt;
+
+&lt;p&gt;But most of all, from the experimental origins of the project, I knew that committing changes or techniques destructively to a medium was going to be something that could ultimately inhibit further experimental choices.&lt;/p&gt;
+
+&lt;p&gt;This extends to the capture format used but also to lighting choices, colour, and the edit itself.&lt;/p&gt;
+
+&lt;p&gt;So why not shoot 4.6K RAW?&lt;/p&gt;
+
+&lt;p&gt;[Cries in Spanish]&lt;/p&gt;
+
+&lt;p&gt;This article talks about the rather incidental choice to use both RAW capture and high resolution to hedge our bets and enable as many creative choices and options further down the line.&lt;/p&gt;
+
+&lt;p&gt;It’ll also touch on Blackmagic RAW as a codec being used in the field &amp;amp; practical considerations for doing so.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Principal crew&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Director: Kaan Cansiz&lt;/li&gt;
+  &lt;li&gt;Director of Photography: Trudi Gultom&lt;/li&gt;
+  &lt;li&gt;Producers: Karen Hà, Leslie Phanekham&lt;/li&gt;
+  &lt;li&gt;First Assistant Director: Alysia Kwan&lt;/li&gt;
+  &lt;li&gt;First Assistant Camera: Stephanie Todd&lt;/li&gt;
+  &lt;li&gt;Gaffer: Steven Chen&lt;/li&gt;
+  &lt;li&gt;DIT: Sebastian Reategui&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Shoot details&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Shoot days: 4 and a half-day&lt;/li&gt;
+  &lt;li&gt;Locations: Liverpool &amp;amp; Blacktown, NSW&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cameras&quot;&gt;Cameras&lt;/h3&gt;
+
+&lt;p&gt;The camera body was Blackmagic’s URSA Mini Pro G1 (PL mount), primarily on sticks, with shoulder attachment, and partially on a Steadicam rig. DOP Trudi Gultom chose Zeus Superspeeds, shooting mostly wide open.&lt;/p&gt;
+
+&lt;p&gt;We also used the Blackmagic Pocket 4K with Metabones PL mount adapter on a DJI Ronin gimbal apparatus, as an additional primary cam for a variety of setups.&lt;/p&gt;
+
+&lt;p&gt;Our 1st AC Stephanie Todd pulled focus using PDMovie Remote Air and monitored on a Blackmagic 7” Video Assist 4K. Diamond Tat, Gerard Cabellon and Bobi Perdulovski supported on alternate days.&lt;/p&gt;
+
+&lt;p&gt;Tyron Seeto served as Steadicam operator, and Steven Chen, Zaid Chowdhury and Bobi Perdulovski as Ronin operators.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108_(photo_20191006)-tawaf-dit-9204.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108_(photo_20191006)-tawaf-dit-9204.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;(Photo: Thắng Nguyễn)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108_(photo_20191008)-tawaf-dit-256f.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108_(photo_20191008)-tawaf-dit-256f.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;(Photo: Leslie Phanekham)&lt;/p&gt;
+
+&lt;h3 id=&quot;format-choice&quot;&gt;Format choice&lt;/h3&gt;
+
+&lt;p&gt;The format chosen was BRAW 5:1 compression, at 4.6K resolution (4608 x 2592, 16:9).&lt;/p&gt;
+
+&lt;p&gt;The project frame rate was 25 FPS, and about 90% of our shots were at off-speed 50 FPS.&lt;/p&gt;
+
+&lt;p&gt;This gave an average data rate of 774 Mbps (~96 MB/s, ~348 GB/hour, 21 min per 128 GB card) at 25 FPS.&lt;/p&gt;
+
+&lt;p&gt;To give a comparison rate, ProRes 4444 at the same resolution would have been 1.5 Gbps (187.5 MB/s, ~670 GB/hour, 11 min per card).&lt;/p&gt;
+
+&lt;p&gt;This is nearly double the size. That’s right, ProRes 4444 at this resolution, double the size of BRAW.&lt;/p&gt;
+
+&lt;p&gt;Blackmagic’s BRAW really is contrary to people’s existing expectations for RAW capture: unmanageably high file sizes and long transfer times. And it was certainly the case with their previous implementation of CinemaDNG. (I don’t envy anyone who captured longform material using CinemaDNG.)&lt;/p&gt;
+
+&lt;p&gt;But the format has clearly been designed quite well in terms of efficiency.&lt;/p&gt;
+
+&lt;p&gt;Its data rate is about on par with RED DSMC2 these days @ 5K HD which is roughly 800 Mbps (~360 GB/hour). It’s also drastically lower than ARRIRAW on the Alexa LF @ 4.5K which is a whopping 4,175 Mbps (1.8 TB/hour). However this speaks more about those manufacturers’ approach to streamlining RAW capture than anything else.&lt;/p&gt;
+
+&lt;p&gt;The relatively non-noticeable noise floor that I witnessed throughout the footage at ISO 800, however, can probably be credited to &lt;a href=&quot;https://www.blackmagicdesign.com/support/readme/42b11f6891ad4877b9fd08214d4297c5&quot;&gt;a November 2018 firmware update for the URSA Mini&lt;/a&gt; that altered its native ISO level. But still good to prevent further noise or compression artifacts from the capture method, if one has the option to.&lt;/p&gt;
+
+&lt;p&gt;A side note is that RAW capture on this camera necessitates 4.6K capture as well. Any lower settings and you get windowed sensor mode, disturbing a DOP’s framing and focal length choices.&lt;/p&gt;
+
+&lt;p&gt;This is because cropping or rescaling sensor data is not an easy operation for RAW formats like it is for an already processed RGB signal in ProRes. Both Blackmagic and RED cameras window the sensor and take fragments from it in order to deliver a smaller resolution RAW image which isn’t ideal for those seeking wide angle framing.&lt;/p&gt;
+
+&lt;div class=&quot;callout-info&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Side note on the Pocket 4K as a B-cam&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you are pairing the Blackmagic Pocket 4K with the URSA Mini, the Pocket obviously won't be able to exactly match the URSA Mini's 4.6K resolution. It only provides 4K DCI (4096 x 2160) and 4K UHD (3840 x 2160), and the latter is windowed-sensor mode to achieve this. My recommendation is to use 4K UHD because the 16:9 aspect ratio will match the 4.6K 16:9 provided by the URSA Mini.&lt;/p&gt;
+&lt;p style=&quot;margin-bottom:0;&quot;&gt;The windowed sensor mode will really only crop off 256 pixels which is marginal. Then, virtually no extra operations are required in post because the aspect ratio matches. There are &lt;em&gt;many&lt;/em&gt; places where a different ratio will generally cause extra hurdles (all the way from dailies to the online).&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;colour-and-monitoring&quot;&gt;Colour and monitoring&lt;/h3&gt;
+&lt;p&gt;Our capture colour profile was BMD Film and our monitoring profile was BMD Video v3.&lt;/p&gt;
+
+&lt;p&gt;Even though Trudi and Kaan ran through a number of test shoots prior to the date, time didn’t permit the creation of a custom LUT at this point, but it would have been helpful as a way to shape the look a bit and support our lighting setups more appropriately.&lt;/p&gt;
+
+&lt;p&gt;With about 3-4 different monitors, it became difficult at certain moments to assess which ‘version’ of the image is the closest to the capture. We used the onboard LCD panel, two SmallHD 502 monitors in various mount positions, a Blackmagic 7” Video Assist and two Atomos Shoguns, across our A and B cams.&lt;/p&gt;
+
+&lt;p&gt;In spite of differences in monitor presentation, which can amount to screen brightness, colour tint, reflections and the sharpness of the LCD panel (e.g. Atomos Shogun versus Blackmagic Video Assist 4K, the latter’s LCD panel is noticeably sharper to my eyes.), histograms and false colour remain the go-to tools for assessing exposure.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108_(photo_20191006)-tawaf-dit-9259.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108_(photo_20191006)-tawaf-dit-9259.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;(Photo: Thắng Nguyễn)&lt;/p&gt;
+
+&lt;h3 id=&quot;challenges&quot;&gt;Challenges&lt;/h3&gt;
+
+&lt;p&gt;While most of the capture and data management went smoothly across the five days, one major issue stuck out like a sore thumb.&lt;/p&gt;
+
+&lt;p&gt;It’s afternoon on Day 1 and we’re chasing sunset and the successful capture of a long choreographed dance sequence, to run for 2 minutes uninterrupted in the final film.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-set-photo-by-alysia-kwan-4.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-set-photo-by-alysia-kwan-4.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Photo: Alysia Kwan&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-example-still-dancing.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-example-still-dancing.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I notice after perhaps our 8th take, the camera’s record LED on the operator side of the body was flashing red.&lt;/p&gt;
+
+&lt;p&gt;We had been fighting the space on the cards the whole day throughout splits, so I suspected it was trying to indicate the card was nearly full for this split.&lt;/p&gt;
+
+&lt;p&gt;In reality, a warning (!) symbol had appeared onscreen, revealing the last take had stopped due to drop frames.&lt;/p&gt;
+
+&lt;p&gt;The whole take, and potentially the seven earlier takes, were at risk – were they even really recorded properly? Did we just lose that many performances at such a valuable time at sunset and everyone’s effort?&lt;/p&gt;
+
+&lt;p&gt;I only recall seeing the flashing LED on the last take only, so the operator checks playback and it plays mostly fine. Everyone chats and we decide to try go for another one. I’m staring at the external LED during this take, waiting for it to flash and hoping it doesn’t.&lt;/p&gt;
+
+&lt;p&gt;It does. Flashing red. I quietly call out to Trudi to end it - it’s clear the take isn’t recording, let’s stop.&lt;/p&gt;
+
+&lt;p&gt;Camera crew switches to a different SATA SSD and I take this present one back to wrangle it and inspect which recordings are in tact.&lt;/p&gt;
+
+&lt;p&gt;Takes 1 through 7 are preserved and fine, there’s no corruption or issues with playback. Takes 8 and 9 end abruptly (but cleanly) during the performance about midway. It meant those takes were basically lost, since the director needed a full uninterrupted performance to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-clips-dropped-frame-example.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-clips-dropped-frame-example.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;A visual example of the takes running 2-3 minutes long. Takes 8 and 9 are on top, and are noticeably shorter in duration than their companions.&lt;/p&gt;
+
+&lt;p&gt;Some reprieve: our Steadicam operator Tyron had been monitoring via SDI to his Shogun display rigged to the apparatus and was also recording that signal to an internal drive. Steph also recorded the SDI signal through the BM Video Assist onto an SD card, as we wanted playback access earlier.&lt;/p&gt;
+
+&lt;p&gt;Having these recordings saved the day: luckily they were clean, at 1080p ProRes 422 which was reasonable, and had no UI overlays burnt in either.&lt;/p&gt;
+
+&lt;p&gt;The whole ordeal was particularly odd because we filled up least one SATA SSD (Samsung 860 EVO 500GB) at 4.6K BRAW 5:1 at 50 FPS with no single issue throughout the entire morning.&lt;/p&gt;
+
+&lt;p&gt;The final verdict however: URSA Mini G1 with firmware 6.2 still suffered from frames dropping when writing to some SATA SSDs via the SSD attachment unit, at least at 4.6K BRAW 5:1 at 50 FPS. The SSD in question was a Samsung 250GB 960 EVO. After the shoot, a firmware update to the latest available on the date (6.5.1) resolved the issue, but for the rest of the shoot, we only trusted CFast cards.&lt;/p&gt;
+
+&lt;p class=&quot;callout-danger&quot;&gt;&lt;strong&gt;Warning to the wise&lt;/strong&gt;
+&lt;br /&gt;
+Prior to your shoot with different media types (CFast, SATA or USB-C SSD), always test all of your recording media at all frame rates and formats that you plan on using. Run clips for at least a minute or longer, to ensure that they can last a whole take and will remain recording without any dropped frames. Don’t leave it to the shoot unless you want to lose takes &amp;amp; production time.&lt;/p&gt;
+
+&lt;p&gt;Additionally: make sure to send status indicators over SDI to at least one operator to refer to, especially if in a rig configuration where the LCD onboard the URSA Mini is closed and not accessible. Otherwise you will be blind to any errors visible on the UI like, frames dropped during recording.&lt;/p&gt;
+
+&lt;p&gt;Other questions that remain over the heads of users of SATA SSDs:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Does your SATA SSD offer a write speed high enough to support the format, resolution and FPS your camera is demanding?&lt;/li&gt;
+  &lt;li&gt;Will it sustain that write speed or will it taper off after its cache is filled? (Hint: &lt;a href=&quot;https://www.howtogeek.com/428869/ssds-are-getting-denser-and-slower-thanks-to-qlc-flash/&quot;&gt;Many won’t sustain it&lt;/a&gt;.)&lt;/li&gt;
+  &lt;li&gt;Are all hardware devices running the latest firmware?&lt;/li&gt;
+  &lt;li&gt;Are you formatting the SATA SSD in-camera as OS X Extended and avoiding non-journaled filesystems like EXFAT wherever possible?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dailies&quot;&gt;Dailies&lt;/h3&gt;
+
+&lt;p&gt;I offloaded to a 2TB Samsung SSD and two client external HDDs.&lt;/p&gt;
+
+&lt;p&gt;My choice of offload manager these days is YoYotta. I appreciate its ability to stop and resume transfers and for its transparency in reporting to me the exact transfer speed in MB/s. (Unlike ShotPutPro which omits such details probably for simplicity.)&lt;/p&gt;
+
+&lt;p&gt;Reading from a USB 3.0 CFast reader, I got offload rates of about ~390-400 MB/s to the SSD. A separate simultaneous transfer to the external HDDs reached 100-110 MB/s, the usual for external drives. For a 128 GB card, I found it was 20 min to the SSD and 45 minutes total to two HDDs.&lt;/p&gt;
+
+&lt;p&gt;A note to anyone using YoYotta V3 #109, as of October 2019 it didn’t support BRAW that I saw. So while it offloaded the files fine, it didn’t gather much metadata about them like duration or any thumbnails for reports.&lt;/p&gt;
+
+&lt;p&gt;(I’m not actually sure how many of us are using this program though to be honest, given the target markets for both the URSA and &lt;a href=&quot;https://yoyotta.com/&quot;&gt;YoYotta&lt;/a&gt; are quite different, and that YoYotta is kind of obscure.)&lt;/p&gt;
+
+&lt;p&gt;Generating proxies on my field MBP 13” inside Resolve netted render speeds of 15 FPS which isn’t ideal but fine if I’m leaving the machine unattended and setups throughout the day permitted time to do so.&lt;/p&gt;
+
+&lt;p&gt;Back on my workstation at home (i9-9900K @ 4.7 GHz OC, RTX 2070), I was able to render them at 55 FPS which was fantastic.&lt;/p&gt;
+
+&lt;p&gt;The proxies were DNxHR LB with BMD Video v3 burnt in. One huge downside of using the Windows platform to produce dailies/proxies is that Resolve won’t render you anything in ProRes by itself: it’s simply excluded from the options list as Blackmagic don’t have a license for their Windows variant of the program to permit encoding. DNxHR LB is the next best thing.&lt;/p&gt;
+
+&lt;p&gt;But it’s not really that great either because Mac users that try to Quick Preview those proxies won’t be able to view them, and sometimes even VLC will throw an error opening DNxHR files if the machine in question doesn’t have the correct Avid codecs installed. But Premiere of course will read them which is the important thing as proxies.&lt;/p&gt;
+
+&lt;p&gt;On set, I found the outdoor locations a bit of a challenge - we encountered quite a bit of wind, dust and leaves that would blow past all of our faces and directly into my data kit as well.&lt;/p&gt;
+
+&lt;p&gt;Thankfully nothing was damaged and there was no consistent layer of dust, just loose leaves in places. Nothing that an anti-static brush and compressed air on my MBP keyboard couldn’t solve. (&lt;a href=&quot;https://support.apple.com/en-au/keyboard-service-program-for-mac-notebooks&quot;&gt;For now.&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;And to wrap up the discussion about set, a partial crew photo!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108_(photo_20191008)-tawaf-dit-2575.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108_(photo_20191008)-tawaf-dit-2575.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Back: Kaan Cansiz, me, Molly Sutherland, Steven Chen.&lt;br /&gt;Front: Trudi Gultom, Stephanie Todd, Leslie Phanekham. (Photo: Karen Hà)&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;Post&lt;/h3&gt;
+
+&lt;p&gt;The post workflow is still kind of ongoing but at this stage the editor is working with 1080p DNxHR LB proxies and focusing on arranging story.&lt;/p&gt;
+
+&lt;p&gt;Then following that, speed ramps, crop-ins and a variety of other effects are planned.&lt;/p&gt;
+
+&lt;p&gt;It’ll be interesting to see whether those will be later:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;preserved in the Premiere timeline and apply actively to new graded clips that are relinked ‘over the top’ of the old proxy clips; or&lt;/li&gt;
+  &lt;li&gt;recreated in Resolve, linked to the original camera negative and allowing for dynamic changes to the grade without the back &amp;amp; forth.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m hesitant to jump in and deal with both the plugins released now by both Blackmagic and the ‘native support’ offered by Adobe. Reportedly the experience is still marred by incompatibility (only CC 2019 and above), slow performance and in some cases incorrect start timecode. See &lt;a href=&quot;https://autokroma.com/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference/&quot;&gt;Autokroma’s description of issues&lt;/a&gt; and their plugin ‘BRAW Studio’ as an alternative.&lt;/p&gt;
+
+&lt;p&gt;That being said, BRAW behaves fantastically inside Resolve (16.1 on Windows 10). Even when the material is stored on a low-speed external HDD, I was able to get 25 FPS playback. Although I have typically been accessing the material from this shoot from two internal HDDs in RAID0 (with a read speed of about 180 MB/s).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Unanswered questions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s other components of post-production pipelines for music video and film that aren’t touched upon here.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What’s the workflow for VFX artists? Will BRAW be supported natively inside After Effects, Nuke, or other compositing applications?&lt;/li&gt;
+  &lt;li&gt;What support exists for online &amp;amp; conform outside of just DaVinci Resolve, and instead inside Flame, Assimilate Scratch or Mistika Boutique?&lt;/li&gt;
+  &lt;li&gt;Or for either of these purposes, will uncompressed intermediate formats simply become a necessity when working with BRAW? Such as DPX or OpenEXR sequences.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even among lower-end video projects like weddings and low-budget music videos, the demands for VFX are going to be small, but those users are still likely to find themselves encumbered by the lack of support of BRAW outside of the immediate circle of DaVinci Resolve and select versions of Adobe products. So, if you count yourself as a user with rapid turnarounds and still a need for VFX or similar, you’ll need to look for solutions within Resolve.&lt;/p&gt;
+
+&lt;h3 id=&quot;braw-material-in-resolve&quot;&gt;BRAW material in Resolve&lt;/h3&gt;
+
+&lt;p&gt;When using the URSA Mini &amp;amp; Pocket to produce BRAW clips with BMD Video, they will by default appear in Resolve with BMD Video.&lt;/p&gt;
+
+&lt;p&gt;This could make you think &lt;em&gt;Ahhhh, why do my RAW clips look so crunchy and not log – Did I accidentally burn in this video look?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The clips are still and were always RAW. But instead they are presented to you with the BMD Video color gamma applied, as it expects this is what you want to see. Given you spent all day on set monitoring in that space, it’s trying to be helpful.&lt;/p&gt;
+
+&lt;p&gt;Technically, the camera has registered the 3D LUT you nominate in Settings as a metadata flag. (&lt;a href=&quot;https://www.blackmagicdesign.com/products/blackmagicursaminipro/blackmagicraw&quot;&gt;Blackmagic describes that&lt;/a&gt; the 3D LUT travels with the .braw OCN file itself, presumedly being stored inside.)&lt;/p&gt;
+
+&lt;p&gt;So to return your image to a Log curve which you can use to grade in the traditional log convention, adjust the Camera RAW settings in Resolve like below picture.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-bmd-film-v-video.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-bmd-film-v-video.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Bottom-left corner: Adjust the ‘Gamma’ option to ‘Blackmagic Design Film’ instead of ‘Video’ to interpret the clip as Log. Split-screen image shown to illustrate the visual difference.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you may wish to apply this on a whole-project basis to all clips. Do this in Project Settings &amp;gt; Camera RAW &amp;gt; Decode Using… ‘Project’ and then nominate the Gamma in the dropdown.&lt;/p&gt;
+
+&lt;p&gt;Just like R3D Redcode and other RAW formats, RAW sensor data is always preserved and can simply be interpreted by your colour application to create a variety of different outputs. There’s no one exclusive way to interpret it.&lt;/p&gt;
+
+&lt;p&gt;This is unlike RGB ProRes video clips which have already interpreted that sensor data and present it to you as either log or a curve imitating Rec.709.&lt;/p&gt;
+
+&lt;p&gt;While you have Project Settings open, also consider dropping the preview resolution to Half or Quarter Res, to improve performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-resolve-res-size.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-resolve-res-size.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can force renders to full resolution in spite of this choice here in the Deliver panel, under Video &amp;gt; Advanced Settings &amp;gt; “Force debayer to highest quality”.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;BRAW is really just another proprietary camera format, which is to say, it lives and dies by its third-party software support and how far that can reach.&lt;/p&gt;
+
+&lt;p&gt;On set, the sensor is the same regardless of capture format. So the usual remarks about Blackmagic sensors apply. They don’t hold up super well in low light, but they do perform remarkably better than their competitors’ models at the same price point.&lt;/p&gt;
+
+&lt;p&gt;BRAW capture isn’t inherently better, but at least it (a) prevents further compression from the ProRes codec, (b) gives you options to change white balance and exposure, and (c) uses up far less data than ProRes. This makes it a fantastic choice from a cinematographer’s perspective.&lt;/p&gt;
+
+&lt;p&gt;From the perspective of post-production however, it’s not the easiest choice. Current support for BRAW makes working with BRAW OCN material a complex process. An offline editing workflow is still required in almost all cases. Developers appear to be moving in the right direction, however.&lt;/p&gt;
+
+&lt;p&gt;It’ll be interesting to see how the rest of post on &lt;em&gt;Tawaf&lt;/em&gt; plays out, although I expect it to be pretty smooth at this point, considering how well BRAW material works inside Resolve.&lt;/p&gt;
+
+&lt;div class=&quot;callout-info&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Conclusions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul style=&quot;padding-left:1rem;&quot;&gt;
+&lt;li&gt;If you are cutting BRAW, &lt;strong&gt;cut with proxies&lt;/strong&gt;: transcode the material to 1080p ProRes or DNxHR, then cut in any NLE.&lt;/li&gt;
+&lt;li&gt;If you want to cut with OCN material directly, do so only in DaVinci Resolve.&lt;/li&gt;
+&lt;li&gt;When you finally online/conform your edit from a different NLE, do so in DaVinci Resolve only. (Post houses that pay for Assimilate Scratch, continue to do as you please.)&lt;/li&gt;
+&lt;li&gt;Don't use unconventional recording media like SATA or USB-C SSDs without performing testing first.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-1.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-1.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-example-still-younger-brother-2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-example-still-younger-brother-2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-dit-example-still-dancing.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-dit-example-still-dancing.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-4.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20191108-tawaf-director-kaan-cansiz-dop-trudi-gultom-4.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="filmmaking" /><category term="video_editing" /><category term="data_wrangling" /><summary type="html">This is an insight post into the production workflow of the music video Tawaf, from the perspective of the camera department &amp;amp; data management. Contents Directorial goals Cameras Format choice Colour and monitoring Challenges Dailies Post BRAW material in Resolve Conclusions Directorial goals Tawaf is a visual soundtrack envisioned by filmmaker and music producer Kaan Cansiz (@kaansaesthetic). It annotates the album A Quiet Farewell, 2016 to 2018 by Slauson Malone. Its style is characterised by wide open spaces, in natural environments and urban areas. It often pits its characters in portrait form, and at other moments glowing by sunset. Long moments in time linger and run their full course. To translate some of these ideas into picture, there were a number of techniques that could be put into play. I observe Kaan’s creativity as inherently experimental and natural, drawing himself to concepts primarily by music, not necessarily being literal. In this context I see light as capable of being both a feeling and a texture. But most of all, from the experimental origins of the project, I knew that committing changes or techniques destructively to a medium was going to be something that could ultimately inhibit further experimental choices. This extends to the capture format used but also to lighting choices, colour, and the edit itself. So why not shoot 4.6K RAW? [Cries in Spanish] This article talks about the rather incidental choice to use both RAW capture and high resolution to hedge our bets and enable as many creative choices and options further down the line. It’ll also touch on Blackmagic RAW as a codec being used in the field &amp;amp; practical considerations for doing so. Principal crew Director: Kaan Cansiz Director of Photography: Trudi Gultom Producers: Karen Hà, Leslie Phanekham First Assistant Director: Alysia Kwan First Assistant Camera: Stephanie Todd Gaffer: Steven Chen DIT: Sebastian Reategui Shoot details Shoot days: 4 and a half-day Locations: Liverpool &amp;amp; Blacktown, NSW Cameras The camera body was Blackmagic’s URSA Mini Pro G1 (PL mount), primarily on sticks, with shoulder attachment, and partially on a Steadicam rig. DOP Trudi Gultom chose Zeus Superspeeds, shooting mostly wide open. We also used the Blackmagic Pocket 4K with Metabones PL mount adapter on a DJI Ronin gimbal apparatus, as an additional primary cam for a variety of setups. Our 1st AC Stephanie Todd pulled focus using PDMovie Remote Air and monitored on a Blackmagic 7” Video Assist 4K. Diamond Tat, Gerard Cabellon and Bobi Perdulovski supported on alternate days. Tyron Seeto served as Steadicam operator, and Steven Chen, Zaid Chowdhury and Bobi Perdulovski as Ronin operators. (Photo: Thắng Nguyễn) (Photo: Leslie Phanekham) Format choice The format chosen was BRAW 5:1 compression, at 4.6K resolution (4608 x 2592, 16:9). The project frame rate was 25 FPS, and about 90% of our shots were at off-speed 50 FPS. This gave an average data rate of 774 Mbps (~96 MB/s, ~348 GB/hour, 21 min per 128 GB card) at 25 FPS. To give a comparison rate, ProRes 4444 at the same resolution would have been 1.5 Gbps (187.5 MB/s, ~670 GB/hour, 11 min per card). This is nearly double the size. That’s right, ProRes 4444 at this resolution, double the size of BRAW. Blackmagic’s BRAW really is contrary to people’s existing expectations for RAW capture: unmanageably high file sizes and long transfer times. And it was certainly the case with their previous implementation of CinemaDNG. (I don’t envy anyone who captured longform material using CinemaDNG.) But the format has clearly been designed quite well in terms of efficiency. Its data rate is about on par with RED DSMC2 these days @ 5K HD which is roughly 800 Mbps (~360 GB/hour). It’s also drastically lower than ARRIRAW on the Alexa LF @ 4.5K which is a whopping 4,175 Mbps (1.8 TB/hour). However this speaks more about those manufacturers’ approach to streamlining RAW capture than anything else. The relatively non-noticeable noise floor that I witnessed throughout the footage at ISO 800, however, can probably be credited to a November 2018 firmware update for the URSA Mini that altered its native ISO level. But still good to prevent further noise or compression artifacts from the capture method, if one has the option to. A side note is that RAW capture on this camera necessitates 4.6K capture as well. Any lower settings and you get windowed sensor mode, disturbing a DOP’s framing and focal length choices. This is because cropping or rescaling sensor data is not an easy operation for RAW formats like it is for an already processed RGB signal in ProRes. Both Blackmagic and RED cameras window the sensor and take fragments from it in order to deliver a smaller resolution RAW image which isn’t ideal for those seeking wide angle framing. Side note on the Pocket 4K as a B-cam If you are pairing the Blackmagic Pocket 4K with the URSA Mini, the Pocket obviously won't be able to exactly match the URSA Mini's 4.6K resolution. It only provides 4K DCI (4096 x 2160) and 4K UHD (3840 x 2160), and the latter is windowed-sensor mode to achieve this. My recommendation is to use 4K UHD because the 16:9 aspect ratio will match the 4.6K 16:9 provided by the URSA Mini. The windowed sensor mode will really only crop off 256 pixels which is marginal. Then, virtually no extra operations are required in post because the aspect ratio matches. There are many places where a different ratio will generally cause extra hurdles (all the way from dailies to the online). Colour and monitoring Our capture colour profile was BMD Film and our monitoring profile was BMD Video v3. Even though Trudi and Kaan ran through a number of test shoots prior to the date, time didn’t permit the creation of a custom LUT at this point, but it would have been helpful as a way to shape the look a bit and support our lighting setups more appropriately. With about 3-4 different monitors, it became difficult at certain moments to assess which ‘version’ of the image is the closest to the capture. We used the onboard LCD panel, two SmallHD 502 monitors in various mount positions, a Blackmagic 7” Video Assist and two Atomos Shoguns, across our A and B cams. In spite of differences in monitor presentation, which can amount to screen brightness, colour tint, reflections and the sharpness of the LCD panel (e.g. Atomos Shogun versus Blackmagic Video Assist 4K, the latter’s LCD panel is noticeably sharper to my eyes.), histograms and false colour remain the go-to tools for assessing exposure. (Photo: Thắng Nguyễn) Challenges While most of the capture and data management went smoothly across the five days, one major issue stuck out like a sore thumb. It’s afternoon on Day 1 and we’re chasing sunset and the successful capture of a long choreographed dance sequence, to run for 2 minutes uninterrupted in the final film. Photo: Alysia Kwan I notice after perhaps our 8th take, the camera’s record LED on the operator side of the body was flashing red. We had been fighting the space on the cards the whole day throughout splits, so I suspected it was trying to indicate the card was nearly full for this split. In reality, a warning (!) symbol had appeared onscreen, revealing the last take had stopped due to drop frames. The whole take, and potentially the seven earlier takes, were at risk – were they even really recorded properly? Did we just lose that many performances at such a valuable time at sunset and everyone’s effort? I only recall seeing the flashing LED on the last take only, so the operator checks playback and it plays mostly fine. Everyone chats and we decide to try go for another one. I’m staring at the external LED during this take, waiting for it to flash and hoping it doesn’t. It does. Flashing red. I quietly call out to Trudi to end it - it’s clear the take isn’t recording, let’s stop. Camera crew switches to a different SATA SSD and I take this present one back to wrangle it and inspect which recordings are in tact. Takes 1 through 7 are preserved and fine, there’s no corruption or issues with playback. Takes 8 and 9 end abruptly (but cleanly) during the performance about midway. It meant those takes were basically lost, since the director needed a full uninterrupted performance to use. A visual example of the takes running 2-3 minutes long. Takes 8 and 9 are on top, and are noticeably shorter in duration than their companions. Some reprieve: our Steadicam operator Tyron had been monitoring via SDI to his Shogun display rigged to the apparatus and was also recording that signal to an internal drive. Steph also recorded the SDI signal through the BM Video Assist onto an SD card, as we wanted playback access earlier. Having these recordings saved the day: luckily they were clean, at 1080p ProRes 422 which was reasonable, and had no UI overlays burnt in either. The whole ordeal was particularly odd because we filled up least one SATA SSD (Samsung 860 EVO 500GB) at 4.6K BRAW 5:1 at 50 FPS with no single issue throughout the entire morning. The final verdict however: URSA Mini G1 with firmware 6.2 still suffered from frames dropping when writing to some SATA SSDs via the SSD attachment unit, at least at 4.6K BRAW 5:1 at 50 FPS. The SSD in question was a Samsung 250GB 960 EVO. After the shoot, a firmware update to the latest available on the date (6.5.1) resolved the issue, but for the rest of the shoot, we only trusted CFast cards. Warning to the wise Prior to your shoot with different media types (CFast, SATA or USB-C SSD), always test all of your recording media at all frame rates and formats that you plan on using. Run clips for at least a minute or longer, to ensure that they can last a whole take and will remain recording without any dropped frames. Don’t leave it to the shoot unless you want to lose takes &amp;amp; production time. Additionally: make sure to send status indicators over SDI to at least one operator to refer to, especially if in a rig configuration where the LCD onboard the URSA Mini is closed and not accessible. Otherwise you will be blind to any errors visible on the UI like, frames dropped during recording. Other questions that remain over the heads of users of SATA SSDs: Does your SATA SSD offer a write speed high enough to support the format, resolution and FPS your camera is demanding? Will it sustain that write speed or will it taper off after its cache is filled? (Hint: Many won’t sustain it.) Are all hardware devices running the latest firmware? Are you formatting the SATA SSD in-camera as OS X Extended and avoiding non-journaled filesystems like EXFAT wherever possible? Dailies I offloaded to a 2TB Samsung SSD and two client external HDDs. My choice of offload manager these days is YoYotta. I appreciate its ability to stop and resume transfers and for its transparency in reporting to me the exact transfer speed in MB/s. (Unlike ShotPutPro which omits such details probably for simplicity.) Reading from a USB 3.0 CFast reader, I got offload rates of about ~390-400 MB/s to the SSD. A separate simultaneous transfer to the external HDDs reached 100-110 MB/s, the usual for external drives. For a 128 GB card, I found it was 20 min to the SSD and 45 minutes total to two HDDs. A note to anyone using YoYotta V3 #109, as of October 2019 it didn’t support BRAW that I saw. So while it offloaded the files fine, it didn’t gather much metadata about them like duration or any thumbnails for reports. (I’m not actually sure how many of us are using this program though to be honest, given the target markets for both the URSA and YoYotta are quite different, and that YoYotta is kind of obscure.) Generating proxies on my field MBP 13” inside Resolve netted render speeds of 15 FPS which isn’t ideal but fine if I’m leaving the machine unattended and setups throughout the day permitted time to do so. Back on my workstation at home (i9-9900K @ 4.7 GHz OC, RTX 2070), I was able to render them at 55 FPS which was fantastic. The proxies were DNxHR LB with BMD Video v3 burnt in. One huge downside of using the Windows platform to produce dailies/proxies is that Resolve won’t render you anything in ProRes by itself: it’s simply excluded from the options list as Blackmagic don’t have a license for their Windows variant of the program to permit encoding. DNxHR LB is the next best thing. But it’s not really that great either because Mac users that try to Quick Preview those proxies won’t be able to view them, and sometimes even VLC will throw an error opening DNxHR files if the machine in question doesn’t have the correct Avid codecs installed. But Premiere of course will read them which is the important thing as proxies. On set, I found the outdoor locations a bit of a challenge - we encountered quite a bit of wind, dust and leaves that would blow past all of our faces and directly into my data kit as well. Thankfully nothing was damaged and there was no consistent layer of dust, just loose leaves in places. Nothing that an anti-static brush and compressed air on my MBP keyboard couldn’t solve. (For now.) And to wrap up the discussion about set, a partial crew photo! Back: Kaan Cansiz, me, Molly Sutherland, Steven Chen.Front: Trudi Gultom, Stephanie Todd, Leslie Phanekham. (Photo: Karen Hà) Post The post workflow is still kind of ongoing but at this stage the editor is working with 1080p DNxHR LB proxies and focusing on arranging story. Then following that, speed ramps, crop-ins and a variety of other effects are planned. It’ll be interesting to see whether those will be later: preserved in the Premiere timeline and apply actively to new graded clips that are relinked ‘over the top’ of the old proxy clips; or recreated in Resolve, linked to the original camera negative and allowing for dynamic changes to the grade without the back &amp;amp; forth. I’m hesitant to jump in and deal with both the plugins released now by both Blackmagic and the ‘native support’ offered by Adobe. Reportedly the experience is still marred by incompatibility (only CC 2019 and above), slow performance and in some cases incorrect start timecode. See Autokroma’s description of issues and their plugin ‘BRAW Studio’ as an alternative. That being said, BRAW behaves fantastically inside Resolve (16.1 on Windows 10). Even when the material is stored on a low-speed external HDD, I was able to get 25 FPS playback. Although I have typically been accessing the material from this shoot from two internal HDDs in RAID0 (with a read speed of about 180 MB/s). Unanswered questions There’s other components of post-production pipelines for music video and film that aren’t touched upon here. What’s the workflow for VFX artists? Will BRAW be supported natively inside After Effects, Nuke, or other compositing applications? What support exists for online &amp;amp; conform outside of just DaVinci Resolve, and instead inside Flame, Assimilate Scratch or Mistika Boutique? Or for either of these purposes, will uncompressed intermediate formats simply become a necessity when working with BRAW? Such as DPX or OpenEXR sequences. Even among lower-end video projects like weddings and low-budget music videos, the demands for VFX are going to be small, but those users are still likely to find themselves encumbered by the lack of support of BRAW outside of the immediate circle of DaVinci Resolve and select versions of Adobe products. So, if you count yourself as a user with rapid turnarounds and still a need for VFX or similar, you’ll need to look for solutions within Resolve. BRAW material in Resolve When using the URSA Mini &amp;amp; Pocket to produce BRAW clips with BMD Video, they will by default appear in Resolve with BMD Video. This could make you think Ahhhh, why do my RAW clips look so crunchy and not log – Did I accidentally burn in this video look? The clips are still and were always RAW. But instead they are presented to you with the BMD Video color gamma applied, as it expects this is what you want to see. Given you spent all day on set monitoring in that space, it’s trying to be helpful. Technically, the camera has registered the 3D LUT you nominate in Settings as a metadata flag. (Blackmagic describes that the 3D LUT travels with the .braw OCN file itself, presumedly being stored inside.) So to return your image to a Log curve which you can use to grade in the traditional log convention, adjust the Camera RAW settings in Resolve like below picture. Bottom-left corner: Adjust the ‘Gamma’ option to ‘Blackmagic Design Film’ instead of ‘Video’ to interpret the clip as Log. Split-screen image shown to illustrate the visual difference. Alternatively, you may wish to apply this on a whole-project basis to all clips. Do this in Project Settings &amp;gt; Camera RAW &amp;gt; Decode Using… ‘Project’ and then nominate the Gamma in the dropdown. Just like R3D Redcode and other RAW formats, RAW sensor data is always preserved and can simply be interpreted by your colour application to create a variety of different outputs. There’s no one exclusive way to interpret it. This is unlike RGB ProRes video clips which have already interpreted that sensor data and present it to you as either log or a curve imitating Rec.709. While you have Project Settings open, also consider dropping the preview resolution to Half or Quarter Res, to improve performance. You can force renders to full resolution in spite of this choice here in the Deliver panel, under Video &amp;gt; Advanced Settings &amp;gt; “Force debayer to highest quality”. Conclusions BRAW is really just another proprietary camera format, which is to say, it lives and dies by its third-party software support and how far that can reach. On set, the sensor is the same regardless of capture format. So the usual remarks about Blackmagic sensors apply. They don’t hold up super well in low light, but they do perform remarkably better than their competitors’ models at the same price point. BRAW capture isn’t inherently better, but at least it (a) prevents further compression from the ProRes codec, (b) gives you options to change white balance and exposure, and (c) uses up far less data than ProRes. This makes it a fantastic choice from a cinematographer’s perspective. From the perspective of post-production however, it’s not the easiest choice. Current support for BRAW makes working with BRAW OCN material a complex process. An offline editing workflow is still required in almost all cases. Developers appear to be moving in the right direction, however. It’ll be interesting to see how the rest of post on Tawaf plays out, although I expect it to be pretty smooth at this point, considering how well BRAW material works inside Resolve. Conclusions If you are cutting BRAW, cut with proxies: transcode the material to 1080p ProRes or DNxHR, then cut in any NLE. If you want to cut with OCN material directly, do so only in DaVinci Resolve. When you finally online/conform your edit from a different NLE, do so in DaVinci Resolve only. (Post houses that pay for Assimilate Scratch, continue to do as you please.) Don't use unconventional recording media like SATA or USB-C SSDs without performing testing first.</summary></entry><entry><title type="html">In photos: Hong Kong supporters gather in Sydney to demand an end to violence</title><link href="https://sebreategui.com/post/2019/in-photos-hong-kong-supporters-gather-in-sydney-to-demand-an-end-to-violence/" rel="alternate" type="text/html" title="In photos: Hong Kong supporters gather in Sydney to demand an end to violence" /><published>2019-08-16T07:00:00+00:00</published><updated>2019-08-16T07:00:00+00:00</updated><id>https://sebreategui.com/post/2019/in-photos-hong-kong-supporters-gather-in-sydney-to-demand-an-end-to-violence</id><content type="html" xml:base="https://sebreategui.com/post/2019/in-photos-hong-kong-supporters-gather-in-sydney-to-demand-an-end-to-violence/">&lt;p&gt;Hundreds of people gathered in the centres of Sydney, Melbourne and Adelaide tonight in support of pro-democracy demonstrators in Hong Kong, who continue their months-long protest against the Chinese state’s extradition bill and other infringements on their freedoms.&lt;/p&gt;
+
+&lt;p&gt;Face masks, balaclavas and eye patches were worn, symbolising the injury to a young woman protestor in Hong Kong &lt;a href=&quot;https://www.theguardian.com/world/2019/aug/16/an-eye-for-an-eye-hong-kong-protests-get-figurehead-in-woman-injured-by-police&quot;&gt;who was shot in the face with a beanbag round by police earlier this week&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A Lennon wall was established on the sides of Martin Place’s public walls, where protestors affixed printed images of victims of violence and words of support for Hong Kong on sticky notes.&lt;/p&gt;
+
+&lt;p&gt;Organisers then reiterated the 5 demands to the Chinese state to implement in Hong Kong: full withdrawal of the extradition bill, retraction of the ‘riot’ characterisation by the state, release of all arrested protestors, the formation of an independent inquiry, and implementation of universal suffrage.&lt;/p&gt;
+
+&lt;p&gt;While the demonstration in Sydney was largely quiet with no acts of violence, some vocal pro-China supporters amassed and cause police to form a barrier to prevent shoving.&lt;/p&gt;
+
+&lt;p&gt;The group of about 20 mostly Chinese international students had gathered after becoming aware of the presence of pro-Hong Kong demonstrators.&lt;/p&gt;
+
+&lt;p&gt;They spoke to the media giving support for the Hong Kong police, criticised the protest movement for inciting violence, chanted “Hong Kong is a part of China” and sung the Chinese national anthem.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="photojournalism" /><category term="photography" /><summary type="html">Hundreds of people gathered in the centres of Sydney, Melbourne and Adelaide tonight in support of pro-democracy demonstrators in Hong Kong, who continue their months-long protest against the Chinese state’s extradition bill and other infringements on their freedoms.</summary></entry><entry><title type="html">Process: What I learned from making mhl-compare</title><link href="https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/" rel="alternate" type="text/html" title="Process: What I learned from making mhl-compare" /><published>2019-04-20T20:00:00+00:00</published><updated>2019-04-20T20:00:00+00:00</updated><id>https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare</id><content type="html" xml:base="https://sebreategui.com/post/2019/process-what-i-learned-from-making-mhl-compare/">&lt;p&gt;It’s a command line utility that when given two MHL files, will tell you the differences between the two.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-mhl-files&quot;&gt;What are MHL files?&lt;/h2&gt;
+
+&lt;p&gt;A media hash list file is a small metadata file that basically contains a unique signature of a given set of media files. If you create an MHL file, you have a point of comparison for those files’ integrity and can clearly see later down the track if the files have been modified, corrupted or made missing, because their original state is recorded and can be compared against later.&lt;/p&gt;
+
+&lt;p&gt;The standard was designed for use in digital cinema, television and other media producing sectors of the industry, by German software company &lt;a href=&quot;https://pomfort.com&quot;&gt;Pomfort&lt;/a&gt;. It is a human-readable XML format and the &lt;a href=&quot;https://mediahashlist.org&quot;&gt;standard is open and available&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A technician who receives a storage card with digital media files, will create copies of those files in multiple locations. Depending on the tool they use, an MHL file can be generated and it will sit inside the same folder as those media files. It’ll be quite small in size, typically a couple of hundred KB.&lt;/p&gt;
+
+&lt;p&gt;Later, when other members of the post-production process begin to get involved and handle the media, they can at anytime compare the media files they have now, to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Checksum&quot;&gt;checksum hashes&lt;/a&gt; preserved inside the MHL file. Comparing is done by one of a few programs that interpret MHL files: Silverstack, &lt;a href=&quot;http://pomfort.com/sealverify/&quot;&gt;SealVerify&lt;/a&gt;, &lt;a href=&quot;https://hedge.video/checkpoint&quot;&gt;Checkpoint&lt;/a&gt; and the basic &lt;a href=&quot;https://mediahashlist.org/reference-implementation/&quot;&gt;MHL reference tool&lt;/a&gt;. The tool will clearly report if any file has changed from what was recorded earlier. Technicians can then take action to cross-check their media files for quality, observe what might have happened or changed, and try to seek another set of copies if available or necessary. At least the fact that there is a modification in the file set will now be made clear to them.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-so-much-concern-over-media-files-suddenly-being-changed&quot;&gt;Why so much concern over media files suddenly being changed?&lt;/h2&gt;
+
+&lt;p&gt;There are many opportunities for files to be modified without the user even knowing. Discovering the existence of file integrity issues or accidental modifications is difficult to do when files are just simply stored as files in a file system, and nothing more than macOS Finder is used.&lt;/p&gt;
+
+&lt;p&gt;If media is changed from its original state, it may have actually become damaged and become unreadable (like broken or corrupt files) which are of course unusable. If they are modified inadvertently, their use in the later stages of post-production is compromised because they may be treated differently by different programs.&lt;/p&gt;
+
+&lt;p&gt;Some examples:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adobe Prelude has been caught out modifying metadata directly inside QuickTime files&lt;/li&gt;
+  &lt;li&gt;Adobe Bridge will modify metadata when you change values in its Metadata column&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mhl-compare&quot;&gt;mhl-compare&lt;/h2&gt;
+
+&lt;p&gt;How does mhl-compare work?&lt;/p&gt;
+
+&lt;p&gt;It was written as a quick-run script in Python, but as I got further into the concept, it branched out into a command-line utility.&lt;/p&gt;
+
+&lt;p&gt;You give it two MHL files and it reads them, works with the described list of media within, compares each media file’s filename, path, size, hash and modified-date strings, and reports to the user a variety of different outcomes, like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A media file has been modified&lt;/li&gt;
+  &lt;li&gt;A media file has had its name changed, but its content is the same (hash is the same)&lt;/li&gt;
+  &lt;li&gt;A media file exists in both lists, but doesn’t have comparable hashes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------
+mhl-compare (v0.3) (Python) (Author: Sebastian Reategui) (MIT License)
+
+1st MHL file: samples/a01.mhl
+              22 files
+              1.7 GiB (1845943311 bytes)
+2nd MHL file: samples/a02.mhl
+              20 files
+              1.3 GiB (1377904103 bytes)
+
+Observations:
+    19 files matched, but with differences in name, directory or modification date
+    2 files had different hashes. The files were likely different at the time the MHLs were generated
+    1 file was present only in one MHL or the other
+    1 file was a duplicate, as it had the same hash as another file
+
+    Run the check again with --info to view details.
+--------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I chose to make the default printed output to be brief and short, only a tally-number list of what’s different, so you can quickly make a conclusion from it. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--verbose&lt;/code&gt; option exists to actually list the files and show in detail what attributes are different.&lt;/p&gt;
+
+&lt;h2 id=&quot;download-mhl-compare&quot;&gt;Download mhl-compare&lt;/h2&gt;
+
+&lt;p&gt;You can find the latest binary for Mac, and the source code at the &lt;a href=&quot;https://github.com/seb26/mhl-compare&quot;&gt;repository on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;techniques-learned-in-python&quot;&gt;Techniques learned in Python&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Parsing XML files&lt;/li&gt;
+  &lt;li&gt;Traversing a dictionary structure: dealing with when keys don’t exist, or when the structure of the dictionary is different to what you are expecting&lt;/li&gt;
+  &lt;li&gt;Delta and differences&lt;/li&gt;
+  &lt;li&gt;Objects and classes
+    &lt;ul&gt;
+      &lt;li&gt;Hashing the objects and changing how they are hashed, affecting comparisons made between&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;future-plans&quot;&gt;Future plans&lt;/h2&gt;
+
+&lt;p&gt;I now have plans to make a general MHL tool (perhaps called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mhltool&lt;/code&gt;) with my own implementation for creating and verifying MHL files against the real file sets, but with also the added feature of being able to supplement MHL files with more data and to add additional hashes.&lt;/p&gt;
+
+&lt;p&gt;For example, ShotPut Pro allows for hash creation with XXHash and MD5, but not both at the same time. XXHash is substantially faster for most transfers (depending on the hardware) so that is the best choice for time-strict data dumping on set rather than MD5. However, many post houses still prefer to work with MD5 anyway. So currently, after the initial copy is run with ShotPut I have to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;md5deep&lt;/code&gt; on the directory and generate a separate md5 file there. Now that produces two checksum files. Perhaps it may be useful to be able to update an MHL file with additional hashes to describe its files. Before committing those new hashes to the list, the program would need to verify that the real file set does indeed match the existing hashes in the list. Otherwise we may have a case of file A with the XXhash (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sd8f97sds&lt;/code&gt;) recorded at the time of copy, but with differences in the file now (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asda89sd&lt;/code&gt;). If we make a new MD5 sum of this file, it won’t be recognisable and both will be treated as signatures of the file despite being signatures of literally different states.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="programming" /><category term="data_management" /><category term="data_wrangling" /><summary type="html">It’s a command line utility that when given two MHL files, will tell you the differences between the two.</summary></entry><entry><title type="html">In photos: Congestion packs out stations across Bogotá’s mass transit system</title><link href="https://sebreategui.com/post/2019/in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system/" rel="alternate" type="text/html" title="In photos: Congestion packs out stations across Bogotá’s mass transit system" /><published>2019-03-21T20:00:00+00:00</published><updated>2019-03-21T20:00:00+00:00</updated><id>https://sebreategui.com/post/2019/in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system</id><content type="html" xml:base="https://sebreategui.com/post/2019/in-photos-congestion-packs-out-stations-across-bogotas-mass-transit-system/"></content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="photojournalism" /><category term="photography" /><summary type="html"></summary></entry><entry><title type="html">In photos: Hellen Alvarado</title><link href="https://sebreategui.com/post/2019/in-photos-hellen-alvarado/" rel="alternate" type="text/html" title="In photos: Hellen Alvarado" /><published>2019-03-21T05:00:00+00:00</published><updated>2019-03-21T05:00:00+00:00</updated><id>https://sebreategui.com/post/2019/in-photos-hellen-alvarado</id><content type="html" xml:base="https://sebreategui.com/post/2019/in-photos-hellen-alvarado/">&lt;p&gt;An experiment with Hellen Alvarado.&lt;/p&gt;
+
+&lt;p&gt;The creative restriction that I have always imposed is &lt;em&gt;natural lighting&lt;/em&gt;, although I’d love to experiment with the myriad of equipment available as off-camera flash in the near future.&lt;/p&gt;
+
+&lt;p&gt;We trialled two outfits with distinct styles and they illustrate her poise and nature differently.&lt;/p&gt;
+
+&lt;p&gt;I want to keep working on angles that are less geometrically stable and straight, and deviate from the norm a bit more.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="photography" /><category term="Fashion" /><summary type="html">An experiment with Hellen Alvarado.</summary></entry><entry><title type="html">In photos: Women march in Bogotá, calling for an end to femicide on International Womens Day</title><link href="https://sebreategui.com/post/2019/in-photos-women-march-in-bogota-calling-for-an-end-to-femicide-on-international-womens-day/" rel="alternate" type="text/html" title="In photos: Women march in Bogotá, calling for an end to femicide on International Womens Day" /><published>2019-03-09T16:00:00+00:00</published><updated>2019-03-09T16:00:00+00:00</updated><id>https://sebreategui.com/post/2019/in-photos-women-march-in-bogota-calling-for-an-end-to-femicide-on-international-womens-day</id><content type="html" xml:base="https://sebreategui.com/post/2019/in-photos-women-march-in-bogota-calling-for-an-end-to-femicide-on-international-womens-day/"></content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="photojournalism" /><category term="photography" /><summary type="html"></summary></entry><entry><title type="html">Process: how I edited three short films at the same time</title><link href="https://sebreategui.com/post/2019/process-how-i-edited-three-short-films-at-the-same-time/" rel="alternate" type="text/html" title="Process: how I edited three short films at the same time" /><published>2019-02-25T22:00:00+00:00</published><updated>2019-02-25T22:00:00+00:00</updated><id>https://sebreategui.com/post/2019/process-how-i-edited-three-short-films-at-the-same-time</id><content type="html" xml:base="https://sebreategui.com/post/2019/process-how-i-edited-three-short-films-at-the-same-time/">&lt;p&gt;The first time I found myself in front of a program resembling a non-linear editor, the year was 2005 and its name was Windows Movie Maker.&lt;/p&gt;
+
+&lt;p&gt;Flash forward to the present and I now use more modern software, and have managed to cut three short films in the space of three months.&lt;/p&gt;
+
+&lt;p&gt;In this post I detail my workflow, the creative process in assembling the story of each, working with directors, and the boatload of visual effects work I also performed on one of the shorts.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this can give you some insight into how manage your own technical workflow, and what to pay attention to when constructing stories.&lt;/p&gt;
+
+&lt;h3 id=&quot;contents&quot;&gt;Contents&lt;/h3&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#contents&quot; id=&quot;markdown-toc-contents&quot;&gt;Contents&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#meet-the-films&quot; id=&quot;markdown-toc-meet-the-films&quot;&gt;Meet the films&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#maai-my-aaji-and-i&quot; id=&quot;markdown-toc-maai-my-aaji-and-i&quot;&gt;MAAI: My Aaji and I&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tnc-the-next-cycle&quot; id=&quot;markdown-toc-tnc-the-next-cycle&quot;&gt;TNC: The Next Cycle&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ahtc-the-torchlight-collective&quot; id=&quot;markdown-toc-ahtc-the-torchlight-collective&quot;&gt;AHTC: The Torchlight Collective&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#editing&quot; id=&quot;markdown-toc-editing&quot;&gt;Editing&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-did-you-identify-what-your-priorities-in-storytelling-were&quot; id=&quot;markdown-toc-how-did-you-identify-what-your-priorities-in-storytelling-were&quot;&gt;How did you identify what your priorities in storytelling were?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-editing-styles-did-you-use&quot; id=&quot;markdown-toc-what-editing-styles-did-you-use&quot;&gt;What editing styles did you use?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-challenges-did-you-come-up-against-provide-a-non-software-related-answer&quot; id=&quot;markdown-toc-what-challenges-did-you-come-up-against-provide-a-non-software-related-answer&quot;&gt;What challenges did you come up against? Provide a non-software related answer.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-did-you-balance-the-directors-vision-with-your-own-vision&quot; id=&quot;markdown-toc-how-did-you-balance-the-directors-vision-with-your-own-vision&quot;&gt;How did you balance the director’s vision with your own vision?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#workflow&quot; id=&quot;markdown-toc-workflow&quot;&gt;Workflow&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-did-your-organise-the-material&quot; id=&quot;markdown-toc-how-did-your-organise-the-material&quot;&gt;How did your organise the material?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-strategy-did-you-have-to-balance-3-projects&quot; id=&quot;markdown-toc-what-strategy-did-you-have-to-balance-3-projects&quot;&gt;What strategy did you have to balance 3 projects?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#visual-effects&quot; id=&quot;markdown-toc-visual-effects&quot;&gt;Visual effects&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-were-the-goals-of-visual-effects&quot; id=&quot;markdown-toc-what-were-the-goals-of-visual-effects&quot;&gt;What were the goals of visual effects?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-kind-of-planning-went-into-them&quot; id=&quot;markdown-toc-what-kind-of-planning-went-into-them&quot;&gt;What kind of planning went into them?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-resources-or-materials-did-you-use-like-3d-models-original-drawings-or-additional-shots&quot; id=&quot;markdown-toc-what-resources-or-materials-did-you-use-like-3d-models-original-drawings-or-additional-shots&quot;&gt;What resources or materials did you use, like 3D models, original drawings or additional shots?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-did-you-manage-integrate-the-visual-effects-with-the-rest-of-the-film&quot; id=&quot;markdown-toc-how-did-you-manage-integrate-the-visual-effects-with-the-rest-of-the-film&quot;&gt;How did you manage integrate the visual effects with the rest of the film?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#did-the-other-two-films-maai--ahtc-use-visual-effects&quot; id=&quot;markdown-toc-did-the-other-two-films-maai--ahtc-use-visual-effects&quot;&gt;Did the other two films (MAAI &amp;amp; AHTC) use visual effects?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lessons&quot; id=&quot;markdown-toc-lessons&quot;&gt;Lessons&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-were-the-main-lessons-learned-across-all-projects&quot; id=&quot;markdown-toc-what-were-the-main-lessons-learned-across-all-projects&quot;&gt;What were the main lessons learned across all projects?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-a-takeaway-piece-of-advice&quot; id=&quot;markdown-toc-what-is-a-takeaway-piece-of-advice&quot;&gt;What is a takeaway piece of advice?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#whats-next&quot; id=&quot;markdown-toc-whats-next&quot;&gt;What’s next?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#where-can-we-watch-the-films&quot; id=&quot;markdown-toc-where-can-we-watch-the-films&quot;&gt;Where can we watch the films?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;meet-the-films&quot;&gt;Meet the films&lt;/h3&gt;
+
+&lt;h5 id=&quot;maai-my-aaji-and-i&quot;&gt;MAAI: My Aaji and I&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_9.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_9.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_10.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_10.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_11.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_11.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A granddaughter is plagued with serious regret for not realising the consequences of her teenage angst.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Short, drama, 10 min 47 s&lt;/li&gt;
+  &lt;li&gt;Location: Penrith, NSW&lt;/li&gt;
+  &lt;li&gt;Shoot finish: 6 January 2019&lt;/li&gt;
+  &lt;li&gt;Picture lock achieved: 29 January 2019 (23 days)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Key crew&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Director: Varuna Naicker&lt;/li&gt;
+  &lt;li&gt;Producer: Marija Nikolic&lt;/li&gt;
+  &lt;li&gt;Cinematographer: Vivian Tang&lt;/li&gt;
+  &lt;li&gt;Cast: Shereen Nand, Uma Kali Shakti, Raj Bajpai&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Technical detail&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Camera: Blackmagic Ursa Mini 4.6K&lt;/li&gt;
+  &lt;li&gt;Captured in: 4096 x 2160, 25 fps, ProRes 422 HQ&lt;/li&gt;
+  &lt;li&gt;Delivery: 1920 x 1080, 25 fps, 2.35:1 Letterbox&lt;/li&gt;
+  &lt;li&gt;Editing: Adobe Premiere Pro CC 2019&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;tnc-the-next-cycle&quot;&gt;TNC: The Next Cycle&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_9.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-tnc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_9.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_7.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-tnc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_7.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_12.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-tnc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_12.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Body transfers, hologram, gunshots and blood. A cyberpunk thriller.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Short, sci-fi, 11 min 2 s&lt;/li&gt;
+  &lt;li&gt;Location: Ultimo, NSW&lt;/li&gt;
+  &lt;li&gt;Shoot finish: 11 January 2019&lt;/li&gt;
+  &lt;li&gt;Picture lock: 31 January 2019 (20 days)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Key crew&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Director: Harri Tran&lt;/li&gt;
+  &lt;li&gt;Producer: Alexandra Patrick-Dunn&lt;/li&gt;
+  &lt;li&gt;Cinematographer: Andreus ten Brink&lt;/li&gt;
+  &lt;li&gt;Sound Designer: Furqan Cansiz&lt;/li&gt;
+  &lt;li&gt;Cast: Talita Mollerup-Degn, Jierlyn Gregg, Jasper Bruce&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Technical detail&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Camera: Blackmagic Ursa Mini 4.6K&lt;/li&gt;
+  &lt;li&gt;Captured in: 2048 x 1152, 50 fps, ProRes 4444&lt;/li&gt;
+  &lt;li&gt;Delivery: 1920 x 1080, 25 fps, 2.35:1 Letterbox&lt;/li&gt;
+  &lt;li&gt;Editing: Adobe Premiere Pro CC 2019&lt;/li&gt;
+  &lt;li&gt;Visual Effects: After Effects CC 2019&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;ahtc-the-torchlight-collective&quot;&gt;AHTC: The Torchlight Collective&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_3.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-ahtc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_3.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_5.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-ahtc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_5.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_6.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-ahtc&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_6.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A comedy channeling &lt;em&gt;The Office&lt;/em&gt; and &lt;em&gt;Rostered On&lt;/em&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Short, mockumentary, 12 min&lt;/li&gt;
+  &lt;li&gt;Location: Ultimo, NSW&lt;/li&gt;
+  &lt;li&gt;Shoot finish: 22 January 2019&lt;/li&gt;
+  &lt;li&gt;Picture lock: 5 February 2019 (14 days)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Key crew&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Director, Producer: Ashleigh Hales&lt;/li&gt;
+  &lt;li&gt;Cinematographer: Benjamin Gageler&lt;/li&gt;
+  &lt;li&gt;Cast: Eli Gallagher, Adam Bowes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Technical detail&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Camera: Sony FS5&lt;/li&gt;
+  &lt;li&gt;Captured in: 4096 x 2160, 25 fps, Atomos Shogun, ProRes 422 HQ&lt;/li&gt;
+  &lt;li&gt;Delivery: 1920 x 1080, 25 fps, 16:9&lt;/li&gt;
+  &lt;li&gt;Editing: Adobe Premiere Pro CC 2019&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;editing&quot;&gt;Editing&lt;/h3&gt;
+
+&lt;h5 id=&quot;how-did-you-identify-what-your-priorities-in-storytelling-were&quot;&gt;How did you identify what your priorities in storytelling were?&lt;/h5&gt;
+
+&lt;p&gt;In &lt;em&gt;My Aaji and I&lt;/em&gt; (MAAI), it became clear that the change in Devika was what we wanted to show the most. Her grandmother and the associated backstory only are really revealed as a kind of catalyst to stimulate change within Devika’s self. Realising that made it easier to navigate the film’s central interview scene, a scene which had previously been scripted to delve very deep into the grandmother’s life story. The exposition given by the grandmother was enlightening but likely would have tested the audience’s patience.&lt;/p&gt;
+
+&lt;p&gt;In &lt;em&gt;The Torchlight Collective&lt;/em&gt; (AHTC), the narrative priorities were not clear until the final cut stage. It took a few rounds of outside feedback to hone in on the idea that Tom being hired as a new usher was the only story thread that was relevant to our viewers. Thankfully it was still possible to explore the personalities of a few other characters (Ronald, Sam) without straying too far from the drama. The pitiful world of Larry needed very little touching. His character shone through in the footage and he guides the film from the first to the final laugh.&lt;/p&gt;
+
+&lt;p&gt;Editing &lt;em&gt;The Next Cycle&lt;/em&gt; (TNC) posed a greater challenge for storytelling. The film was shot so tightly on coverage (very limited takes) meaning that the final product thankfully resembled a tight version of the script. My first draft cuts tried to protect the pace of moments like Mia’s city car ride because they provided the audience with background to understand the rest of the world. Much of the film’s other slow, laborious moments permit the viewer to go searching with their eyes to take on visual cues for what is happening. Even in spite of my attempts to mediate the story for viewers unfamiliar with the universe, TNC in its final format seems to largely follow what was penned to paper originally by Harri Tran. Comprehension of the body transfers and general plot seems to be a secondary task that only some viewers seemed to be able to grasp. Like he remarked to me on his first few watchings of &lt;em&gt;Blade Runner&lt;/em&gt;, it may take multiple watchings to understand, and it certainly did for me. The passion each character has for each other at various moments, shown through their intense stares and glances, seems to stand out irrespective of the plot, or of the particular bodies they are occupying at a given moment.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-editing-styles-did-you-use&quot;&gt;What editing styles did you use?&lt;/h5&gt;
+
+&lt;p&gt;Despite hailing from three distinct genres, the films all employed a fairly regular narrative style. Each story had its own creative demands, but they held in common a certain battle against the clock to engage the audience in a concise way, running between 10 and 12 minutes long each.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-challenges-did-you-come-up-against-provide-a-non-software-related-answer&quot;&gt;What challenges did you come up against? Provide a non-software related answer.&lt;/h5&gt;
+
+&lt;p&gt;Continuity recording on set, and the need to delete significant parts of the script.&lt;/p&gt;
+
+&lt;p&gt;When we speak about coverage, we refer to the lines spoken by characters, but also to the repetition of their body movements, eye looks and pauses in speech. It is disjointing trying to piece together good performances when the performers change their movements from one shot to the next. It means that certain shots or takes cannot be neatly stuck together and give the illusion that it is one space and time. Each film suffered from its own suite of issues along these lines of continuity, although MAAI definitely broke the most rules.&lt;/p&gt;
+
+&lt;p&gt;MAAI saw its five-page interview scene reduced to essentially one to two minutes of screentime. It involved very careful piecing and slicing to put lines together that were not originally said together, separated by minutes of other diversions and topics in between. Devika’s reaction shots as well as B-roll footage of the pair interacting with photos helped cover these spots.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_5.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_5.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;To map exactly what dialogue lines were covered and in which shots, I printed out a modified version of the script, pencilling in lines to show where takes started and stopped. Looking over all the pages, it was easy to see which moments had more coverage than others.&lt;/p&gt;
+
+&lt;h5 id=&quot;how-did-you-balance-the-directors-vision-with-your-own-vision&quot;&gt;How did you balance the director’s vision with your own vision?&lt;/h5&gt;
+
+&lt;p&gt;It was initially tough. For MAAI, I produced an assembly of all scenes prior to meeting up with director Varuna for a session. It gave me the space to work out the kinks of the footage, knowing the coverage and what could be combined and what couldn’t, meaning when she asked, I could be prepared. Editing sessions in person revealed many of Varuna’s ideas and visions, although at times it was tricky to know how to transition them into actual editing decisions. I was also at times reluctant to take on suggestions. “&lt;em&gt;Why don’t we try extending that first take?&lt;/em&gt;”, might have been said by Varuna, with me knowing that extending it any further would reveal a mis-stepped line or some other unusable moment. “No that won’t work”, I might have replied. A now savvier me would know a better response: to simply try it. Sometimes you can only find out if a particular cut decision works after doing so. I then decided to be more open and collaborative during the other editing sessions going forward, and it paid off, as Varuna and I felt more comfortable with each other, having the freedom to fail. We were able to balance the best of the footage we had to work with.&lt;/p&gt;
+
+&lt;p&gt;With AHTC, I took a different initial route and produced the assembly from scratch with Ashleigh by my side. I anticipated that I wouldn’t be able to figure out her vision immediately and wanted to ease into it after first working with her. She knew her footage well and could remember where certain coughs, looks or side comments were made and in which takes. The priorities as we cut each scene became the looks, the jokes and continuity of movements; but also, the importance of just bashing a draft out, and getting it out there in order, and avoiding agonising over the details too early.&lt;/p&gt;
+
+&lt;p&gt;We did have occasional differences, mainly in relation to the side characters. The script had been crafted with an ensemble cast in mind, with the pilot supposed to plant the seeds for further episodes. Supporting characters in shows like &lt;em&gt;The Office&lt;/em&gt; build the story environment and add realism, allowing viewers to discover that all workers in the company have their own element of ridiculousness. Ultimately as a short film, some supporting characters tended to distract from the narrative goal. They were generally other young ushers who spoke up to the camera in talking heads, with quirky bites demonstrating their personality. It felt brutal for Ashleigh to cut them but there was clear value in removing them as the story became punchier and more intelligible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_4.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-directors&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_4.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;With director Varuna Naicker. We were actually a boss team. (Photo: Sophia McGregor)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_6.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-directors&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_6.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;With director Harri Tran. (Photo: Stefan Varvaressos-Abdi)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-directors&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;With director Ashleigh Hales.&lt;/p&gt;
+
+&lt;h3 id=&quot;workflow&quot;&gt;Workflow&lt;/h3&gt;
+
+&lt;h5 id=&quot;how-did-your-organise-the-material&quot;&gt;How did your organise the material?&lt;/h5&gt;
+
+&lt;p&gt;I created merged clips according to scene and their shot names.&lt;/p&gt;
+
+&lt;p&gt;I preferred the Merged Clips workflow compared to Multicam or other methods in PrPro. I created a single sequence for a whole day’s footage, inserted all video clips, inserted all audio, broke them up to add space in between, and used Premiere’s Synchronise with waveform. Then, after trimming ends, I created a Merged Clip named after the shot name on the slate. A Wacom tablet, a consistent mouse and hand position, and keyboard shortcuts for Merge, Link and Synchronise came in handy and turned a repetitive task into quite light work.&lt;/p&gt;
+
+&lt;p&gt;Sofi Marshall &lt;a href=&quot;https://blog.frame.io/2018/05/14/premiere-batch-syncing/&quot;&gt;beautifully outlines this particular workflow&lt;/a&gt; on Frame.io, but fundamentally it differs as it makes use of Multi-Camera Clips to automate the audio sync process, which was otherwise done by hand by me. Automated audio syncing was not possible on these projects as none of them used timecode sync for budgetary reasons: student films though, who even knows what those long flashing numbers mean!&lt;/p&gt;
+
+&lt;p&gt;The act of sorting clips into scene bins reveals an almost clean, perfect chronological rendition of the content of the film. Scrubbing through the clips once they are in scene view, for me became like rapidly previewing the story, a stark difference to sorting clips by their arbitrary recording time or day of shoot.&lt;/p&gt;
+
+&lt;p&gt;Merged clip names followed the format “2A/01 (B001/L002)”: Scene 2, Shot 2A, Take 01, Boom audio 001, Lapel audio 002. The addition of audio track numbers meant it was easy for the sound editors to refer to original source audio clips when required. The tape name and Daily Roll columns made it easier to refer to the original source video, and to distinguish between clips that are part of the same scene, but from completely different days.&lt;/p&gt;
+
+&lt;p&gt;I later discovered when delivering to sound editors that the forward slash was not a good choice for clip names: files produced by Premiere’s Send to Audition cut off all characters preceding the slash (turning clip names like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2A/01 (B001/L002)&lt;/code&gt; into file names like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;L002 (1).wav&lt;/code&gt;, which was just awful). Lesson learned, avoid slashes, which is an already obvious rule for filesystems everywhere but didn’t seem like it would be a problem for PrPro clip names. Perhaps &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2A-01&lt;/code&gt; would be sufficient, and storing the associated boom and lapel numbers in a different way (like metadata fields, hopefully native WAV metadata fields rather than XMP so that they can appear in DAWs).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_10.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-organisation&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_10.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Syncing video and audio directly in the timeline.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_11.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-organisation&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_11.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;The resulting merged clips with their name format and their new home in Scene bins.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_6.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-organisation&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-AHTC_6.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Brief look at the sound spreadsheet.&lt;/p&gt;
+
+&lt;p&gt;While watching back all the rushes or syncing, I’d add markers after action is called, and for any moment where action stops or something blocks the take from being usable. This was invaluable on longer recordings when needing to search for lines or coverage quickly.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-markers&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Markers to indicate unusable moments in red.&lt;/p&gt;
+
+&lt;p&gt;I gave each revision of the film during editing its own number. After producing Edit 1 and showing it to a director, the sequence was duplicated and I then made changes to Edit 2. That way, Edit 1 was preserved and could be returned to at any time. Similarly, Premiere Pro project files were incremented every few hours or so and at least once per day, so that moving between computers wouldn’t introduce overwriting problems, or destroy the order of clips you made an hour ago in a previous version.&lt;/p&gt;
+
+&lt;p&gt;Moving between my workspace at home and the labs at UTS was an exercise that was strictly controlled by the compatibility police. Premiere Pro by design is not backwards compatible and my CC 2019 project files were not directly editable by CC 2018 on UTS workstations. &lt;a href=&quot;http://www.joshcluderay.com/downgrade-premiere-project-converter/&quot;&gt;Josh Cluderay’s downgrader tool&lt;/a&gt; came in handy and the simplicity of the project structure meant that there were no major hurdles in converting. Relinking media was simple as for each clip, PR can maintain two media paths for OS X and Windows simulaneously.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-strategy-did-you-have-to-balance-3-projects&quot;&gt;What strategy did you have to balance 3 projects?&lt;/h5&gt;
+
+&lt;p&gt;Clear dates and delegation. But it was generally not destined to turn out a time management failure because I already knew the shoots were taking place at different points in the summer.&lt;/p&gt;
+
+&lt;p&gt;I set an editing ‘goal’ date and a picture lock date. The editing ‘goal’ would be the day we anticipated having a complete version of the story in a shape we are happy with. We met the editing goal on all three projects. Staying on time in editing allowed for the other stages of post-production to take place without intense pressure. Sound design on &lt;em&gt;The Next Cycle&lt;/em&gt; for example needed three weeks itself and was still largely unfinished even by the time of screening.&lt;/p&gt;
+
+&lt;h3 id=&quot;visual-effects&quot;&gt;Visual effects&lt;/h3&gt;
+
+&lt;h5 id=&quot;what-were-the-goals-of-visual-effects&quot;&gt;What were the goals of visual effects?&lt;/h5&gt;
+
+&lt;p&gt;They were supposed to augment the virtual environment Harri was trying to create. They also served critical plot cues and indicated to the audience what part of the story/time continuum we were actually in. They were supposed to be believeable but simultaneously like part of a futuristic world.&lt;/p&gt;
+
+&lt;p&gt;Elements: hologram interfaces, computer screens, glowing eyes and building augmentation.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-kind-of-planning-went-into-them&quot;&gt;What kind of planning went into them?&lt;/h5&gt;
+
+&lt;p&gt;The elements were included in all of Harri’s early storyboard drawings. In December, we produced a spreadsheet outlining 19 shots that included one or more of the above elements. He knew to create a believable hologram emanating from a character’s wrist, some kind of practical light was needed during the recording. His research into motion graphics also prompted us to use tracking dots as frequently as possible. Although it turned out they were unnecessary in a lot of places and just regular tracking of moving objects or manual rotoscoping by hand were required.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_14.png&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-organisation-vfx&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_14.png&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;A collaborative spreadsheet to manage the various VFX final products.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-resources-or-materials-did-you-use-like-3d-models-original-drawings-or-additional-shots&quot;&gt;What resources or materials did you use, like 3D models, original drawings or additional shots?&lt;/h5&gt;
+
+&lt;p&gt;For the computer interfaces, I made use of a lot of Creative Commons-licensed and public domain imagery from Wikimedia Commons. Images of brains and lungs were taken from medical diagrams and illustrations, with care to choose designs that have sharp contrast, clear outlines and a particular visual style that is not cartoony or modern. Curves, invert, glow and opacity blend modes gave the images realism when composited on top and around the actual video plates.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_1.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-1&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_1.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_12.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-1&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_12.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-1&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;The stages of opacity mode blending for an image of a brain. (Diagram credit: &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:F._Ruysch,_Epistola_anatomica,_problematica_Wellcome_L0032184.jpg&quot;&gt;Frederik Ruysch, 1744&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_8.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-2&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_8.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_5.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-2&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_5.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Opacity mode blending for the lung graphic during the cerebral transfer scene, combined with particle effect stock videos. (Diagram credit: &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Thoracic_anatomy.jpg&quot;&gt;Patrick J. Lynch, 1987-2000&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;The cerebral transfer interface, which is the computer program running in the background performing the body transfer, was one of the most critical visual effects because it is presented full screen to the audience. I had at least two iterations of the design after I realised I could play with the idea of surrealist medical technology and link it symbolically with the physical art direction (the various cords and wires surrounding Adam), different to a basic, nondescript progress bar and a generic computer ‘hacker’ interface.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_13.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-3&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_13.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;The first graphic interface I produced, which almost became the locked off final shot before I realised I could do better.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_2.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-3&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_2.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_3.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-tnc-vfx-3&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_3.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Drafts for a new design, more medical and clinical, involving a database but also elements of body organs, heart beats and clearer key text elements that aren’t competing for attention.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_3.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-film-thumbs-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-TNC_Screencap_3.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;The final interface created from the skeleton drafts.&lt;/p&gt;
+
+&lt;div style=&quot;position:relative; padding-bottom:calc(56.25% + 44px)&quot;&gt;
+  &lt;iframe src=&quot;https://gfycat.com/ifr/RemarkableDazzlingBichonfrise&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;position:absolute;top:0;left:0;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;how-did-you-manage-integrate-the-visual-effects-with-the-rest-of-the-film&quot;&gt;How did you manage integrate the visual effects with the rest of the film?&lt;/h5&gt;
+
+&lt;p&gt;The visual effects shots begun in Premiere, selecting the clips and replacing them with After Effects compositions. This meant the exact portions of video used by the picture lock would appear as own sequences. Then, compositing and masking began and eventually the compositions were exported out as ProRes 4444 files. I brought them back into the edit, placing them over the top on a separate video layer, as they were exactly the correct duration.&lt;/p&gt;
+
+&lt;p&gt;Dynamic linking was impossible as I worked across my own machine and UTS workstations. Again, CC 2018 and CC 2019 act like estranged, identical twins separated by some kind of family dispute who refuse to recognise each other’s files. This in spite of minute differences in the way they structure them. Rendering out compositions as ProRes 4444 files became the way to go, but involved a fair bit of manual labor. The VFX spreadsheet having file names, timecodes and description of Practical &amp;amp; digital effects helped me understand and determine exactly what needed to be done to a particular shot. For the final export, After Effects’ command-line rendering tool &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aerender.exe&lt;/code&gt; and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bat&lt;/code&gt; file helped automate the task. Colour grading of the final clips in Resolve performed by colourist Christopher Kolkaris seemed to provide a lot of visual authenticity to most shots.&lt;/p&gt;
+
+&lt;h5 id=&quot;did-the-other-two-films-maai--ahtc-use-visual-effects&quot;&gt;Did the other two films (MAAI &amp;amp; AHTC) use visual effects?&lt;/h5&gt;
+
+&lt;p&gt;Yes, but not to the same extent. In AHTC, I edited out a camera lens smudge, and added a vignette to Larry’s fingerpuppet torchlight. In MAAI, I masked out the appearance of a boom mic several times, and combined a shot of Devika and her father to perfect the continuity. The method is simple and can be achieved in either PR or AE: duplicate the video clip, mask out only the section you want to use (Devika’s side, camera left), feather that mask, then watch carefully to ensure it flies by unnoticed with no issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_6.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-vfx-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_6.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;(1) A combined example: both shots are overlayed on top. The original shows Devika has already entered and sat on the step. However, her seated position is too early in terms of continuity.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_7.jpg&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;gallery-vfx-maai&quot;&gt;
+  &lt;img src=&quot;/post/img/20190226/sebastian-reategui-editing-process-MAAI_7.jpg&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;(2) The final corrected shot: Devika enters while her dad is still speaking.&lt;/p&gt;
+
+&lt;h3 id=&quot;lessons&quot;&gt;Lessons&lt;/h3&gt;
+
+&lt;h5 id=&quot;what-were-the-main-lessons-learned-across-all-projects&quot;&gt;What were the main lessons learned across all projects?&lt;/h5&gt;
+
+&lt;p&gt;Audiences seem to care substantially more about the development of a character than many other considerations. Avoid attempting to develop too many characters at once if it diminishes how much we learn about one.&lt;/p&gt;
+
+&lt;p&gt;Camera tests and equipment familiarity prior to the actual shoot will save time on the set because you will not have to actively learn how to use them. Camera tests on TNC would have revealed that 50 fps was wholly unnecessary and that 4K or RAW would have been fantastic; the reverse of what we decided in pre-production. Even if most AE compositions could hypothetically be created from 1080P video clips, 4K originals would have been helpful to assist stabilisation, reframing and the accuracy of tracking. RAW originals would have helped correct the mistakes in camera, especially since &lt;a href=&quot;https://www.blackmagicdesign.com/au/products/blackmagicursaminipro/blackmagicraw&quot;&gt;Blackmagic’s new BRAW codec&lt;/a&gt; was available to us, which provides RAW at far more economical file sizes.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-is-a-takeaway-piece-of-advice&quot;&gt;What is a takeaway piece of advice?&lt;/h5&gt;
+
+&lt;p&gt;Limit yourself and delegate tasks. If you feel you are the only person capable of performing a specific task, you will end up better off if you take time out to teach that task to someone else.&lt;/p&gt;
+
+&lt;p&gt;By the evening that AHTC finished shooting, I was fiercely adjusting the picture lock for MAAI and TNC, and knew it wouldn’t have been productive to sit through two days of footage from a completely unrelated project and start syncing it. I brought on second-year UTS student Zac Agius, spending a couple of hours with him on the process of syncing and labelling. It took a fair bit of theory and teaching about what sync sound is but because it contextualised each step, he was able to work independently and finish the rest without much guidance. A hands-off approach to teaching — using words and occasional pointing instead of clicking the mouse yourself — was beneficial and helped build muscle memory.&lt;/p&gt;
+
+&lt;p&gt;There were no interested parties in filling the role of data wrangler on set for MAAI. I wrote a PDF guide with screenshots and provided guidance to the producer Marija Nikolic and her co-producer Connor McGlynn. They both executed wrangling flawlessly, using &lt;a href=&quot;https://hedge.video&quot;&gt;Hedge&lt;/a&gt;. This saved me from being on set and was clearly worth the time spent on educating.&lt;/p&gt;
+
+&lt;div style=&quot;position:relative; padding-bottom:calc(56.60% + 44px)&quot;&gt;&lt;iframe src=&quot;https://gfycat.com/ifr/TangibleCanineGoldfinch&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;position:absolute;top:0;left:0;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;whats-next&quot;&gt;What’s next?&lt;/h5&gt;
+
+&lt;p&gt;While the directors of each film are interested in refining their film further, I’m off on holiday and then beginning work on a TV production as a data wrangler. Stay tuned for some workflow posts and cool tricks about how its multi-camera 4K footage will be handled.&lt;/p&gt;
+
+&lt;h5 id=&quot;where-can-we-watch-the-films&quot;&gt;Where can we watch the films?&lt;/h5&gt;
+
+&lt;p&gt;&lt;em&gt;My Aaji and I&lt;/em&gt; is considering festival routes and options over the next 6-12 months, so there won’t be any public screenings for a while.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The Next Cycle&lt;/em&gt; is &lt;a href=&quot;https://vimeo.com/321158374&quot;&gt;available online now on Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The Torchlight Collective&lt;/em&gt; is a concept episode of a web-series, but remains offline at this time. Episode 2 is under development.&lt;/p&gt;</content><author><name>Sebastian Reategui</name><email>seb.reategui@gmail.com</email></author><category term="workflow" /><category term="filmmaking" /><category term="video_editing" /><category term="visual_effects" /><summary type="html">The first time I found myself in front of a program resembling a non-linear editor, the year was 2005 and its name was Windows Movie Maker.</summary></entry></feed>
