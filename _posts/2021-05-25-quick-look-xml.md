@@ -2,7 +2,7 @@
 title:          "Quickly previewing CDL files in macOS Finder with this QuickLook plugin"
 slug:           quickly-previewing-cdl-files-in-macos-finder-with-this-quicklook-plugin
 date:           20210525T09:00:00+10:00
-dateModified:   20210525T09:00:00+10:00
+dateModified:   20210530T18:00:00+10:00
 description:    |
   description
 
@@ -57,9 +57,9 @@ This is done by adding an extra entry to `LSItemContentTypes` inside `Info.plist
 +        <string>dyn.ah62d4rv4ge80g3dq</string>
 ```
 
-Lecca has welcomed additions of other XML filetypes to the program, so I have emailed him to inform him of the `.cdl` filetype.
+Lecca has welcomed additions of other XML filetypes to the program, but I can't find a working email address for him.
 
-But I otherwise needed this functionality immediately, so I made the change myself first.
+And I otherwise needed the functionality immediately, so I made the change myself first.
 
 I also include it for for download below, with links and credit back to Lecca's repo.
 
