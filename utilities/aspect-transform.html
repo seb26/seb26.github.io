@@ -1,0 +1,535 @@
+<html>
+<head>
+  <link href="/css/style.css" rel="stylesheet">
+  <style type="text/css">
+    .input-value-calc {
+      font-size:1.15em;
+      font-weight:bold;
+      text-align:center;
+    }
+    .input-value {
+      font-size:1.15em;
+      font-weight:bold;
+      max-width:100%;
+      padding:.5rem;
+      text-align:center;
+      text-align-last:center;
+    }
+    .input-value::-webkit-outer-spin-button,
+    .input-value::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .input-value-subheader {
+      text-align:center;
+    }
+
+    .inputgroup-lenssqueeze .btn {
+      font-size:.7em;
+    }
+
+    .symbol-separator {
+      --bs-gutter-x:0;
+      --bs-gutter-y:0;
+      align-self:center;
+      text-align:center;
+      font-weight:bold;
+      font-size:1.25em;
+    }
+
+    .obs-value {
+      font-weight:bold;
+    }
+    .obs-value-subheader {
+      font-size:.8em;
+    }
+
+    .basic-list-value {
+      font-size:1.25em;
+      font-weight:bold;
+    }
+
+    .transform-value {
+      font-size:1.25em;
+      font-weight:bold;
+    }
+
+    .disabled {
+      background-color: #e9ecef;
+    }
+
+
+  </style>
+
+</head>
+<body class="">
+  <div class="container">
+  <main>
+    <section class="py-5">
+      <h3>Aspect Transform Tool</h3>
+    </section>
+    <div class="container">
+      <section id="user-define-dimensions">
+        <h5>First, define your image</h5>
+        <div class="row">
+          <div class="col col-lg-6 py-3 bg-light">
+            <h6>Source size</h6>
+            <div class="my-3 small">Width, height and lens squeeze.</div>
+            <div class="input-group mb-3">
+              <input type="number" class="form-control user-input-value" id="sourceWidth" value=4096 aria-label="Source Width">
+              <span class="input-group-text primary">&times;</span>
+              <input type="number" class="form-control user-input-value" id="sourceHeight" value=3024 aria-label="Source Height">
+              <span class="input-group-text primary">@</span>
+              <select class="form-select user-input-value" id="sourceLensSqueeze" style="text-align-last:center;" aria-label="Source Lens Squeeze">
+                <option value=2 selected>2.0&times;</option>
+                <option value=1>1.0&times;</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-6 py-3 bg-light">
+            <h6>Creative aspect ratio</h6>
+            <div class="row align-items-start justify-content-left">
+              <div class="col-3">
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control user-input-value" id="creativeAspectRatio" placeholder=2.39 value="2.39" aria-label="Creative aspect ratio">
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="btn-group creative-aspect-ratio-preset" role="group" aria-label="Creative aspect ratio - preset options">
+                  <div class="button-set-preset btn btn-outline-primary active" data-targetprefix="creativeAspect" data-ratio=2.39>2.39</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="creativeAspect" data-ratio=1.85>1.85</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="creativeAspect" data-ratio=1.78>1.78</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="creativeAspect" data-ratio=1.33>1.33</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="creativeAspect" data-ratio=1.00>1.00</div>
+                </div>
+              </div>
+            </div>
+            <p class="small">
+              Calculations will automatically update as you change them.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="observations">
+        <div class="row">
+          <div class="col col-md-6 my-3 py-3 bg-light">
+            <div class="row align-items-start">
+              <div class="col-4 col-md-4">
+                <div class="obs-value" id="sourceRatio"></div>
+                <div class="obs-value-subheader">Ratio Original</div>
+              </div>
+              <div class="col-4 col-md-4">
+                <div class="obs-value" id="sourceRatioAna"></div>
+                <div class="obs-value-subheader">Ratio Anamorphic</div>
+              </div>
+              <div class="col-4 col-md-4">
+                <div class="obs-value" id="cropFactor"></div>
+                <div class="obs-value-subheader">Factor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="crop-to-creative-aspect-ratio" style="margin-top:2em;">
+        <h5>Crop to your creative aspect ratio</h5>
+        <div class="row">
+          <div class="col col-md-8 py-3 bg-light">
+            <h6>Cropped dimensions</h6>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Cropped at original source size</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="cropOriginalSource"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Cropped at original source size (forced square)</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="cropOriginalSourceForceSquare"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="crop-to-creative-aspect-ratio" style="margin-top:2em;">
+        <h5>Resize to a specified dimension</h5>
+        <div class="row">
+          <div class="col col-md-8 py-3 bg-light">
+            <div class="row">
+              <div class="col-12 col-lg-6">
+                <h6>Project size</h6>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control user-input-value" id="projectWidth" placeholder=3840 value=3840 aria-label="Project Width">
+                  <span class="input-group-text primary">&times;</span>
+                  <input type="number" class="form-control user-input-value" id="projectHeight" placeholder=2160 value=2160 aria-label="Project Height">
+                  <span class="input-group-text primary">=</span>
+                  <div type="number" class="disabled form-control input-value" id="projectRatio" aria-label="Project Ratio"></div>
+                </div>
+                <div class="btn-group project-size-preset" role="group" aria-label="Project size">
+                  <div class="button-set-preset btn btn-outline-primary active" data-targetprefix="project" data-width=3840 data-height=2160>UHD</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="project" data-width=2048 data-height=1080>2K DCI</div>
+                  <div class="button-set-preset btn btn-outline-primary" data-targetprefix="project" data-width=1920 data-height=1080>HD</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-md-8 py-3 bg-light">
+            <h6>Scale the cropped picture to the above dimensions</h6>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Fit by width</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="scaleToProjectDimensionFitWidth"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Fit by height</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="scaleToProjectDimensionFitHeight"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-md-8 py-3 bg-light">
+            <h6 style="margin-bottom:1rem;">Values for DaVinci Resolve</h6>
+            <div class="row">
+              <div class="col-6">
+                <h6>Settings > Input Scaling > Mismatched resolution files</h6>
+              </div>
+              <div class="col-6">
+                <h6>Clip > Input Sizing > Zoom</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Scale entire image to fit (SEITF)</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="resolveInputSizingZoomSEITF"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Scale full frame with crop (SFFWC)</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="resolveInputSizingZoomSFFWC"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Output Sizing > Blanking (Top, Right, Left, Bottom)</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="resolveOutputBlanking"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-8 py-3 bg-light">
+            <h6>Values for Assimilate Scratch</h6>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Framing > Custom > X & Y Scale</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="scratchFramingCustomScale"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Guides > Width & Height</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="scratchGuideDimension"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="basic-list-label">Guides > Position X & Y</div>
+              </div>
+              <div class="col-6">
+                <div class="basic-list-value" id="scratchGuidePosition"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="my-5 pt-5 text-muted text-center" style="font-size:.75rem;">
+        <ul class="list-unstyled">
+          <li>Version: 1.1 (27/06/2021)</li>
+          <li>Developer: Sebastian Reategui</li>
+          <li>License: MIT</li>
+        </ul>
+      </footer>
+
+  </main>
+  </div>
+  <script type="text/javascript">
+    /* Context */
+    var ATT = {};
+    /* User inputted */
+    /* The ID for each HTML box, must match the defined names exactly. */
+    ATT['_user_input_values'] = [
+      { 'value_name': 'sourceWidth', 'type': 'integer' },
+      { 'value_name': 'sourceHeight', 'type': 'integer' },
+      { 'value_name': 'sourceLensSqueeze', 'type': 'decimal' },
+      { 'value_name': 'creativeAspectRatio', 'type': 'ratio' },
+      { 'value_name': 'projectWidth', 'type': 'integer' },
+      { 'value_name': 'projectHeight', 'type': 'integer' },
+    ];
+    /* Calculated values, arithmetic performed by the app. */
+    ATT['_calculated_values'] = [
+      { 'value_name': 'sourceRatio', 'type': 'ratio' },
+      { 'value_name': 'sourceRatioAna', 'type': 'ratio' },
+      { 'value_name': 'projectRatio', 'type': 'ratio' },
+      { 'value_name': 'cropFactor', 'type': 'decimal' },
+      { 'value_name': 'cropOriginalSource', 'type': 'pair', 'round': 'nearestEven' },
+      { 'value_name': 'cropOriginalSourceForceSquare', 'type': 'pair', 'round': 'nearestEven' },
+      { 'value_name': 'scaleToProjectDimensionFitWidth', 'type': 'pair', 'round': 'nearestEven' },
+      { 'value_name': 'scaleToProjectDimensionFitHeight', 'type': 'pair', 'round': 'nearestEven' },
+      { 'value_name': 'resolveInputSizingZoomSEITF', 'type': 'decimal' },
+      { 'value_name': 'resolveInputSizingZoomSFFWC', 'type': 'decimal' },
+      { 'value_name': 'resolveOutputBlanking', 'type': 'coords', 'round': 'standard' },
+      { 'value_name': 'scratchFramingCustomScale', 'type': 'percent' },
+      { 'value_name': 'scratchGuideDimension', 'type': 'coords', 'round': 'nearestEven' },
+      { 'value_name': 'scratchGuidePosition', 'type': 'coords' },
+    ];
+    /* Settings */
+    ATT['_format_decimal_places'] = 4;
+    ATT['_format_decimal_places_percent'] = 3;
+
+    function performCalculations() {
+      /* The arithmetic for the calculations.
+      Requires a value for every user-input value otherwise will return nulls and nans.
+      */
+      ATT.sourceRatio = ATT.sourceWidth / ATT.sourceHeight;
+      ATT.sourceRatioAna = ( ATT.sourceWidth * ATT.sourceLensSqueeze ) / ATT.sourceHeight;
+      ATT.projectRatio = ATT.projectWidth / ATT.projectHeight;
+      ATT.cropFactor = ( (ATT.sourceHeight / ATT.sourceLensSqueeze) * ATT.creativeAspectRatio ) / ATT.sourceWidth;
+
+      if ( ATT.cropFactor > 1 ) {
+        ATT.cropOriginalSource = [
+          ATT.sourceWidth,
+          ATT.sourceWidth / ATT.creativeAspectRatio,
+        ];
+        ATT.cropOriginalSourceForceSquare = [
+          ATT.sourceWidth * ATT.cropFactor,
+          ATT.sourceHeight,
+        ];
+      }
+      else {
+        ATT.cropOriginalSource = [
+          ATT.sourceWidth * ATT.cropFactor,
+          ATT.sourceHeight / ATT.sourceLensSqueeze
+        ];
+        ATT.cropOriginalSourceForceSquare = [
+          ATT.sourceWidth * ATT.cropFactor,
+          ATT.sourceHeight,
+        ];
+      }
+
+      ATT.scaleToProjectDimensionFitWidth = [
+        ATT.projectWidth,
+        ATT.cropOriginalSource[1] * (ATT.projectWidth / ATT.cropOriginalSource[0] )
+      ];
+      ATT.scaleToProjectDimensionFitHeight = [
+        ATT.cropOriginalSource[0] * (ATT.projectHeight / ATT.cropOriginalSource[1] ),
+        ATT.projectHeight
+      ];
+
+      // DaVinci Resolve
+      if ( ATT.cropFactor > 1 ) {
+        ATT.resolveInputSizingZoomSEITF = ATT.projectRatio / ATT.sourceRatio;
+        ATT.resolveInputSizingZoomSFFWC = ATT.sourceRatio / ATT.projectRatio;
+
+      }
+      else {
+        ATT.resolveInputSizingZoomSEITF = ATT.sourceWidth / (ATT.cropOriginalSource[1] * ATT.creativeAspectRatio);
+        ATT.resolveInputSizingZoomSFFWC = ( ATT.cropOriginalSource[1] * ATT.creativeAspectRatio ) / ATT.sourceWidth;
+      }
+      ATT.resolveOutputBlanking = [
+        // Top, Right, Bottom, Left
+        (ATT.projectHeight - ATT.scaleToProjectDimensionFitWidth[1]) / 2,
+        ATT.projectWidth,
+        ATT.projectHeight - ( (ATT.projectHeight - ATT.scaleToProjectDimensionFitWidth[1]) / 2 ),
+        0,
+      ];
+
+      // Assimilate Scratch
+      ATT.scratchFramingCustomScale = ( ATT.projectWidth ) / ( ATT.sourceLensSqueeze * ATT.cropOriginalSource[0] ) * 100;
+      ATT.scratchGuideDimension = [
+        ATT.scaleToProjectDimensionFitWidth[0],
+        ATT.scaleToProjectDimensionFitWidth[1],
+      ];
+      ATT.scratchGuidePosition = [
+        0,
+        ( ATT.projectHeight - ATT.scratchGuideDimension[1] ) / 2
+      ];
+    }
+
+    function roundNum(n, places=0, roundType='standard') {
+      if ( roundType == 'nearestEven' ) {
+        return Math.round(n / 2) * 2;
+      }
+      else {
+        return n.toFixed(places);
+      }
+    }
+
+    function formatNum(value, numType, roundType='standard') {
+      // Stop working on null values and report them.
+      if ( value == null || value == undefined ) {
+        console.log('formatNum(): this value was null or undefined: ' + value);
+        return;
+      }
+      // For a pair of values, round them (nearest even) and return them as string "x × y"
+      if ( numType == 'pair' && value.length == 2 ) {
+        return roundNum(value[0], roundType) + ' &times; ' + roundNum(value[1], roundType);
+      }
+      // For a list of values, round (nearest even) all and return as comma separated
+      // E.g. [1.8, 5.8, 10.8] -> string "2, 6, 10"
+      if ( numType == 'coords' ) {
+        var formatted_coords = [];
+        for ( i = 0; i < value.length; i++ ) {
+          formatted_coords.push( roundNum(value[i]) );
+        }
+        return formatted_coords.join(', ');
+      }
+      else if ( numType == 'integer' ) {
+        return roundNum(value);
+      }
+      else if ( numType == 'percent' ){
+        return roundNum(value, ATT['_format_decimal_places_percent']) + "%";
+      }
+      else if ( numType == 'decimal' || numType == 'ratio' ) {
+        return roundNum(value, ATT['_format_decimal_places']);
+      }
+      else {
+        console.log('formatNum(): did not recognise ' + numType + ' as a format for: ' + value);
+        return value;
+      }
+    }
+
+    function getUserInput() {
+      /* Grab each user-input value from the HTML
+       * and parse them into floats.
+       */
+      function getInputFromField( fieldName ) {
+        return Number.parseFloat( document.getElementById( fieldName ).value );
+      }
+      ATT['_user_input_values'].forEach( function(v) {
+        ATT[v['value_name']] = getInputFromField( v['value_name'] );
+      });
+    }
+
+    function pushButtonSetValue() {
+      // Iterate over all data-* values (except target)
+      // The target value will be targetK where in the HTML, the data attribute is data-k
+      // That data key name will get camelised and then point to the target ID itself.
+      // TL;DR. For your target <div id="favouriteColour">, set data-favouritecolour on the button
+      for (var k in this.dataset) {
+        if ( k != 'targetprefix' ) {
+          var keyCamel = k.substr( 0, 1 ).toUpperCase() + k.substr(1, k.length);
+          var targetFieldToUpdate = document.getElementById( this.dataset.targetprefix + keyCamel );
+          targetFieldToUpdate.value = this.dataset[k];
+        };
+      }
+      // Update the rest of the page.
+      run();
+
+      // Toggle 'active' to display which was last-chosen button
+      // (1) Remove active from all other sibling buttons (with class 'btn')
+      var other_buttons = this.parentElement.getElementsByClassName('btn');
+      for ( var i = 0; i < other_buttons.length; i++ ) {
+        other_buttons[i].classList.remove('active');
+      }
+      // (2) Then add it to our last-pressed button
+      this.classList.add('active');
+    }
+
+    function updatePageWithResults() {
+      ATT['_calculated_values'].forEach( function(v) {
+        var html_output;
+        name = v['value_name'];
+        numType = v['type'];
+        value = ATT[v['value_name']];
+
+        if ( value == null || value == undefined ) {
+          console.log('updatePageWithResults(): value was undefined: name, numType, value:', name, numType, value);
+        }
+
+        html_output = formatNum(value, numType);
+
+        if ( html_output == null ) {
+          html_output = '-';
+          console.log('updatePageWithResults(): This value was empty after calculation: ', v);
+        }
+        /* Write them to HTML */
+        var target_element = document.getElementById(name);
+        if ( target_element != null ) {
+          target_element.innerHTML = html_output;
+        }
+        else {
+          console.log('updatePageWithResults(): could not find a HTML element called: ' + name, target_element);
+        }
+      })
+    }
+
+    function run() {
+      getUserInput();
+      performCalculations();
+      updatePageWithResults();
+    }
+
+    function attachEventHandlers() {
+      var targets = document.getElementsByClassName('user-input-value');
+      [].forEach.call(
+        targets, function(target) {
+          target.addEventListener('change', run);
+        }
+      );
+    }
+
+    function attachButtonHandlers() {
+      var targets = document.getElementsByClassName('button-set-preset');
+      [].forEach.call(
+        targets, function(target) {
+          target.addEventListener('click', pushButtonSetValue, false);
+        }
+      );
+    }
+
+    window.addEventListener( 'load', function() {
+      attachButtonHandlers();
+      attachEventHandlers();
+      run();
+    });
+
+    /* **** TESTS **** */
+    /*
+    ATT['_calculated_values'].forEach( function(v) {
+      console.log(v['value_name'], ATT[v['value_name']]);
+    })
+    */
+
+  </script>
+</body>
+
+</html>
