@@ -47,6 +47,10 @@ sass:
 cloudinary:
   cloud_name: sebreategui
 
+# Blog comments
+commentbox:
+  id: 5760094331469824-proj
+
 # Metadata for <head>
 title:        Sebastian Reategui
 titleLong:    Sebastian Reategui, photographer
@@ -70,7 +74,7 @@ author:
     twitter:
       network:  Twitter
       handle:   "@spebz"
-      url:      https://twitter.com/spebz
+      url:      https://twitter.com/seb_rg
     instagram:
       network:  Instagram
       handle:   "@seb_rg"
